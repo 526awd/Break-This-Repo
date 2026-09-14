@@ -1,0 +1,172 @@
+// Licensed to the Apache Software Foundation (ASF) under one
+// or more contributor license agreements.  See the NOTICE file
+// distributed with this work for additional information
+// regarding copyright ownership.  The ASF licenses this file
+// to you under the Apache License, Version 2.0 (the
+// "License"); you may not use this file except in compliance
+// with the License.  You may obtain a copy of the License at
+//
+//   http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing,
+// software distributed under the License is distributed on an
+// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+// KIND, either express or implied.  See the License for the
+// specific language governing permissions and limitations
+// under the License.
+
+pub const IGGY_INDEX_SIZE: usize = std::mem::size_of::<u64>() * 3;
+
+/// One sparse index entry.
+///
+/// On disk it is the three fields as little-endian u64s in declaration
+/// order, `IGGY_INDEX_SIZE` bytes per entry. The server's segment recovery
+/// and the cluster crash tests decode that layout by hand (the `integration`
+/// crate does not depend on this one), so a change here must change them too.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
+pub struct IggyIndex {
+    pub offset: u64,
+    pub timestamp: u64,
+    pub position: u64,
+}
+
+impl IggyIndex {
+    #[must_use]
+    pub const fn new(offset: u64, timestamp: u64, position: u64) -> Self {
+        Self {
+            offset,
+            timestamp,
+            position,
+        }
+    }
+
+    fn write_to(&self, buffer: &mut Vec<u8>) {
+        buffer.extend_from_slice(&self.offset.to_le_bytes());
+        buffer.extend_from_slice(&self.timestamp.to_le_bytes());
+        buffer.extend_from_slice(&self.position.to_le_bytes());
+    }
+}
+
+#[derive(Debug, Clone, Default)]
+pub struct IggyIndexCache {
+    entries: Vec<IggyIndex>,
+}
+
+impl IggyIndexCache {
+    #[must_use]
+    pub fn empty() -> Self {
+        Self::default()
+    }
+
+    #[must_use]
+    pub fn with_capacity(capacity: usize) -> Self {
+        Self {
+            entries: Vec::with_capacity(capacity),
+        }
+    }
+
+    #[must_use]
+    pub const fn len(&self) -> usize {
+        self.entries.len()
+    }
+
+    #[must_use]
+    pub const fn is_empty(&self) -> bool {
+        self.entries.is_empty()
+    }
+
+    pub fn insert(&mut self, offset: u64, timestamp: u64, position: u64) {
+        self.entries
+            .push(IggyIndex::new(offset, timestamp, position));
+    }
+
+    #[must_use]
+    pub fn serialize(indexes: &IggyIndex) -> Vec<u8> {
+        let mut buffer = Vec::with_capacity(IGGY_INDEX_SIZE);
+        indexes.write_to(&mut buffer);
+        buffer
+    }
+
+    /// Entry at or below `offset`, or `None` when every cached entry sits
+    /// above it. The cache is a sparse hint that may not cover the segment
+    /// from its first byte (a recovered segment's cache starts empty and only
+    /// gains entries for batches flushed after boot), so a below-range query
+    /// must fall back to the segment start rather than the first cached
+    /// entry, which would skip everything persisted before it.
+    #[must_use]
+    pub fn offset_lower_bound(&self, offset: u64) -> Option<&IggyIndex> {
+        match self
+            .entries
+            .binary_search_by_key(&offset, |entry| entry.offset)
+        {
+            Ok(idx) => self.entries.get(idx),
+            Err(0) => None,
+            Err(idx) => self.entries.get(idx - 1),
+        }
+    }
+
+    /// Entry at or below `timestamp`; `None` semantics match
+    /// [`Self::offset_lower_bound`].
+    #[must_use]
+    pub fn timestamp_lower_bound(&self, timestamp: u64) -> Option<&IggyIndex> {
+        match self
+            .entries
+            .binary_search_by_key(&timestamp, |entry| entry.timestamp)
+        {
+            Ok(idx) => self.entries.get(idx),
+            Err(0) => None,
+            Err(idx) => self.entries.get(idx - 1),
+        }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::{IggyIndex, IggyIndexCache};
+
+    fn cache() -> IggyIndexCache {
+        let mut cache = IggyIndexCache::empty();
+        cache.insert(10, 100, 1);
+        cache.insert(20, 200, 2);
+        cache.insert(30, 300, 3);
+        cache
+    }
+
+    #[test]
+    fn offset_lookup_returns_predecessor() {
+        let cache = cache();
+
+        assert_eq!(
+            cache.offset_lower_bound(25),
+            Some(&IggyIndex::new(20, 200, 2))
+        );
+        assert_eq!(
+            cache.offset_lower_bound(20),
+            Some(&IggyIndex::new(20, 200, 2))
+        );
+        assert_eq!(cache.offset_lower_bound(5), None);
+        assert_eq!(
+            cache.offset_lower_bound(35),
+            Some(&IggyIndex::new(30, 300, 3))
+        );
+    }
+
+    #[test]
+    fn timestamp_lookup_returns_predecessor() {
+        let cache = cache();
+
+        assert_eq!(
+            cache.timestamp_lower_bound(250),
+            Some(&IggyIndex::new(20, 200, 2))
+        );
+        assert_eq!(
+            cache.timestamp_lower_bound(200),
+            Some(&IggyIndex::new(20, 200, 2))
+        );
+        assert_eq!(cache.timestamp_lower_bound(50), None);
+        assert_eq!(
+            cache.timestamp_lower_bound(350),
+            Some(&IggyIndex::new(30, 300, 3))
+        );
+    }
+}

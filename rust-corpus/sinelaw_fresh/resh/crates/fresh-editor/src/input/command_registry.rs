@@ -1,0 +1,1419 @@
+//! Dynamic command registry for plugins and extensions
+//!
+//! This module allows plugins to register custom commands dynamically
+//! while maintaining the built-in command set.
+
+use crate::input::commands::{get_all_commands, Command, CommandSource, Suggestion};
+use crate::input::fuzzy::fuzzy_match;
+use crate::input::keybindings::Action;
+use crate::input::keybindings::KeyContext;
+use std::sync::{Arc, RwLock};
+
+/// Registry for managing editor commands
+///
+/// Supports both built-in commands and dynamically registered plugin commands.
+/// Thread-safe for use across multiple threads (e.g., from async tasks).
+pub struct CommandRegistry {
+    /// Built-in commands (loaded once at startup)
+    builtin_commands: Vec<Command>,
+
+    /// Plugin-registered commands (dynamically added/removed)
+    plugin_commands: Arc<RwLock<Vec<Command>>>,
+
+    /// Command usage history (most recent first)
+    /// Used to sort command palette suggestions by recency
+    command_history: Vec<String>,
+}
+
+impl CommandRegistry {
+    /// Maximum number of commands to keep in history
+    const MAX_HISTORY_SIZE: usize = 50;
+
+    /// Create a new command registry with built-in commands
+    pub fn new() -> Self {
+        Self {
+            builtin_commands: get_all_commands(),
+            plugin_commands: Arc::new(RwLock::new(Vec::new())),
+            command_history: Vec::new(),
+        }
+    }
+
+    /// Refresh built-in commands (e.g. after locale change)
+    pub fn refresh_builtin_commands(&mut self) {
+        self.builtin_commands = get_all_commands();
+    }
+
+    /// `true` iff `action` matches a registered command that was
+    /// declared with `terminalBypass: true` (plugins) or already
+    /// bypasses via the built-in `is_terminal_ui_action` allowlist.
+    ///
+    /// Built-in actions (CommandPalette, QuickOpen, …) are intentionally
+    /// not flagged here — they bypass through
+    /// [`KeybindingResolver::is_terminal_ui_action`] which the
+    /// terminal input handler checks separately. This method is the
+    /// plugin-driven extension: any plugin command can opt in to the
+    /// same bypass-while-terminal-is-focused behaviour via the
+    /// `registerCommand({ terminalBypass: true })` option.
+    pub fn is_terminal_bypass_action(&self, action: &crate::input::keybindings::Action) -> bool {
+        use crate::input::keybindings::Action;
+        let Action::PluginAction(target) = action else {
+            return false;
+        };
+        let plugins = self.plugin_commands.read().unwrap();
+        plugins.iter().any(|cmd| {
+            cmd.terminal_bypass
+                && matches!(&cmd.action, Action::PluginAction(name) if name == target)
+        })
+    }
+
+    /// Record that a command was used (for history/sorting)
+    ///
+    /// This moves the command to the front of the history list.
+    /// Recently used commands appear first in suggestions.
+    pub fn record_usage(&mut self, command_name: &str) {
+        // Remove existing entry if present
+        self.command_history.retain(|name| name != command_name);
+
+        // Add to front (most recent)
+        self.command_history.insert(0, command_name.to_string());
+
+        // Trim to max size
+        if self.command_history.len() > Self::MAX_HISTORY_SIZE {
+            self.command_history.truncate(Self::MAX_HISTORY_SIZE);
+        }
+    }
+
+    /// Get the position of a command in history (0 = most recent)
+    /// Returns None if command is not in history
+    fn history_position(&self, command_name: &str) -> Option<usize> {
+        self.command_history
+            .iter()
+            .position(|name| name == command_name)
+    }
+
+    /// Register a new command (typically from a plugin)
+    ///
+    /// If a command with the same name already exists, it will be replaced.
+    /// This allows plugins to override built-in commands.
+    /// Note: For plugin commands, prefer `try_register` which enforces
+    /// first-writer-wins semantics. This method is kept for internal use
+    /// and hot-reload scenarios.
+    pub fn register(&self, command: Command) {
+        tracing::debug!(
+            "CommandRegistry::register: name='{}', action={:?}",
+            command.name,
+            command.action
+        );
+        let mut commands = self.plugin_commands.write().unwrap();
+
+        // Remove existing command with same name
+        commands.retain(|c| c.name != command.name);
+
+        // Add new command
+        commands.push(command);
+        tracing::debug!(
+            "CommandRegistry::register: plugin_commands now has {} items",
+            commands.len()
+        );
+    }
+
+    /// Try to register a command, failing if a command with the same name
+    /// is already registered by a different plugin (first-writer-wins).
+    ///
+    /// Returns `Ok(())` on success, or `Err` with the name of the existing
+    /// plugin that owns the command.
+    pub fn try_register(&self, command: Command) -> Result<(), (String, CommandSource)> {
+        let mut commands = self.plugin_commands.write().unwrap();
+
+        if let Some(existing) = commands.iter().find(|c| c.name == command.name) {
+            // Allow same plugin to re-register (hot-reload)
+            if existing.source == command.source {
+                commands.retain(|c| c.name != command.name);
+                commands.push(command);
+                return Ok(());
+            }
+            return Err((existing.name.clone(), existing.source.clone()));
+        }
+
+        commands.push(command);
+        Ok(())
+    }
+
+    /// Unregister a command by name
+    pub fn unregister(&self, name: &str) {
+        let mut commands = self.plugin_commands.write().unwrap();
+        commands.retain(|c| c.name != name);
+    }
+
+    /// Unregister all commands whose name starts with a prefix
+    pub fn unregister_by_prefix(&self, prefix: &str) {
+        let mut commands = self.plugin_commands.write().unwrap();
+        commands.retain(|c| !c.name.starts_with(prefix));
+    }
+
+    /// Unregister all commands registered by a specific plugin
+    pub fn unregister_by_plugin(&self, plugin_name: &str) {
+        let mut commands = self.plugin_commands.write().unwrap();
+        let before = commands.len();
+        commands.retain(|c| {
+            if let super::commands::CommandSource::Plugin(ref name) = c.source {
+                name != plugin_name
+            } else {
+                true
+            }
+        });
+        let removed = before - commands.len();
+        if removed > 0 {
+            tracing::debug!(
+                "Unregistered {} commands from plugin '{}'",
+                removed,
+                plugin_name
+            );
+        }
+    }
+
+    /// Get all commands (built-in + plugin)
+    pub fn get_all(&self) -> Vec<Command> {
+        let mut all_commands = self.builtin_commands.clone();
+
+        let plugin_commands = self.plugin_commands.read().unwrap();
+        let plugin_count = plugin_commands.len();
+
+        // Debug: check if vi_mode_toggle is in plugin commands
+        let target_action =
+            crate::input::keybindings::Action::PluginAction("vi_mode_toggle".to_string());
+        let has_target = plugin_commands.iter().any(|c| c.action == target_action);
+        if has_target {
+            tracing::debug!("get_all: vi_mode_toggle found via comparison!");
+        } else if plugin_count > 0 {
+            tracing::debug!(
+                "get_all: {} plugin commands but vi_mode_toggle NOT found",
+                plugin_count
+            );
+        }
+
+        all_commands.extend(plugin_commands.iter().cloned());
+
+        tracing::trace!(
+            "CommandRegistry::get_all: {} builtin + {} plugin = {} total",
+            self.builtin_commands.len(),
+            plugin_count,
+            all_commands.len()
+        );
+        all_commands
+    }
+
+    /// Filter commands by fuzzy matching query with context awareness
+    ///
+    /// When query is empty, commands are sorted by recency (most recently used first).
+    /// When query is not empty, commands are sorted by match quality (fzf-style scoring)
+    /// with recency as tiebreaker for equal scores.
+    /// Disabled commands always appear after enabled ones.
+    ///
+    /// `has_lsp_config` indicates whether the active buffer's language has an LSP server
+    /// configured. When false, LSP start/restart/toggle commands are disabled.
+    ///
+    /// `buffer_caps` says what the active buffer can be asked to do — the same
+    /// answers the menus use, so the two surfaces agree on when Save has
+    /// something to write and when an edit would be refused.
+    #[allow(clippy::too_many_arguments)]
+    pub fn filter(
+        &self,
+        query: &str,
+        current_context: KeyContext,
+        keybinding_resolver: &crate::input::keybindings::KeybindingResolver,
+        selection_active: bool,
+        active_custom_contexts: &std::collections::HashSet<String>,
+        active_buffer_mode: Option<&str>,
+        has_lsp_config: bool,
+        buffer_caps: crate::app::buffer_capabilities::BufferCapabilities,
+    ) -> Vec<Suggestion> {
+        let commands = self.get_all();
+
+        // Helper function to check if command should be visible (custom context check)
+        // Commands with unmet custom contexts are completely hidden, not just disabled
+        // A custom context is satisfied if:
+        // 1. It's in the global active_custom_contexts set, OR
+        // 2. It matches the focused buffer's mode (for buffer-scoped commands)
+        let is_visible = |cmd: &Command| -> bool {
+            cmd.custom_contexts.is_empty()
+                || cmd.custom_contexts.iter().all(|ctx| {
+                    active_custom_contexts.contains(ctx)
+                        || active_buffer_mode.is_some_and(|mode| mode == ctx)
+                })
+        };
+
+        // Helper function to check if command is available in current context
+        let is_available = |cmd: &Command| -> bool {
+            // Global commands are always available
+            if cmd.contexts.contains(&KeyContext::Global) {
+                return true;
+            }
+
+            // Check built-in contexts
+            if cmd.contexts.is_empty() || cmd.contexts.contains(&current_context) {
+                return true;
+            }
+
+            // A plugin command that opted into `terminalBypass` runs wherever
+            // the keyboard is — that opt-in is the whole point of the flag.
+            if cmd.terminal_bypass
+                && (matches!(current_context, KeyContext::Terminal)
+                    || current_context.allows_ui_fallthrough())
+            {
+                return true;
+            }
+
+            // Focus-independent actions stay available even when the keyboard
+            // is owned by a non-editing surface. The wider allowlist is
+            // deliberate: the palette runs the action itself instead of routing
+            // a key through that surface, so even the explorer commands a
+            // focused terminal keeps for the shell are runnable here.
+            // Greying the same command out in the palette contradicted the
+            // keymap: Alt+` opened a dock terminal from a focused terminal
+            // while the palette refused "Open Terminal in Utility Dock".
+            //
+            // Only for commands the editor context offers (`Normal`): the
+            // allowlist is keyed on the *action*, and a few of those actions
+            // belong to commands scoped to one surface — "Exit Terminal Mode"
+            // and "Toggle Keyboard Capture" are `Terminal`-only, and their
+            // handlers no-op unless a live terminal has focus. Without this
+            // guard the bypass would resurrect them in the file explorer as
+            // entries that look enabled and silently do nothing.
+            if cmd.contexts.contains(&KeyContext::Normal)
+                && (matches!(current_context, KeyContext::Terminal)
+                    || current_context.allows_ui_fallthrough())
+            {
+                return crate::input::keybindings::KeybindingResolver::is_ui_fallthrough_action(
+                    &cmd.action,
+                );
+            }
+
+            false
+        };
+
+        // Helper to create a suggestion from a command
+        let current_context_ref = &current_context;
+        let make_suggestion =
+            |cmd: &Command, score: i32, localized_name: String, localized_desc: String| {
+                let mut available = is_available(cmd);
+                if cmd.action == Action::FindInSelection && !selection_active {
+                    available = false;
+                }
+                // Disable LSP start/restart/toggle commands when no LSP is configured
+                if !has_lsp_config
+                    && matches!(cmd.action, Action::LspRestart | Action::LspToggleForBuffer)
+                {
+                    available = false;
+                }
+                // What the buffer itself can be asked to do. A command whose
+                // whole job is to write or edit the active buffer is offered
+                // only when there is something to write and something willing
+                // to be written: not a terminal's transcript, not a plugin
+                // panel with no file behind it, not an untouched buffer, and
+                // not a read-only one.
+                let buffer_allows = match cmd.action {
+                    Action::Save => buffer_caps.can_save(),
+                    Action::SaveAs => buffer_caps.can_save_as(),
+                    Action::SaveAll => buffer_caps.any_modified,
+                    Action::Revert | Action::ReloadWithEncoding => buffer_caps.can_revert(),
+                    ref action
+                        if crate::input::keybindings::KeybindingResolver::
+                            is_buffer_mutating_action(action) =>
+                    {
+                        buffer_caps.editable
+                    }
+                    _ => true,
+                };
+                if !buffer_allows {
+                    available = false;
+                }
+                let keybinding = keybinding_resolver
+                    .get_keybinding_for_action(&cmd.action, current_context_ref.clone());
+                let history_pos = self.history_position(&cmd.name);
+
+                let suggestion = Suggestion::new(localized_name)
+                    .with_description(localized_desc)
+                    .set_disabled(!available)
+                    .with_keybinding(keybinding)
+                    .with_source(Some(cmd.source.clone()));
+                (suggestion, history_pos, score)
+            };
+
+        // Match by name or description
+        // Commands with unmet custom contexts are completely hidden
+        // match_kind: 0 = name match, 1 = description match
+        // An exact (case-insensitive) name match must win its class outright.
+        // Fuzzy score alone does not guarantee it: for the `X` / `X (Current
+        // Buffer)` pairs the longer sibling can outscore the very name the user
+        // typed in full, so typing a command's exact name would run a different
+        // command. `exact_kind`: 0 = exact name, 1 = anything else.
+        let query_trimmed = query.trim();
+        let is_exact_name =
+            |name: &str| !query_trimmed.is_empty() && name.eq_ignore_ascii_case(query_trimmed);
+
+        let mut suggestions: Vec<(Suggestion, Option<usize>, i32, u8, u8)> = commands
+            .iter()
+            .filter(|cmd| is_visible(cmd))
+            .filter_map(|cmd| {
+                let localized_name = cmd.get_localized_name();
+                let name_result = fuzzy_match(query, &localized_name);
+                if name_result.matched {
+                    let exact = u8::from(!is_exact_name(&localized_name));
+                    let localized_desc = cmd.get_localized_description();
+                    let (suggestion, hist, score) =
+                        make_suggestion(cmd, name_result.score, localized_name, localized_desc);
+                    Some((suggestion, hist, score, 0, exact))
+                } else if !query.is_empty() {
+                    let localized_desc = cmd.get_localized_description();
+                    let desc_result = fuzzy_match(query, &localized_desc);
+                    if desc_result.matched {
+                        let (suggestion, hist, score) =
+                            make_suggestion(cmd, desc_result.score, localized_name, localized_desc);
+                        Some((suggestion, hist, score, 1, 1))
+                    } else {
+                        None
+                    }
+                } else {
+                    None
+                }
+            })
+            .collect();
+
+        // Sort by:
+        // 1. Disabled status (enabled first)
+        // 2. Match kind (name matches before description matches) - only when query is not empty
+        // 3. Exact name match - only when query is not empty
+        // 4. Fuzzy match score (higher is better) - only when query is not empty
+        // 5. History position (recent first, then never-used alphabetically)
+        let has_query = !query.is_empty();
+        suggestions.sort_by(
+            |(a, a_hist, a_score, a_kind, a_exact), (b, b_hist, b_score, b_kind, b_exact)| {
+                // First sort by disabled status
+                match a.disabled.cmp(&b.disabled) {
+                    std::cmp::Ordering::Equal => {}
+                    other => return other,
+                }
+
+                if has_query {
+                    // Name matches before description matches
+                    match a_kind.cmp(b_kind) {
+                        std::cmp::Ordering::Equal => {}
+                        other => return other,
+                    }
+
+                    // Typing a command's full name selects that command.
+                    match a_exact.cmp(b_exact) {
+                        std::cmp::Ordering::Equal => {}
+                        other => return other,
+                    }
+
+                    // Within the same kind, sort by fuzzy score (higher is better)
+                    match b_score.cmp(a_score) {
+                        std::cmp::Ordering::Equal => {}
+                        other => return other,
+                    }
+                }
+
+                // Then sort by history position (lower = more recent = better)
+                match (a_hist, b_hist) {
+                    (Some(a_pos), Some(b_pos)) => a_pos.cmp(b_pos),
+                    (Some(_), None) => std::cmp::Ordering::Less, // In history beats not in history
+                    (None, Some(_)) => std::cmp::Ordering::Greater,
+                    (None, None) => a.text.cmp(&b.text), // Alphabetical for never-used commands
+                }
+            },
+        );
+
+        // Extract just the suggestions
+        suggestions.into_iter().map(|(s, _, _, _, _)| s).collect()
+    }
+
+    /// Get count of registered plugin commands
+    pub fn plugin_command_count(&self) -> usize {
+        self.plugin_commands.read().unwrap().len()
+    }
+
+    /// Get count of total commands (built-in + plugin)
+    pub fn total_command_count(&self) -> usize {
+        self.builtin_commands.len() + self.plugin_command_count()
+    }
+
+    /// Find a command by exact name match
+    pub fn find_by_name(&self, name: &str) -> Option<Command> {
+        // Check plugin commands first (they can override built-in)
+        {
+            let plugin_commands = self.plugin_commands.read().unwrap();
+            if let Some(cmd) = plugin_commands.iter().find(|c| c.name == name) {
+                return Some(cmd.clone());
+            }
+        }
+
+        // Then check built-in commands
+        self.builtin_commands
+            .iter()
+            .find(|c| c.name == name)
+            .cloned()
+    }
+
+    /// Resolve the name a *user* would type — what the palette displays —
+    /// to the command behind it.
+    ///
+    /// The palette shows `get_localized_name()`, which for a plugin command
+    /// registered under a `%key` is the translated string, not the key. A
+    /// caller naming a command from outside (a script, `fresh --cmd command
+    /// run`) only ever saw the displayed form, so that is matched first;
+    /// the raw registered name is accepted too, because that is what the
+    /// plugin's own source says. Case-insensitive display match is the last
+    /// resort, so `"pr dashboard"` finds `"PR Dashboard"`.
+    ///
+    /// Plugin commands shadow built-ins on a collision, matching `find_by_name`
+    /// and the palette's own precedence.
+    pub fn resolve_by_display_name(&self, name: &str) -> Option<Command> {
+        let all = self.get_all();
+        // Plugin commands are appended after built-ins by `get_all`, so
+        // scanning from the end gives them precedence on a name collision.
+        let find = |pred: &dyn Fn(&Command) -> bool| all.iter().rev().find(|c| pred(c)).cloned();
+
+        find(&|c: &Command| c.get_localized_name() == name)
+            .or_else(|| find(&|c: &Command| c.name == name))
+            .or_else(|| {
+                let lower = name.to_lowercase();
+                find(&|c: &Command| c.get_localized_name().to_lowercase() == lower)
+            })
+    }
+}
+
+impl Default for CommandRegistry {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::input::commands::CommandSource;
+    use crate::input::keybindings::Action;
+
+    #[test]
+    fn test_command_registry_creation() {
+        let registry = CommandRegistry::new();
+        assert!(registry.total_command_count() > 0); // Has built-in commands
+        assert_eq!(registry.plugin_command_count(), 0); // No plugin commands yet
+    }
+
+    #[test]
+    fn test_register_command() {
+        let registry = CommandRegistry::new();
+
+        let custom_command = Command {
+            name: "Test Command".to_string(),
+            description: "A test command".to_string(),
+            action: Action::None,
+            contexts: vec![],
+            custom_contexts: vec![],
+            source: CommandSource::Builtin,
+            terminal_bypass: false,
+        };
+
+        registry.register(custom_command.clone());
+        assert_eq!(registry.plugin_command_count(), 1);
+
+        let found = registry.find_by_name("Test Command");
+        assert!(found.is_some());
+        assert_eq!(found.unwrap().description, "A test command");
+    }
+
+    #[test]
+    fn test_unregister_command() {
+        let registry = CommandRegistry::new();
+
+        let custom_command = Command {
+            name: "Test Command".to_string(),
+            description: "A test command".to_string(),
+            action: Action::None,
+            contexts: vec![],
+            custom_contexts: vec![],
+            source: CommandSource::Builtin,
+            terminal_bypass: false,
+        };
+
+        registry.register(custom_command);
+        assert_eq!(registry.plugin_command_count(), 1);
+
+        registry.unregister("Test Command");
+        assert_eq!(registry.plugin_command_count(), 0);
+    }
+
+    #[test]
+    fn test_register_replaces_existing() {
+        let registry = CommandRegistry::new();
+
+        let command1 = Command {
+            name: "Test Command".to_string(),
+            description: "First version".to_string(),
+            action: Action::None,
+            contexts: vec![],
+            custom_contexts: vec![],
+            source: CommandSource::Builtin,
+            terminal_bypass: false,
+        };
+
+        let command2 = Command {
+            name: "Test Command".to_string(),
+            description: "Second version".to_string(),
+            action: Action::None,
+            contexts: vec![],
+            custom_contexts: vec![],
+            source: CommandSource::Builtin,
+            terminal_bypass: false,
+        };
+
+        registry.register(command1);
+        assert_eq!(registry.plugin_command_count(), 1);
+
+        registry.register(command2);
+        assert_eq!(registry.plugin_command_count(), 1); // Still just one
+
+        let found = registry.find_by_name("Test Command").unwrap();
+        assert_eq!(found.description, "Second version");
+    }
+
+    #[test]
+    fn test_unregister_by_prefix() {
+        let registry = CommandRegistry::new();
+
+        registry.register(Command {
+            name: "Plugin A: Command 1".to_string(),
+            description: "".to_string(),
+            action: Action::None,
+            contexts: vec![],
+            custom_contexts: vec![],
+            source: CommandSource::Builtin,
+            terminal_bypass: false,
+        });
+
+        registry.register(Command {
+            name: "Plugin A: Command 2".to_string(),
+            description: "".to_string(),
+            action: Action::None,
+            contexts: vec![],
+            custom_contexts: vec![],
+            source: CommandSource::Builtin,
+            terminal_bypass: false,
+        });
+
+        registry.register(Command {
+            name: "Plugin B: Command".to_string(),
+            description: "".to_string(),
+            action: Action::None,
+            contexts: vec![],
+            custom_contexts: vec![],
+            source: CommandSource::Builtin,
+            terminal_bypass: false,
+        });
+
+        assert_eq!(registry.plugin_command_count(), 3);
+
+        registry.unregister_by_prefix("Plugin A:");
+        assert_eq!(registry.plugin_command_count(), 1);
+
+        let remaining = registry.find_by_name("Plugin B: Command");
+        assert!(remaining.is_some());
+    }
+
+    #[test]
+    fn test_filter_commands() {
+        use crate::config::Config;
+        use crate::input::keybindings::KeybindingResolver;
+
+        let registry = CommandRegistry::new();
+        let config = Config::default();
+        let keybindings = KeybindingResolver::new(&config);
+
+        registry.register(Command {
+            name: "Test Save".to_string(),
+            description: "Test save command".to_string(),
+            action: Action::None,
+            contexts: vec![KeyContext::Normal],
+            custom_contexts: vec![],
+            source: CommandSource::Builtin,
+            terminal_bypass: false,
+        });
+
+        let empty_contexts = std::collections::HashSet::new();
+        let results = registry.filter(
+            "save",
+            KeyContext::Normal,
+            &keybindings,
+            false,
+            &empty_contexts,
+            None,
+            true,
+            test_caps(),
+        );
+        assert!(results.len() >= 2); // At least "Save File" + "Test Save"
+
+        // Check that both built-in and custom commands appear
+        let names: Vec<String> = results.iter().map(|s| s.text.clone()).collect();
+        assert!(names.iter().any(|n| n.contains("Save")));
+    }
+
+    #[test]
+    fn test_context_filtering() {
+        use crate::config::Config;
+        use crate::input::keybindings::KeybindingResolver;
+
+        let registry = CommandRegistry::new();
+        let config = Config::default();
+        let keybindings = KeybindingResolver::new(&config);
+
+        registry.register(Command {
+            name: "Normal Only".to_string(),
+            description: "Available only in normal context".to_string(),
+            action: Action::None,
+            contexts: vec![KeyContext::Normal],
+            custom_contexts: vec![],
+            source: CommandSource::Builtin,
+            terminal_bypass: false,
+        });
+
+        registry.register(Command {
+            name: "Popup Only".to_string(),
+            description: "Available only in popup context".to_string(),
+            action: Action::None,
+            contexts: vec![KeyContext::Popup],
+            custom_contexts: vec![],
+            source: CommandSource::Builtin,
+            terminal_bypass: false,
+        });
+
+        // In normal context, "Popup Only" should be disabled
+        let empty_contexts = std::collections::HashSet::new();
+        let results = registry.filter(
+            "",
+            KeyContext::Normal,
+            &keybindings,
+            false,
+            &empty_contexts,
+            None,
+            true,
+            test_caps(),
+        );
+        let popup_only = results.iter().find(|s| s.text == "Popup Only");
+        assert!(popup_only.is_some());
+        assert!(popup_only.unwrap().disabled);
+
+        // In popup context, "Normal Only" should be disabled
+        let results = registry.filter(
+            "",
+            KeyContext::Popup,
+            &keybindings,
+            false,
+            &empty_contexts,
+            None,
+            true,
+            test_caps(),
+        );
+        let normal_only = results.iter().find(|s| s.text == "Normal Only");
+        assert!(normal_only.is_some());
+        assert!(normal_only.unwrap().disabled);
+    }
+
+    /// A plain, saved, editable text buffer — the boring case, so tests that
+    /// aren't about buffer state don't have to think about it.
+    #[cfg(test)]
+    fn test_caps() -> crate::app::buffer_capabilities::BufferCapabilities {
+        crate::app::buffer_capabilities::BufferCapabilities {
+            has_buffer: true,
+            is_text_buffer: true,
+            editable: true,
+            modified: true,
+            has_path: true,
+            any_modified: true,
+        }
+    }
+
+    /// Look up one command by its exact palette name and report whether the
+    /// palette would let the user run it.
+    #[cfg(test)]
+    fn enabled_in(
+        registry: &CommandRegistry,
+        keybindings: &crate::input::keybindings::KeybindingResolver,
+        context: KeyContext,
+        name: &str,
+    ) -> bool {
+        enabled_in_with_caps(registry, keybindings, context, test_caps(), name)
+    }
+
+    /// `enabled_in` with the buffer's capabilities spelled out, for the cases
+    /// that are about the buffer rather than the focused surface.
+    #[cfg(test)]
+    fn enabled_in_with_caps(
+        registry: &CommandRegistry,
+        keybindings: &crate::input::keybindings::KeybindingResolver,
+        context: KeyContext,
+        caps: crate::app::buffer_capabilities::BufferCapabilities,
+        name: &str,
+    ) -> bool {
+        let empty_contexts = std::collections::HashSet::new();
+        let results = registry.filter(
+            "",
+            context,
+            keybindings,
+            false,
+            &empty_contexts,
+            None,
+            true,
+            caps,
+        );
+        let suggestion = results
+            .iter()
+            .find(|s| s.text == name)
+            .unwrap_or_else(|| panic!("command '{name}' should be listed in the palette"));
+        !suggestion.disabled
+    }
+
+    /// Commands that do not touch a text cursor stay runnable while a terminal
+    /// owns the keyboard. Editing commands still don't.
+    #[test]
+    fn test_focus_independent_commands_enabled_in_terminal_context() {
+        use crate::config::Config;
+        use crate::input::keybindings::KeybindingResolver;
+
+        let registry = CommandRegistry::new();
+        let config = Config::default();
+        let keybindings = KeybindingResolver::new(&config);
+
+        // Editor/app-wide state, navigation history, and the terminal's own
+        // commands — none of them need a focused text buffer.
+        for name in [
+            "Save All",
+            "Navigate Back",
+            "Navigate Forward",
+            "Toggle Line Wrap",
+            "Toggle Current Line Highlight",
+            "Toggle Occurrence Highlight",
+            "Toggle Inlay Hints",
+            "Set Background",
+            "List Bookmarks",
+            "List Macros",
+            "init: Reload init.ts",
+            "init: Edit init.ts",
+            "init: Check init.ts",
+            "Focus Terminal",
+            "Restart Terminal Process",
+        ] {
+            assert!(
+                enabled_in(&registry, &keybindings, KeyContext::Terminal, name),
+                "'{name}' should be available while a terminal is focused"
+            );
+        }
+
+        // Commands that edit or inspect buffer text are still disabled: with a
+        // terminal focused there is no cursor for them to act on.
+        for name in ["Undo", "Redo", "Delete Line", "Sort Lines", "Go to Line"] {
+            assert!(
+                !enabled_in(&registry, &keybindings, KeyContext::Terminal, name),
+                "'{name}' needs a text buffer and should stay disabled in a terminal"
+            );
+        }
+    }
+
+    /// Same split with the file explorer focused: the editor-wide commands and
+    /// the window/tab management ones stay runnable, while everything that
+    /// needs the focused buffer's cursor does not — the keyboard belongs to the
+    /// tree, so the palette must not offer to edit or save through it.
+    #[test]
+    fn test_focus_independent_commands_enabled_in_file_explorer_context() {
+        use crate::config::Config;
+        use crate::input::keybindings::KeybindingResolver;
+
+        let registry = CommandRegistry::new();
+        let config = Config::default();
+        let keybindings = KeybindingResolver::new(&config);
+
+        for name in [
+            // Editor/app-wide state and navigation history.
+            "Save All",
+            "Navigate Back",
+            "Navigate Forward",
+            "Toggle Line Wrap",
+            "Toggle Current Line Highlight",
+            "Toggle Inlay Hints",
+            "Set Background",
+            "List Bookmarks",
+            "List Macros",
+            "init: Reload init.ts",
+            "Restart Terminal Process",
+            // Window, split and tab management.
+            "Switch to Previous Tab",
+            "Switch to Tab by Name",
+            "Extract Tab to New Workspace",
+            "Increase Split Size",
+            "Decrease Split Size",
+            "Toggle Mouse Support",
+            // The explorer's own commands, unchanged.
+            "File Explorer: Refresh",
+            "Toggle Hidden Files",
+        ] {
+            assert!(
+                enabled_in(&registry, &keybindings, KeyContext::FileExplorer, name),
+                "'{name}' should be available while the file explorer is focused"
+            );
+        }
+
+        // Saving is the one buffer-touching exception, and it is the keymap's:
+        // `is_application_wide_action` lets Ctrl+S through from the explorer,
+        // so the palette must not refuse what the shortcut just did.
+        for name in ["Save File", "Save File As"] {
+            assert!(
+                enabled_in(&registry, &keybindings, KeyContext::FileExplorer, name),
+                "'{name}' is application-wide in the keymap and must not be greyed out"
+            );
+        }
+
+        // Everything else that acts on the focused buffer's cursor stays
+        // disabled: the tree has the keyboard, not the buffer.
+        for name in [
+            "Undo",
+            "Redo",
+            "Delete Line",
+            "Sort Lines",
+            "Go to Line",
+            "Toggle Comment",
+            "Go to Definition",
+            "Set Language",
+        ] {
+            assert!(
+                !enabled_in(&registry, &keybindings, KeyContext::FileExplorer, name),
+                "'{name}' acts on the focused buffer and should stay disabled in the explorer"
+            );
+        }
+
+        // A terminal is different: Ctrl+S there goes to the process, and the
+        // active buffer is the terminal itself, so saving stays out.
+        for name in ["Save File", "Save File As"] {
+            assert!(
+                !enabled_in(&registry, &keybindings, KeyContext::Terminal, name),
+                "'{name}' has nothing to save while a terminal is focused"
+            );
+        }
+    }
+
+    /// The palette must agree with the keymap: an action the terminal input
+    /// handler lets through (`is_terminal_ui_action`) is runnable from the
+    /// palette too, even though its `CommandDef` only lists `Normal`.
+    #[test]
+    fn test_terminal_ui_actions_enabled_in_terminal_context() {
+        use crate::config::Config;
+        use crate::input::keybindings::KeybindingResolver;
+
+        let registry = CommandRegistry::new();
+        let config = Config::default();
+        let keybindings = KeybindingResolver::new(&config);
+
+        for name in [
+            "Toggle Utility Dock",
+            "Open Terminal in Utility Dock",
+            "Resume Live Grep",
+        ] {
+            assert!(
+                enabled_in(&registry, &keybindings, KeyContext::Terminal, name),
+                "'{name}' bypasses the terminal via its keybinding and must not be greyed out"
+            );
+        }
+    }
+
+    /// Save-family commands answer to the buffer, not just to the focus: an
+    /// untouched buffer has nothing to write, a plugin panel and a terminal
+    /// have no file of the user's behind them, and a never-saved scratch
+    /// buffer has nothing to revert to.
+    #[test]
+    fn test_save_commands_follow_what_the_buffer_can_do() {
+        use crate::app::buffer_capabilities::BufferCapabilities;
+        use crate::config::Config;
+        use crate::input::keybindings::KeybindingResolver;
+
+        let registry = CommandRegistry::new();
+        let config = Config::default();
+        let keybindings = KeybindingResolver::new(&config);
+        let enabled = |caps: BufferCapabilities, name: &str| {
+            enabled_in_with_caps(&registry, &keybindings, KeyContext::Normal, caps, name)
+        };
+
+        // A saved file: nothing to write, but Save As and Revert still apply.
+        let unmodified = BufferCapabilities {
+            modified: false,
+            any_modified: false,
+            ..test_caps()
+        };
+        assert!(!enabled(unmodified, "Save File"), "nothing to save");
+        assert!(!enabled(unmodified, "Save All"), "nothing to save anywhere");
+        assert!(enabled(unmodified, "Save File As"));
+        assert!(enabled(unmodified, "Revert File"));
+
+        // A virtual plugin panel (theme editor, tour, git log): no file behind
+        // it, and nothing in it is the user's to save or edit.
+        let panel = BufferCapabilities {
+            is_text_buffer: false,
+            editable: false,
+            has_path: false,
+            ..test_caps()
+        };
+        for name in ["Save File", "Save File As", "Revert File", "Undo", "Paste"] {
+            assert!(!enabled(panel, name), "'{name}' on a plugin panel");
+        }
+
+        // A never-saved scratch buffer: Save As writes it somewhere, but there
+        // is no file to revert to or reload.
+        let scratch = BufferCapabilities {
+            has_path: false,
+            ..test_caps()
+        };
+        assert!(enabled(scratch, "Save File As"));
+        assert!(enabled(scratch, "Save File"));
+        assert!(!enabled(scratch, "Revert File"));
+        assert!(!enabled(scratch, "Reload with Encoding..."));
+
+        // Read-only: the text is there but refuses edits, so the mutating
+        // commands are greyed rather than answering "editing is disabled".
+        let read_only = BufferCapabilities {
+            editable: false,
+            ..test_caps()
+        };
+        for name in ["Undo", "Redo", "Cut", "Paste", "Delete Line", "Sort Lines"] {
+            assert!(!enabled(read_only, name), "'{name}' on a read-only buffer");
+        }
+        assert!(enabled(read_only, "Copy"), "copying is still fine");
+        assert!(enabled(read_only, "Search"), "searching is still fine");
+    }
+
+    /// The bypass is keyed on the action, so it must not resurrect commands
+    /// scoped to a *different* surface. "Exit Terminal Mode" and "Toggle
+    /// Keyboard Capture" are `Terminal`-only and their handlers no-op unless a
+    /// live terminal has focus — offering them in the explorer would be an
+    /// entry that looks enabled and silently does nothing.
+    #[test]
+    fn test_terminal_only_commands_stay_disabled_outside_a_terminal() {
+        use crate::config::Config;
+        use crate::input::keybindings::KeybindingResolver;
+
+        let registry = CommandRegistry::new();
+        let config = Config::default();
+        let keybindings = KeybindingResolver::new(&config);
+
+        for name in ["Exit Terminal Mode", "Toggle Keyboard Capture"] {
+            assert!(
+                enabled_in(&registry, &keybindings, KeyContext::Terminal, name),
+                "'{name}' is a terminal command and belongs in a terminal"
+            );
+            assert!(
+                !enabled_in(&registry, &keybindings, KeyContext::FileExplorer, name),
+                "'{name}' no-ops without a focused live terminal and must not be \
+                 offered in the explorer"
+            );
+        }
+    }
+
+    /// A plugin command that opted into `terminalBypass` is runnable from the
+    /// palette while a terminal is focused, even when it declares `Normal`.
+    #[test]
+    fn test_plugin_terminal_bypass_command_enabled_in_terminal_context() {
+        use crate::config::Config;
+        use crate::input::keybindings::KeybindingResolver;
+
+        let registry = CommandRegistry::new();
+        let config = Config::default();
+        let keybindings = KeybindingResolver::new(&config);
+
+        registry.register(Command {
+            name: "Plugin Bypass".to_string(),
+            description: "Runs anywhere".to_string(),
+            action: Action::PluginAction("bypass".to_string()),
+            contexts: vec![KeyContext::Normal],
+            custom_contexts: vec![],
+            source: CommandSource::Plugin("test".to_string()),
+            terminal_bypass: true,
+        });
+        registry.register(Command {
+            name: "Plugin Normal".to_string(),
+            description: "Needs a buffer".to_string(),
+            action: Action::PluginAction("normal".to_string()),
+            contexts: vec![KeyContext::Normal],
+            custom_contexts: vec![],
+            source: CommandSource::Plugin("test".to_string()),
+            terminal_bypass: false,
+        });
+
+        assert!(enabled_in(
+            &registry,
+            &keybindings,
+            KeyContext::Terminal,
+            "Plugin Bypass"
+        ));
+        assert!(!enabled_in(
+            &registry,
+            &keybindings,
+            KeyContext::Terminal,
+            "Plugin Normal"
+        ));
+    }
+
+    #[test]
+    fn test_get_all_merges_commands() {
+        let registry = CommandRegistry::new();
+        let initial_count = registry.total_command_count();
+
+        registry.register(Command {
+            name: "Custom 1".to_string(),
+            description: "".to_string(),
+            action: Action::None,
+            contexts: vec![],
+            custom_contexts: vec![],
+            source: CommandSource::Builtin,
+            terminal_bypass: false,
+        });
+
+        registry.register(Command {
+            name: "Custom 2".to_string(),
+            description: "".to_string(),
+            action: Action::None,
+            contexts: vec![],
+            custom_contexts: vec![],
+            source: CommandSource::Builtin,
+            terminal_bypass: false,
+        });
+
+        let all = registry.get_all();
+        assert_eq!(all.len(), initial_count + 2);
+    }
+
+    #[test]
+    fn test_plugin_command_overrides_builtin() {
+        let registry = CommandRegistry::new();
+
+        // Check a built-in command exists
+        let builtin = registry.find_by_name("Save File");
+        assert!(builtin.is_some());
+        let original_desc = builtin.unwrap().description;
+
+        // Override it with a plugin command
+        registry.register(Command {
+            name: "Save File".to_string(),
+            description: "Custom save implementation".to_string(),
+            action: Action::None,
+            contexts: vec![],
+            custom_contexts: vec![],
+            source: CommandSource::Builtin,
+            terminal_bypass: false,
+        });
+
+        // Should now find the custom version
+        let custom = registry.find_by_name("Save File").unwrap();
+        assert_eq!(custom.description, "Custom save implementation");
+        assert_ne!(custom.description, original_desc);
+    }
+
+    #[test]
+    fn test_record_usage() {
+        let mut registry = CommandRegistry::new();
+
+        registry.record_usage("Save File");
+        assert_eq!(registry.history_position("Save File"), Some(0));
+
+        registry.record_usage("Open File");
+        assert_eq!(registry.history_position("Open File"), Some(0));
+        assert_eq!(registry.history_position("Save File"), Some(1));
+
+        // Using Save File again should move it to front
+        registry.record_usage("Save File");
+        assert_eq!(registry.history_position("Save File"), Some(0));
+        assert_eq!(registry.history_position("Open File"), Some(1));
+    }
+
+    #[test]
+    fn test_history_sorting() {
+        use crate::config::Config;
+        use crate::input::keybindings::KeybindingResolver;
+
+        let mut registry = CommandRegistry::new();
+        let config = Config::default();
+        let keybindings = KeybindingResolver::new(&config);
+
+        // Record some commands
+        registry.record_usage("Quit");
+        registry.record_usage("Save File");
+        registry.record_usage("Open File");
+
+        // Filter with empty query should return history-sorted results
+        let empty_contexts = std::collections::HashSet::new();
+        let results = registry.filter(
+            "",
+            KeyContext::Normal,
+            &keybindings,
+            false,
+            &empty_contexts,
+            None,
+            true,
+            test_caps(),
+        );
+
+        // Find positions of our test commands in results
+        let open_pos = results.iter().position(|s| s.text == "Open File").unwrap();
+        let save_pos = results.iter().position(|s| s.text == "Save File").unwrap();
+        let quit_pos = results.iter().position(|s| s.text == "Quit").unwrap();
+
+        // Most recently used should be first
+        assert!(
+            open_pos < save_pos,
+            "Open File should come before Save File"
+        );
+        assert!(save_pos < quit_pos, "Save File should come before Quit");
+    }
+
+    #[test]
+    fn test_history_max_size() {
+        let mut registry = CommandRegistry::new();
+
+        // Add more than MAX_HISTORY_SIZE commands
+        for i in 0..60 {
+            registry.record_usage(&format!("Command {}", i));
+        }
+
+        // Should be trimmed to MAX_HISTORY_SIZE
+        assert_eq!(
+            registry.command_history.len(),
+            CommandRegistry::MAX_HISTORY_SIZE
+        );
+
+        // Most recent should still be at front
+        assert_eq!(registry.history_position("Command 59"), Some(0));
+
+        // Oldest should be trimmed
+        assert_eq!(registry.history_position("Command 0"), None);
+    }
+
+    #[test]
+    fn test_unused_commands_alphabetical() {
+        use crate::config::Config;
+        use crate::input::keybindings::KeybindingResolver;
+
+        let mut registry = CommandRegistry::new();
+        let config = Config::default();
+        let keybindings = KeybindingResolver::new(&config);
+
+        // Register some custom commands (never used)
+        registry.register(Command {
+            name: "Zebra Command".to_string(),
+            description: "".to_string(),
+            action: Action::None,
+            contexts: vec![],
+            custom_contexts: vec![],
+            source: CommandSource::Builtin,
+            terminal_bypass: false,
+        });
+
+        registry.register(Command {
+            name: "Alpha Command".to_string(),
+            description: "".to_string(),
+            action: Action::None,
+            contexts: vec![],
+            custom_contexts: vec![],
+            source: CommandSource::Builtin,
+            terminal_bypass: false,
+        });
+
+        // Use one built-in command
+        registry.record_usage("Save File");
+
+        let empty_contexts = std::collections::HashSet::new();
+        let results = registry.filter(
+            "",
+            KeyContext::Normal,
+            &keybindings,
+            false,
+            &empty_contexts,
+            None,
+            true,
+            test_caps(),
+        );
+
+        let save_pos = results.iter().position(|s| s.text == "Save File").unwrap();
+        let alpha_pos = results
+            .iter()
+            .position(|s| s.text == "Alpha Command")
+            .unwrap();
+        let zebra_pos = results
+            .iter()
+            .position(|s| s.text == "Zebra Command")
+            .unwrap();
+
+        // Used command should be first
+        assert!(
+            save_pos < alpha_pos,
+            "Save File should come before Alpha Command"
+        );
+        // Unused commands should be alphabetical
+        assert!(
+            alpha_pos < zebra_pos,
+            "Alpha Command should come before Zebra Command"
+        );
+    }
+
+    #[test]
+    fn test_required_commands_exist() {
+        // This test ensures that all required command palette entries exist.
+        // If this test fails, it means a command was removed or renamed.
+        crate::i18n::set_locale("en");
+        let registry = CommandRegistry::new();
+
+        let required_commands = [
+            // LSP commands
+            ("Show Completions", Action::LspCompletion),
+            ("Go to Definition", Action::LspGotoDefinition),
+            ("Show Hover Info", Action::LspHover),
+            ("Find References", Action::LspReferences),
+            ("Go to Implementation", Action::LspImplementation),
+            // Help commands
+            ("Show Manual", Action::ShowHelp),
+            ("Show Keyboard Shortcuts", Action::ShowKeyboardShortcuts),
+            // Scroll commands
+            ("Scroll Up", Action::ScrollUp),
+            ("Scroll Down", Action::ScrollDown),
+            ("Scroll Tabs Left", Action::ScrollTabsLeft),
+            ("Scroll Tabs Right", Action::ScrollTabsRight),
+            // Navigation commands
+            ("Smart Home", Action::SmartHome),
+            // Delete commands
+            ("Delete Word Backward", Action::DeleteWordBackward),
+            ("Delete Word Forward", Action::DeleteWordForward),
+            ("Delete to End of Line", Action::DeleteToLineEnd),
+        ];
+
+        for (name, expected_action) in required_commands {
+            let cmd = registry.find_by_name(name);
+            assert!(
+                cmd.is_some(),
+                "Command '{}' should exist in command palette",
+                name
+            );
+            assert_eq!(
+                cmd.unwrap().action,
+                expected_action,
+                "Command '{}' should have action {:?}",
+                name,
+                expected_action
+            );
+        }
+    }
+
+    #[test]
+    fn test_try_register_first_writer_wins() {
+        let registry = CommandRegistry::new();
+
+        let cmd_a = Command {
+            name: "My Command".to_string(),
+            description: "From plugin A".to_string(),
+            action: Action::None,
+            contexts: vec![],
+            custom_contexts: vec![],
+            source: CommandSource::Plugin("plugin-a".to_string()),
+            terminal_bypass: false,
+        };
+
+        let cmd_b = Command {
+            name: "My Command".to_string(),
+            description: "From plugin B".to_string(),
+            action: Action::None,
+            contexts: vec![],
+            custom_contexts: vec![],
+            source: CommandSource::Plugin("plugin-b".to_string()),
+            terminal_bypass: false,
+        };
+
+        // First registration succeeds
+        assert!(registry.try_register(cmd_a).is_ok());
+        assert_eq!(registry.plugin_command_count(), 1);
+
+        // Second registration by different plugin fails
+        let result = registry.try_register(cmd_b);
+        assert!(result.is_err());
+        assert_eq!(registry.plugin_command_count(), 1);
+
+        // Original plugin's command is still there
+        let found = registry.find_by_name("My Command").unwrap();
+        assert_eq!(found.description, "From plugin A");
+    }
+
+    #[test]
+    fn test_try_register_same_plugin_allowed() {
+        let registry = CommandRegistry::new();
+
+        let cmd1 = Command {
+            name: "My Command".to_string(),
+            description: "Version 1".to_string(),
+            action: Action::None,
+            contexts: vec![],
+            custom_contexts: vec![],
+            source: CommandSource::Plugin("plugin-a".to_string()),
+            terminal_bypass: false,
+        };
+
+        let cmd2 = Command {
+            name: "My Command".to_string(),
+            description: "Version 2".to_string(),
+            action: Action::None,
+            contexts: vec![],
+            custom_contexts: vec![],
+            source: CommandSource::Plugin("plugin-a".to_string()),
+            terminal_bypass: false,
+        };
+
+        assert!(registry.try_register(cmd1).is_ok());
+        // Same plugin re-registering is allowed (hot-reload)
+        assert!(registry.try_register(cmd2).is_ok());
+        assert_eq!(registry.plugin_command_count(), 1);
+
+        let found = registry.find_by_name("My Command").unwrap();
+        assert_eq!(found.description, "Version 2");
+    }
+
+    #[test]
+    fn test_try_register_after_unregister() {
+        let registry = CommandRegistry::new();
+
+        let cmd_a = Command {
+            name: "My Command".to_string(),
+            description: "From plugin A".to_string(),
+            action: Action::None,
+            contexts: vec![],
+            custom_contexts: vec![],
+            source: CommandSource::Plugin("plugin-a".to_string()),
+            terminal_bypass: false,
+        };
+
+        let cmd_b = Command {
+            name: "My Command".to_string(),
+            description: "From plugin B".to_string(),
+            action: Action::None,
+            contexts: vec![],
+            custom_contexts: vec![],
+            source: CommandSource::Plugin("plugin-b".to_string()),
+            terminal_bypass: false,
+        };
+
+        // Plugin A registers
+        assert!(registry.try_register(cmd_a).is_ok());
+
+        // Unregister clears the slot
+        registry.unregister("My Command");
+        assert_eq!(registry.plugin_command_count(), 0);
+
+        // Now plugin B can register
+        assert!(registry.try_register(cmd_b).is_ok());
+        let found = registry.find_by_name("My Command").unwrap();
+        assert_eq!(found.description, "From plugin B");
+    }
+}

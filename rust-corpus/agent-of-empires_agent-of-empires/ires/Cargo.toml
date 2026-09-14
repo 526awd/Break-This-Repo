@@ -1,0 +1,301 @@
+[workspace]
+members = [".", "xtask", "aoe-settings-derive", "aoe-plugin-api"]
+
+[package]
+name = "agent-of-empires"
+version = "1.16.0"
+edition = "2021"
+rust-version = "1.85"
+authors = ["Agent of Empires Contributors"]
+description = "Terminal session manager for AI coding agents"
+# MIT throughout, except the OSC 8 emission state machine in
+# src/tui/hyperlink.rs, which is derived from herdr under Apache-2.0.
+# See THIRD_PARTY_NOTICES.md.
+license = "MIT AND Apache-2.0"
+repository = "https://github.com/agent-of-empires/agent-of-empires"
+keywords = ["tmux", "tui", "ai", "claude", "terminal"]
+categories = ["command-line-utilities", "development-tools"]
+
+[dependencies]
+# CLI
+clap = { version = "4.6", features = ["derive", "env", "string"] }
+clap_complete = "4.6"
+
+# TUI
+ratatui = { version = "0.30", features = ["crossterm"] }
+crossterm = { version = "0.29", features = ["event-stream"] }
+ansi-to-tui = "8.0"
+# In-process VT emulator for the default live-preview path (`src/tmux/vt.rs`,
+# opt out with `AOE_VT_LIVE=0`): parse a pane's raw byte stream into an owned
+# grid instead of scraping `capture-pane` snapshots.
+vt100 = "0.16"
+ratatui-textarea = "0.9"
+tui-input = "0.15"
+# Markdown parsing for the structured view transcript. We map events to ratatui
+# Lines ourselves (see src/tui/structured_view/render.rs) so raw markers are
+# stripped and styling tracks the app theme; default-features = false
+# drops the unused HTML renderer.
+pulldown-cmark = { version = "0.13", default-features = false }
+
+# Async runtime
+tokio = { version = "1.52", features = ["full"] }
+
+# Settings single-source-of-truth derive (#1692)
+aoe-settings-derive = { path = "aoe-settings-derive" }
+
+# Plugin manifest and capability types (#268)
+aoe-plugin-api = { path = "aoe-plugin-api" }
+
+# Serialization
+serde = { version = "1.0", features = ["derive"] }
+serde_ignored = "0.1"
+serde_json = "1.0"
+serde_yaml = "0.9"
+toml = "1.1"
+toml_edit = "0.25"
+
+# File watching
+notify = "8.2"
+
+# PTY handling
+portable-pty = "0.9"
+
+# Fuzzy matching
+nucleo-matcher = "0.3"
+
+# Shell-style splitting of custom-agent ACP command strings into argv
+shell-words = "1.1"
+
+# Insertion-ordered id → Instance map for HomeView.instances.
+indexmap = "2"
+
+# Error handling
+thiserror = "2.0"
+anyhow = "1.0"
+
+# Time handling
+chrono = { version = "0.4", features = ["serde"] }
+
+# UUID generation
+uuid = { version = "1.23", features = ["v4"] }
+zstd = "0.13"
+
+# Random
+rand = "0.10"
+
+# Directory utilities
+dirs = "6.0"
+
+# Glob expansion for sandbox volume_ignores patterns (e.g. `**/bin`, `**/obj`)
+glob = "0.3"
+
+# Logging
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+# HTTP client (for updates)
+reqwest = { version = "0.13", features = ["json", "query", "rustls", "stream"], default-features = false }
+
+# Percent-encode path segments (release tags) for GitHub API URLs.
+percent-encoding = "2"
+
+# Unix sockets + futures-compat for ACP byte streams
+tokio-util = { version = "0.7", features = ["codec", "compat"] }
+
+# Process handling
+nix = { version = "0.31", features = ["signal", "process", "net", "fs", "resource", "dir", "user", "poll"] }
+
+# Unicode width + normalization (NFKD used to fold accents in title-derived branch names)
+unicode-normalization = "0.1"
+unicode-segmentation = "1"
+unicode-width = "0.2"
+
+# Terminal spinners
+rattles = "0.3"
+
+# Regex
+regex = "1.10"
+
+# Git operations
+git2 = { version = "0.21", features = ["vendored-openssl"] }
+
+# Diff computation
+similar = "3.1"
+
+# Hashing
+sha2 = "0.11"
+
+# File locking
+fs2 = "0.4"
+
+# Stream utilities (for crossterm EventStream)
+futures-util = "0.3"
+
+# Temporary files and directories
+tempfile = "3.14"
+
+# PATH lookup for external viewers (lnav, bat, less) used by `aoe logs`.
+which = "8.0"
+
+# Local SQLite reader for opencode's session store. Bundled to avoid a
+# system libsqlite3 dependency. Used to read session state without spawning
+# `opencode session list`, which leaks a 4.5MB /tmp/.<hash>.so per invocation
+# via opencode's bun:ffi OpenTUI extract path (see anomalyco/opencode#6523).
+rusqlite = { version = "0.40", features = ["bundled"] }
+
+# Daemon HTTP/WS server. Core: the daemon is the product, the dashboard is one
+# surface on it (see the `web` feature).
+axum = { version = "0.8", features = ["ws"] }
+# Cross-platform browser launcher: `aoe serve --open`, the plugin host's
+# `ui.open_url`, and structured-view link activation.
+webbrowser = "1"
+tower-http = { version = "0.7", features = ["fs"] }
+# Embedded dashboard bundle, behind `web`.
+rust-embed = { version = "8", features = ["debug-embed"], optional = true }
+# Content type for the session file-read endpoint.
+mime_guess = "2.0"
+# QR of the dashboard URL (TUI serve dialog, tunnel startup). Behind `web`:
+# scanning it is only useful when there is a dashboard to open.
+qrcode = { version = "0.14", optional = true }
+argon2 = "0.5"
+subtle = "2"
+
+# TUI OSC 52 clipboard writes and Web Push payload encoding.
+base64 = "0.23"
+
+# Web Push (VAPID + payload encryption).
+p256 = { version = "0.13", features = ["pem", "pkcs8", "ecdsa", "ecdh"] }
+hkdf = "0.13"
+aes-gcm = "0.11"
+jsonwebtoken = { version = "11.0", features = ["aws_lc_rs"] }
+getrandom = "0.4"
+
+# Agent Client Protocol — drives the structured view surface.
+agent-client-protocol = { version = "2.0", features = ["unstable_end_turn_token_usage", "unstable_elicitation", "unstable_session_fork"] }
+
+# Semver parsing for ACP adapter compatibility checks (see src/acp/agent_compat.rs).
+semver = "1"
+
+# Tar stream handling: the structured view's bundled-Node fallback (with xz2
+# for tar.xz) and external plugin install (with flate2 for tar.gz). xz2 needs
+# system liblzma.
+tar = "0.4"
+flate2 = "1"
+xz2 = "0.1"
+
+# WebSocket client for the structured view-in-TUI view: subscribes to the daemon's
+# `/sessions/{id}/acp/ws` stream and pumps frames into the local reducer. The
+# daemon itself uses axum's built-in WS support and never pulls this in.
+tokio-tungstenite = { version = "0.30", default-features = false, features = ["rustls-tls-webpki-roots", "connect"] }
+
+# Capability-safe file opens for the session file-read endpoint (#3088): open
+# beneath a Dir so a component swapped after the containment check cannot
+# escape the intended root.
+cap-std = "4.0.2"
+
+# Unix-only: O_NOFOLLOW for race-free plugin-tree reads/copies (no std constant).
+[target.'cfg(unix)'.dependencies]
+libc = "0.2"
+
+[features]
+# The daemon (REST/WS API, auth, Web Push, ACP, structured view) is core: a
+# plain `cargo build` ships it and needs no Node. `web` adds the embedded
+# dashboard bundle, which is what invokes npm; released binaries are built
+# `--features web`, so every distributed binary ships the dashboard.
+default = ["default-plugins"]
+# Re-exports private tmux env helpers via `crate::tmux::test_support` so that
+# integration tests in `tests/` can poke them. Not enabled by default — only
+# used by `cargo test`.
+test-support = []
+# Compile in the bundled first-party plugins. Build the bare core (acceptance
+# criterion 1 of #268) by opting out with `--no-default-features`.
+default-plugins = []
+# Gates the `e2e` test target (tests/e2e/main.rs). Off by default so CI can run
+# the suite as two parallel shards without enumerating every non-e2e test
+# binary: `cargo test` runs everything except e2e (the target is skipped when
+# the feature is off), and `cargo test --features e2e-tests --test e2e` runs
+# e2e only. Naming the target explicitly (`cargo test --test e2e`) without the
+# feature errors loudly rather than skipping silently.
+e2e-tests = []
+# Embedded web dashboard. Builds `web/dist` in build.rs (needs Node and npm),
+# serves it from `src/server/assets.rs`, and registers the `aoe.web` builtin.
+# Without it the daemon still runs and answers `/api/*`; only the dashboard
+# routes are absent.
+web = ["rust-embed", "qrcode"]
+# Deprecated alias for `web`, kept for one release so existing
+# `--features serve` invocations keep building. build.rs warns when it is
+# set, and a CI guard rejects any `cfg(feature = "serve")` so the alias
+# cannot diverge from `web`.
+serve = ["web"]
+
+[dev-dependencies]
+serial_test = "4.0"
+# Test-only tokio clock control (`start_paused`), so the token-rotation
+# loop's grace deadline can be asserted without sleeping through it.
+# `cargo build` and released binaries never enable `test-util`.
+tokio = { version = "1.52", features = ["test-util"] }
+# Test-only tracing capture (#2756, I4): asserts the equal-timestamp guard's
+# drop branch logged. Its target `session.store` is rejected by the default
+# `agent_of_empires=trace` env filter, so `no-env-filter` is required; the
+# test scopes to its own span and matches the message, so wide capture is safe.
+tracing-test = { version = "0.2", features = ["no-env-filter"] }
+# Integration tests are separate crates and don't inherit the normal
+# `serde_json` dependency; the acp-runner orphan test parses a worker
+# registry record to mutate its pid structurally.
+serde_json = "1.0"
+# Integration tests are separate crates and don't inherit the normal `toml`
+# dependency; the build-cache guard test parses .cargo/config.toml.
+toml = "1.1"
+cargo-husky = { version = "1", default-features = false, features = ["precommit-hook", "run-cargo-fmt"] }
+# Test-only tower dep for `ServiceExt::oneshot`, so the DNS-rebinding gate
+# (#2735) can be driven through the real router without binding a socket.
+tower = { version = "0.5", features = ["util"] }
+# Self-dev-dependency: enables the `test-support` feature when building
+# integration tests so they can reach `crate::tmux::test_support`. This is
+# the standard Cargo pattern for opt-in test-only re-exports; the lib build
+# (and release binaries) never see the feature. `default-features = false`
+# matters: without it this entry re-enables the default features under
+# `cargo test --no-default-features`, making that CI job meaningless.
+agent-of-empires = { path = ".", default-features = false, features = ["test-support"] }
+
+[profile.dev]
+# Full DWARF is cargo's `dev` default and it dominates `target/`: this table and
+# the one below take a `cargo build --lib --bins` here from 5.6 GB to 3.8 GB.
+# Line tables keep the file and line number in panics and backtraces; the cost
+# is local-variable inspection under a debugger. docs/development.md documents
+# the tradeoff and how to opt back into full debug info.
+debug = "line-tables-only"
+
+[profile.dev.package."*"]
+# Dependencies only; the `"*"` glob never matches a workspace member. Nobody
+# reads DWARF for tokio internals, so it is pure weight in every target dir.
+debug = false
+
+[profile.release]
+lto = true
+codegen-units = 1
+strip = true
+
+[profile.dev-release]
+inherits = "release"
+lto = false
+codegen-units = 16
+# Land on the release namespace (app dir, tmux prefix, serve port) so a
+# fast-compiled dev-release binary shares state with installed release
+# builds. Use the default `dev` profile when you want the isolated
+# `-dev` namespace.
+debug-assertions = false
+
+[[test]]
+# Explicit target so the `e2e-tests` feature gate applies. Without this entry
+# Cargo auto-discovers tests/e2e/main.rs unconditionally; the gate lets CI split
+# the suite into "everything except e2e" and "e2e only" shards. The other
+# test targets (the consolidated `integration` harness and the standalone
+# `branch_exists_spawn_failure`) stay auto-discovered.
+name = "e2e"
+path = "tests/e2e/main.rs"
+required-features = ["e2e-tests"]
+
+[[bin]]
+name = "aoe"
+path = "src/main.rs"

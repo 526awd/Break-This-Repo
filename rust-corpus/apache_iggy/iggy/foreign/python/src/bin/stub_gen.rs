@@ -1,0 +1,62 @@
+/* Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+
+use std::{
+    fs::File,
+    io::{Read, Write},
+    path::Path,
+};
+
+use pyo3_stub_gen::Result;
+
+const LICENSE: &str = "# Licensed to the Apache Software Foundation (ASF) under one
+# or more contributor license agreements.  See the NOTICE file
+# distributed with this work for additional information
+# regarding copyright ownership.  The ASF licenses this file
+# to you under the Apache License, Version 2.0 (the
+# \"License\"); you may not use this file except in compliance
+# with the License.  You may obtain a copy of the License at
+#
+#   http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+# KIND, either express or implied.  See the License for the
+# specific language governing permissions and limitations
+# under the License.
+
+";
+
+fn main() -> Result<()> {
+    // `stub_info` is a function defined by `define_stub_info_gatherer!` macro.
+    let stub = apache_iggy::client::stub_info()?;
+    stub.generate()?;
+    // Anchor on the manifest dir: `stub.generate()` writes to the crate root, so
+    // a cwd-relative path leaves the tracked stub without its license header.
+    let path = Path::new(env!("CARGO_MANIFEST_DIR")).join("apache_iggy.pyi");
+    let mut f = File::open(&path)?;
+    let mut content = LICENSE.to_owned();
+    f.read_to_string(&mut content)?;
+    content = content.replacen("__all__ = [", "__all__ = [\n    \"Durability\",", 1);
+    content.push_str("\nclass Durability(str, enum.Enum):\n    REPLICATED = 'replicated'\n    PERSISTED = 'persisted'\n");
+
+    let mut f = File::create(path)?;
+    f.write_all(content.as_bytes())?;
+    Ok(())
+}

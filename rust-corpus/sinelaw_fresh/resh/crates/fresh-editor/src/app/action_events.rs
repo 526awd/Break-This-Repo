@@ -1,0 +1,850 @@
+//! Action -> Event conversion on `Editor`.
+//!
+//! `action_to_events` is the bridge between the Action enum (what a key
+//! press *means* in editor terms) and the Event stream (what actually
+//! gets applied to the active buffer). For movement actions on
+//! soft-wrapped lines it routes through `handle_visual_line_movement`,
+//! which walks the cached layout to translate visual-row movement into
+//! the right buffer byte offset.
+
+use crate::input::actions::action_to_events as convert_action_to_events;
+use crate::input::keybindings::Action;
+use crate::model::event::{Event, LeafId};
+
+impl crate::app::window::Window {
+    /// Convert an action into a list of events to apply to the active buffer
+    /// Returns None for actions that don't generate events (like Quit)
+    pub fn action_to_events(&mut self, action: Action) -> Option<Vec<Event>> {
+        let auto_indent = self.config().editor.auto_indent;
+        let estimated_line_length = self.config().editor.estimated_line_length;
+
+        // Use the *effective* active split: when the user is focused on an
+        // inner panel of a grouped buffer (e.g. a magit-style review panel),
+        // its leaf id lives in `split_view_states` but is not in the main
+        // split tree. `effective_active_split` returns that inner leaf, so
+        // motion targets the panel's own buffer/cursors instead of the
+        // group host's.
+        let active_split = self.effective_active_split();
+        let viewport_height = self
+            .buffers
+            .splits()
+            .map(|(_, vs)| vs)
+            .expect("active window must have a populated split layout")
+            .get(&active_split)
+            .map(|vs| vs.viewport.height)
+            .unwrap_or(24);
+
+        // Always try visual line movement first — it uses the cached layout to
+        // move through soft-wrapped rows.  Returns None when the layout can't
+        // resolve the movement, falling through to logical movement below.
+        if let Some(events) =
+            self.handle_visual_line_movement(&action, active_split, estimated_line_length)
+        {
+            return Some(events);
+        }
+
+        // Page motion: drive the viewport via the same view-line-aware
+        // scroll primitive the ScrollUp/ScrollDown actions use, then land
+        // the cursor at the new viewport top so it stays visible.
+        //
+        // `Viewport::scroll_down` / `scroll_up` already walk view rows in
+        // wrap mode and logical lines in no-wrap mode, so one code path
+        // handles both: the cursor advance matches whatever the viewport
+        // just did, page-for-page.  Doing this here (rather than appending
+        // an `Event::Scroll` to the normal MovePageDown MoveCursor event)
+        // avoids a stall where the logical-line cursor move lands inside
+        // the current viewport and `ensure_visible` has no reason to
+        // scroll.
+        if let Some(events) = self.handle_page_motion(&action, active_split, viewport_height) {
+            return Some(events);
+        }
+
+        let buffer_id = self.active_buffer();
+        self.buffers
+            .with_buffer_and_split(buffer_id, active_split, |state, vs| {
+                let tab_size = state.buffer_settings.tab_size;
+                let auto_close = state.buffer_settings.auto_close;
+                let auto_surround = state.buffer_settings.auto_surround;
+                convert_action_to_events(
+                    state,
+                    &mut vs.cursors,
+                    action,
+                    tab_size,
+                    auto_indent,
+                    auto_close,
+                    auto_surround,
+                    estimated_line_length,
+                    viewport_height,
+                )
+            })
+            .expect("active window must have a populated split layout")
+    }
+
+    /// Handle PageUp/PageDown (and their select variants) by scrolling the
+    /// viewport a page of view rows and landing the cursor at the new top.
+    ///
+    /// Returns `None` for non-page actions, or when the viewport couldn't
+    /// scroll at all (buffer shorter than a page and already at the edge) —
+    /// in that case the caller falls through to the default handler which
+    /// still moves the cursor to the buffer boundary.
+    fn handle_page_motion(
+        &mut self,
+        action: &Action,
+        split_id: LeafId,
+        viewport_height: u16,
+    ) -> Option<Vec<Event>> {
+        let (direction, is_select) = match action {
+            Action::MovePageDown => (1isize, false),
+            Action::MovePageUp => (-1isize, false),
+            Action::SelectPageDown => (1isize, true),
+            Action::SelectPageUp => (-1isize, true),
+            _ => return None,
+        };
+
+        // Keep a few rows of overlap between the old and new page so the
+        // reader retains context across the jump, matching vim/less/most
+        // editors.  The overlap shrinks for very small viewports so every
+        // press still makes meaningful progress.
+        const PAGE_OVERLAP: u16 = 3;
+        let overlap = PAGE_OVERLAP.min(viewport_height.saturating_sub(1));
+        let delta = (viewport_height.saturating_sub(overlap).max(1) as isize) * direction;
+
+        // Track the viewport position as BOTH `top_byte` and
+        // `top_view_line_offset`.  In wrap mode a single long logical line
+        // scrolls by advancing `top_view_line_offset` (the wrap-segment
+        // index) while `top_byte` stays pinned at the line's start — so a
+        // `top_byte`-only "did it move?" check wrongly concludes the
+        // viewport is stuck and falls through to the logical-line handler,
+        // which clamps the cursor to EOF on a one-line document (the
+        // PageDown-overshoots bug on minified files).
+        let viewport_pos = |w: &Self| -> Option<(usize, usize)> {
+            let vp = &w
+                .buffers
+                .splits()
+                .map(|(_, vs)| vs)
+                .expect("active window must have a populated split layout")
+                .get(&split_id)?
+                .viewport;
+            Some((vp.top_byte(), vp.top_view_line_offset()))
+        };
+
+        let old_pos = viewport_pos(self)?;
+        // Scroll *this* leaf: `split_id` is the effective active split, which
+        // for a grouped buffer's inner panel is not the split manager's
+        // active leaf. Scrolling the latter left the panel's viewport where
+        // it was, so this always fell through to the logical-line fallback
+        // below — fold-blind, so a page landed inside a collapsed body.
+        self.handle_scroll_event_for_split(split_id, delta);
+        let new_pos = viewport_pos(self)?;
+
+        if new_pos == old_pos {
+            // Viewport couldn't move (already at top/bottom of buffer).  Fall
+            // back to the default cursor-only handler so PageDown at EOF
+            // still clamps the cursor to the last line (and PageUp at BOF
+            // clamps to byte 0), matching the historical behaviour.
+            return None;
+        }
+
+        // Byte of the visual row now shown at the very top of the viewport.
+        // For a soft-wrapped line this is `top_byte` advanced by
+        // `top_view_line_offset` wrap segments — NOT `top_byte` itself,
+        // which on a single hugely-wrapped line is always the document
+        // start (landing the cursor there would re-introduce the overshoot
+        // / jump-to-top bugs).
+        let target_byte = {
+            let buffer_id = self.buffer_for_leaf(split_id)?;
+            self.buffers
+                .with_buffer_and_split(buffer_id, split_id, |state, vs| {
+                    let soft_breaks = state.collect_soft_break_positions();
+                    let virtual_lines = state.collect_virtual_line_positions();
+                    // The rows this walks are the rows the frame drew, so it
+                    // has to skip the same collapsed folds the frame did.
+                    let hidden_ranges: Vec<(usize, usize)> = vs
+                        .folds
+                        .resolved_ranges(&state.buffer, &state.marker_list)
+                        .into_iter()
+                        .map(|r| (r.start_byte, r.end_byte))
+                        .collect();
+                    vs.viewport.top_visual_row_source_byte(
+                        &mut state.buffer,
+                        &soft_breaks,
+                        &virtual_lines,
+                        &hidden_ranges,
+                    )
+                })?
+        };
+
+        // Emit a MoveCursor event placing each cursor at the new viewport
+        // top.  The cursor is guaranteed visible (it's at row 0 of the new
+        // viewport) and each press advances by exactly a full page of view
+        // rows — the same way it does when line wrap is off.
+        let cursors = &self
+            .buffers
+            .splits()
+            .map(|(_, vs)| vs)
+            .expect("active window must have a populated split layout")
+            .get(&split_id)?
+            .cursors;
+        let events: Vec<Event> = cursors
+            .iter()
+            .map(|(cursor_id, cursor)| {
+                let new_anchor = if is_select {
+                    Some(cursor.anchor.unwrap_or(cursor.position))
+                } else if cursor.deselect_on_move {
+                    None
+                } else {
+                    cursor.anchor
+                };
+                Event::MoveCursor {
+                    cursor_id,
+                    old_position: cursor.position,
+                    new_position: target_byte,
+                    old_anchor: cursor.anchor,
+                    new_anchor,
+                    old_sticky_column: cursor.sticky_column,
+                    new_sticky_column: cursor.sticky_column,
+                }
+            })
+            .collect();
+
+        Some(events)
+    }
+
+    /// Whether `split_id` currently soft-wraps. Falls back to the global
+    /// `editor.line_wrap` for a split with no view state yet, so a cursor
+    /// motion arriving before the first render behaves as configured.
+    fn split_line_wrap(&self, split_id: LeafId) -> bool {
+        self.buffers
+            .splits()
+            .map(|(_, vs)| vs)
+            .and_then(|vs| vs.get(&split_id))
+            .map(|vs| vs.viewport.line_wrap_enabled)
+            .unwrap_or_else(|| self.config().editor.line_wrap)
+    }
+
+    /// Handle visual line movement actions using the cached layout
+    /// Returns Some(events) if the action was handled, None if it should fall through
+    fn handle_visual_line_movement(
+        &mut self,
+        action: &Action,
+        split_id: LeafId,
+        _estimated_line_length: usize,
+    ) -> Option<Vec<Event>> {
+        // Classify the action
+        enum VisualAction {
+            UpDown { direction: i8, is_select: bool },
+            LineEnd { is_select: bool },
+            LineStart { is_select: bool },
+        }
+
+        // Note: We don't intercept BlockSelectUp/Down because block selection has
+        // special semantics (setting block_anchor) that require the default handler
+        let visual_action = match action {
+            Action::MoveUp => VisualAction::UpDown {
+                direction: -1,
+                is_select: false,
+            },
+            Action::MoveDown => VisualAction::UpDown {
+                direction: 1,
+                is_select: false,
+            },
+            Action::SelectUp => VisualAction::UpDown {
+                direction: -1,
+                is_select: true,
+            },
+            Action::SelectDown => VisualAction::UpDown {
+                direction: 1,
+                is_select: true,
+            },
+            // When line wrapping is off, Home/End should move to the physical line
+            // start/end, not the visual (horizontally-scrolled) row boundary.
+            // Fall through to the standard handler which uses line_iterator.
+            //
+            // Ask the split the cursor is actually in, not the global config:
+            // a plugin panel can turn wrap off for itself (`setLineWrap`, and
+            // every buffer-group panel does), and reading the global default
+            // there sent Home walking a wrap boundary that the unwrapped view
+            // never draws — one press landed mid-line instead of at column 1.
+            Action::MoveLineEnd if self.split_line_wrap(split_id) => {
+                VisualAction::LineEnd { is_select: false }
+            }
+            Action::SelectLineEnd if self.split_line_wrap(split_id) => {
+                VisualAction::LineEnd { is_select: true }
+            }
+            Action::MoveLineStart if self.split_line_wrap(split_id) => {
+                VisualAction::LineStart { is_select: false }
+            }
+            Action::SelectLineStart if self.split_line_wrap(split_id) => {
+                VisualAction::LineStart { is_select: true }
+            }
+            _ => return None, // Not a visual line action
+        };
+
+        // Vertical virtual space: a cursor floating on the virtual lines
+        // below the buffer end must be handled by the logical handlers in
+        // input::actions (they step the virtual-line count); the visual-line
+        // walk here would snap it back onto real rows. Fall through when any
+        // cursor is in that state.
+        if matches!(visual_action, VisualAction::UpDown { .. }) {
+            let active_split = self.effective_active_split();
+            let active_buffer = self.active_buffer();
+            if let Some(state) = self.buffers.get(&active_buffer) {
+                if state.buffer_settings.virtual_space.cursor_beyond_eol() {
+                    let has_virtual_line_cursor = self
+                        .buffers
+                        .splits()
+                        .map(|(_, vs)| vs)
+                        .expect("active window must have a populated split layout")
+                        .get(&active_split)
+                        .is_some_and(|vs| {
+                            vs.cursors.iter().any(|(_, c)| {
+                                c.position == state.buffer.len() && c.virtual_lines_below > 0
+                            })
+                        });
+                    if has_virtual_line_cursor {
+                        return None;
+                    }
+                }
+            }
+        }
+
+        // First, collect cursor data we need (to avoid borrow conflicts).
+        // Use the *effective* active split + buffer so that cursor motion in
+        // a focused buffer-group panel reads the panel's own cursors and
+        // buffer instead of the group host's.
+        let cursor_data: Vec<_> = {
+            let active_split = self.effective_active_split();
+            let active_buffer = self.active_buffer();
+            let cursors = &self
+                .buffers
+                .splits()
+                .map(|(_, vs)| vs)
+                .expect("active window must have a populated split layout")
+                .get(&active_split)
+                .unwrap()
+                .cursors;
+            let state = self.buffers.get(&active_buffer).unwrap();
+            cursors
+                .iter()
+                .map(|(cursor_id, cursor)| {
+                    // Check if cursor is at a physical line boundary:
+                    // - at_line_ending: byte at cursor position is a newline or at buffer end
+                    // - at_line_start: cursor is at position 0 or preceded by a newline
+                    let at_line_ending = if cursor.position < state.buffer.len() {
+                        let bytes = state
+                            .buffer
+                            .slice_bytes(cursor.position..cursor.position + 1);
+                        bytes.first() == Some(&b'\n') || bytes.first() == Some(&b'\r')
+                    } else {
+                        true // end of buffer is a boundary
+                    };
+                    let at_line_start = if cursor.position == 0 {
+                        true
+                    } else {
+                        let prev = state
+                            .buffer
+                            .slice_bytes(cursor.position - 1..cursor.position);
+                        prev.first() == Some(&b'\n')
+                    };
+                    (
+                        cursor_id,
+                        cursor.position,
+                        cursor.anchor,
+                        cursor.sticky_column,
+                        cursor.deselect_on_move,
+                        at_line_ending,
+                        at_line_start,
+                    )
+                })
+                .collect()
+        };
+
+        let mut events = Vec::new();
+
+        for (
+            cursor_id,
+            position,
+            anchor,
+            sticky_column,
+            deselect_on_move,
+            at_line_ending,
+            at_line_start,
+        ) in cursor_data
+        {
+            let (new_pos, new_sticky) = match &visual_action {
+                VisualAction::UpDown {
+                    direction,
+                    is_select,
+                } => {
+                    // When a selection is active, plain (non-selecting) vertical
+                    // motion starts from the selection's edge closest to the
+                    // motion direction (top edge for Up, bottom edge for Down),
+                    // matching VSCode/Sublime/browser behavior (issue #1566).
+                    // Emacs mark-mode (`deselect_on_move == false`) is unaffected.
+                    let from_pos = if deselect_on_move && !*is_select {
+                        if let Some(anchor) = anchor {
+                            if *direction < 0 {
+                                position.min(anchor)
+                            } else {
+                                position.max(anchor)
+                            }
+                        } else {
+                            position
+                        }
+                    } else {
+                        position
+                    };
+
+                    // Calculate current visual column from cached layout
+                    let current_visual_col = self.byte_to_visual_column(split_id, from_pos)?;
+
+                    let goal_visual_col = if let Some(sticky) = sticky_column {
+                        sticky
+                    } else {
+                        current_visual_col
+                    };
+
+                    match self.move_visual_line(split_id, from_pos, goal_visual_col, *direction) {
+                        Some((pos, goal)) => (pos, Some(goal)),
+                        None => {
+                            // Target visual row is past the cached view-line
+                            // mappings — the destination row isn't in the
+                            // currently-rendered viewport slice.  In wrap mode
+                            // that means the next visual row belongs to a
+                            // logical line (or wrapped segment) that is
+                            // off-screen.  Compute its position directly from
+                            // the buffer + wrap config so we don't fall
+                            // through to the byte-based MoveDown handler,
+                            // which would treat `goal_visual_col` as a
+                            // *logical* column on the whole next logical
+                            // line and teleport the cursor deep into a
+                            // wrapped paragraph (issue #1574, jump variant).
+                            match self.compute_wrap_aware_visual_move_fallback(
+                                from_pos,
+                                goal_visual_col,
+                                *direction,
+                                _estimated_line_length,
+                            ) {
+                                Some((pos, goal)) => (pos, Some(goal)),
+                                None => continue, // Genuinely at buffer boundary
+                            }
+                        }
+                    }
+                }
+                VisualAction::LineEnd { .. } => {
+                    // Allow advancing to next visual segment only if not at a physical line ending
+                    let allow_advance = !at_line_ending;
+                    match self.visual_line_end(split_id, position, allow_advance) {
+                        // The row reports its end as the last source byte it
+                        // drew, which is one cell short when that byte is a
+                        // content character — every row a compose-mode soft
+                        // break wrapped, since the break consumes the space it
+                        // fell on. The row owns and draws the position past it
+                        // (`end_exclusive`), so the caret stays on the row.
+                        Some(end_pos) => (self.step_past_row_end_char(end_pos), None),
+                        None => return None,
+                    }
+                }
+                VisualAction::LineStart { .. } => {
+                    // Allow advancing to previous visual segment only if not at a physical line start
+                    let allow_advance = !at_line_start;
+                    match self.visual_line_start(split_id, position, allow_advance) {
+                        Some(start_pos) => (start_pos, None),
+                        None => return None,
+                    }
+                }
+            };
+
+            let is_select = match &visual_action {
+                VisualAction::UpDown { is_select, .. } => *is_select,
+                VisualAction::LineEnd { is_select } => *is_select,
+                VisualAction::LineStart { is_select } => *is_select,
+            };
+
+            let new_anchor = if is_select {
+                Some(anchor.unwrap_or(position))
+            } else if deselect_on_move {
+                None
+            } else {
+                anchor
+            };
+
+            events.push(Event::MoveCursor {
+                cursor_id,
+                old_position: position,
+                new_position: new_pos,
+                old_anchor: anchor,
+                new_anchor,
+                old_sticky_column: sticky_column,
+                new_sticky_column: new_sticky,
+            });
+        }
+
+        if events.is_empty() {
+            None // Let the default handler deal with it
+        } else {
+            Some(events)
+        }
+    }
+
+    /// Compute a wrap-aware target position when the cached view-line
+    /// mappings don't cover the requested direction.
+    ///
+    /// `move_visual_line` returns `None` when the target visual row is
+    /// past the currently-rendered viewport — typically because the
+    /// destination line wraps off-screen below (for Down) or above (for
+    /// Up).  The generic MoveDown/MoveUp fallback that normally kicks in
+    /// when the intercept returns None treats `goal_visual_col` as a
+    /// column on the whole next logical line, which is wrong for wrap
+    /// mode: if the next logical line is a long wrapped paragraph, the
+    /// cursor lands several visual rows deep (issue #1574, jump variant).
+    ///
+    /// This helper uses the current row's `line_end_byte` (which the
+    /// cached layout does know) to find the byte position just past the
+    /// current visual row, and lands the cursor at the *start* of the
+    /// next visual row.  That's conservative (the sticky visual column
+    /// from the previous row isn't preserved across an off-screen jump)
+    /// but it reliably places the cursor on the first visual row of
+    /// the next logical line / wrapped segment instead of somewhere
+    /// deep inside it.  Preserving sticky precisely when the target row
+    /// is off-screen would require re-running the full token-based
+    /// wrapping pipeline for the target line, which the editor doesn't
+    /// currently expose outside of the render pipeline.
+    ///
+    /// Returns `Some((new_position, new_sticky))` on success, or `None`
+    /// if wrap mode is off (delegate to caller default) or we're at a
+    /// genuine buffer boundary.
+    /// Where `End` stops, given the byte a visual row reports as its end.
+    ///
+    /// That byte is the last source byte the row drew. For a row ending at its
+    /// line ending, or at whitespace a wrap consumed, it already is the
+    /// position after the row's text. For a row ending on a content character
+    /// it is one cell short, so step past that character.
+    fn step_past_row_end_char(&mut self, end_pos: usize) -> usize {
+        let buffer = &mut self.active_state_mut().buffer;
+        if end_pos >= buffer.len() {
+            return end_pos;
+        }
+        let Some(ch) = char_at(buffer, end_pos) else {
+            return end_pos;
+        };
+        if ch.is_whitespace() {
+            return end_pos;
+        }
+        // Only when the byte past it is a separator the wrap consumed. A wrap
+        // can also split a run with no whitespace in it — CJK text, a long URL
+        // — and there the next byte is the first character of the row BELOW,
+        // which that row draws: stepping onto it would take `End` off the row.
+        let after = end_pos + ch.len_utf8();
+        match char_at(buffer, after) {
+            Some(next) if next.is_whitespace() => after,
+            None => after,
+            Some(_) => end_pos,
+        }
+    }
+
+    fn compute_wrap_aware_visual_move_fallback(
+        &mut self,
+        from_pos: usize,
+        goal_visual_col: usize,
+        direction: i8,
+        estimated_line_length: usize,
+    ) -> Option<(usize, usize)> {
+        if !self.config().editor.line_wrap {
+            // Non-wrap mode: the byte-based fallback is correct, let it run.
+            return None;
+        }
+
+        let active_split = self.effective_active_split();
+        let active_buffer = self.active_buffer();
+
+        if direction > 0 {
+            // Fast path: when neither the current logical line nor the next
+            // one wraps, we can land precisely at the goal visual column
+            // instead of the conservative start-of-next-row jump below. This
+            // keeps the column stable when a batched move crosses the scroll
+            // boundary onto an off-screen row (issue #2565). Wrapped lines
+            // keep the fallback so #1574 stays fixed.
+            if let Some(text_width) = self.visual_text_width(active_split) {
+                if let Some(state) = self.buffers.get_mut(&active_buffer) {
+                    if let Some(pos) = unwrapped_neighbor_goal_pos(
+                        &mut state.buffer,
+                        from_pos,
+                        1,
+                        goal_visual_col,
+                        text_width,
+                        estimated_line_length,
+                    ) {
+                        return Some((pos, goal_visual_col));
+                    }
+                }
+            }
+
+            // Find current row's end byte via cached layout — this is the
+            // authoritative "end of current visual row" position that the
+            // renderer itself uses.
+            let cur_row_line_end = {
+                let view = self.pane_view(active_split)?;
+                let row_idx = view.find_visual_row(from_pos)?;
+                view.rows.get(row_idx)?.line_end_byte
+            };
+
+            let state = self.buffers.get_mut(&active_buffer)?;
+            let buffer = &mut state.buffer;
+            let buffer_len = buffer.len();
+            if cur_row_line_end >= buffer_len {
+                return None; // Genuine end of buffer
+            }
+
+            // Step past the newline at `cur_row_line_end`, mirroring the
+            // tokenization logic in `build_base_tokens`: CRLF (`\r\n`) is a
+            // SINGLE logical line break and the next logical line starts two
+            // bytes past the `\r`, not one.  Falling back to `+ 1` lands the
+            // cursor on the `\n` inside the CRLF pair, which
+            // `find_view_line_for_byte` resolves back to the SAME row — so
+            // pressing Down from an empty separator line on a CRLF file
+            // appears to jump the cursor to the wrong visual row (issue
+            // #1574, Windows-CRLF variant).
+            //
+            // Past a line ending that step is the whole story. On a wrapped
+            // continuation row it is not: `line_end_byte` is the last byte the
+            // row *drew*, not one past it, so the cursor lands back on the row
+            // it started from and every later Down resolves to it again — which
+            // is what pinned `Down` on a one-line file (issue #1806). The row
+            // pass keeps a margin of built rows and never reaches this
+            // fallback; a lazily-loaded buffer has no such index.
+            //
+            // The next row starts one character on, whether the wrap split a
+            // run or broke on a space it consumed.
+            let stepped = step_past_line_break(buffer, cur_row_line_end, buffer_len);
+            let target_pos = if stepped != cur_row_line_end {
+                stepped
+            } else {
+                match char_at(buffer, cur_row_line_end) {
+                    Some(ch) => cur_row_line_end + ch.len_utf8(),
+                    None => return None,
+                }
+            };
+            if target_pos > buffer_len {
+                return None;
+            }
+
+            // Preserve goal_visual_col as the new sticky column so if the
+            // user keeps pressing Down the normal cached-layout path will
+            // honor it once the target row is rendered.
+            let _ = estimated_line_length;
+            Some((target_pos, goal_visual_col))
+        } else {
+            // Fast path mirrored from the Down branch: when neither the
+            // current logical line nor the previous one wraps, land at the
+            // goal visual column on the previous line rather than the
+            // conservative end-of-previous-row jump below (issue #2565).
+            if let Some(text_width) = self.visual_text_width(active_split) {
+                if let Some(state) = self.buffers.get_mut(&active_buffer) {
+                    if let Some(pos) = unwrapped_neighbor_goal_pos(
+                        &mut state.buffer,
+                        from_pos,
+                        -1,
+                        goal_visual_col,
+                        text_width,
+                        estimated_line_length,
+                    ) {
+                        return Some((pos, goal_visual_col));
+                    }
+                }
+            }
+
+            // Up-direction fallback: mirror the Down logic.  Use the
+            // cached layout to locate the current visual row's "anchor"
+            // byte (the row start for rows with visible content, or
+            // `line_end_byte` for empty rows which have no source
+            // mapping), then step back one byte so the cursor lands on
+            // the *end* of the preceding visual row.
+            //
+            // For a row whose start is a logical-line-start, stepping
+            // back one byte lands on the trailing newline of the
+            // previous logical line — the renderer shows this as the
+            // end of the last visual row of that line, which is exactly
+            // where the cursor should land when walking Up.
+            //
+            // For a wrapped continuation row, the "start" is already a
+            // byte within the same logical line; stepping back one byte
+            // keeps us inside the line on the previous wrapped segment.
+            //
+            // For empty rows (no char_source_bytes, common at paragraph
+            // separators), `line_end_byte` is the empty line's newline;
+            // stepping back one byte lands on the previous line's
+            // trailing newline — again the end of its last visual row.
+            let (cur_row_anchor, row_is_empty) = {
+                let view = self.pane_view(active_split)?;
+                let row_idx = view.find_visual_row(from_pos)?;
+                let row = view.rows.get(row_idx)?;
+                match row.char_source_bytes.iter().find_map(|b| *b) {
+                    Some(start) => (start, false),
+                    None => (row.line_end_byte, true),
+                }
+            };
+
+            if cur_row_anchor == 0 {
+                return None; // At the very beginning of the buffer
+            }
+
+            // Step back across the newline preceding `cur_row_anchor`,
+            // mirroring the tokenization logic in `build_base_tokens`:
+            // CRLF is a SINGLE logical line break so we must step back
+            // two bytes over it, not one.  Blindly subtracting 1 on a
+            // CRLF file lands the cursor on the `\n` INSIDE the CRLF
+            // pair, which `find_view_line_for_byte` resolves to a row
+            // the user wouldn't expect (issue #1574, Windows-CRLF
+            // variant).  For LF or a lone CR the byte arithmetic falls
+            // through to a one-byte step.
+            let state = self.buffers.get_mut(&active_buffer)?;
+            let buffer = &mut state.buffer;
+            let _ = row_is_empty;
+            let target_pos = step_before_line_break(buffer, cur_row_anchor);
+            let _ = estimated_line_length;
+            Some((target_pos, goal_visual_col))
+        }
+    }
+
+    /// Width (in display columns) of the text area for `split_id` — the
+    /// number of columns a logical line's first visual row can occupy before
+    /// it wraps. Mirrors the renderer's wrap budget
+    /// (`WrapConfig::first_line_width`) so callers can tell whether a given
+    /// logical line wraps. Returns `None` if the split has no viewport yet.
+    fn visual_text_width(&self, split_id: LeafId) -> Option<usize> {
+        use crate::primitives::line_wrapping::WrapConfig;
+        let active_buffer = self.active_buffer();
+        let state = self.buffers.get(&active_buffer)?;
+        let vs = self.buffers.splits().map(|(_, vs)| vs)?.get(&split_id)?;
+        // Terminal-grid wrap (fresh#2649): rows are exactly the grid width.
+        if vs.viewport.grid_wrap {
+            return Some(vs.viewport.grid_cols());
+        }
+        let gutter = vs.viewport.gutter_width(&state.buffer);
+        let wrap = WrapConfig::new(
+            vs.viewport.effective_width() as usize,
+            gutter,
+            true,
+            vs.viewport.wrap_indent,
+        );
+        Some(wrap.first_line_width)
+    }
+}
+
+/// Column-preserving landing spot for an off-screen vertical move when
+/// neither the current logical line nor the adjacent one (in `direction`:
+/// -1 = up, +1 = down) wraps at `text_width`.
+///
+/// The cached-layout mover (`move_visual_line`) returns `None` when the
+/// target visual row isn't in the last-rendered slice — e.g. a batched move
+/// crossed the scroll boundary. For non-wrapping lines the goal column maps
+/// straight onto the adjacent logical line, so we can land there exactly
+/// (byte offset at `goal_visual_col`) rather than falling back to the
+/// end-/start-of-row jump. Returns `None` when either line wraps, so the
+/// caller keeps that conservative fallback (issue #1574).
+fn unwrapped_neighbor_goal_pos(
+    buffer: &mut crate::model::buffer::Buffer,
+    from_pos: usize,
+    direction: i8,
+    goal_visual_col: usize,
+    text_width: usize,
+    estimated_line_length: usize,
+) -> Option<usize> {
+    use crate::primitives::display_width::{byte_offset_at_visual_column, str_width};
+
+    let line_ending: &[char] = &['\n', '\r'];
+
+    // The current logical line must not wrap, otherwise `from_pos`'s visual
+    // row may be a wrapped segment and the "adjacent" row is not the
+    // neighbour logical line.
+    let cur_content = {
+        let mut iter = buffer.line_iterator(from_pos, estimated_line_length);
+        iter.next_line()?.1
+    };
+    if str_width(cur_content.trim_end_matches(line_ending)) > text_width {
+        return None;
+    }
+
+    // The neighbour logical line, and it must not wrap either.
+    let (neighbor_start, neighbor_content) = {
+        let mut iter = buffer.line_iterator(from_pos, estimated_line_length);
+        if direction < 0 {
+            iter.prev()?
+        } else {
+            iter.next_line(); // consume the current line
+            iter.next_line()?
+        }
+    };
+    let neighbor_text = neighbor_content.trim_end_matches(line_ending);
+    if str_width(neighbor_text) > text_width {
+        return None;
+    }
+
+    Some(neighbor_start + byte_offset_at_visual_column(neighbor_text, goal_visual_col))
+}
+
+/// Advance past the line break at `pos`, matching the CRLF handling in
+/// `build_base_tokens` (where `\r\n` is a single logical line break
+/// represented by one `Newline` token at the `\r`).  When `pos` is on a
+/// `\r` immediately followed by `\n` we step two bytes; on a lone `\n`
+/// or `\r` we step one; otherwise (`pos` isn't on a newline, i.e. a
+/// wrapped-continuation boundary) we return `pos` unchanged so the next
+/// visual row starts at the same byte.  Without this, pressing Down
+/// across a CRLF newline lands the cursor on the `\n` inside the pair,
+/// which `find_view_line_for_byte` resolves back to the *same* row
+/// (issue #1574, Windows-CRLF variant).
+fn step_past_line_break(
+    buffer: &crate::model::buffer::Buffer,
+    pos: usize,
+    buffer_len: usize,
+) -> usize {
+    if pos >= buffer_len {
+        return pos;
+    }
+    let end = (pos + 2).min(buffer_len);
+    let bytes = buffer.slice_bytes(pos..end);
+    match (bytes.first(), bytes.get(1)) {
+        (Some(b'\r'), Some(b'\n')) => pos + 2,
+        (Some(b'\r'), _) | (Some(b'\n'), _) => pos + 1,
+        _ => pos,
+    }
+}
+
+/// Step back across the line break immediately preceding `pos`, mirror
+/// of [`step_past_line_break`].  Two bytes for CRLF (`\r\n`), one for
+/// LF or a lone CR, zero if `pos == 0`.  Callers use this to land the
+/// cursor at the *end* of the previous visual row when moving Up across
+/// a newline — landing mid-CRLF would place the cursor on the `\n` and
+/// re-resolve to the same row (issue #1574, Windows-CRLF variant).
+fn step_before_line_break(buffer: &crate::model::buffer::Buffer, pos: usize) -> usize {
+    if pos == 0 {
+        return pos;
+    }
+    if pos >= 2 {
+        let bytes = buffer.slice_bytes((pos - 2)..pos);
+        if bytes.first() == Some(&b'\r') && bytes.get(1) == Some(&b'\n') {
+            return pos - 2;
+        }
+    }
+    pos - 1
+}
+
+/// The character starting at `pos`, or `None` when `pos` is not a character
+/// boundary or the buffer ends there.
+///
+/// The width comes from the leading byte rather than from decoding a fixed
+/// window: a four-byte slice can end mid-character (`1+2+2`, `2+3`, …), and
+/// decoding that returns `Err`, which silently reads as "no character here".
+fn char_at(buffer: &crate::model::buffer::Buffer, pos: usize) -> Option<char> {
+    let lead = *buffer.slice_bytes(pos..pos.saturating_add(1)).first()?;
+    let width = match lead {
+        0x00..=0x7F => 1,
+        0xC0..=0xDF => 2,
+        0xE0..=0xEF => 3,
+        0xF0..=0xF7 => 4,
+        _ => return None,
+    };
+    let bytes = buffer.slice_bytes(pos..pos.saturating_add(width));
+    std::str::from_utf8(&bytes).ok()?.chars().next()
+}

@@ -1,0 +1,8927 @@
+//! Plugin API: Safe interface for plugins to interact with the editor
+//!
+//! This module provides a safe, controlled API for plugins (Lua, WASM, etc.)
+//! to interact with the editor without direct access to internal state.
+//!
+//! # Type Safety Architecture
+//!
+//! Rust structs in this module serve as the **single source of truth** for the
+//! TypeScript plugin API. The type safety system works as follows:
+//!
+//! ```text
+//! Rust struct                  Generated TypeScript
+//! ───────────                  ────────────────────
+//! #[derive(TS, Deserialize)]   type ActionPopupOptions = {
+//! #[serde(deny_unknown_fields)]    id: string;
+//! struct ActionPopupOptions {      title: string;
+//!     id: String,                  message: string;
+//!     title: String,               actions: TsActionPopupAction[];
+//!     ...                      };
+//! }
+//! ```
+//!
+//! ## Key Patterns
+//!
+//! 1. **`#[derive(TS)]`** - Generates TypeScript type definitions via ts-rs
+//! 2. **`#[serde(deny_unknown_fields)]`** - Rejects typos/unknown fields at runtime
+//! 3. **`impl FromJs`** - Bridges rquickjs values to typed Rust structs
+//!
+//! ## Validation Layers
+//!
+//! | Layer                  | What it catches                          |
+//! |------------------------|------------------------------------------|
+//! | TypeScript compile     | Wrong field names, missing required fields |
+//! | Rust runtime (serde)   | Typos like `popup_id` instead of `id`    |
+//! | Rust compile           | Type mismatches in method signatures     |
+//!
+//! ## Limitations & Tradeoffs
+//!
+//! - **Manual parsing for complex types**: Some methods
+//!   still use manual object parsing due to enum serialization complexity
+//! - **Two-step deserialization**: Complex nested structs may need
+//!   `rquickjs::Value → serde_json::Value → typed struct` due to rquickjs_serde limits
+//! - **Duplicate attributes**: Both `#[serde(...)]` and `#[ts(...)]` needed since
+//!   they control different things (runtime serialization vs compile-time codegen)
+
+use crate::command::{Command, Suggestion};
+use crate::file_explorer::{FileExplorerDecoration, FileExplorerSlotEntry};
+use crate::hooks::{HookCallback, HookRegistry};
+use crate::menu::{Menu, MenuItem};
+use crate::overlay::{OverlayHandle, OverlayNamespace};
+use crate::text_property::{TextProperty, TextPropertyEntry};
+use crate::BufferId;
+use crate::SplitId;
+use crate::TerminalId;
+use crate::WindowId;
+use lsp_types;
+use serde::{Deserialize, Serialize};
+use serde_json::Value as JsonValue;
+use std::collections::HashMap;
+use std::ops::Range;
+use std::path::PathBuf;
+use std::sync::{Arc, RwLock};
+use ts_rs::TS;
+
+/// Minimal command registry for PluginApi.
+/// This is a stub that provides basic command storage for plugin use.
+/// The editor's full CommandRegistry lives in fresh-editor.
+pub struct CommandRegistry {
+    commands: std::sync::RwLock<Vec<Command>>,
+}
+
+impl CommandRegistry {
+    /// Create a new empty command registry
+    pub fn new() -> Self {
+        Self {
+            commands: std::sync::RwLock::new(Vec::new()),
+        }
+    }
+
+    /// Register a command
+    pub fn register(&self, command: Command) {
+        let mut commands = self.commands.write().unwrap();
+        commands.retain(|c| c.name != command.name);
+        commands.push(command);
+    }
+
+    /// Unregister a command by name
+    pub fn unregister(&self, name: &str) {
+        let mut commands = self.commands.write().unwrap();
+        commands.retain(|c| c.name != name);
+    }
+}
+
+impl Default for CommandRegistry {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
+/// A callback ID for JavaScript promises in the plugin runtime.
+///
+/// This newtype distinguishes JS promise callbacks (resolved via `resolve_callback`)
+/// from Rust oneshot channel IDs (resolved via `send_plugin_response`).
+/// Using a newtype prevents accidentally mixing up these two callback mechanisms.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize, TS)]
+#[ts(export)]
+pub struct JsCallbackId(pub u64);
+
+impl JsCallbackId {
+    /// Create a new JS callback ID
+    pub fn new(id: u64) -> Self {
+        Self(id)
+    }
+
+    /// Get the underlying u64 value
+    pub fn as_u64(self) -> u64 {
+        self.0
+    }
+}
+
+impl From<u64> for JsCallbackId {
+    fn from(id: u64) -> Self {
+        Self(id)
+    }
+}
+
+impl From<JsCallbackId> for u64 {
+    fn from(id: JsCallbackId) -> u64 {
+        id.0
+    }
+}
+
+impl std::fmt::Display for JsCallbackId {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.0)
+    }
+}
+
+/// Result of creating a terminal
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[serde(rename_all = "camelCase")]
+#[ts(export, rename_all = "camelCase")]
+pub struct TerminalResult {
+    /// The created buffer ID (for use with setSplitBuffer, etc.)
+    #[ts(type = "number")]
+    pub buffer_id: u64,
+    /// The terminal ID (for use with sendTerminalInput, closeTerminal)
+    #[ts(type = "number")]
+    pub terminal_id: u64,
+    /// The split ID (if created in a new split)
+    #[ts(type = "number | null")]
+    pub split_id: Option<u64>,
+}
+
+/// Result of creating a virtual buffer
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[serde(rename_all = "camelCase")]
+#[ts(export, rename_all = "camelCase")]
+pub struct VirtualBufferResult {
+    /// The created buffer ID
+    #[ts(type = "number")]
+    pub buffer_id: u64,
+    /// The split ID (if created in a new split)
+    #[ts(type = "number | null")]
+    pub split_id: Option<u64>,
+}
+
+/// A rectangular region, in cells. Used by the animation plugin API so
+/// callers can target arbitrary screen regions without going through a
+/// virtual buffer.
+#[derive(Debug, Clone, Copy, Serialize, Deserialize, TS)]
+#[serde(rename_all = "camelCase")]
+#[ts(export, rename_all = "camelCase")]
+pub struct AnimationRect {
+    pub x: u16,
+    pub y: u16,
+    pub width: u16,
+    pub height: u16,
+}
+
+/// Edge a slide-in effect enters from.
+#[derive(Debug, Clone, Copy, Serialize, Deserialize, TS)]
+#[serde(rename_all = "camelCase")]
+#[ts(export, rename_all = "camelCase")]
+pub enum PluginAnimationEdge {
+    Top,
+    Bottom,
+    Left,
+    Right,
+}
+
+/// Plugin-facing animation description. Tagged by `kind`. Additional
+/// variants can be added later; plugins must handle the `kind` they send.
+#[derive(Debug, Clone, Copy, Serialize, Deserialize, TS)]
+#[serde(tag = "kind", rename_all = "camelCase")]
+#[ts(export)]
+pub enum PluginAnimationKind {
+    #[serde(rename_all = "camelCase")]
+    SlideIn {
+        from: PluginAnimationEdge,
+        duration_ms: u32,
+        delay_ms: u32,
+    },
+}
+
+/// Result of creating a buffer group
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[serde(rename_all = "camelCase")]
+#[ts(export, rename_all = "camelCase")]
+pub struct BufferGroupResult {
+    /// The group ID
+    #[ts(type = "number")]
+    pub group_id: u64,
+    /// Panel buffer IDs, keyed by panel name
+    #[ts(type = "Record<string, number>")]
+    pub panels: HashMap<String, u64>,
+}
+
+/// Response from the editor for async plugin operations
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[ts(export)]
+pub enum PluginResponse {
+    /// Response to CreateVirtualBufferInSplit with the created buffer ID and split ID
+    VirtualBufferCreated {
+        request_id: u64,
+        buffer_id: BufferId,
+        split_id: Option<SplitId>,
+    },
+    /// Response to CreateTerminal with the created buffer, terminal, and split IDs
+    TerminalCreated {
+        request_id: u64,
+        buffer_id: BufferId,
+        terminal_id: TerminalId,
+        split_id: Option<SplitId>,
+    },
+    /// Response to a plugin-initiated LSP request
+    LspRequest {
+        request_id: u64,
+        #[ts(type = "any")]
+        result: Result<JsonValue, String>,
+    },
+    /// Response to RequestHighlights
+    HighlightsComputed {
+        request_id: u64,
+        spans: Vec<TsHighlightSpan>,
+    },
+    /// Response to GetBufferText with the text content
+    BufferText {
+        request_id: u64,
+        text: Result<String, String>,
+    },
+    /// Response to GetLineStartPosition with the byte offset
+    LineStartPosition {
+        request_id: u64,
+        /// None if line is out of range, Some(offset) for valid line
+        position: Option<usize>,
+    },
+    /// Response to GetLineEndPosition with the byte offset
+    LineEndPosition {
+        request_id: u64,
+        /// None if line is out of range, Some(offset) for valid line
+        position: Option<usize>,
+    },
+    /// Response to GetBufferLineCount with the total number of lines
+    BufferLineCount {
+        request_id: u64,
+        /// None if buffer not found, Some(count) for valid buffer
+        count: Option<usize>,
+    },
+    /// Response to CreateCompositeBuffer with the created buffer ID
+    CompositeBufferCreated {
+        request_id: u64,
+        buffer_id: BufferId,
+    },
+    /// Response to GetSplitByLabel with the found split ID (if any)
+    SplitByLabel {
+        request_id: u64,
+        split_id: Option<SplitId>,
+    },
+    /// Response to `SplitWindow`: the new pane, or why it couldn't be made.
+    SplitWindowCreated {
+        request_id: u64,
+        result: Result<SplitCreated, String>,
+    },
+    /// Response to `SyncSnapshot`: everything queued earlier is applied.
+    SnapshotSynced { request_id: u64 },
+    /// Response to `WatchPath`. `handle` is the editor's stable
+    /// id for this watcher, used both as the cancellation token
+    /// for `UnwatchPath` and as the routing key in
+    /// `path_changed` event payloads. `Err` indicates the watcher
+    /// could not be installed (path missing, kernel limit, etc.).
+    WatchPathRegistered {
+        request_id: u64,
+        result: Result<u64, String>,
+    },
+}
+
+impl PluginResponse {
+    pub fn request_id(&self) -> u64 {
+        match self {
+            Self::VirtualBufferCreated { request_id, .. }
+            | Self::TerminalCreated { request_id, .. }
+            | Self::LspRequest { request_id, .. }
+            | Self::HighlightsComputed { request_id, .. }
+            | Self::BufferText { request_id, .. }
+            | Self::LineStartPosition { request_id, .. }
+            | Self::LineEndPosition { request_id, .. }
+            | Self::BufferLineCount { request_id, .. }
+            | Self::CompositeBufferCreated { request_id, .. }
+            | Self::SplitByLabel { request_id, .. }
+            | Self::SplitWindowCreated { request_id, .. }
+            | Self::SnapshotSynced { request_id }
+            | Self::WatchPathRegistered { request_id, .. } => *request_id,
+        }
+    }
+}
+
+/// Messages sent from async plugin tasks to the synchronous main loop
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[ts(export)]
+pub enum PluginAsyncMessage {
+    /// Plugin process completed with output
+    ProcessOutput {
+        /// Unique ID for this process
+        process_id: u64,
+        /// Standard output
+        stdout: String,
+        /// Standard error
+        stderr: String,
+        /// Exit code
+        exit_code: i32,
+    },
+    /// Plugin delay/timer completed
+    DelayComplete {
+        /// Callback ID to resolve
+        callback_id: u64,
+    },
+    /// Background process stdout data
+    ProcessStdout { process_id: u64, data: String },
+    /// Background process stderr data
+    ProcessStderr { process_id: u64, data: String },
+    /// Background process exited
+    ProcessExit {
+        process_id: u64,
+        callback_id: u64,
+        exit_code: i32,
+    },
+    /// Response for a plugin-initiated LSP request
+    LspResponse {
+        language: String,
+        request_id: u64,
+        #[ts(type = "any")]
+        result: Result<JsonValue, String>,
+    },
+    /// Generic plugin response (e.g., GetBufferText result)
+    PluginResponse(crate::api::PluginResponse),
+    /// Settle a JS callback from off-loop work. `result` carries the
+    /// already-serialised resolve payload, or the rejection reason.
+    /// This is the return path for plugin commands that run on the
+    /// tokio runtime instead of the editor thread.
+    OffLoopSettled {
+        callback_id: u64,
+        #[ts(type = "any")]
+        result: Result<String, String>,
+    },
+}
+
+/// Information about a cursor in the editor
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[ts(export)]
+pub struct CursorInfo {
+    /// Byte position of the cursor
+    pub position: usize,
+    /// Selection range (if any)
+    #[cfg_attr(
+        feature = "plugins",
+        ts(type = "{ start: number; end: number } | null")
+    )]
+    pub selection: Option<Range<usize>>,
+    /// 0-indexed line number of the cursor. `null` when the line index is
+    /// unavailable — e.g. a huge file whose line scan hasn't completed, where
+    /// the editor positions purely by byte offset. Plugins must treat `null`
+    /// as "unknown", never as line 0.
+    #[serde(default)]
+    pub line: Option<usize>,
+}
+
+/// Specification for an action to execute, with optional repeat count
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[serde(deny_unknown_fields)]
+#[ts(export)]
+pub struct ActionSpec {
+    /// Action name (e.g., "move_word_right", "delete_line")
+    pub action: String,
+    /// Number of times to repeat the action (default 1)
+    #[serde(default = "default_action_count")]
+    pub count: u32,
+    /// Action payload arguments for actions that carry data, e.g.
+    /// `{ "char": "x" }` for `insert_char` or `{ "text": "hello" }` for
+    /// `prompt_confirm_with_text`. Empty/absent for the common no-arg
+    /// actions (motions, edits, commands). This is what lets a recorded
+    /// macro — which contains `InsertChar` and other payload actions —
+    /// round-trip losslessly through `executeActions`.
+    #[serde(default)]
+    #[ts(type = "Record<string, unknown>")]
+    pub args: std::collections::HashMap<String, serde_json::Value>,
+}
+
+fn default_action_count() -> u32 {
+    1
+}
+
+/// `serde(default)` fallback for `EditorStateSnapshot.active_window_id`
+/// — old serialized snapshots predate the field. Falls back to the
+/// always-present base session (id 1).
+fn default_window_id() -> WindowId {
+    WindowId(1)
+}
+
+/// Information about an editor session (plugin-visible). Returned
+/// by `editor.listWindows()` and carried in the snapshot. Mirrors
+/// the editor-side `Session` struct — see
+/// `crates/fresh-editor/src/app/session.rs` and
+/// `docs/internal/orchestrator-sessions-design.md`.
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[ts(export)]
+pub struct WindowInfo {
+    /// Stable session id. The base session is always `1`.
+    #[ts(type = "number")]
+    pub id: WindowId,
+    /// Durable workspace identity (`ws-…`), minted once when the workspace is
+    /// created and carried in its on-disk snapshot. Unlike `id` — a per-process
+    /// handle re-derived at every boot — this survives restarts, relabels and
+    /// moves, so it is the id to hand out to anything that must still mean the
+    /// same workspace later (an agent recording where it put its work, say).
+    /// Empty only for a legacy workspace file written before stable ids.
+    #[serde(default)]
+    pub stable_id: String,
+    /// User-visible label (defaults to root basename).
+    pub label: String,
+    /// Absolute project root.
+    #[ts(type = "string")]
+    pub root: PathBuf,
+    /// Project this session belongs to — the canonical repo root
+    /// (or arbitrary directory) the user pointed the new-session
+    /// form at. For sessions without an explicit project (legacy
+    /// sessions, the launch session, sessions created outside the
+    /// orchestrator's new-session form) this equals `root` — the
+    /// host normalises at the API boundary so plugins never have
+    /// to deal with `null`/`undefined`/`""` ambiguity (`??` only
+    /// falls through on `null`, but the orchestrator's
+    /// `WindowInfo` round-trips a `Some(PathBuf::new())` as `""`,
+    /// which then becomes a poisoned lex sort key — observed as
+    /// the Windows-only dock reorder).
+    #[ts(type = "string")]
+    pub project_path: PathBuf,
+    /// `true` when the session shares its working tree with
+    /// other sessions (worktree-creation was off at session
+    /// time, or the session lives in a non-git directory).
+    /// Persistence-only field; defaults to `false` and isn't
+    /// emitted when false.
+    #[ts(type = "boolean")]
+    #[serde(skip_serializing_if = "is_false_field", default)]
+    pub shared_worktree: bool,
+    /// Remote backend identity when this session's backend is not
+    /// host-local (SSH / Kubernetes). Carried for live remote windows
+    /// *and* for dormant (not-yet-connected / disconnected) sessions, so
+    /// the dock can badge a restored SSH session before any connection
+    /// exists. `None` for local sessions and plugin-managed backends
+    /// (devcontainer), whose facet the owning plugin supplies itself.
+    #[serde(skip_serializing_if = "Option::is_none", default)]
+    pub remote: Option<RemoteBackendInfo>,
+}
+
+fn is_false_field(b: &bool) -> bool {
+    !b
+}
+
+/// Backend identity of a non-local session, as surfaced to plugins on
+/// [`WindowInfo`]. Mirrors the persisted `SessionAuthoritySpec::RemoteAgent`
+/// transport, reduced to what the dock renders.
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[ts(export)]
+pub struct RemoteBackendInfo {
+    /// Backend kind: `"ssh"` or `"kubernetes"`.
+    pub kind: String,
+    /// Short human identity for the row (e.g. `deploy@build-01`,
+    /// `ns/pod`).
+    pub detail: String,
+    /// `true` when the backend connection is currently live; `false` for a
+    /// dormant session (restored from disk, not yet connected, or whose
+    /// last connect failed).
+    pub connected: bool,
+}
+
+/// Information about a buffer
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[ts(export)]
+pub struct BufferInfo {
+    /// Buffer ID
+    #[ts(type = "number")]
+    pub id: BufferId,
+    /// File path (if any)
+    #[serde(serialize_with = "serialize_path")]
+    #[ts(type = "string")]
+    pub path: Option<PathBuf>,
+    /// The buffer's display name — what the tab shows.
+    ///
+    /// For a file buffer this is the filename (or project-relative path). For
+    /// a **virtual buffer it is the `name` you passed to
+    /// `createVirtualBuffer`**, which is how a plugin finds its own panel
+    /// again: `listBuffers().find(b => b.is_virtual && b.name === "…")`.
+    /// Before this field existed the only handle was
+    /// `is_virtual && path === ""`, which cannot tell two plugins' panels
+    /// apart — or two panels of your own.
+    #[serde(default)]
+    pub name: String,
+    /// Whether the buffer has been modified
+    pub modified: bool,
+    /// Length of buffer in bytes
+    pub length: usize,
+    /// Number of lines, when the buffer has been indexed. `None` for a very
+    /// large file whose line index hasn't been built yet — the one case
+    /// where the count genuinely isn't known.
+    ///
+    /// Worth reading after writing content: a buffer built from spans that
+    /// forgot their newlines reports a plausible `length` and one line,
+    /// which is otherwise only visible by looking at the screen.
+    #[serde(default)]
+    pub line_count: Option<usize>,
+    /// Whether this is a virtual buffer (not backed by a file)
+    pub is_virtual: bool,
+    /// Whether this buffer is a live terminal (a PTY, not text). Terminal
+    /// buffers are also `is_virtual`; this distinguishes "a shell is
+    /// running here" from a plugin-owned scratch buffer, which is what
+    /// `describeWorkspace()` reports as the pane's `kind`.
+    #[serde(default)]
+    pub is_terminal: bool,
+    /// Whether editing is disabled for this buffer.
+    #[serde(default)]
+    pub editing_disabled: bool,
+    /// Current view mode of the active split: "source" or "compose"
+    pub view_mode: String,
+    /// True if any split showing this buffer has compose mode enabled.
+    /// Plugins should use this (not `view_mode`) to decide whether to maintain
+    /// decorations, since decorations live on the buffer and are filtered
+    /// per-split at render time.
+    pub is_composing_in_any_split: bool,
+    /// Compose width (if set), from the active split's view state
+    pub compose_width: Option<u16>,
+    /// The detected language for this buffer (e.g., "rust", "markdown", "text")
+    pub language: String,
+    /// Whether this tab was opened in "preview" (ephemeral) mode — true when
+    /// opened via single-click in the file explorer and not yet committed
+    /// (no edit, no double-click, no tab-click, no layout change). Plugins
+    /// that react to buffer lifecycle events should generally treat preview
+    /// buffers as transient; e.g. a diagnostics panel may want to skip
+    /// refreshing itself for a preview tab.
+    #[serde(default)]
+    pub is_preview: bool,
+    /// Split ids that currently hold this buffer (empty when the buffer is
+    /// open but not visible in any split — e.g. background-opened tabs
+    /// that haven't been focused). Lets plugins implement "focus existing
+    /// buffer if visible, else open new" without having to track split
+    /// ids across editor restarts (which reassign them). The list is a
+    /// snapshot at the last `update_plugin_state_snapshot` tick.
+    #[serde(default)]
+    #[ts(type = "number[]")]
+    pub splits: Vec<SplitId>,
+}
+
+fn serialize_path<S: serde::Serializer>(path: &Option<PathBuf>, s: S) -> Result<S::Ok, S::Error> {
+    s.serialize_str(
+        &path
+            .as_ref()
+            .map(|p| p.to_string_lossy().to_string())
+            .unwrap_or_default(),
+    )
+}
+
+/// Serialize ranges as [start, end] tuples for JS compatibility
+fn serialize_ranges_as_tuples<S>(ranges: &[Range<usize>], serializer: S) -> Result<S::Ok, S::Error>
+where
+    S: serde::Serializer,
+{
+    use serde::ser::SerializeSeq;
+    let mut seq = serializer.serialize_seq(Some(ranges.len()))?;
+    for range in ranges {
+        seq.serialize_element(&(range.start, range.end))?;
+    }
+    seq.end()
+}
+
+/// Diff between current buffer content and last saved snapshot
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[ts(export)]
+pub struct BufferSavedDiff {
+    pub equal: bool,
+    #[serde(serialize_with = "serialize_ranges_as_tuples")]
+    #[ts(type = "Array<[number, number]>")]
+    pub byte_ranges: Vec<Range<usize>>,
+}
+
+/// Result of a host-side baseline diff (`diffAgainstBaseline` /
+/// `diffBaselinePair`).
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[serde(rename_all = "camelCase")]
+#[ts(export, rename_all = "camelCase")]
+pub struct DiffBaselineResult {
+    /// The buffer content version the hunks were computed against (0 for
+    /// baseline-pair diffs, which involve no live buffer). A plugin that
+    /// renders decorations re-checks this against the buffer's current
+    /// version instead of copying buffer text around for coherence.
+    pub revision: u64,
+    /// "exact": content-accurate line hunks. "byteCoarse": the buffer's
+    /// line index isn't available yet (large file before its line-feed
+    /// scan), so no line hunks could be produced; callers fall back to
+    /// their own coarse rendering.
+    #[ts(type = "\"exact\" | \"byteCoarse\"")]
+    pub fidelity: String,
+    /// Line hunks, same contract as `computeLineDiff`. Empty means the
+    /// sides are equal (when `fidelity` is "exact").
+    pub hunks: Vec<LineDiffHunk>,
+}
+
+/// One hunk from `computeLineDiff`: a maximal run of differing lines.
+/// Line indices are 0-based; a line is a `\n`-terminated (or final
+/// unterminated) segment of the input text. `old_count == 0` is a pure
+/// insertion, `new_count == 0` a pure deletion, both non-zero a
+/// replacement. Equal regions between hunks are not reported.
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, TS)]
+#[serde(rename_all = "camelCase")]
+#[ts(export, rename_all = "camelCase")]
+pub struct LineDiffHunk {
+    /// First affected line in the old text (0-based).
+    pub old_start: u32,
+    /// Number of old-side lines in the hunk (0 for pure insertion).
+    pub old_count: u32,
+    /// First affected line in the new text (0-based).
+    pub new_start: u32,
+    /// Number of new-side lines in the hunk (0 for pure deletion).
+    pub new_count: u32,
+}
+
+/// Information about the viewport
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[serde(rename_all = "camelCase")]
+#[ts(export, rename_all = "camelCase")]
+pub struct ViewportInfo {
+    /// Byte position of the first visible line
+    pub top_byte: usize,
+    /// Line number of the first visible line (None when line index unavailable, e.g. large file before scan)
+    pub top_line: Option<usize>,
+    /// Left column offset (horizontal scroll)
+    pub left_column: usize,
+    /// Viewport width
+    pub width: u16,
+    /// Viewport height
+    pub height: u16,
+}
+
+/// Per-split state surfaced to plugins via `editor.listSplits()`.
+///
+/// Plugins that need to operate on every visible buffer (multi-split
+/// flash labels, syncing decorations across panes, ...) can iterate
+/// this list rather than only seeing the active split's `getViewport()`.
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[serde(rename_all = "camelCase")]
+#[ts(export, rename_all = "camelCase")]
+pub struct SplitSnapshot {
+    /// Stable split identifier; matches the values used by
+    /// `setSplitBuffer`, `focusSplit`, `getSplitByLabel`, etc.
+    pub split_id: usize,
+    /// Buffer currently shown in this split.
+    pub buffer_id: BufferId,
+    /// Label set by `setSplitLabel`, when this pane has one. Reported here so
+    /// a later script can re-find a pane it named earlier — the ids change
+    /// across restarts, the label is what the caller chose.
+    #[serde(default)]
+    pub label: Option<String>,
+    /// Column of this pane's left edge, in terminal cells, measured from
+    /// the left edge of the editor area. This is what answers "which pane
+    /// is on the left" — compare `x` between panes rather than guessing
+    /// from list order.
+    pub x: u16,
+    /// Row of this pane's top edge, in terminal cells, measured from the
+    /// top of the editor area. Compare `y` to tell top from bottom.
+    pub y: u16,
+    /// Pane width in cells, separator excluded.
+    pub width: u16,
+    /// Pane height in cells, separator excluded.
+    pub height: u16,
+    /// Viewport (top byte / dimensions) for this split's active buffer.
+    /// This is the *text* viewport: it excludes the tab bar and any
+    /// gutter, so it is smaller than the pane rect above.
+    pub viewport: ViewportInfo,
+}
+
+/// One pane, as `describeWorkspace()` reports it: what is in it, where it
+/// is, and the ids needed to act on it.
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[serde(rename_all = "camelCase")]
+#[ts(export, rename_all = "camelCase")]
+pub struct PaneDescription {
+    /// Pass to `openFileInSplit`, `focusSplit`, `setSplitRatio`, ...
+    pub split_id: usize,
+    /// Buffer shown in this pane.
+    pub buffer_id: BufferId,
+    /// `"terminal"` (a PTY), `"file"` (backed by a path), or `"virtual"`
+    /// (a plugin-owned scratch buffer).
+    pub kind: String,
+    /// Label set by `setSplitLabel`, when this pane has one — how a script
+    /// finds a pane it named in an earlier run.
+    #[serde(default)]
+    pub label: Option<String>,
+    /// Absolute path when this pane shows a file, else `None`.
+    pub path: Option<PathBuf>,
+    /// Short label — the file name, or the buffer's name for the rest.
+    pub name: String,
+    /// Whether this pane has focus.
+    pub active: bool,
+    /// Unsaved changes.
+    pub modified: bool,
+    /// On-screen geometry, in editor-area cells. Panes are listed left to
+    /// right, top to bottom, so `panes[0]` is the leftmost/topmost; `x`
+    /// and `y` say so precisely.
+    pub x: u16,
+    pub y: u16,
+    pub width: u16,
+    pub height: u16,
+}
+
+/// The answer to "what does the editor look like right now" — the call an
+/// agent makes before deciding what to change.
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[serde(rename_all = "camelCase")]
+#[ts(export, rename_all = "camelCase")]
+pub struct WorkspaceDescription {
+    /// Working directory of the active window.
+    pub cwd: PathBuf,
+    /// The window this script is pointed at.
+    pub window_id: u64,
+    /// Durable id of that window — the one still valid after a restart.
+    pub stable_id: String,
+    /// Every open workspace, so a script can tell whether the thing it
+    /// wants is in another window.
+    pub windows: Vec<WindowInfo>,
+    /// The active window's panes, in visual order (left to right, top to
+    /// bottom).
+    pub panes: Vec<PaneDescription>,
+    /// Which pane has focus; also flagged on the pane itself.
+    pub active_split_id: usize,
+}
+
+/// One clickable line in a buffer: press Enter on it, or click it, and the
+/// editor opens what it points at.
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[serde(rename_all = "camelCase")]
+#[ts(export, rename_all = "camelCase")]
+pub struct LineTarget {
+    /// Row in the source buffer, 0-indexed, that carries this target.
+    pub line: usize,
+    /// File to open. Relative paths resolve against the window's root.
+    pub path: String,
+    /// Line to land on in that file, 0-indexed. Defaults to the top.
+    #[serde(default)]
+    #[ts(optional)]
+    pub target: Option<usize>,
+    /// Label of the pane to open into (`setSplitLabel`). When the label
+    /// names no live pane — or is omitted — the editor opens beside the
+    /// buffer holding the targets rather than replacing it, so an index
+    /// never eats its own pane.
+    #[serde(default)]
+    #[ts(optional)]
+    pub into: Option<String>,
+}
+
+/// Where a new pane goes relative to the one being split.
+///
+/// With `direction: "vertical"` (a vertical divider, panes side by side),
+/// `Before` puts the new pane on the **left** and `After` on the right.
+/// With `direction: "horizontal"`, `Before` is **above** and `After` below.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Default, Serialize, Deserialize, TS)]
+#[serde(rename_all = "lowercase")]
+#[ts(export, rename_all = "lowercase")]
+pub enum SplitPlacement {
+    /// New pane first: left (vertical) or above (horizontal).
+    Before,
+    /// New pane second: right (vertical) or below (horizontal). The
+    /// default, and what the `split_vertical` / `split_horizontal`
+    /// commands do.
+    #[default]
+    After,
+}
+
+/// Which way the divider runs when splitting a pane.
+///
+/// Named for the *divider*, not the stacking, which is the convention
+/// vim and tmux use and the opposite of what "horizontal layout" suggests
+/// in some editors — so the two cases are spelled out on each variant.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Default, Serialize, Deserialize, TS)]
+#[serde(rename_all = "lowercase")]
+#[ts(export, rename_all = "lowercase")]
+pub enum SplitAxis {
+    /// A vertical divider: panes sit **side by side** (left | right).
+    #[default]
+    Vertical,
+    /// A horizontal divider: panes are **stacked** (top / bottom).
+    Horizontal,
+}
+
+/// Options for `editor.splitWindow()`.
+#[derive(Debug, Clone, Default, Serialize, Deserialize, TS)]
+#[serde(rename_all = "camelCase")]
+#[ts(export, rename_all = "camelCase")]
+pub struct SplitWindowOptions {
+    /// Divider orientation. Default `"vertical"` — panes side by side.
+    #[serde(default)]
+    #[ts(optional)]
+    pub direction: Option<SplitAxis>,
+    /// Which side the new pane lands on. Default `"after"`.
+    #[serde(default)]
+    #[ts(optional)]
+    pub place: Option<SplitPlacement>,
+    /// First child's share of the space, 0.0–1.0. Default 0.5.
+    /// "First" is the left/top pane regardless of `place`.
+    #[serde(default)]
+    #[ts(optional)]
+    pub ratio: Option<f32>,
+    /// Open this file in the new pane. Relative paths resolve against the
+    /// window's root. When omitted the new pane shows the same buffer as
+    /// the pane it was split from, which is what the keyboard split does.
+    #[serde(default)]
+    #[ts(optional)]
+    pub file: Option<String>,
+    /// Leave focus where it was instead of moving it into the new pane.
+    /// Default false (the new pane takes focus, matching the keyboard
+    /// split).
+    #[serde(default)]
+    #[ts(optional)]
+    pub keep_focus: Option<bool>,
+}
+
+/// What `editor.splitWindow()` resolves to: the new pane, already
+/// laid out, so a caller can confirm where it landed without a
+/// follow-up `listSplits()`.
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[serde(rename_all = "camelCase")]
+#[ts(export, rename_all = "camelCase")]
+pub struct SplitCreated {
+    /// The new pane's id — pass to `openFileInSplit`, `focusSplit`, ...
+    pub split_id: usize,
+    /// The pane the split was created from, still live and now smaller.
+    pub source_split_id: usize,
+    /// Buffer shown in the new pane.
+    pub buffer_id: BufferId,
+    /// Geometry of the new pane (see `SplitSnapshot`).
+    pub x: u16,
+    pub y: u16,
+    pub width: u16,
+    pub height: u16,
+}
+
+/// Payload delivered to a plugin's `editor.getNextKey()` Promise when
+/// the next keypress arrives in the editor's input dispatch.
+///
+/// `key` uses the same naming as `defineMode` bindings: lowercase
+/// names like `"escape"`, `"enter"`, `"tab"`, `"space"`, `"left"`,
+/// `"f1"`–`"f12"`, or a single character (e.g. `"a"`, `"!"`).
+/// Modifier flags are reported separately so plugins can recognise
+/// chord variants without parsing.
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[serde(rename_all = "camelCase")]
+#[ts(export, rename_all = "camelCase")]
+pub struct KeyEventPayload {
+    /// Key name (e.g. `"a"`, `"escape"`, `"f1"`).
+    pub key: String,
+    /// Ctrl held.
+    pub ctrl: bool,
+    /// Alt held.
+    pub alt: bool,
+    /// Shift held (only meaningful for non-character keys; for
+    /// printable characters the case is already encoded in `key`).
+    pub shift: bool,
+    /// Super / Cmd / Meta held.
+    pub meta: bool,
+}
+
+/// Layout hints supplied by plugins (e.g., Compose mode)
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[serde(rename_all = "camelCase")]
+#[ts(export, rename_all = "camelCase")]
+pub struct LayoutHints {
+    /// Optional compose width for centering/wrapping
+    #[ts(optional)]
+    pub compose_width: Option<u16>,
+    /// Optional column guides for aligned tables
+    #[ts(optional)]
+    pub column_guides: Option<Vec<u16>>,
+}
+
+// ============================================================================
+// Overlay Types with Theme Support
+// ============================================================================
+
+/// Color specification that can be either RGB values or a theme key.
+///
+/// Theme keys reference colors from the current theme, e.g.:
+/// - "ui.status_bar_bg" - UI status bar background
+/// - "editor.selection_bg" - Editor selection background
+/// - "syntax.keyword" - Syntax highlighting for keywords
+/// - "diagnostic.error" - Error diagnostic color
+///
+/// When a theme key is used, the color is resolved at render time,
+/// so overlays automatically update when the theme changes.
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, TS)]
+#[serde(untagged)]
+#[ts(export)]
+pub enum OverlayColorSpec {
+    /// RGB color as [r, g, b] array
+    #[ts(type = "[number, number, number]")]
+    Rgb(u8, u8, u8),
+    /// Theme key reference (e.g., "ui.status_bar_bg")
+    ThemeKey(String),
+}
+
+/// A glyph run drawn at the head of a soft break's continuation row.
+///
+/// The break's `indent` stays the authoritative column count for the
+/// continuation: the prefix is drawn *inside* those columns and the
+/// remainder renders as spaces. That keeps every width consumer (scroll
+/// math, the wrap index, the row-count cache) reading a single number,
+/// while the renderer gets something to draw there — a `▌` continuing a
+/// wrapped block quote's bar, say, instead of a blank gap.
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[serde(rename_all = "camelCase")]
+#[ts(export, rename_all = "camelCase")]
+pub struct SoftBreakPrefix {
+    /// Text to draw at the start of the continuation row.
+    pub text: String,
+    /// Foreground colour, theme key or RGB. `None` = the row's default.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub fg: Option<OverlayColorSpec>,
+    /// Background colour, theme key or RGB. `None` = the row's default.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub bg: Option<OverlayColorSpec>,
+    #[serde(default)]
+    pub bold: bool,
+    #[serde(default)]
+    pub italic: bool,
+}
+
+/// Modifier-only overlay applied to a byte range within a virtual line's
+/// text. Used by plugins (live-diff) to bold + underline removed words on
+/// a deletion virtual line without varying the line's overall fg/bg.
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[serde(rename_all = "camelCase")]
+#[ts(export, rename_all = "camelCase")]
+pub struct VirtualLineTextOverlay {
+    /// Inclusive byte offset within the virtual line's `text`.
+    pub start: u32,
+    /// Exclusive byte offset within the virtual line's `text`.
+    pub end: u32,
+    #[serde(default)]
+    pub bold: bool,
+    #[serde(default)]
+    pub underline: bool,
+}
+
+impl OverlayColorSpec {
+    /// Create an RGB color spec
+    pub fn rgb(r: u8, g: u8, b: u8) -> Self {
+        Self::Rgb(r, g, b)
+    }
+
+    /// Create a theme key color spec
+    pub fn theme_key(key: impl Into<String>) -> Self {
+        Self::ThemeKey(key.into())
+    }
+
+    /// Convert to RGB if this is an RGB spec, None if it's a theme key
+    pub fn as_rgb(&self) -> Option<(u8, u8, u8)> {
+        match self {
+            Self::Rgb(r, g, b) => Some((*r, *g, *b)),
+            Self::ThemeKey(_) => None,
+        }
+    }
+
+    /// Get the theme key if this is a theme key spec
+    pub fn as_theme_key(&self) -> Option<&str> {
+        match self {
+            Self::ThemeKey(key) => Some(key),
+            Self::Rgb(_, _, _) => None,
+        }
+    }
+}
+
+/// Options for adding an overlay with theme support.
+///
+/// This struct provides a type-safe way to specify overlay styling
+/// with optional theme key references for colors.
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, TS)]
+#[serde(deny_unknown_fields, rename_all = "camelCase")]
+#[ts(export, rename_all = "camelCase")]
+#[derive(Default)]
+pub struct OverlayOptions {
+    /// Foreground color - RGB array or theme key string
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub fg: Option<OverlayColorSpec>,
+
+    /// Background color - RGB array or theme key string
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub bg: Option<OverlayColorSpec>,
+
+    /// Whether to render with underline
+    #[serde(default)]
+    pub underline: bool,
+
+    /// Whether to render in bold
+    #[serde(default)]
+    pub bold: bool,
+
+    /// Whether to render in italic
+    #[serde(default)]
+    pub italic: bool,
+
+    /// Whether to render with strikethrough
+    #[serde(default)]
+    pub strikethrough: bool,
+
+    /// Whether to extend background color to end of line
+    #[serde(default)]
+    pub extend_to_line_end: bool,
+
+    /// Whether to render with reverse video (fg/bg swapped). Used for
+    /// block-style text carets in form controls, where a hardware
+    /// cursor isn't available (modal overlays).
+    #[serde(default)]
+    pub reversed: bool,
+
+    /// When `true`, `fg` is applied only on cells whose existing fg
+    /// matches this overlay's resolved bg — i.e. a same-colour fg/bg
+    /// collision. Lets a row-wide overlay stay legible on tokens that
+    /// share the bg's colour without repainting unrelated tokens.
+    #[serde(default)]
+    pub fg_on_collision_only: bool,
+
+    /// Optional URL for OSC 8 terminal hyperlinks.
+    /// When set, the overlay text becomes a clickable hyperlink in terminals
+    /// that support OSC 8 escape sequences.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub url: Option<String>,
+}
+
+/// One marker painted on a split's vertical scrollbar track, at a position
+/// proportional to its location in the buffer (an "overview ruler" mark).
+///
+/// Position is a **byte offset** (`position`), which is the only coordinate
+/// that is exact in every file-size regime — on a large file opened before the
+/// incremental line scan completes, line numbers do not exist yet. `line` is a
+/// convenience that the editor converts to a byte anchor when the marker is
+/// set; it is dropped if the line cannot be resolved. Supply exactly one.
+///
+/// `end` turns a point marker into a range marker, so a multi-line region
+/// (a diff hunk, a folded block) paints a proportional streak rather than a
+/// single cell.
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, TS)]
+#[serde(deny_unknown_fields, rename_all = "camelCase")]
+#[ts(export, rename_all = "camelCase")]
+pub struct ScrollbarMarker {
+    /// Byte offset of the marked location. Preferred over `line`.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    #[ts(optional)]
+    pub position: Option<u32>,
+
+    /// 0-based logical line number, converted to a byte anchor at set time.
+    /// Ignored when `position` is present.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    #[ts(optional)]
+    pub line: Option<u32>,
+
+    /// Optional exclusive end byte offset, making this a range marker.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    #[ts(optional)]
+    pub end: Option<u32>,
+
+    /// Optional 0-based end line, **inclusive**, making this a range marker.
+    /// Ignored when `end` is present.
+    ///
+    /// The line counterpart to `end`, for producers that work in line
+    /// coordinates — a `git diff` parser knows a hunk's first and last line
+    /// but not their byte offsets. Without it such a plugin has to emit one
+    /// marker per line to paint a hunk's streak, which costs a byte lookup
+    /// and two anchors per line for a resolution the track cannot show.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    #[ts(optional)]
+    pub end_line: Option<u32>,
+
+    /// Marker color — RGB array or theme key. Theme keys resolve at render
+    /// time, so markers follow theme changes.
+    pub color: OverlayColorSpec,
+
+    /// Priority when several markers land on the same track cell (higher
+    /// wins). Defaults to 0.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    #[ts(optional)]
+    pub priority: Option<i32>,
+}
+
+#[cfg(feature = "plugins")]
+impl<'js> rquickjs::FromJs<'js> for LineTarget {
+    fn from_js(_ctx: &rquickjs::Ctx<'js>, value: rquickjs::Value<'js>) -> rquickjs::Result<Self> {
+        rquickjs_serde::from_value(value).map_err(|e| rquickjs::Error::FromJs {
+            from: "object",
+            to: "LineTarget",
+            message: Some(e.to_string()),
+        })
+    }
+}
+
+#[cfg(feature = "plugins")]
+impl<'js> rquickjs::FromJs<'js> for SplitWindowOptions {
+    fn from_js(_ctx: &rquickjs::Ctx<'js>, value: rquickjs::Value<'js>) -> rquickjs::Result<Self> {
+        // An omitted options bag means "all defaults", so `splitWindow()`
+        // with no argument is the plain vertical split a caller expects.
+        if value.is_undefined() || value.is_null() {
+            return Ok(Self::default());
+        }
+        rquickjs_serde::from_value(value).map_err(|e| rquickjs::Error::FromJs {
+            from: "object",
+            to: "SplitWindowOptions",
+            message: Some(e.to_string()),
+        })
+    }
+}
+
+#[cfg(feature = "plugins")]
+impl<'js> rquickjs::FromJs<'js> for ScrollbarMarker {
+    fn from_js(_ctx: &rquickjs::Ctx<'js>, value: rquickjs::Value<'js>) -> rquickjs::Result<Self> {
+        rquickjs_serde::from_value(value).map_err(|e| rquickjs::Error::FromJs {
+            from: "object",
+            to: "ScrollbarMarker",
+            message: Some(e.to_string()),
+        })
+    }
+}
+
+/// A run of text with optional styling. `style` reuses
+/// [`OverlayOptions`] — the same primitive plugins use for virtual
+/// text — so a hint is just `{ text: "Alt+P cycle", style: { fg:
+/// "ui.help_key_fg" } }`. `None` style means "no styling override";
+/// each consumer applies its own default (e.g. the floating-prompt
+/// title uses `prompt_fg` + bold).
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, TS)]
+#[serde(deny_unknown_fields, rename_all = "camelCase")]
+#[ts(export, rename_all = "camelCase")]
+pub struct StyledText {
+    pub text: String,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    #[ts(optional, type = "Partial<OverlayOptions>")]
+    pub style: Option<OverlayOptions>,
+}
+
+#[cfg(feature = "plugins")]
+impl<'js> rquickjs::FromJs<'js> for StyledText {
+    fn from_js(_ctx: &rquickjs::Ctx<'js>, value: rquickjs::Value<'js>) -> rquickjs::Result<Self> {
+        rquickjs_serde::from_value(value).map_err(|e| rquickjs::Error::FromJs {
+            from: "object",
+            to: "StyledText",
+            message: Some(e.to_string()),
+        })
+    }
+}
+
+/// One candidate row in a Text widget's completion popup. `value` is
+/// what gets sent back to the plugin as the `completion_accept`
+/// payload when the user picks the row. `kind` is an optional
+/// presentation hint the renderer reads to style certain rows
+/// differently from the rest — e.g. `"history"` rows render with
+/// a leading marker glyph + italic so the user can tell at-a-glance
+/// that the entry came from their submission history rather than
+/// from the live completion source. `None` is the default "regular"
+/// candidate.
+///
+/// Serializes from JS either as a bare string (treated as
+/// `{ value: <string>, kind: null }` for the legacy
+/// `string[]` setCompletions signature) or as a full object.
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[serde(deny_unknown_fields, rename_all = "camelCase")]
+#[ts(export, rename_all = "camelCase")]
+pub struct CompletionItem {
+    pub value: String,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    #[ts(optional)]
+    pub kind: Option<String>,
+}
+
+impl From<String> for CompletionItem {
+    fn from(value: String) -> Self {
+        Self { value, kind: None }
+    }
+}
+
+impl From<&str> for CompletionItem {
+    fn from(value: &str) -> Self {
+        Self {
+            value: value.to_string(),
+            kind: None,
+        }
+    }
+}
+
+/// Custom deserializer module that accepts either a `Vec<String>`
+/// (legacy bare-string completions) or a `Vec<CompletionItem>` (new
+/// typed shape). Lets plugins call `setCompletions(key, ["a", "b"])`
+/// and `setCompletions(key, [{ value: "a", kind: "history" }])`
+/// interchangeably.
+pub mod completion_items_serde {
+    use super::CompletionItem;
+    use serde::{Deserialize, Deserializer, Serialize, Serializer};
+
+    #[derive(Deserialize)]
+    #[serde(untagged)]
+    enum Either {
+        Bare(String),
+        Typed(CompletionItem),
+    }
+
+    pub fn serialize<S>(items: &[CompletionItem], s: S) -> Result<S::Ok, S::Error>
+    where
+        S: Serializer,
+    {
+        items.serialize(s)
+    }
+
+    pub fn deserialize<'de, D>(d: D) -> Result<Vec<CompletionItem>, D::Error>
+    where
+        D: Deserializer<'de>,
+    {
+        let raw: Vec<Either> = Vec::deserialize(d)?;
+        Ok(raw
+            .into_iter()
+            .map(|e| match e {
+                Either::Bare(s) => CompletionItem {
+                    value: s,
+                    kind: None,
+                },
+                Either::Typed(item) => item,
+            })
+            .collect())
+    }
+}
+
+// ============================================================================
+// Composite Buffer Configuration (for multi-buffer single-tab views)
+// ============================================================================
+
+/// Layout configuration for composite buffers
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[serde(deny_unknown_fields)]
+#[ts(export, rename = "TsCompositeLayoutConfig")]
+pub struct CompositeLayoutConfig {
+    /// Layout type: "side-by-side", "stacked", or "unified"
+    #[serde(rename = "type")]
+    #[ts(rename = "type")]
+    pub layout_type: String,
+    /// Width ratios for side-by-side (e.g., [0.5, 0.5])
+    #[serde(default)]
+    #[ts(optional)]
+    pub ratios: Option<Vec<f32>>,
+    /// Show separator between panes
+    #[serde(default = "default_true", rename = "showSeparator")]
+    #[ts(rename = "showSeparator")]
+    pub show_separator: bool,
+    /// Spacing for stacked layout
+    #[serde(default)]
+    #[ts(optional)]
+    pub spacing: Option<u16>,
+}
+
+fn default_true() -> bool {
+    true
+}
+
+/// Source pane configuration for composite buffers
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[serde(deny_unknown_fields)]
+#[ts(export, rename = "TsCompositeSourceConfig")]
+pub struct CompositeSourceConfig {
+    /// Buffer ID of the source buffer (required)
+    #[serde(rename = "bufferId")]
+    #[ts(rename = "bufferId")]
+    pub buffer_id: usize,
+    /// Label for this pane (e.g., "OLD", "NEW")
+    pub label: String,
+    /// Whether this pane is editable
+    #[serde(default)]
+    pub editable: bool,
+    /// Style configuration
+    #[serde(default)]
+    pub style: Option<CompositePaneStyle>,
+}
+
+/// Style configuration for a composite pane
+#[derive(Debug, Clone, Serialize, Deserialize, Default, TS)]
+#[serde(deny_unknown_fields)]
+#[ts(export, rename = "TsCompositePaneStyle")]
+pub struct CompositePaneStyle {
+    /// Background color for added lines (RGB)
+    /// Using [u8; 3] instead of (u8, u8, u8) for better rquickjs_serde compatibility
+    #[serde(default, rename = "addBg")]
+    #[ts(optional, rename = "addBg", type = "[number, number, number]")]
+    pub add_bg: Option<[u8; 3]>,
+    /// Background color for removed lines (RGB)
+    #[serde(default, rename = "removeBg")]
+    #[ts(optional, rename = "removeBg", type = "[number, number, number]")]
+    pub remove_bg: Option<[u8; 3]>,
+    /// Background color for modified lines (RGB)
+    #[serde(default, rename = "modifyBg")]
+    #[ts(optional, rename = "modifyBg", type = "[number, number, number]")]
+    pub modify_bg: Option<[u8; 3]>,
+    /// Gutter style: "line-numbers", "diff-markers", "both", or "none"
+    #[serde(default, rename = "gutterStyle")]
+    #[ts(optional, rename = "gutterStyle")]
+    pub gutter_style: Option<String>,
+}
+
+/// A run of rows in a plugin-composed buffer that carry code, for the
+/// host's highlighter (`setSyntaxRegions`).
+///
+/// A composed buffer — a diff stream, a log — is not a document any
+/// grammar can parse, so the plugin says where the code is instead. A
+/// region is a byte range of whole rows; every row in it is handed to the
+/// language's parser with its first `prefix` bytes skipped (a gutter, a
+/// diff marker), and rows outside every region keep whatever the plugin
+/// styled them with and never advance a parser.
+///
+/// `streams` name the parsers a row feeds, and regions that share a
+/// stream id continue one parse across the rows between them: the old
+/// and new side of a hunk interleave, and a comment box can sit inside a
+/// hunk, yet each side is still read as the contiguous text it is. A row
+/// both sides share (context) lists both. An empty list means one parser
+/// shared by every region that says nothing.
+///
+/// The contract:
+/// - Only a plugin-composed (virtual) buffer can be told this; a file has
+///   a grammar of its own, and the call is ignored, with a log line, for
+///   anything else.
+/// - A region starts at a row's first byte and ends just past a row's
+///   newline. A row is coloured when its first byte lies in a region.
+/// - Regions replace the buffer's previous set and must not overlap: a
+///   region that overlaps the one before it (in byte order) is dropped,
+///   with a log line. Setting the buffer's content clears them all.
+/// - The first stream a region names colours its rows; the others are fed
+///   for their state. The host keeps the four most recently fed parsers;
+///   a stream fed again after four others starts afresh.
+/// - A language nothing in the grammar set claims leaves the rows as the
+///   plugin styled them, with a log line.
+/// - Regions follow the text: an edit inside the buffer moves them the
+///   way it moves overlays.
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, TS)]
+#[serde(deny_unknown_fields, rename_all = "camelCase")]
+#[ts(export, rename = "TsSyntaxRegion", rename_all = "camelCase")]
+pub struct SyntaxRegion {
+    /// Byte offset of the first row's first byte.
+    pub start: usize,
+    /// Byte offset one past the last row's newline.
+    pub end: usize,
+    /// What the rows are written in: a path (`src/main.rs`, `Makefile`)
+    /// or a language token (`py`, `rust`). Nothing is opened or read;
+    /// it only selects the grammar.
+    pub language: String,
+    /// Bytes at the start of every row that are not code.
+    #[serde(default)]
+    pub prefix: usize,
+    /// Parsers the rows feed, in order; the first colours the rows. Empty
+    /// means the shared stream `0`. See the type docs.
+    #[serde(default)]
+    pub streams: Vec<u32>,
+}
+
+#[cfg(feature = "plugins")]
+impl<'js> rquickjs::FromJs<'js> for SyntaxRegion {
+    fn from_js(_ctx: &rquickjs::Ctx<'js>, value: rquickjs::Value<'js>) -> rquickjs::Result<Self> {
+        rquickjs_serde::from_value(value).map_err(|e| rquickjs::Error::FromJs {
+            from: "object",
+            to: "SyntaxRegion",
+            message: Some(e.to_string()),
+        })
+    }
+}
+
+/// Diff hunk for composite buffer alignment
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[serde(deny_unknown_fields)]
+#[ts(export, rename = "TsCompositeHunk")]
+pub struct CompositeHunk {
+    /// Starting line in old buffer (0-indexed)
+    #[serde(rename = "oldStart")]
+    #[ts(rename = "oldStart")]
+    pub old_start: usize,
+    /// Number of lines in old buffer
+    #[serde(rename = "oldCount")]
+    #[ts(rename = "oldCount")]
+    pub old_count: usize,
+    /// Starting line in new buffer (0-indexed)
+    #[serde(rename = "newStart")]
+    #[ts(rename = "newStart")]
+    pub new_start: usize,
+    /// Number of lines in new buffer
+    #[serde(rename = "newCount")]
+    #[ts(rename = "newCount")]
+    pub new_count: usize,
+    /// Per-line operations for the hunk, in git order: one char per line —
+    /// `' '` context, `'-'` deletion (old only), `'+'` addition (new only).
+    /// When present, the side-by-side alignment follows git's classification
+    /// exactly (unchanged lines stay paired); when absent, the host falls back
+    /// to a positional pairing. Optional for backward compatibility.
+    #[serde(default, rename = "ops")]
+    #[ts(rename = "ops", optional)]
+    pub ops: Option<String>,
+}
+
+/// Options for creating a composite buffer (used by plugin API)
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[serde(deny_unknown_fields)]
+#[ts(export, rename = "TsCreateCompositeBufferOptions")]
+pub struct CreateCompositeBufferOptions {
+    /// Buffer name (displayed in tabs/title)
+    #[serde(default)]
+    pub name: String,
+    /// Mode for keybindings
+    #[serde(default)]
+    pub mode: String,
+    /// Layout configuration
+    pub layout: CompositeLayoutConfig,
+    /// Source pane configurations
+    pub sources: Vec<CompositeSourceConfig>,
+    /// Diff hunks for alignment (optional)
+    #[serde(default)]
+    pub hunks: Option<Vec<CompositeHunk>>,
+    /// When set, the first render will scroll to center the Nth hunk (0-indexed).
+    /// This avoids timing issues with imperative scroll commands that depend on
+    /// render-created state (viewport dimensions, view state).
+    #[serde(default, rename = "initialFocusHunk")]
+    #[ts(optional, rename = "initialFocusHunk")]
+    pub initial_focus_hunk: Option<usize>,
+}
+
+/// Wire-format view token kind (serialized for plugin transforms)
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[ts(export)]
+pub enum ViewTokenWireKind {
+    Text(String),
+    Newline,
+    Space,
+    /// Visual line break inserted by wrapping (not from source)
+    /// Always has source_offset: None
+    Break,
+    /// A single binary byte that should be rendered as <XX>
+    /// Used in binary file mode to ensure cursor positioning works correctly
+    /// (all 4 display chars of <XX> map to the same source byte)
+    BinaryByte(u8),
+}
+
+/// Color carried by a `ViewTokenStyle`. Untagged so JSON plugins can
+/// keep passing `[r, g, b]` arrays, while richer themes can use named
+/// ANSI colors (`"Red"`, `"LightGreen"`, `"Default"`) or theme keys
+/// (`"editor.diff_remove_bg"`). The renderer resolves named/theme
+/// strings against the active theme at draw time; unknown strings
+/// fall through to the terminal's default color.
+///
+/// `Color::Indexed(N)` round-trips through the `"Indexed:N"` form so
+/// 256-color values from a ratatui `Color` survive the
+/// `ViewTokenStyle` boundary.
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[serde(untagged)]
+#[ts(export)]
+pub enum TokenColor {
+    /// RGB color as [r, g, b] array
+    #[ts(type = "[number, number, number]")]
+    Rgb(u8, u8, u8),
+    /// Named ANSI color, `"Default"`, `"Indexed:N"`, or a theme key.
+    Named(String),
+}
+
+/// Styling for view tokens (used for injected annotations)
+///
+/// This allows plugins to specify styling for tokens that don't have a source
+/// mapping (sourceOffset: None), such as annotation headers in git blame.
+/// For tokens with sourceOffset: Some(_), syntax highlighting is applied instead.
+#[derive(Debug, Clone, Serialize, Deserialize, Default, TS)]
+#[serde(deny_unknown_fields)]
+#[ts(export)]
+pub struct ViewTokenStyle {
+    /// Foreground color. Either `[r, g, b]` or a named/theme string —
+    /// see [`TokenColor`].
+    #[serde(default)]
+    pub fg: Option<TokenColor>,
+    /// Background color. Either `[r, g, b]` or a named/theme string —
+    /// see [`TokenColor`].
+    #[serde(default)]
+    pub bg: Option<TokenColor>,
+    /// Whether to render in bold
+    #[serde(default)]
+    pub bold: bool,
+    /// Whether to render in italic
+    #[serde(default)]
+    pub italic: bool,
+    /// Whether to render with underline
+    #[serde(default)]
+    pub underline: bool,
+}
+
+/// Wire-format view token with optional source mapping and styling
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[serde(deny_unknown_fields)]
+#[ts(export)]
+pub struct ViewTokenWire {
+    /// Source byte offset in the buffer. None for injected content (annotations).
+    #[ts(type = "number | null")]
+    pub source_offset: Option<usize>,
+    /// The token content
+    pub kind: ViewTokenWireKind,
+    /// Optional styling for injected content (only used when source_offset is None)
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    #[ts(optional)]
+    pub style: Option<ViewTokenStyle>,
+}
+
+/// A plugin-owned interval marker: a byte range `[start, end)` carrying an
+/// opaque JSON payload. The editor shifts `start`/`end` on edits so the marker
+/// rides the text; the payload is maintained by the plugin (e.g. table column
+/// widths). See `EditorStateSnapshot::plugin_markers`.
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[ts(export)]
+pub struct PluginMarker {
+    pub start: usize,
+    pub end: usize,
+    #[ts(type = "any")]
+    pub payload: serde_json::Value,
+}
+
+/// Snapshot of editor state for plugin queries
+/// This is updated by the editor on each loop iteration
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[ts(export)]
+pub struct EditorStateSnapshot {
+    /// Currently active buffer ID
+    pub active_buffer_id: BufferId,
+    /// Currently active split ID
+    pub active_split_id: usize,
+    /// Information about all open buffers
+    pub buffers: HashMap<BufferId, BufferInfo>,
+    /// Diff vs last saved snapshot for each buffer (line counts may be unknown)
+    pub buffer_saved_diffs: HashMap<BufferId, BufferSavedDiff>,
+    /// Primary cursor position for the active buffer
+    pub primary_cursor: Option<CursorInfo>,
+    /// Primary cursor's line number (0-indexed) for the active buffer.
+    /// Mirrors the editor's `primary_cursor_line_number` cache so plugins
+    /// can read "what line is the cursor on" without scanning the buffer.
+    /// `None` when there is no active view state (e.g. before the first
+    /// buffer is loaded).
+    #[serde(default)]
+    pub primary_cursor_line: Option<u32>,
+    /// All cursor positions for the active buffer
+    pub all_cursors: Vec<CursorInfo>,
+    /// Viewport information for the active buffer
+    pub viewport: Option<ViewportInfo>,
+    /// Per-split snapshots: split id, buffer shown, viewport.
+    /// Includes the active split.  Order is unspecified.
+    #[serde(default)]
+    pub splits: Vec<SplitSnapshot>,
+    /// Cursor positions per buffer (for buffers other than active)
+    pub buffer_cursor_positions: HashMap<BufferId, usize>,
+    /// Text properties per buffer (for virtual buffers with properties).
+    ///
+    /// Shared handles, not copies: a plugin-drawn buffer can hold a
+    /// property per line, and taking every buffer's set on every tick is a
+    /// refcount bump. Copying instead made the tick's cost grow with the
+    /// buffers' content.
+    pub buffer_text_properties: HashMap<BufferId, Arc<[TextProperty]>>,
+    /// Selected text from the primary cursor (if any selection exists)
+    /// This is populated on each update to avoid needing full buffer access
+    pub selected_text: Option<String>,
+    /// Internal clipboard content (for plugins that need clipboard access)
+    pub clipboard: String,
+    /// Editor's working directory (for file operations and spawning processes).
+    ///
+    /// Equal to `sessions[i].root` where `sessions[i].id == active_window_id`.
+    /// Plugins that just need "where am I" can read this directly; plugins
+    /// orchestrating multiple sessions (Orchestrator) iterate `sessions`.
+    pub working_dir: PathBuf,
+    /// All editor sessions, in id order. Always non-empty (the base
+    /// session is `id == 1`). Updated when sessions are
+    /// created/closed or relabelled.
+    #[serde(default)]
+    pub windows: Vec<WindowInfo>,
+    /// Id of the currently active session. Always present in
+    /// `sessions`. Read by plugins via `editor.activeWindow()`.
+    #[serde(default = "default_window_id")]
+    pub active_window_id: WindowId,
+    /// Status-bar / explorer label for the active authority.
+    ///
+    /// Empty = the local (default) authority with nothing to render.
+    /// Non-empty means a non-local authority is installed (e.g.
+    /// `"Container:abc123def456"` for a devcontainer). Plugins can
+    /// read this via `editor.getAuthorityLabel()` to detect "already
+    /// attached" without having to track state across editor restarts.
+    #[serde(default)]
+    pub authority_label: String,
+    /// Current Workspace Trust level for the active project: `"restricted"`,
+    /// `"trusted"`, or `"blocked"`. Empty when trust state is unavailable
+    /// (e.g. the default local authority before a guarded one is installed).
+    /// Plugins that run repo-controlled work read this via
+    /// `editor.workspaceTrustLevel()` and should treat anything other than
+    /// `"trusted"` as "do not execute".
+    #[serde(default)]
+    pub workspace_trust_level: String,
+    /// Whether an environment is currently active (the env-manager has set a
+    /// recipe via `editor.setEnv`). Plugins read this via `editor.envActive()`
+    /// to reflect activation in the status bar and re-establish file watches
+    /// after the restart that activation triggers.
+    #[serde(default)]
+    pub env_active: bool,
+    /// The environment core detected in the workspace, as a JSON string
+    /// (`{"name","kind","snippet"}`) or empty when none is detected. The
+    /// env-manager plugin reads this via `editor.detectedEnv()` instead of
+    /// probing the filesystem itself — detection lives only in core (see
+    /// `workspace_trust::detect_env`).
+    #[serde(default)]
+    pub detected_env: String,
+    /// LSP diagnostics per file URI.
+    /// Maps file URI string to Vec of diagnostics for that file.
+    ///
+    /// Wrapped in `Arc` so snapshot refresh is a refcount bump rather than
+    /// a deep clone. The editor only mutates its own map through
+    /// `Arc::make_mut`, which CoW-clones while this snapshot still holds
+    /// a reference — a reader can never observe an in-place mutation.
+    ///
+    /// `#[serde(skip)]`: serde out-of-the-box can't serialize `Arc<T>`
+    /// (behind the `rc` cargo feature we don't enable). We never serialize
+    /// the snapshot as a whole — plugin readers pull out these Arcs and
+    /// serialize the *inner* value directly (e.g. `get_all_diagnostics`).
+    #[serde(skip)]
+    #[ts(type = "any")]
+    pub diagnostics: Arc<HashMap<String, Vec<lsp_types::Diagnostic>>>,
+    /// LSP folding ranges per file URI.
+    /// Maps file URI string to Vec of folding ranges for that file.
+    /// Arc-wrapped for the same CoW invariant as `diagnostics`; see that
+    /// field for why this is `#[serde(skip)]`.
+    #[serde(skip)]
+    #[ts(type = "any")]
+    pub folding_ranges: Arc<HashMap<String, Vec<lsp_types::FoldingRange>>>,
+    /// Runtime config as serde_json::Value (merged user config + defaults).
+    /// This is the runtime config, not just the user's config file.
+    ///
+    /// Wrapped in `Arc` so the snapshot update is a refcount bump. The
+    /// editor reserializes its source `Config` only when the underlying
+    /// `Arc<Config>` pointer has moved (i.e., after a real mutation), and
+    /// swaps the whole `Arc<Value>` atomically — callers never see a
+    /// partially-updated blob. `#[serde(skip)]` for the same reason as
+    /// `diagnostics`.
+    #[serde(skip)]
+    #[ts(type = "any")]
+    pub config: Arc<serde_json::Value>,
+    /// User config as serde_json::Value (only what's in the user's config file).
+    /// Fields not present here are using default values.
+    /// Arc-wrapped; swapped as a whole when the user's file is reloaded.
+    /// `#[serde(skip)]` for the same reason as `diagnostics`.
+    #[serde(skip)]
+    #[ts(type = "any")]
+    pub user_config: Arc<serde_json::Value>,
+    /// Available grammars with provenance info, updated when grammar registry changes
+    #[ts(type = "GrammarInfo[]")]
+    pub available_grammars: Vec<GrammarInfoSnapshot>,
+    /// Last-seen grammar registry generation. The state-snapshot updater
+    /// rebuilds `available_grammars` only when this disagrees with the
+    /// registry's current `catalog_gen()`. `#[serde(skip)]` because the
+    /// counter is a host-side detail not exposed to plugins.
+    #[serde(skip)]
+    #[ts(skip)]
+    pub last_grammar_gen: u64,
+    /// Global editor mode for modal editing (e.g., "vi-normal", "vi-insert")
+    /// When set, this mode's keybindings take precedence over normal key handling
+    pub editor_mode: Option<String>,
+
+    /// Plugin-managed per-buffer view state for the active split.
+    /// Updated from BufferViewState.plugin_state during snapshot updates.
+    /// Also written directly by JS plugins via setViewState for immediate read-back.
+    #[ts(type = "any")]
+    pub plugin_view_states: HashMap<BufferId, HashMap<String, serde_json::Value>>,
+
+    /// Tracks which split was active when plugin_view_states was last populated.
+    /// When the active split changes, plugin_view_states is fully repopulated.
+    #[serde(skip)]
+    #[ts(skip)]
+    pub plugin_view_states_split: usize,
+
+    /// Plugin-owned interval markers, per buffer, keyed by a plugin-chosen
+    /// string id. Each marker is a byte range `[start, end)` plus an opaque
+    /// JSON payload. The editor shifts `start`/`end` on every edit (so the
+    /// plugin never tracks byte offsets itself); plugins create/update/delete
+    /// and spatially query them via the marker API, which writes through to
+    /// this map for immediate same-thread read-back (like setViewState).
+    #[ts(type = "any")]
+    pub plugin_markers: HashMap<BufferId, HashMap<String, PluginMarker>>,
+
+    /// Keybinding labels for plugin modes, keyed by "action\0mode" for fast lookup.
+    /// Updated when modes are registered via defineMode().
+    #[serde(skip)]
+    #[ts(skip)]
+    pub keybinding_labels: HashMap<String, String>,
+
+    /// Plugin-managed global state, isolated per plugin.
+    /// Outer key is plugin name, inner key is the state key set by the plugin.
+    /// TODO: Need to think about plugin isolation / namespacing strategy for these APIs.
+    /// Currently we isolate by plugin name, but we may want a more robust approach
+    /// (e.g. preventing plugins from reading each other's state, or providing
+    /// explicit cross-plugin state sharing APIs).
+    #[ts(type = "any")]
+    pub plugin_global_states: HashMap<String, HashMap<String, serde_json::Value>>,
+
+    /// Plugin-managed per-session state, snapshotted as the
+    /// **active** session's plugin_state map. Updated wholesale
+    /// on `setActiveWindow` (alongside the rest of the
+    /// per-session state) — plugins that read this via
+    /// `editor.getWindowState(key)` see the active session's
+    /// values without crossing the IPC boundary on every read.
+    /// Outer key is plugin name, inner is the plugin-defined key.
+    #[serde(default)]
+    #[ts(type = "any")]
+    pub active_session_plugin_states: HashMap<String, HashMap<String, serde_json::Value>>,
+
+    /// Total terminal dimensions in cells. Refreshed on every
+    /// resize event. Plugins read this via `editor.getScreenSize()`
+    /// when they need to size floating overlays against the whole
+    /// terminal — `getViewport()` only reports the active split,
+    /// which is smaller than the screen whenever splits exist.
+    #[serde(default)]
+    pub terminal_width: u16,
+    #[serde(default)]
+    pub terminal_height: u16,
+
+    /// Whether search highlights are currently active in the active buffer.
+    /// True when a search has been confirmed and its match overlays are visible.
+    /// Cleared when the search is cancelled or a new search is started.
+    #[serde(default)]
+    pub has_active_search: bool,
+
+    /// Recorded macros for the active session, in register order. Each entry's
+    /// `steps` is the macro rendered as `ActionSpec[]` — the same shape
+    /// `editor.executeActions` consumes — so a plugin can read a macro and
+    /// replay or serialise it without crossing the IPC boundary. Refreshed on
+    /// every snapshot tick; read by `editor.listMacros()` / `editor.getMacro()`.
+    #[serde(default)]
+    pub macros: Vec<MacroSnapshot>,
+}
+
+/// One recorded macro, exposed to plugins. `register` is the single-character
+/// register key (e.g. `"0"`, `"q"`); `steps` is the recorded action sequence in
+/// the `ActionSpec` form `executeActions` accepts.
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[ts(export)]
+pub struct MacroSnapshot {
+    /// Register key the macro is stored under.
+    pub register: String,
+    /// Recorded steps as executable `ActionSpec`s.
+    pub steps: Vec<ActionSpec>,
+}
+
+/// Total terminal size in cells. Returned by `editor.getScreenSize()`.
+#[derive(Debug, Clone, Copy, Serialize, Deserialize, TS)]
+#[serde(rename_all = "camelCase")]
+#[ts(export, rename_all = "camelCase")]
+pub struct ScreenSize {
+    pub width: u16,
+    pub height: u16,
+}
+
+impl EditorStateSnapshot {
+    pub fn new() -> Self {
+        Self {
+            active_buffer_id: BufferId(0),
+            active_split_id: 0,
+            buffers: HashMap::new(),
+            buffer_saved_diffs: HashMap::new(),
+            primary_cursor: None,
+            primary_cursor_line: None,
+            all_cursors: Vec::new(),
+            viewport: None,
+            splits: Vec::new(),
+            buffer_cursor_positions: HashMap::new(),
+            buffer_text_properties: HashMap::new(),
+            selected_text: None,
+            clipboard: String::new(),
+            working_dir: std::env::current_dir().unwrap_or_else(|_| PathBuf::from(".")),
+            windows: Vec::new(),
+            active_window_id: WindowId(1),
+            authority_label: String::new(),
+            workspace_trust_level: String::new(),
+            env_active: false,
+            detected_env: String::new(),
+            diagnostics: Arc::new(HashMap::new()),
+            folding_ranges: Arc::new(HashMap::new()),
+            config: Arc::new(serde_json::Value::Null),
+            user_config: Arc::new(serde_json::Value::Null),
+            available_grammars: Vec::new(),
+            last_grammar_gen: 0,
+            editor_mode: None,
+            plugin_view_states: HashMap::new(),
+            plugin_view_states_split: 0,
+            plugin_markers: HashMap::new(),
+            keybinding_labels: HashMap::new(),
+            plugin_global_states: HashMap::new(),
+            active_session_plugin_states: HashMap::new(),
+            terminal_width: 0,
+            terminal_height: 0,
+            has_active_search: false,
+            macros: Vec::new(),
+        }
+    }
+}
+
+impl Default for EditorStateSnapshot {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
+/// Grammar info exposed to plugins, mirroring the editor's grammar provenance tracking.
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[ts(export)]
+pub struct GrammarInfoSnapshot {
+    /// The grammar name as used in config files (case-insensitive matching)
+    pub name: String,
+    /// Where this grammar was loaded from (e.g. "built-in", "plugin (myplugin)")
+    pub source: String,
+    /// File extensions associated with this grammar
+    pub file_extensions: Vec<String>,
+    /// Optional short name alias (e.g., "bash" for "Bourne Again Shell (bash)")
+    pub short_name: Option<String>,
+}
+
+/// Position for inserting menu items or menus
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[ts(export)]
+pub enum MenuPosition {
+    /// Add at the beginning
+    Top,
+    /// Add at the end
+    Bottom,
+    /// Add before a specific label
+    Before(String),
+    /// Add after a specific label
+    After(String),
+}
+
+// ===========================================================================
+// Widget library — plugin-facing declarative UI.
+//
+// Plugins describe a widget tree as a `WidgetSpec`; the host reconciles the
+// tree against the previous spec for the same panel and produces rendered
+// output. This is the foundation laid out in
+// `docs/internal/plugin-widget-library-design.md`.
+//
+// The set of widget kinds is intentionally narrow at v1 (`HintBar` and the
+// `Row`/`Col`/`Raw` composition primitives). Additional kinds (`Toggle`,
+// `Button`, `TextInput`, `List`, `Tree`, `Layer`, `Transient`, `Table`)
+// extend the enum without changing the `MountWidgetPanel`/`UpdateWidgetPanel`
+// IPC shape.
+// ===========================================================================
+
+/// Where a widget should land when a plugin scrolls to it.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Default, Serialize, Deserialize, TS)]
+#[serde(rename_all = "camelCase")]
+pub enum ScrollAlign {
+    /// Put the widget on the split's top row. A jump: "take me to
+    /// this". The default, and what this command has always done.
+    #[default]
+    Top,
+    /// Scroll only as far as it takes to bring the widget into view —
+    /// the editor's ordinary cursor reveal, which respects the user's
+    /// `scroll_offset` and so leaves that much context around the
+    /// target rather than stopping exactly at the edge.
+    ///
+    /// This is what following focus wants. `Top` moves the view on
+    /// every step, so tabbing between two controls of the same card
+    /// scrolled the page, and the control that gained focus landed on
+    /// the top row with its own card title pushed off above it — a
+    /// button whose label you can no longer read. It also made Tab and
+    /// Shift+Tab stop being inverses, because a jump forgets where it
+    /// came from.
+    Minimal,
+}
+
+/// How the host should treat a mounted panel, beyond rendering its
+/// spec.
+///
+/// Grows by adding fields, so every field is optional in both
+/// directions: `Option<T>` with `#[ts(optional)]`, so adding one is not
+/// a TypeScript break for plugins that already construct the bag; and
+/// no `deny_unknown_fields`, so a plugin written against a newer host
+/// does not fail to deserialize wholesale on an older one and silently
+/// lose the options it *did* set. Each unspecified field reads as what
+/// the host did before that field existed.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Default, Serialize, Deserialize, TS)]
+#[serde(rename_all = "camelCase", default)]
+pub struct WidgetPanelOptions {
+    /// When the focus key names no tabbable widget, fall back to the
+    /// first one.
+    ///
+    /// True is the historical behaviour and stays the default. A panel
+    /// for which *nothing focused* is a real resting state must say so:
+    /// otherwise clearing focus does not clear it, because the next
+    /// repaint silently re-seeds it onto whatever happens to be first.
+    /// The plugin's own record of focus then disagrees with the host's,
+    /// and a key meant for no one is delivered to that widget — on the
+    /// welcome screen, leaving its file finder put focus on "Show this
+    /// screen on startup", so the next Space turned the page off with
+    /// nothing on screen to say why.
+    ///
+    /// `None` is what every plugin written before this field said, and
+    /// reads as `true`.
+    #[serde(default)]
+    #[ts(optional)]
+    pub auto_focus_first: Option<bool>,
+    /// The panel is a *page*: its whole content scrolls together in a
+    /// window the host owns, the way a document does, rather than each
+    /// list windowing itself to the panel's height. Lists and text areas
+    /// inside a page take their natural height. The arrow and page keys
+    /// scroll it when no widget takes them, the wheel and its scrollbar
+    /// move it, and `scrollToWidget` moves it to a widget by key.
+    ///
+    /// A buffer-mounted panel only; the dock and the floating panels
+    /// window their lists. Unspecified reads as `false`.
+    #[serde(default)]
+    #[ts(optional)]
+    pub page: Option<bool>,
+    /// Keep this panel's focus and the reader's place on the same thing.
+    ///
+    /// For a [`page`](WidgetPanelOptions::page) — a document laid out by
+    /// widgets, in one window the host scrolls — focus and where the reader is
+    /// are two answers
+    /// to one question: what am I looking at. Left independent they contradict
+    /// each other, and the contradiction is not cosmetic: Tab moves focus while
+    /// the page stays three cards above, and a movement key moves the page
+    /// while Enter still fires whatever the last Tab left focused — off screen,
+    /// unasked for.
+    ///
+    /// Saying so makes the host maintain both directions. The movement keys
+    /// (`Up`/`Down`, the page keys, `Home`/`End`) move a *reading row* through
+    /// the page's content instead of scrolling the window, and focus goes to
+    /// the widget on the row it lands on — or to nothing, when the row carries
+    /// none. A focus move (Tab, Shift+Tab, a plugin's `setFocusKey`) puts the
+    /// reader on the focused widget's own region, and the window follows
+    /// minimally, so a Tab between two controls of one card does not move the
+    /// page under them.
+    ///
+    /// "Nothing focused" is a state this option produces constantly — most rows
+    /// of a page are prose — so a panel declaring it almost certainly wants
+    /// `autoFocusFirst: false` too, and the Tab ring seeds from the reader
+    /// rather than from the top of the document.
+    ///
+    /// `None` reads as `false`: every panel written before this field keeps
+    /// focus and the window independent.
+    ///
+    /// It makes `autoFocusFirst` false whatever the panel said — see
+    /// [`WidgetPanelOptions::auto_focus_first`]. The pair is not a
+    /// setting with two useful values; it is one broken combination, so
+    /// it is not representable rather than advised against.
+    #[serde(default)]
+    #[ts(optional)]
+    pub focus_follows_cursor: Option<bool>,
+}
+
+impl WidgetPanelOptions {
+    /// Whether to seed focus onto the first tabbable when the focus key
+    /// names none. Unspecified is the historical `true`.
+    ///
+    /// **Never true alongside `focusFollowsCursor`**, whatever the panel
+    /// asked for. Seeding re-runs on every repaint, and on a panel whose
+    /// caret follows focus that means every repaint drags the reader's
+    /// caret to the first control on the page — a plugin repainting on a
+    /// timer, or when `git status` lands, would move the cursor out from
+    /// under them. Stating it in prose and hoping was not enough: the
+    /// default for `autoFocusFirst` is `true`, so the broken pair was
+    /// what a plugin got by *not* thinking about it.
+    pub fn auto_focus_first(&self) -> bool {
+        !self.focus_follows_cursor() && self.auto_focus_first.unwrap_or(true)
+    }
+
+    /// Whether the panel's focus and its buffer's caret track each
+    /// other. Unspecified is the historical `false`.
+    pub fn focus_follows_cursor(&self) -> bool {
+        self.focus_follows_cursor.unwrap_or(false)
+    }
+
+    /// Whether the panel scrolls as one page. Unspecified is `false`.
+    pub fn page(&self) -> bool {
+        self.page.unwrap_or(false)
+    }
+}
+
+/// One entry in a `HintBar` — a key chord plus its label.
+/// Renders as `<keys> <label>` with the key portion styled by the
+/// `ui.help_key_fg` theme key.
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[serde(deny_unknown_fields, rename_all = "camelCase")]
+#[ts(export, rename_all = "camelCase")]
+pub struct HintEntry {
+    /// The key chord, e.g. `"Tab"`, `"Alt+P"`, `"Esc"`.
+    pub keys: String,
+    /// The human-readable label for the action.
+    pub label: String,
+}
+
+/// Default for `TextInput::cursor_byte` when the plugin doesn't
+/// supply one. -1 ⇒ "no cursor visible" (the field is unfocused
+/// or read-only).
+fn default_cursor_byte() -> i32 {
+    -1
+}
+
+/// Default for `List::selected_index` when the plugin doesn't
+/// supply one. -1 ⇒ "no selection".
+fn default_list_selected() -> i32 {
+    -1
+}
+
+/// Legacy visible-rows fallback for a `List`/`Tree` whose spec omits
+/// the value AND whose surface gave the renderer no height. 20 is a
+/// reasonable terminal-panel default.
+pub const LEGACY_VISIBLE_ROWS_FALLBACK: u32 = 20;
+
+/// Default glyph for a `Divider`: the light horizontal box-drawing rule.
+fn default_divider_char() -> String {
+    "─".to_string()
+}
+
+/// Default for `Tree::selected_index`. -1 ⇒ "no selection".
+fn default_tree_selected() -> i32 {
+    -1
+}
+
+/// Default `item_height` for a `Tree` — `1` ⇒ one screen row per
+/// node (the classic single-line tree). A larger value renders every
+/// node as a fixed-height card of that many rows (the node's primary
+/// `text` line plus its `extra_lines`, blank-padded to the height).
+fn default_tree_indent_cols() -> u32 {
+    2
+}
+
+fn default_tree_item_height() -> u32 {
+    1
+}
+
+/// Default `rows` for a `Text` widget — `1` ⇒ single-line. Plugins
+/// opt into multi-line by setting `rows >= 2`.
+fn default_text_rows() -> u32 {
+    1
+}
+
+fn default_number_step() -> f64 {
+    1.0
+}
+
+fn default_neg_one() -> i32 {
+    -1
+}
+
+fn default_dropdown_selected() -> i32 {
+    0
+}
+
+fn default_dual_visible_rows() -> u32 {
+    6
+}
+
+/// One node in a `Tree` widget's flat-list spec. The plugin walks
+/// its hierarchy depth-first and emits one `TreeNode` per node;
+/// `depth` controls indent, `has_children` controls whether the
+/// disclosure glyph (and its hit area) is rendered. The host filters
+/// the visible window — descendants of collapsed nodes are skipped.
+///
+/// `text` is the pre-rendered row content. The host prepends the
+/// indent + disclosure glyph at render time and shifts the entry's
+/// inline overlays accordingly; plugins emit `text` (and overlays)
+/// in the row's own coordinate space, starting at column 0.
+/// One option in a `DualList` widget's universe: a stable `value`
+/// (what the plugin stores in `included` / `excluded`) plus the
+/// human-readable `label` shown in the columns.
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[serde(deny_unknown_fields, rename_all = "camelCase")]
+#[ts(export, rename_all = "camelCase")]
+pub struct DualListOption {
+    pub value: String,
+    pub label: String,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[serde(deny_unknown_fields, rename_all = "camelCase")]
+#[ts(export, rename_all = "camelCase")]
+pub struct TreeNode {
+    /// The pre-rendered row content (text + per-row overlays).
+    /// The host renders this verbatim after the indent + disclosure
+    /// prefix; plugin overlays are byte-shifted by the prefix
+    /// length.
+    pub text: crate::text_property::TextPropertyEntry,
+    /// 0-based depth — controls leading indent (`depth * 2` spaces).
+    #[serde(default)]
+    pub depth: u32,
+    /// When true, render a disclosure glyph (`▶` collapsed / `▼`
+    /// expanded) and emit a hit area over it that fires the `expand`
+    /// event. Leaf nodes (`false`) get no glyph and no expand hit;
+    /// the row width occupies the full row.
+    #[serde(default)]
+    pub has_children: bool,
+    /// Per-node checkbox state. Only rendered when the parent
+    /// `Tree` has `checkable: true`. `None` = no checkbox glyph;
+    /// `Some(true)` = `[v]`; `Some(false)` = `[ ]`. The plugin
+    /// owns the truth — the host fires `widget_event { event_type:
+    /// "toggle" }` and the plugin pushes the new state back via
+    /// `WidgetMutation::SetCheckedKeys`.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub checked: Option<bool>,
+    /// Continuation lines rendered below the node's primary `text`
+    /// line when the parent `Tree` has `item_height > 1`. Each entry
+    /// is one screen row, indented to align under the primary line's
+    /// body (past the indent + disclosure/checkbox prefix). The host
+    /// renders at most `item_height - 1` of them and blank-pads a
+    /// shorter node so every row in the tree is the same fixed height.
+    /// Ignored when `item_height == 1`.
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub extra_lines: Vec<crate::text_property::TextPropertyEntry>,
+    /// The span of `text` this row exists to show, in **chars**.
+    ///
+    /// A row wider than the panel is windowed by the host, and without this
+    /// the window can only start at the head of the line — which is exactly
+    /// where a search result's match usually is not (issue #1580). Naming the
+    /// span lets the host rest the window on it instead, and the reader pans
+    /// away from there.
+    ///
+    /// Chars rather than columns because that is the unit a plugin can count:
+    /// it has the string, not the terminal's width table. The host converts.
+    /// Out-of-range values are harmless — they resolve to the end of the text.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub window_anchor: Option<TextWindowAnchor>,
+}
+
+/// How a row asks to be windowed when it is wider than the panel.
+/// See [`TreeNode::window_anchor`].
+#[derive(Debug, Clone, Copy, Default, PartialEq, Eq, Serialize, Deserialize, TS)]
+#[serde(deny_unknown_fields, rename_all = "camelCase")]
+#[ts(export, rename_all = "camelCase")]
+pub struct TextWindowAnchor {
+    /// Chars at the head of the row that never move.
+    ///
+    /// A row's leading pieces are usually its *identity* rather than its
+    /// content — a search result's `path:line` — and a window that slid them
+    /// away left rows that could not be told apart. They stay put and the
+    /// rest of the row slides under them, the same relationship the indent
+    /// and checkbox glyphs already have with the body.
+    #[serde(default)]
+    pub pinned: u32,
+    /// Char index, in the whole row, where the span the row exists to show
+    /// starts. Must be at or after `pinned`; a span inside the pinned head is
+    /// always visible anyway.
+    pub start: u32,
+    /// Length of the span, in chars. Zero is allowed and means a point.
+    pub len: u32,
+}
+
+/// Visual role for a `Button`. Maps to theme keys at render time —
+/// plugins describe intent, not colors. See §7 of the design doc.
+#[derive(Debug, Clone, Copy, Default, Serialize, Deserialize, TS, PartialEq, Eq)]
+#[serde(rename_all = "camelCase")]
+#[ts(export, rename_all = "camelCase")]
+pub enum ButtonKind {
+    /// A regular action button — no special emphasis.
+    #[default]
+    Normal,
+    /// The primary affirmative action (e.g. "Submit", "Replace All").
+    /// Rendered with bold weight; the focused state uses the active
+    /// menu/selection theme keys.
+    Primary,
+    /// A destructive action (e.g. "Delete"). Rendered with the
+    /// theme's error/warning palette.
+    Danger,
+}
+
+/// Declarative widget tree. Each variant is one node; nested
+/// composition is via `Row { children }` / `Col { children }`.
+///
+/// `key` is the stable identifier used by the reconciler to match a
+/// node across `MountWidgetPanel` / `UpdateWidgetPanel` calls — when
+/// the plugin re-emits a Spec, instance state (cursor offset, scroll,
+/// expanded keys, hover) is preserved on nodes whose `key` matches.
+/// Plugins should provide stable keys for any widget that owns
+/// instance state; stateless widgets (`HintBar`, `Toggle`, `Button`,
+/// `Spacer`) can omit it.
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[serde(
+    tag = "kind",
+    rename_all = "camelCase",
+    rename_all_fields = "camelCase"
+)]
+#[ts(export, rename_all = "camelCase")]
+pub enum WidgetSpec {
+    /// Horizontal layout: children laid out left-to-right.
+    Row {
+        children: Vec<WidgetSpec>,
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        key: Option<String>,
+        /// When true, children that don't fit on one line reflow onto
+        /// additional lines (growing the row's height) instead of being
+        /// truncated. Children are never split — wrap happens at child
+        /// boundaries — so wrap a logical group (e.g. a toggle + its
+        /// accelerator) in a nested non-wrapping `Row` to keep it intact.
+        /// Ignored when the row contains multi-line (block) children.
+        #[serde(default)]
+        wrap: bool,
+    },
+    /// Vertical layout: children stacked top-to-bottom.
+    Col {
+        children: Vec<WidgetSpec>,
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        key: Option<String>,
+    },
+    /// Keyboard-hint footer (one row, comma-separated `<keys> <label>` items).
+    HintBar {
+        entries: Vec<HintEntry>,
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        key: Option<String>,
+    },
+    /// Boolean toggle, rendered as `[v] label` / `[ ] label`. The
+    /// `focused` flag controls the focus-styling overlay; the host
+    /// will own focus once the keymap layer is wired (today the
+    /// plugin passes it explicitly per render).
+    Toggle {
+        checked: bool,
+        label: String,
+        #[serde(default)]
+        focused: bool,
+        /// Neither checked nor unchecked: renders a neutral `[-]` chip.
+        /// Used for values that are unset and inherit from a lower
+        /// config layer (issue #2345) — a definite `[ ]` would read as
+        /// "the user turned this off". Defaults to `false`.
+        #[serde(default)]
+        indeterminate: bool,
+        /// Form-style layout: render `label: [v]` (label first, chip
+        /// after) instead of the default `[v] label`. In this layout
+        /// the toggle's hit area covers only the chip, so clicks on
+        /// the label don't flip the value. Defaults to `false`.
+        #[serde(default)]
+        label_first: bool,
+        /// Pad the label to this display width in `label_first`
+        /// layout so a column of controls aligns their chips. `0` =
+        /// no padding. Defaults to `0`.
+        #[serde(default)]
+        label_width: u32,
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        key: Option<String>,
+    },
+    /// Numeric form field, rendered as `label: [ 42 ]`. Adjusted by
+    /// the keyboard (Left/Down decrement, Right/Up increment) in
+    /// `step` units, clamped to `[min, max]` when set; Enter, a click
+    /// on the value cell, or typing a digit begins an in-place edit
+    /// that Enter commits (Tab commits before it advances) and Escape
+    /// abandons. The draft is the widget's own state; the plugin sees
+    /// the `change` a commit fires.
+    ///
+    /// Like `Text`/`List`, the *value* is host-owned instance state
+    /// after first render: the spec's `value` is initial-only. Every
+    /// adjustment fires `widget_event { event_type: "change",
+    /// payload: { value } }`; plugins can also push a new value via
+    /// `WidgetMutation::SetNumber`.
+    Number {
+        /// Initial value. Read at first render only; instance state
+        /// takes over thereafter.
+        #[serde(default)]
+        value: f64,
+        /// Inclusive lower bound. Values clamp to it when set.
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        min: Option<f64>,
+        /// Inclusive upper bound. Values clamp to it when set.
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        max: Option<f64>,
+        /// Amount added / subtracted per step. Defaults to `1`.
+        #[serde(default = "default_number_step")]
+        step: f64,
+        /// Render the value as an integer (no decimal point). The
+        /// value is still carried as `f64`; only the display is
+        /// truncated. Defaults to `false`.
+        #[serde(default)]
+        integer: bool,
+        /// Render the value as a percentage: display is `value * 100`
+        /// suffixed with `%` (so a stored `0.25` shows as `25%`).
+        /// Mirrors the Settings UI's float-as-percent controls.
+        /// Defaults to `false`.
+        #[serde(default)]
+        percent: bool,
+        /// Optional label rendered before the value cell. Empty =
+        /// omitted.
+        #[serde(default, skip_serializing_if = "String::is_empty")]
+        label: String,
+        /// Whether this widget has visual focus. Initial-only once
+        /// the host owns focus (same as `Toggle`).
+        #[serde(default)]
+        focused: bool,
+        /// Pad the label to this display width so a column of
+        /// controls aligns their value cells. `0` = no padding.
+        #[serde(default)]
+        label_width: u32,
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        key: Option<String>,
+    },
+    /// Single-select dropdown, rendered as `label: [option ▼]`.
+    /// Enter/Space (or a click on the button) opens the option list
+    /// inline below the button; Up/Down move the live selection and
+    /// Enter/Space/Esc close it (a click on an option row also
+    /// selects + closes).
+    ///
+    /// Like `List`, the *selected index* is host-owned instance
+    /// state after first render; the spec's `selected_index` is a
+    /// seed only. Every change fires `widget_event { event_type:
+    /// "change", payload: { index, value } }`; plugins can also set
+    /// it via `WidgetMutation::SetDropdown`.
+    Dropdown {
+        /// The selectable options, in display order.
+        options: Vec<String>,
+        /// Initial selected index into `options`. Read at first
+        /// render only; instance state takes over thereafter.
+        /// Clamped to `[0, options.len())`.
+        #[serde(default = "default_dropdown_selected")]
+        selected_index: i32,
+        /// Optional label rendered before the value button. Empty =
+        /// omitted.
+        #[serde(default, skip_serializing_if = "String::is_empty")]
+        label: String,
+        /// Whether this widget has visual focus. Initial-only once
+        /// the host owns focus.
+        #[serde(default)]
+        focused: bool,
+        /// Pad the label to this display width so a column of
+        /// controls aligns their value buttons. `0` = no padding.
+        #[serde(default)]
+        label_width: u32,
+        /// Whether the option list is expanded inline below the value
+        /// button (`▲` arrow + one row per visible option). Closed
+        /// (`▼`) by default.
+        #[serde(default)]
+        open: bool,
+        /// First visible option row when `open` and the list is
+        /// taller than its window. Defaults to `0`.
+        #[serde(default)]
+        scroll_offset: u32,
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        key: Option<String>,
+    },
+    /// Two-column ordered-subset picker: an `Available` column (the
+    /// options not yet chosen) and an ordered `Included` column.
+    /// Move an item across the columns with Space, reorder the
+    /// included column with PageUp/PageDown, switch the active column
+    /// with Left/Right, and move the cursor with Up/Down.
+    ///
+    /// The *included* list (order matters) is host-owned instance
+    /// state after first render; the spec's `included` is a seed
+    /// only. `excluded` names options that belong to a sibling list
+    /// and must not appear in this one's Available column (the
+    /// cross-exclusion the Settings status-bar picker uses). Every
+    /// change fires `widget_event { event_type: "change", payload:
+    /// { included: [values] } }`; plugins can also set the order via
+    /// `WidgetMutation::SetDualIncluded`.
+    DualList {
+        /// The full universe of selectable options.
+        options: Vec<DualListOption>,
+        /// Initial ordered set of included option values. Seed only;
+        /// instance state takes over after first render.
+        #[serde(default)]
+        included: Vec<String>,
+        /// Option values owned by a sibling list — filtered out of
+        /// this list's Available column so the two never overlap.
+        #[serde(default)]
+        excluded: Vec<String>,
+        /// Optional label rendered above the columns. Empty =
+        /// omitted.
+        #[serde(default, skip_serializing_if = "String::is_empty")]
+        label: String,
+        /// Whether this widget has visual focus. Initial-only once
+        /// the host owns focus.
+        #[serde(default)]
+        focused: bool,
+        /// Which column the cursor sits in: `true` = Included,
+        /// `false` = Available. Seed only, like `included` — host
+        /// instance state takes over after first render. Hosts that
+        /// drive the control themselves (Settings) keep re-supplying
+        /// it so the rendered cursor tracks their own state.
+        #[serde(default)]
+        active_included: bool,
+        /// Cursor row within the Available column. Seed only (see
+        /// `active_included`).
+        #[serde(default)]
+        available_cursor: u32,
+        /// Cursor row within the Included column. Seed only (see
+        /// `active_included`).
+        #[serde(default)]
+        included_cursor: u32,
+        /// Optional one-line key hint rendered under the columns
+        /// (e.g. `↑↓:Move  Shift+←→:Add/Remove`). Empty = omitted.
+        /// The control's keys are not guessable from its shape, so
+        /// hosts are expected to supply their own localized copy.
+        #[serde(default, skip_serializing_if = "String::is_empty")]
+        hint: String,
+        /// Number of body rows the columns occupy. Plugin computes
+        /// from its viewport.
+        #[serde(default = "default_dual_visible_rows")]
+        visible_rows: u32,
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        key: Option<String>,
+    },
+    /// Action button, rendered as `[ Label ]` (or `[ Label ]` with
+    /// emphasized styling for `Primary`/`Danger`). Focused buttons
+    /// flip foreground/background using the active menu theme keys.
+    /// Set `bare` to drop the frame and render the label alone, and
+    /// `hover_style` to give it a look under the pointer.
+    ///
+    /// `intent` is the button's visual role (`Normal` / `Primary` /
+    /// `Danger`); the field is named `intent` rather than `kind`
+    /// because `kind` is the discriminator for the outer `WidgetSpec`
+    /// tag.
+    Button {
+        label: String,
+        #[serde(default)]
+        focused: bool,
+        #[serde(default)]
+        intent: ButtonKind,
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        key: Option<String>,
+        /// When true, the button renders in a muted style, is dropped
+        /// from the Tab cycle, and clicks on it are ignored. Use for
+        /// actions that aren't currently available against the
+        /// surrounding state (e.g. "Archive" on the base session). The
+        /// button still occupies its layout cell so the surrounding
+        /// row doesn't reshuffle when the disabled flag flips.
+        #[serde(default)]
+        disabled: bool,
+        /// When false, the button is dropped from the Tab cycle (but
+        /// still renders and stays clickable). Used for radio-style
+        /// groups — a row of buttons where only the *active* option
+        /// should be a Tab stop and ←/→ moves the selection within
+        /// the group, so Tab advances one stop per group rather than
+        /// one stop per option. Defaults to true (ordinary buttons
+        /// are tabbable).
+        #[serde(default = "default_true")]
+        focusable: bool,
+        /// Render the label alone — no `[ ]` frame, no focus-marker
+        /// gutter — turning the button into a bare *icon affordance*
+        /// (a `×` close glyph, a `▾` chevron) rather than a framed
+        /// action. Use it where the glyph itself is the control and a
+        /// frame would read as clutter; keep the default `false` for
+        /// anything with a word on it.
+        ///
+        /// This controls layout only; `hover_style` controls how the
+        /// button looks under the pointer.
+        #[serde(default)]
+        bare: bool,
+        /// Stretch the button across the full width it is laid out in:
+        /// the panel's content width, its share of an enclosing `Row`,
+        /// or the width an anchored popup settled on.
+        ///
+        /// This exists because focus / hover paint the button's *own*
+        /// cells: a natural-width button leaves the rest of its row
+        /// unhighlighted even when the surrounding container pads the
+        /// row out (a `LabeledSection` pads every child to its inner
+        /// width). Dropdown and context-menu entries are rows of a
+        /// menu, not free-standing actions, so their highlight has to
+        /// span the row.
+        ///
+        /// **It is a width, not a longer label.** The host sizes the
+        /// button's box to its content and lets the enclosing column
+        /// stretch it, so the label stays the label and how wide the
+        /// row is stays layout's answer — including an answer nobody
+        /// can predict, like a dock the user just dragged. It used to
+        /// be spelled by padding the label with spaces out to a width
+        /// the caller had to supply, which is why it once carried a
+        /// warning against using it inside an anchored popup that hugs
+        /// its content: a box sized by its own padded text cannot hug.
+        /// A box sized by its content can, and the stretch is then what
+        /// widens every row to the widest one — so a menu no longer
+        /// pads its labels to align them.
+        ///
+        /// A label too long for the width it is given is truncated at
+        /// the tail with an `…`.
+        #[serde(default)]
+        full_width: bool,
+        /// Style applied while the pointer is over this button. `None`
+        /// (the default) leaves it looking the same hovered as not.
+        ///
+        /// Hover is host state — it changes with mouse motion and no
+        /// plugin round-trip — so the plugin declares the *appearance*
+        /// once in the spec and the host applies it as the pointer
+        /// moves. Nothing crosses the plugin bridge on a hover.
+        ///
+        /// It outranks focus styling while both apply: the pointer is
+        /// the more immediate signal, and the one the user is actively
+        /// driving.
+        ///
+        /// For a close glyph, `ui.tab_close_hover_fg` is the editor's
+        /// shared "close affordance under the pointer" key — the tab
+        /// `×` and the file explorer's `×` both read it, so a plugin
+        /// naming it gets the same highlight users already know.
+        ///
+        /// `Button` is the first kind to carry this; other widget kinds
+        /// adopt it with the same field plus a `ctx.is_hovered(key)`
+        /// check in their renderer.
+        #[ts(type = "Partial<OverlayOptions>")]
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        hover_style: Option<OverlayOptions>,
+        /// How the button looks at rest — not focused, not hovered,
+        /// not disabled. `None` (the default) keeps the look its
+        /// `intent` gives it.
+        ///
+        /// The sibling of `hover_style`, and the answer to the same
+        /// question one state earlier: `hover_style` could say what a
+        /// control looks like under the pointer, but nothing could say
+        /// that it is a control at all. A bare button is just its
+        /// label, so without this the only way to mark a word as
+        /// clickable was to spend a colour on it — and `intent` offers
+        /// three fixed looks, none of them an underline.
+        ///
+        /// Focus, hover and disabled each still win over it, in that
+        /// order of immediacy.
+        #[ts(type = "Partial<OverlayOptions>")]
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        style: Option<OverlayOptions>,
+    },
+    /// Horizontal whitespace eater. In a `Row`, produces `cols`
+    /// spaces (or fills remaining width if `flex: true`); in a
+    /// `Col`, produces `cols` blank lines (`flex` is ignored).
+    ///
+    /// `flex: true` distributes the row's leftover width — `panel
+    /// width - sum(non-flex child widths)` — across flex spacers.
+    /// With multiple flex spacers in one row the leftover splits
+    /// evenly. With no leftover (children already exceed panel
+    /// width), the flex spacer collapses to zero.
+    Spacer {
+        #[serde(default)]
+        cols: u32,
+        #[serde(default)]
+        flex: bool,
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        key: Option<String>,
+    },
+    /// Full-width horizontal rule. The host draws `ch` repeated across
+    /// the panel's inner content width, so the separator always matches
+    /// the rendered width — including a user-dragged dock — without the
+    /// plugin computing the width itself. (A plugin-computed width forks
+    /// the host's authoritative width and drifts on resize/drag; this is
+    /// the declarative equivalent of `Spacer { flex: true }`, which fills
+    /// the row without the plugin knowing the gap size.)
+    Divider {
+        /// Glyph repeated across the full width. Defaults to `─`.
+        #[serde(default = "default_divider_char")]
+        ch: String,
+        /// Optional whole-rule styling (e.g. a dim `fg`). Same shape as a
+        /// styled segment's `style`.
+        #[ts(type = "Partial<OverlayOptions>")]
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        style: Option<OverlayOptions>,
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        key: Option<String>,
+    },
+    /// Vertical list of pre-rendered rows with host-managed
+    /// selection styling, click routing, **and virtual scrolling**.
+    ///
+    /// The plugin passes the *full dataset* of items + a
+    /// `visible_rows` count (typically the panel's available
+    /// height). The host owns the scroll offset as widget instance
+    /// state, keyed by the spec's `key` — so a `key` is required for
+    /// any List that should preserve scroll across re-renders. The
+    /// scroll offset auto-clamps to keep `selected_index` in view;
+    /// plugins never compute scroll math.
+    ///
+    /// Each item is one rendered row (`TextPropertyEntry`).
+    /// `item_keys` is a parallel array of stable per-item identifiers
+    /// the plugin uses to map a click event back to its model
+    /// (e.g. `"file:5/match:23"`); the array length must match
+    /// `items.len()`. Missing keys default to empty string.
+    ///
+    /// `selected_index` is the *absolute* index into `items`
+    /// (`-1` for no selection); the host paints the selected row
+    /// with `ui.menu_active_bg` extended to line end. Clicks fire
+    /// `widget_event { event_type: "select",
+    ///                payload: { index, key } }`
+    /// where `index` is the absolute (not visible-window) index.
+    List {
+        items: Vec<crate::text_property::TextPropertyEntry>,
+        /// Optional parallel array of per-item widget specs. When
+        /// non-empty it **overrides** `items`: each entry is rendered
+        /// via the normal widget renderer into a multi-row block
+        /// (e.g. a `LabeledSection` for a rounded "card"/"pill"), and
+        /// the list lays items out, selects, scrolls, and routes
+        /// clicks in *item* units — one card per logical item,
+        /// regardless of how many terminal rows it occupies. All
+        /// cards share a uniform height (the tallest item's row count;
+        /// shorter items pad). `item_keys` / `selected_index` are
+        /// still indexed per item. Interactive widgets nested inside a
+        /// card aren't routed yet — the whole card is one `select`
+        /// hit. Leave empty for the classic one-row-per-`items` list.
+        #[serde(default, skip_serializing_if = "Vec::is_empty")]
+        item_specs: Vec<WidgetSpec>,
+        #[serde(default)]
+        item_keys: Vec<String>,
+        #[serde(default = "default_list_selected")]
+        selected_index: i32,
+        /// Number of rows of the panel's available height the list
+        /// should occupy. `None` (omitted) = auto: the host sizes the
+        /// window from the panel height it already knows, so the
+        /// plugin never re-derives layout arithmetic. An explicit
+        /// value pins the window to that many rows, exactly as
+        /// before. (Legacy fallback when the host has no height for
+        /// the surface: 20 rows.)
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        visible_rows: Option<u32>,
+        /// Whether `Tab` / `Shift+Tab` will land focus on this
+        /// list. Defaults to `true` (lists are normal tabbable
+        /// widgets). Picker-style usage typically sets this to
+        /// `false` so Tab moves between the filter input and
+        /// the action buttons, while Up/Down on the focused
+        /// filter still forwards to the list via host smart-key
+        /// dispatch.
+        #[serde(default = "default_true")]
+        focusable: bool,
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        key: Option<String>,
+    },
+    /// Hierarchical list with host-managed expand/collapse, selection
+    /// styling, click routing, and virtual scrolling.
+    ///
+    /// The plugin emits its tree as a depth-first flat list of
+    /// `TreeNode`s (each carrying a `depth` and `has_children` flag)
+    /// plus a parallel `item_keys` array. The host filters out
+    /// descendants of collapsed nodes when rendering the visible
+    /// window, so the plugin always emits the *full* tree — toggling
+    /// expansion is host-owned (instance state) rather than the
+    /// plugin re-emitting on every `▶`/`▼` press.
+    ///
+    /// `expanded_keys` is initial-only (seeded into instance state
+    /// on first render); subsequent expansion changes flow through
+    /// `WidgetCommand::Key` (Right/Left) or click on the disclosure
+    /// glyph — neither requires the plugin to re-emit. Plugins that
+    /// need to react to expansion changes listen for
+    /// `widget_event { event_type: "expand" }`.
+    ///
+    /// `selected_index` is the *absolute* index into `nodes`
+    /// (initial-only; instance state takes over). Click on a row
+    /// fires `widget_event { event_type: "select", payload: { index,
+    /// key } }`; click on the disclosure column fires
+    /// `widget_event { event_type: "expand", payload: { index, key,
+    /// expanded } }`. Enter/Space on the focused tree fires
+    /// `widget_event { event_type: "activate", payload: { index, key } }`.
+    Tree {
+        nodes: Vec<TreeNode>,
+        #[serde(default)]
+        item_keys: Vec<String>,
+        #[serde(default = "default_tree_selected")]
+        selected_index: i32,
+        /// Rows of the panel's available height the tree occupies.
+        /// `None` (omitted) = auto from the host-known panel height;
+        /// an explicit value pins the window as before. (Legacy
+        /// fallback when the host has no height: 20 rows.)
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        visible_rows: Option<u32>,
+        /// Initial-only set of expanded item keys. Once the widget
+        /// has rendered, the host's instance-state `expanded_keys`
+        /// is authoritative; updating this field on subsequent specs
+        /// has no effect (use `WidgetMutation::SetExpandedKeys` to
+        /// override host state).
+        #[serde(default)]
+        expanded_keys: Vec<String>,
+        /// When true, every node with `checked: Some(_)` renders a
+        /// `[v]` / `[ ]` glyph and emits a `toggle` hit area over
+        /// the glyph. Click on the glyph fires `widget_event {
+        /// event_type: "toggle", payload: { key, checked: <new> } }`;
+        /// the plugin updates its model and pushes the new state
+        /// back via `WidgetMutation::SetCheckedKeys`.
+        #[serde(default)]
+        checkable: bool,
+        /// Fixed number of screen rows each node occupies. `1` (the
+        /// default) is the classic single-line tree. A larger value
+        /// renders every node as a card of that many rows — the
+        /// node's primary `text` plus its `extra_lines`, blank-padded
+        /// to this height. Windowing/scroll stay node-based (the node
+        /// budget becomes `visible_rows / item_height`), so all
+        /// existing single-line trees are unaffected.
+        #[serde(default = "default_tree_item_height")]
+        item_height: u32,
+        /// When true (and `item_height > 1`), each *card* node — a
+        /// leaf carrying `extra_lines` and no checkbox — renders
+        /// inside a rounded border (`╭─…─╮` / `╰─…─╯` spanning the
+        /// panel width), taking `item_height + 2` rows: top border,
+        /// `item_height` content rows, bottom border. Non-card nodes
+        /// (e.g. folder headers) render as plain single rows instead
+        /// of being blank-padded to the card height. Restores the
+        /// bordered-pill look the Orchestrator dock's card density
+        /// had before it moved to a tree (issue #2703). Scroll and
+        /// selection stay node-based; rows per node just vary.
+        #[serde(default)]
+        card_borders: bool,
+        /// Columns of indent per depth level. `2` (the default) is the
+        /// classic tree step. A panel only a couple of dozen columns wide
+        /// that nests several levels deep can drop to `1` and spend those
+        /// columns on node text instead — each level is still marked by
+        /// the disclosure glyph (or the blank standing in for one).
+        #[serde(default = "default_tree_indent_cols")]
+        indent_cols: u32,
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        key: Option<String>,
+    },
+    /// Single-line text input, rendered as `[value]` with a cursor
+    /// highlight at the byte position given by `cursor_byte` (when
+    /// `cursor_byte >= 0`). When `value` is empty and the input is
+    /// not focused, `placeholder` (if set) is shown instead.
+    ///
+    /// v1 is a *render-only* widget: the host owns visual cursor
+    /// styling and theme-keyed focus, but the plugin still owns the
+    /// value string and cursor position. Keystrokes (Backspace,
+    /// arrows, character input) flow through the plugin's existing
+    /// `defineMode` + `mode_text_input` plumbing; the plugin re-emits
+    /// the spec on every change. The keymap-routing layer (host
+    /// claims widget keys before the plugin sees them) lands in a
+    /// later commit.
+    /// Text input — single-line (`rows == 1`, default) or multi-line
+    /// (`rows > 1`). The host owns `value` and `cursor_byte` as
+    /// instance state once the widget renders for the first time;
+    /// the spec's values are initial-only.
+    ///
+    /// Single-line vs multi-line behaviour is selected by `rows`:
+    /// * `rows == 1` — renders as `[value]` with the cursor pinned
+    ///   to a constant `field_width` (head-truncate when the value
+    ///   exceeds it). `Enter` advances focus (form-like UX).
+    ///   `Up`/`Down` are no-ops. `Home`/`End` jump to the start /
+    ///   end of the whole value.
+    /// * `rows > 1` — renders as `rows` lines tall (padded with
+    ///   blanks when `value` is shorter). `Enter` inserts a newline
+    ///   at the cursor. `Up`/`Down` move between lines (clamped to
+    ///   each line's column count). `Home`/`End` jump within the
+    ///   current line. The host auto-scrolls vertically to keep
+    ///   the cursor's line visible.
+    ///
+    /// Smart-key dispatch (`WidgetCommand::Key`) selects the right
+    /// behaviour from `rows`. Plugins that want a different `Enter`
+    /// binding intercept the key in their own mode binding before
+    /// dispatching it through the smart-key router.
+    ///
+    /// `label` (when non-empty) renders inline before `[` for
+    /// single-line, and as a row above the editing region for
+    /// multi-line. `placeholder` shows when `value` is empty and
+    /// the field is unfocused (first row only for multi-line).
+    /// `field_width` controls visible column width: `0` = auto-fit
+    /// (single-line) or panel width (multi-line). `max_visible_chars`
+    /// is a single-line soft cap applied after the field-width pad
+    /// (`0` = no cap; ignored when `rows > 1`).
+    Text {
+        /// Initial text. Spec value is read at first render only;
+        /// instance state takes over thereafter.
+        #[serde(default)]
+        value: String,
+        /// Initial byte-offset cursor within `value`. Negative
+        /// (encoded as `i32` in JSON) means "no cursor" — clamped
+        /// to `[0, value.len()]` host-side.
+        #[serde(default = "default_cursor_byte")]
+        cursor_byte: i32,
+        /// Whether this widget has visual focus.
+        #[serde(default)]
+        focused: bool,
+        /// Optional label rendered before / above the editing
+        /// region. Empty = omitted.
+        #[serde(default, skip_serializing_if = "String::is_empty")]
+        label: String,
+        /// Placeholder shown when unfocused and `value` is empty.
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        placeholder: Option<String>,
+        /// Number of visible rows of editing region. `0` falls back
+        /// to `1` (single-line). `1` = single-line behaviour;
+        /// `>= 2` = multi-line behaviour. See the type-level doc
+        /// for the per-mode semantics.
+        #[serde(default = "default_text_rows")]
+        rows: u32,
+        /// Visible column width. `0` = auto-fit (single-line) or
+        /// panel width (multi-line). When set, single-line
+        /// head-truncates with `…` and multi-line tail-truncates
+        /// per-line.
+        #[serde(default)]
+        field_width: u32,
+        /// Single-line soft cap on visible chars after the
+        /// `field_width` pad. `0` = no cap. Ignored when `rows > 1`.
+        #[serde(default)]
+        max_visible_chars: u32,
+        /// Stretch the visible field to fill the available
+        /// width of the enclosing container. Overrides
+        /// `field_width` when set: the renderer computes
+        /// `panel_width - label_overhead - bracket_overhead` as
+        /// the effective visible width. Multi-line widgets
+        /// already fill the panel width by default; this flag is
+        /// most useful for single-line inputs inside a
+        /// `LabeledSection` or a flexible row.
+        #[serde(default)]
+        full_width: bool,
+        /// Optional completion candidates. When non-empty AND
+        /// `label` is non-empty (the chrome trigger), the
+        /// renderer paints a popup directly under the input,
+        /// inside a unified box: the input's normal `╰─...─╯`
+        /// bottom border becomes a dimmed `┄` separator, the
+        /// labeled section's side borders extend down through
+        /// the candidate rows, and a single `╰─...─╯` bottom
+        /// closes the whole block. Candidates render left-
+        /// aligned with the input's text (the position right
+        /// after `[`), with the host-managed selected index
+        /// highlighted.
+        ///
+        /// Smart-key dispatch on a focused Text-with-completions:
+        /// Up/Down moves selection (host-internal, no event),
+        /// Tab fires `completion_accept` with the selected
+        /// candidate, Enter / Escape fire `completion_dismiss`
+        /// (the dispatcher's normal "Enter focus-advance / Esc
+        /// close panel" only runs once the popup is closed).
+        ///
+        /// Plugins push candidates in response to the text
+        /// widget's `change` event via
+        /// `WidgetMutation::SetCompletions`. An empty `items`
+        /// closes the popup.
+        #[serde(
+            default,
+            skip_serializing_if = "Vec::is_empty",
+            with = "completion_items_serde"
+        )]
+        #[ts(type = "Array<string | CompletionItem>")]
+        completions: Vec<CompletionItem>,
+        /// How many candidate rows the popup paints at once
+        /// when it opens. Excess candidates stay reachable
+        /// via Up/Down (host auto-scrolls to keep selection
+        /// in view) or the mouse wheel; a thumb glyph paints
+        /// in the right edge of the popup whenever there's
+        /// more to scroll. `0` (default) falls back to `5`.
+        #[serde(default)]
+        completions_visible_rows: u32,
+        /// Paint the caret as a REVERSED block cell inside the row
+        /// (in addition to publishing the hardware-cursor position).
+        /// Modal form surfaces (e.g. Settings) use this — a hardware
+        /// cursor isn't shown over a modal, so the block cell is the
+        /// only visible caret. Defaults to `false`.
+        #[serde(default)]
+        block_caret: bool,
+        /// Selection byte range within `value` (`start`, `end`), shown
+        /// with the selection background while the widget is focused.
+        /// `-1` for either end = no selection. Seed-only, like
+        /// `cursor_byte`: once host-owned instance state exists, the
+        /// editor's own selection wins. Mirrors `Number`'s
+        /// `edit_sel_start`/`edit_sel_end`.
+        #[serde(default = "default_neg_one")]
+        sel_start: i32,
+        #[serde(default = "default_neg_one")]
+        sel_end: i32,
+        /// Form label-column width. When `> 0` (and `label` is set) the
+        /// single-line field pads the label to this column and separates
+        /// it from the value with `: `, so a column of `Text`, `Toggle`,
+        /// `Number`, and `Dropdown` controls aligns their value cells
+        /// (the Settings entry dialog sets it to the page's max label
+        /// width). `0` (default) keeps the compact `label [value]` form
+        /// plugins get by default. Clamped to keep the cell on-screen on
+        /// narrow surfaces.
+        #[serde(default)]
+        label_width: u32,
+        /// Reject every mutating operation (typing, Backspace/Delete,
+        /// Cut, Paste) while keeping caret motion, selection, and Copy.
+        /// Implied by `markdown`.
+        #[serde(default)]
+        read_only: bool,
+        /// Render `value` as a markdown *document* (multi-line only,
+        /// `rows > 1`): the host renders it through the same markdown
+        /// engine as LSP hover docs — headings, emphasis, inline code,
+        /// links, syntax-highlighted fences — word-wrapped to the
+        /// widget's width. The caret, selection, and Copy operate on
+        /// the rendered plain text, so what you copy is what you see.
+        /// Markdown mode is **forcibly read-only**: the value only
+        /// changes via a spec update.
+        #[serde(default)]
+        markdown: bool,
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        key: Option<String>,
+    },
+    /// Visual grouping container: renders a rounded thin border
+    /// around a single child widget, with `label` printed as a
+    /// top-left legend overlapping the border (HTML `<fieldset>`
+    /// semantics).
+    ///
+    /// Layout (border drawn with `╭─╮│╰─╯`):
+    /// ```text
+    /// ╭─ Label ──────────────────╮
+    /// │ <child rendered content> │
+    /// ╰──────────────────────────╯
+    /// ```
+    ///
+    /// Width: the section always occupies the full `panel_width`
+    /// passed down by its parent container. The child is rendered
+    /// with `panel_width - 4` (two border columns + two padding
+    /// columns) so widgets that honour `full_width` size
+    /// themselves to the inner area.
+    ///
+    /// The child can be any single `WidgetSpec` — typically a
+    /// `Text` input, but a `Toggle`/`Button`/nested `Col` also
+    /// works. Focus, hit areas and cursor positions bubble up
+    /// from the child unchanged, shifted by the section's border
+    /// offset (1 row down, 2 columns in).
+    LabeledSection {
+        /// Legend text printed in the top border. Empty = no
+        /// legend (the top border becomes one unbroken line).
+        #[serde(default)]
+        label: String,
+        /// The single wrapped widget. Boxed because `WidgetSpec`
+        /// is recursive.
+        child: Box<WidgetSpec>,
+        /// When this section is a Block child of a Row, request
+        /// `width_pct` percent of the row's `panel_width` instead
+        /// of the equal-split default. Multiple siblings with
+        /// `width_pct` set sum to ≤ 100; the remainder splits
+        /// equally among siblings without an explicit width.
+        /// Out-of-range values (0 or > 100) fall back to the
+        /// equal-split path.
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        width_pct: Option<u32>,
+        /// When this section is a Block child of a Row, request exactly
+        /// this many columns. Takes precedence over `width_pct`.
+        ///
+        /// A percent cannot express "a third of the row": the integer
+        /// rounding does not divide, so three equal siblings either
+        /// overflow the panel — and the host wraps the last one onto a
+        /// line of its own — or leave a ragged remainder that all lands
+        /// on one side. Columns are what a caller with a measure in mind
+        /// actually has, and asking in them is exact.
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        width_cols: Option<u32>,
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        key: Option<String>,
+        /// How the section's own chrome — its border and its legend —
+        /// looks while `key` is the hovered widget.
+        ///
+        /// A section emits no hit area of its own, so it never becomes
+        /// the hovered widget by being pointed at. Give it the key of
+        /// the control inside it and the frame answers with that
+        /// control: a card whose rows share one key lights as a card
+        /// rather than one row at a time.
+        #[ts(type = "Partial<OverlayOptions>")]
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        hover_style: Option<OverlayOptions>,
+    },
+    /// Reserve a rectangle in the widget layout for the host to
+    /// natively paint the editor `Window` identified by
+    /// `window_id`. The widget itself renders only blank lines
+    /// so subsequent passes (split tree, terminal grids, syntax
+    /// highlighting, decorations) can be drawn into the
+    /// reserved cells by the existing per-window render path.
+    ///
+    /// `rows` controls the embed's height. Width is whatever
+    /// the parent container allocates (`panel_width` for a
+    /// direct Col child; the block's `column_width` inside a
+    /// Row's horizontal-zip path). Used by Orchestrator's open
+    /// dialog so the preview pane shows a live render of the
+    /// highlighted session.
+    WindowEmbed {
+        /// Numeric editor-window id, matching `WindowId(N).0`.
+        /// `0` (or any unknown id) renders empty placeholder
+        /// rows without dispatching the per-window render.
+        /// `u32` rather than `u64` to keep the TS binding a
+        /// plain `number`; window ids never exceed 4B in
+        /// practice.
+        window_id: u32,
+        /// Number of visible rows the embed should occupy.
+        rows: u32,
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        key: Option<String>,
+    },
+    /// Imperative-virtual-buffer escape hatch. The plugin supplies
+    /// `TextPropertyEntry[]` exactly as it would for
+    /// `setVirtualBufferContent`; the host inlines those entries into
+    /// the rendered panel without further interpretation. Used during
+    /// migration to wrap existing hand-rolled rendering inside a new
+    /// widget panel.
+    Raw {
+        entries: Vec<crate::text_property::TextPropertyEntry>,
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        key: Option<String>,
+    },
+    /// Float `child` over the rest of the layout instead of
+    /// consuming vertical space. Placed inside a `Col`, the
+    /// overlay anchors at the row it would have occupied if it
+    /// were a regular child — but the rows below it DO NOT
+    /// shift down. At paint time the overlay is drawn last,
+    /// over whatever's beneath it, like a tooltip / popup.
+    ///
+    /// Use case: dropdown completions, hover popups, transient
+    /// hints that should appear right next to the focused
+    /// widget without reflowing the rest of the panel each
+    /// time they show / hide.
+    ///
+    /// Hit testing: overlays paint on top, so clicks inside an
+    /// overlay's region go to the overlay (not whatever's
+    /// underneath). Tab cycle: the host's `collect_tabbable`
+    /// walks into the overlay's child like any other widget;
+    /// give the child a `key` if you want it focusable, or
+    /// leave it keyless to keep it out of the cycle.
+    Overlay {
+        child: Box<WidgetSpec>,
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        key: Option<String>,
+    },
+
+    /// A focus and event scope around a subtree — the unit a plugin
+    /// composes reusable pieces with. Renders its child transparently
+    /// (no chrome, no rows of its own); what it adds is *behavioural*
+    /// scoping:
+    ///
+    /// * **Focus trap**: Tab / Shift+Tab cycle among the focusable
+    ///   widgets *inside* the component instead of the whole panel —
+    ///   a picker or dialog subtree keeps its own ring without any
+    ///   hand-interleaved focus code.
+    /// * **Stable identity**: the component's `key` names the subtree
+    ///   for keyed reconciliation and targeted swaps.
+    ///
+    /// This is deliberately composition, not an open component
+    /// registry: behaviour stays host-side and synchronous, the wire
+    /// format stays closed, and every frontend can paint the subtree
+    /// because it is made of kinds they already know.
+    Component {
+        child: Box<WidgetSpec>,
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        key: Option<String>,
+    },
+
+    /// A popup layer as a first-class tree node: the child either
+    /// paints OVER the panel's rows like an `Overlay` (the default)
+    /// or, with `screen_space`, escapes the panel's clipping and is
+    /// painted at screen level through the same host channel the
+    /// Dropdown pop-over uses. Either way the popup is part of the
+    /// tree and hit-tests through the same layout-box walk (its box
+    /// is pointer-opaque). Introduced additively: the vocabulary
+    /// change is backward-compatible and frontends that predate it
+    /// simply don't receive it until plugins emit it.
+    Popup {
+        child: Box<WidgetSpec>,
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        key: Option<String>,
+        /// Anchor `[row, col]` in the panel's inner coordinates the
+        /// popup drops from (the host resolves the final screen rect
+        /// — opening below the anchor, flipping above near the frame
+        /// edge, clamped on screen). `None` anchors at the popup's
+        /// own position in the tree.
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        anchor: Option<[u32; 2]>,
+        /// When true, the popup escapes the panel's clipping and is
+        /// painted at screen level (what the dropdown pop-over does);
+        /// false keeps it panel-clipped like `Overlay`.
+        #[serde(default)]
+        screen_space: bool,
+    },
+}
+
+impl WidgetSpec {
+    /// Iterate this widget's immediate child specs in declaration
+    /// order. Container kinds (`Row`, `Col`, `LabeledSection`)
+    /// return their nested children; leaf kinds return an empty
+    /// iterator.
+    ///
+    /// Generic tree walkers (focus dispatch, hit-area lookup,
+    /// scrollable-widget detection, instance-state mutation) call
+    /// this instead of pattern-matching every container variant
+    /// by hand, so adding a new container kind is a single update
+    /// here rather than touching every walker. The box is the
+    /// price for returning an iterator whose type depends on the
+    /// variant; the allocation is single-digit-byte and dwarfed
+    /// by everything else in the dispatch path.
+    /// The plugin's stable key for this widget, whatever its kind, or `None`
+    /// for an unkeyed one. Every kind that can carry a key is here; a kind
+    /// that cannot answers `None`.
+    pub fn key(&self) -> Option<&str> {
+        let k = match self {
+            WidgetSpec::Button { key, .. }
+            | WidgetSpec::Col { key, .. }
+            | WidgetSpec::Component { key, .. }
+            | WidgetSpec::Divider { key, .. }
+            | WidgetSpec::Dropdown { key, .. }
+            | WidgetSpec::DualList { key, .. }
+            | WidgetSpec::HintBar { key, .. }
+            | WidgetSpec::LabeledSection { key, .. }
+            | WidgetSpec::List { key, .. }
+            | WidgetSpec::Number { key, .. }
+            | WidgetSpec::Overlay { key, .. }
+            | WidgetSpec::Popup { key, .. }
+            | WidgetSpec::Raw { key, .. }
+            | WidgetSpec::Row { key, .. }
+            | WidgetSpec::Spacer { key, .. }
+            | WidgetSpec::Text { key, .. }
+            | WidgetSpec::Toggle { key, .. }
+            | WidgetSpec::Tree { key, .. }
+            | WidgetSpec::WindowEmbed { key, .. } => key,
+            #[allow(unreachable_patterns)]
+            _ => &None,
+        };
+        k.as_deref().filter(|k| !k.is_empty())
+    }
+
+    pub fn children(&self) -> Box<dyn Iterator<Item = &WidgetSpec> + '_> {
+        match self {
+            WidgetSpec::Row { children, .. } | WidgetSpec::Col { children, .. } => {
+                Box::new(children.iter())
+            }
+            WidgetSpec::LabeledSection { child, .. }
+            | WidgetSpec::Overlay { child, .. }
+            | WidgetSpec::Component { child, .. }
+            | WidgetSpec::Popup { child, .. } => Box::new(std::iter::once(child.as_ref())),
+            _ => Box::new(std::iter::empty()),
+        }
+    }
+
+    /// Mutable counterpart of [`children`]. Same set of container
+    /// kinds, same semantics — the iterator yields exclusive
+    /// references so walkers that mutate (e.g. `set_*_in_spec`)
+    /// can recurse generically.
+    pub fn children_mut(&mut self) -> Box<dyn Iterator<Item = &mut WidgetSpec> + '_> {
+        match self {
+            WidgetSpec::Row { children, .. } | WidgetSpec::Col { children, .. } => {
+                Box::new(children.iter_mut())
+            }
+            WidgetSpec::LabeledSection { child, .. }
+            | WidgetSpec::Overlay { child, .. }
+            | WidgetSpec::Component { child, .. }
+            | WidgetSpec::Popup { child, .. } => Box::new(std::iter::once(child.as_mut())),
+            _ => Box::new(std::iter::empty()),
+        }
+    }
+}
+
+/// Action a plugin can request the widget runtime to perform on a
+/// mounted panel. Bundled into a single `WidgetCommand` PluginCommand
+/// so the plugin's TypeScript layer exposes one routing method
+/// (`editor.widgetCommand(panel_id, action)`) rather than a fanout
+/// of per-key IPC.
+///
+/// All actions target the panel's currently focused widget (the host
+/// tracks focus per panel). They are fired by the plugin's mode
+/// bindings — Tab → `FocusAdvance{+1}`, Enter → `Activate`,
+/// Up/Down → `SelectMove{±1}`, Backspace → `TextInputKey{"Backspace"}`,
+/// printable chars (via `mode_text_input`) → `TextInputChar{"x"}`.
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[serde(
+    tag = "kind",
+    rename_all = "camelCase",
+    rename_all_fields = "camelCase"
+)]
+#[ts(export, rename_all = "camelCase")]
+pub enum WidgetAction {
+    /// Cycle focus to the next (`delta=+1`) or previous (`delta=-1`)
+    /// tabbable widget in declaration order. Wraps at the ends.
+    FocusAdvance { delta: i32 },
+    /// "Activate" the focused widget — fires a semantic event
+    /// keyed on widget kind: `Button` → `widget_event { event_type:
+    /// "activate" }`; `Toggle` → `widget_event { event_type:
+    /// "toggle", payload: { checked: !old } }`. No-op for other
+    /// kinds.
+    Activate,
+    /// Move the focused `List`'s selection by `delta`. Plugins
+    /// listen for `widget_event { event_type: "select" }` to mirror
+    /// the new index into their model. No-op when the focused
+    /// widget isn't a List.
+    SelectMove { delta: i32 },
+    /// Apply a non-printable editing key to the focused
+    /// `TextInput`: `"Backspace"`, `"Delete"`, `"Left"`, `"Right"`,
+    /// `"Home"`, `"End"`. Host computes the new value/cursor and
+    /// fires `widget_event { event_type: "change", payload: { value,
+    /// cursorByte } }`. No-op when the focused widget isn't a
+    /// TextInput or the key isn't recognised.
+    TextInputKey { key: String },
+    /// Append printable text to the focused `TextInput` at the
+    /// current cursor position. Used for the `mode_text_input`
+    /// fall-through path. Fires `widget_event` as for `TextInputKey`.
+    TextInputChar { text: String },
+    /// "Smart" keystroke dispatch — the host routes based on the
+    /// focused widget's kind without the plugin needing to know
+    /// what's focused. This is the recommended path for plugin
+    /// mode bindings: bind every relevant key to one handler that
+    /// calls `editor.widgetCommand(panel_id, key("Tab"))` etc.
+    ///
+    /// Dispatch table:
+    ///
+    /// | Key                                   | TextInput   | TextArea          | Toggle / Button | List       | Tree                | (no focus) |
+    /// |---------------------------------------|-------------|-------------------|-----------------|------------|---------------------|------------|
+    /// | `Tab`                                 | focus +1    | focus +1          | focus +1        | focus +1   | focus +1            | no-op      |
+    /// | `Shift+Tab`                           | focus -1    | focus -1          | focus -1        | focus -1   | focus -1            | no-op      |
+    /// | `Backspace` / `Delete`                | text-edit   | text-edit         | no-op           | no-op      | no-op               | no-op      |
+    /// | `Home` / `End`                        | text-edit   | line-start / -end | no-op           | no-op      | no-op               | no-op      |
+    /// | `Left`                                | text-edit   | text-edit         | no-op           | no-op      | collapse / parent   | no-op      |
+    /// | `Right`                               | text-edit   | text-edit         | no-op           | no-op      | expand              | no-op      |
+    /// | `Up`                                  | no-op       | line up           | no-op           | select -1  | select -1 (visible) | no-op      |
+    /// | `Down`                                | no-op       | line down         | no-op           | select +1  | select +1 (visible) | no-op      |
+    /// | `Enter`                               | focus +1    | insert `\n`       | activate        | activate   | activate            | no-op      |
+    /// | `Space`                               | char " "    | char " "          | activate        | activate   | activate            | no-op      |
+    /// | (anything else)                       | no-op       | no-op             | no-op           | no-op      | no-op               | no-op      |
+    ///
+    /// "no-op" still returns successfully — plugins can rely on the
+    /// command not erroring when the focused widget can't handle the
+    /// key. Plugins that want to fall back to their own behaviour
+    /// when the widget doesn't claim a key should bind those keys
+    /// to plugin-specific handlers instead.
+    Key { key: String },
+}
+
+/// Targeted in-place mutation of a mounted widget panel — the
+/// IPC fast path. Plugins use these when the model change touches
+/// one widget; the host applies the mutation directly to the
+/// panel's spec / instance state and re-renders without
+/// re-transmitting the full spec.
+///
+/// `UpdateWidgetPanel` remains the right tool for structural
+/// changes (adding/removing widgets, restructuring layout). Both
+/// paths preserve instance state via widget keys.
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[serde(
+    tag = "kind",
+    rename_all = "camelCase",
+    rename_all_fields = "camelCase"
+)]
+#[ts(export, rename_all = "camelCase")]
+pub enum WidgetMutation {
+    /// Set a `TextInput`'s value and (optionally) cursor byte.
+    /// Mutates instance state directly.
+    SetValue {
+        widget_key: String,
+        value: String,
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        cursor_byte: Option<i32>,
+    },
+    /// Set a `Text` widget's completion candidates (instance
+    /// state). Empty `items` closes the popup; non-empty opens
+    /// it and resets the selection to index 0. Plugins call
+    /// this from their `change` event handler after computing
+    /// candidates against the new value — same flow as
+    /// `setPromptSuggestions` for the legacy prompt UI.
+    SetCompletions {
+        widget_key: String,
+        #[serde(with = "completion_items_serde")]
+        #[ts(type = "Array<string | CompletionItem>")]
+        items: Vec<CompletionItem>,
+    },
+    /// Set a `Toggle`'s checked state. Mutates the Toggle's
+    /// `checked` field in the spec.
+    SetChecked { widget_key: String, checked: bool },
+    /// Set a `List`'s selected index (instance state).
+    SetSelectedIndex { widget_key: String, index: i32 },
+    /// Set a `Number` widget's value (instance state). The value is
+    /// clamped to the widget's `[min, max]` on the next render.
+    SetNumber { widget_key: String, value: f64 },
+    /// Set a `Dropdown` widget's selected index (instance state).
+    /// Clamped to `[0, options.len())` on the next render.
+    SetDropdown { widget_key: String, index: i32 },
+    /// Replace a `DualList` widget's ordered included set (instance
+    /// state). Values not present in the widget's `options` are
+    /// dropped on the next render.
+    SetDualIncluded {
+        widget_key: String,
+        included: Vec<String>,
+    },
+    /// Replace a `List`'s items + parallel `item_keys`. Mutates
+    /// the List in the spec.
+    SetItems {
+        widget_key: String,
+        items: Vec<crate::text_property::TextPropertyEntry>,
+        #[serde(default)]
+        item_keys: Vec<String>,
+    },
+    /// Replace a `Tree`'s expanded-keys instance state. Plugins use
+    /// this when a non-user action needs to drive expansion (e.g.
+    /// "expand all", reveal-on-search). `Right`/`Left` arrow keys
+    /// and disclosure clicks already mutate expansion host-side
+    /// without the plugin's involvement.
+    SetExpandedKeys {
+        widget_key: String,
+        keys: Vec<String>,
+    },
+    /// Set `checked` to the given value on every node in `keys`.
+    /// Mutates the Tree's nodes in the spec; the renderer sees
+    /// the change on the next paint without a full spec re-emit.
+    /// Used by the `toggle` event handler in plugins to push the
+    /// new checkbox state back after a user click or `x` keypress.
+    SetCheckedKeys {
+        widget_key: String,
+        checked: bool,
+        keys: Vec<String>,
+    },
+    /// Append `new_nodes` (and parallel `new_item_keys`) to an
+    /// existing Tree's node list. Streaming-friendly counterpart to
+    /// `SetItems`: a plugin streaming thousands of results sends only
+    /// the per-batch delta instead of re-transmitting the entire tree
+    /// on every batch. Existing selection / scroll / expansion state
+    /// is preserved across the append.
+    AppendTreeNodes {
+        widget_key: String,
+        new_nodes: Vec<crate::api::TreeNode>,
+        #[serde(default)]
+        new_item_keys: Vec<String>,
+    },
+    /// Replace a `Raw` widget's entries in place. The streaming search
+    /// pump uses this to update small bits of chrome (the matchStats
+    /// label, the separator "Matches (N in M files)" header) without
+    /// re-emitting the full panel spec — the latter would force a
+    /// `js_to_json` walk of every node in a 5 000-row tree once
+    /// streaming finishes, blocking the JS thread for ~1 second.
+    SetRawEntries {
+        widget_key: String,
+        entries: Vec<crate::text_property::TextPropertyEntry>,
+    },
+    /// Set the panel's focused widget to `widget_key`. Passing a key
+    /// that isn't a tabbable in the current spec is harmless — the
+    /// next render clamps focus to the first tabbable, same as for an
+    /// empty key. Use this to land initial focus on a specific widget
+    /// after mount, or to snap focus back to a "home" widget after a
+    /// navigation event.
+    SetFocusKey { widget_key: String },
+}
+
+/// Cursor-dependent activation rule for a conceal range or soft break.
+///
+/// Lets a plugin emit *both* renderings of a cursor-revealable decoration
+/// once (e.g. markdown_compose's concealed markup plus its cursor-row
+/// variant) and have the renderer pick per frame based on where the
+/// cursors are — instead of deleting and recreating markers on every
+/// cursor move, which invalidates the whole line-wrap cache and
+/// visual-row index (the compose-mode arrow-key lag).
+///
+/// The scope is a half-open byte range `[scope_start, scope_end)`
+/// evaluated against the rendering split's cursor positions. Absolute at
+/// emission time; the editor stores it relative to the decoration's own
+/// marker so it shifts with edits elsewhere in the buffer.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize, TS)]
+pub struct MarkerActivation {
+    /// `true`: active only while a cursor IS inside the scope
+    /// (`if-cursor-in`). `false`: active only while NO cursor is inside
+    /// the scope (`unless-cursor-in`).
+    pub if_cursor_in: bool,
+    /// Scope start byte (absolute, at emission time).
+    pub scope_start: usize,
+    /// Scope end byte, exclusive (absolute, at emission time).
+    pub scope_end: usize,
+}
+
+/// Plugin command - allows plugins to send commands to the editor
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[ts(export)]
+pub enum PluginCommand {
+    /// Insert text at a position in a buffer
+    InsertText {
+        buffer_id: BufferId,
+        position: usize,
+        text: String,
+    },
+
+    /// Delete a range of text from a buffer
+    DeleteRange {
+        buffer_id: BufferId,
+        range: Range<usize>,
+    },
+
+    /// Add an overlay to a buffer, returns handle via response channel
+    ///
+    /// Colors can be specified as RGB tuples or theme keys. When theme keys
+    /// are provided, they take precedence and are resolved at render time.
+    AddOverlay {
+        buffer_id: BufferId,
+        namespace: Option<OverlayNamespace>,
+        range: Range<usize>,
+        /// Overlay styling options (colors, modifiers, etc.)
+        options: OverlayOptions,
+    },
+
+    /// Remove an overlay by its opaque handle
+    RemoveOverlay {
+        buffer_id: BufferId,
+        handle: OverlayHandle,
+    },
+
+    /// Declare a one-line overlay that follows the buffer's cursor, or
+    /// withdraw it with `None`.
+    ///
+    /// The host re-places it from the cursor as part of drawing the frame,
+    /// so it marks the row the caret is on in that same frame. A plugin
+    /// painting the bar itself from `cursor_moved` cannot manage that: the
+    /// hook fires after the move, so its `addOverlay` lands one frame late
+    /// and the bar trails the caret for as long as an arrow key repeats.
+    SetCursorLineOverlay {
+        buffer_id: BufferId,
+        /// Styling, exactly as `AddOverlay` takes it. `None` removes the bar.
+        options: Option<OverlayOptions>,
+    },
+
+    /// Set status message
+    SetStatus { message: String },
+
+    /// Apply a theme by name
+    ApplyTheme { theme_name: String },
+
+    /// Override specific theme color keys in-memory for the running session.
+    /// Keys are the same `section.field` strings accepted by
+    /// `Theme::resolve_theme_key` (e.g. `"editor.bg"`, `"ui.status_bar_fg"`).
+    /// Values are `[r, g, b]` triplets. Unknown keys are silently dropped so
+    /// a typo in a fast animation loop doesn't blow up the caller; the
+    /// return channel isn't used — plugins can do a dry-run look-up via
+    /// `getThemeSchema` if they want compile-time safety. Overrides are
+    /// reset the next time the caller (or anyone else) invokes
+    /// `applyTheme`, because that replaces the whole `Theme` from the
+    /// registry.
+    OverrideThemeColors { overrides: HashMap<String, [u8; 3]> },
+
+    /// Reload configuration from file
+    /// After a plugin saves config changes, it should call this to reload the config
+    ReloadConfig,
+
+    /// Write a single setting to the runtime overlay for this session.
+    /// `path` is dot-separated (e.g. "editor.tab_size"). Last write wins.
+    SetSetting {
+        plugin_name: String,
+        path: String,
+        #[ts(type = "unknown")]
+        value: JsonValue,
+    },
+
+    /// Register one field of a plugin-defined config schema. Each field
+    /// arrives independently (one per `defineConfigBoolean` / `Integer` /
+    /// etc. call from the plugin's TypeScript). The host accumulates
+    /// fields into `plugins.<plugin_name>` schema and pre-populates the
+    /// declared default into `plugins.<plugin_name>.settings.<field>`.
+    AddPluginConfigField {
+        plugin_name: String,
+        field_name: String,
+        /// JSON Schema fragment for this single field (e.g.
+        /// `{"type":"boolean","default":false,"description":"..."}`).
+        #[ts(type = "unknown")]
+        field_schema: JsonValue,
+    },
+
+    /// Register a custom command
+    RegisterCommand { command: Command },
+
+    /// Register a custom statusbar token
+    RegisterStatusBarElement {
+        plugin_name: String,
+        token_name: String,
+        title: String,
+    },
+
+    /// Set the value of a status-bar token for a specific buffer.
+    /// `key` is the full "plugin_name:token_name" form.
+    SetStatusBarValue {
+        buffer_id: u64,
+        key: String,
+        value: String,
+    },
+
+    /// Unregister a command by name
+    UnregisterCommand { name: String },
+
+    /// Create a new editor session rooted at `root`.
+    ///
+    /// `root` must be an absolute path; relative paths are rejected
+    /// rather than silently joined onto the active session's root —
+    /// that ambiguity would leak the wrong cwd into agent processes.
+    /// `label` may be empty; the editor falls back to the basename
+    /// of `root` (matching `Session::new`).
+    ///
+    /// The new session's id is assigned by the editor and reported
+    /// back via the `session_created` plugin hook (id, label, root
+    /// in payload). Sessions are not made active on creation;
+    /// follow up with `SetActiveWindow` to dive.
+    CreateWindow { root: PathBuf, label: String },
+
+    /// Create a new window rooted at `root` AND seed it with a
+    /// terminal as its only buffer. Atomic alternative to
+    /// `CreateWindow` + `SetActiveWindow` + `CreateTerminal`
+    /// used by Orchestrator's new-session flow — bundling them
+    /// avoids the transient `[No Name]` placeholder that the
+    /// three-step sequence leaves as a leftover first tab, and
+    /// removes any window of time in which the new window is
+    /// visible to other plugins/preview rendering without its
+    /// agent terminal attached. Returns
+    /// `SessionWithTerminalResult` via the async callback.
+    CreateWindowWithTerminal {
+        root: PathBuf,
+        label: String,
+        cwd: Option<String>,
+        command: Option<Vec<String>>,
+        title: Option<String>,
+        /// Restore-time argv (agent resume); see
+        /// `CreateWindowWithTerminalOptions::resume`.
+        resume: Option<Vec<String>>,
+        /// Extra env for the spawned terminal; see
+        /// `CreateWindowWithTerminalOptions::env`.
+        env: Option<std::collections::HashMap<String, String>>,
+        /// When set, the host mints a capability token bound to the new
+        /// window and injects it as `FRESH_CMD_TOKEN`; see
+        /// `CreateWindowWithTerminalOptions::allow_script`.
+        allow_script: bool,
+        /// Reuse this existing (preparing) window instead of creating a new
+        /// one; see `CreateWindowWithTerminalOptions::adopt_window`.
+        adopt_window: Option<WindowId>,
+        request_id: u64,
+    },
+
+    /// Create a workspace whose *contents* are not ready yet: a real
+    /// `Window` (own id, durable stable id, label, local authority) that
+    /// renders a "still being built" placeholder page instead of an empty
+    /// buffer. The Orchestrator opens one the instant the user asks for a
+    /// new workspace, so focus can move there immediately and the row is a
+    /// full workspace — renameable, filable, closable — while `git worktree
+    /// add` runs. `SetWindowPreparing` narrates progress; passing the id as
+    /// `CreateWindowWithTerminal`'s `adopt_window` turns it into the real
+    /// session in place. Returns `PreparingWindowResult`.
+    CreatePreparingWindow {
+        root: PathBuf,
+        label: String,
+        /// First line of progress copy, e.g. `Creating workspace…`.
+        message: String,
+        /// Focus the new window right away ("Create & Visit"). `false`
+        /// creates it in the background, leaving the user where they are.
+        activate: bool,
+        request_id: u64,
+    },
+
+    /// Update the progress line on a preparing window, or (with `done`)
+    /// drop the preparing state so the window renders as an ordinary
+    /// session again. `failed` switches the page to its error copy.
+    SetWindowPreparing {
+        id: WindowId,
+        message: String,
+        /// Name to show on the page. Empty keeps whatever it shows now —
+        /// the window's own label. The Orchestrator pushes its *resolved*
+        /// display name here so a workspace renamed mid-build is renamed on
+        /// the page the user is sitting in, not just on the dock row.
+        label: String,
+        failed: bool,
+        done: bool,
+    },
+
+    /// Make `id` the active session. No-op if `id` is already
+    /// active. Fires `active_session_changed` on transition.
+    /// Errors (id not found) are logged via tracing rather than
+    /// surfaced to the plugin — the plugin can verify by reading
+    /// `editor.activeWindow()` after.
+    SetActiveWindow { id: WindowId },
+
+    /// Like `SetActiveWindow`, but plays a directional wipe on the
+    /// newly-active window's editor content as it appears. `from_edge`
+    /// is "top" | "bottom" | "left" | "right" (the edge the incoming
+    /// content slides in from). Used by the orchestrator dock so that
+    /// arrowing up/down the session list wipes the window up/down.
+    SetActiveWindowAnimated { id: WindowId, from_edge: String },
+
+    /// Restrict — and order — the windows that the Next/Prev Window
+    /// commands cycle through to exactly `ids`, in this order. An empty
+    /// list clears the override, restoring the default (every window,
+    /// ordered by id). Ids that aren't currently open are skipped at
+    /// cycle time. Used by the orchestrator dock so paging windows visits
+    /// exactly the sessions the dock currently shows (its filtered list),
+    /// in the same order, instead of every open window.
+    SetWindowCycleOrder { ids: Vec<WindowId> },
+
+    /// Close a session and drop its associated state. Refuses to
+    /// close the currently active session — the caller must switch
+    /// first. Fires `session_closed` on success.
+    CloseWindow { id: WindowId },
+
+    /// Forget a directory's persisted workspace registry entry (the
+    /// `workspaces/<encoded-root>.json` file(s) the boot-time session
+    /// discovery scans). `CloseWindow` only drops the in-memory window;
+    /// without this the on-disk file survives and — because discovery
+    /// garbage-collects only entries whose directory is *gone* — an
+    /// in-place session (one that keeps its directory, unlike a worktree
+    /// the caller `git worktree remove`s) is rediscovered on the next
+    /// launch and "comes back". The orchestrator sends this when Delete
+    /// or Archive permanently forgets such a session. Removes every
+    /// co-tenant file at `root`; a still-open co-tenant window re-writes
+    /// its own file on its next checkpoint.
+    DeleteWorkspace { root: PathBuf },
+
+    /// Eagerly initialise an inactive session's per-session state
+    /// (file tree walk, ignore matcher, etc.) without diving. The
+    /// only thing that's actually pre-warmed today is the file
+    /// explorer's root walk; LSP servers boot on first buffer
+    /// open and watcher setup happens on first `watchPath` call,
+    /// so those are unaffected. No-op for the active session
+    /// (already warm) or unknown id.
+    PrewarmWindow { id: WindowId },
+
+    /// Register a filesystem path watcher. The editor returns the
+    /// allocated `handle` via the async response so the plugin can
+    /// match `path_changed` events back to the call. `recursive`
+    /// follows `notify::RecursiveMode`; non-recursive watches
+    /// cover only the named path itself (or its direct children
+    /// for directories on macOS — kqueue limitation).
+    WatchPath {
+        path: PathBuf,
+        recursive: bool,
+        request_id: u64,
+    },
+
+    /// Drop a path watcher previously registered via
+    /// `WatchPath`. Unknown handles are silently ignored — the
+    /// editor's view of "what's still watched" can drift if a
+    /// plugin reloads, and the design doesn't make plugins
+    /// reconcile.
+    UnwatchPath { handle: u64 },
+
+    /// Tell the editor that the floating-overlay prompt's
+    /// preview pane should render the **entire** split tree of
+    /// session `id` (Primitive #1 in
+    /// `docs/internal/orchestrator-sessions-design.md`). `None`
+    /// clears the override and falls back to the existing
+    /// path-based phantom-leaf preview.
+    ///
+    /// Orchestrator sets this when the user navigates the session
+    /// list so the right-hand pane shows the highlighted
+    /// session's full editor UI live (splits, terminals,
+    /// syntax highlighting, decorations) — rendered natively
+    /// by reusing the editor's existing render_content path
+    /// against the previewed session's stashed split tree.
+    PreviewWindowInRect { id: Option<WindowId> },
+
+    /// Open a file in the editor (in background, without switching focus).
+    ///
+    /// `window_id` defaults to the active session at dispatch
+    /// time. When set to an inactive session, the file's buffer
+    /// is loaded as usual but attached to that session's
+    /// membership and split tree — the active session's UI is
+    /// undisturbed.
+    OpenFileInBackground {
+        path: PathBuf,
+        #[serde(default)]
+        window_id: Option<WindowId>,
+    },
+
+    /// Insert text at the current cursor position in the active buffer
+    InsertAtCursor { text: String },
+
+    /// Spawn an async process
+    ///
+    /// When `stdout_to` is `Some(path)`, the child's stdout is piped
+    /// directly into that file on disk (via `tokio::io::copy`) rather
+    /// than being buffered in memory. The resulting `SpawnResult.stdout`
+    /// is empty in that case; `stderr` and `exit_code` are populated as
+    /// usual. This lets large outputs (e.g. `git show` for a big commit)
+    /// stay on disk and be opened as a file-backed buffer without ever
+    /// crossing the JS bridge.
+    SpawnProcess {
+        command: String,
+        args: Vec<String>,
+        cwd: Option<String>,
+        #[serde(default)]
+        stdout_to: Option<PathBuf>,
+        callback_id: JsCallbackId,
+    },
+
+    /// Delay/sleep for a duration (async, resolves callback when done)
+    Delay {
+        callback_id: JsCallbackId,
+        duration_ms: u64,
+    },
+
+    /// Fetch a URL over HTTP(S) and write the response body to a file.
+    ///
+    /// Streams the response body directly to `target_path` rather than
+    /// buffering in memory, so large downloads stay off the JS bridge. The
+    /// callback resolves with a `SpawnResult`-shaped value: `exit_code` is
+    /// `0` on 2xx, the HTTP status code on non-2xx responses, and `-1` on
+    /// transport errors; `stderr` carries any error message; `stdout` is
+    /// always empty.
+    HttpFetch {
+        url: String,
+        target_path: PathBuf,
+        callback_id: JsCallbackId,
+    },
+
+    /// Spawn a long-running background process
+    /// Unlike SpawnProcess, this returns immediately with a process handle
+    /// and provides streaming output via hooks
+    SpawnBackgroundProcess {
+        /// Unique ID for this process (generated by plugin runtime)
+        process_id: u64,
+        /// Command to execute
+        command: String,
+        /// Arguments to pass
+        args: Vec<String>,
+        /// Working directory (optional)
+        cwd: Option<String>,
+        /// Callback ID to call when process exits
+        callback_id: JsCallbackId,
+    },
+
+    /// Kill a background process by ID
+    KillBackgroundProcess { process_id: u64 },
+
+    /// Wait for a process to complete and get its result
+    /// Used with processes started via SpawnProcess
+    SpawnProcessWait {
+        /// Process ID to wait for
+        process_id: u64,
+        /// Callback ID for async response
+        callback_id: JsCallbackId,
+    },
+
+    /// Set layout hints for a buffer/viewport
+    SetLayoutHints {
+        buffer_id: BufferId,
+        split_id: Option<SplitId>,
+        range: Range<usize>,
+        hints: LayoutHints,
+    },
+
+    /// Show/hide line numbers for a buffer *on the user's behalf*.
+    ///
+    /// Records the same explicit per-buffer pin as "Toggle Line Numbers
+    /// (Current Buffer)", so it wins over any mode default and is persisted
+    /// with the rest of the per-file workspace state. This is what vi's
+    /// `:set number` / `:set nonumber` are: a command the user typed, which
+    /// happens to arrive through a plugin. A mode announcing its own default
+    /// wants [`PluginCommand::SetLineNumbersDefault`] instead.
+    SetLineNumbers { buffer_id: BufferId, enabled: bool },
+
+    /// Set the plugin's line-number default for a buffer's view state.
+    ///
+    /// `None` withdraws the plugin's opinion, restoring whatever the user's
+    /// own setting resolves to. Stored apart from the user's pin and never
+    /// persisted, so a mode that hides the gutter (markdown compose) can
+    /// neither overwrite a deliberate choice nor outlive itself in the saved
+    /// workspace — the same arrangement as
+    /// [`PluginCommand::SetFoldIndicators`], and for the same reasons
+    /// (issue #2931).
+    SetLineNumbersDefault {
+        buffer_id: BufferId,
+        enabled: Option<bool>,
+    },
+
+    /// Set the plugin's fold-indicator default for a buffer's view state.
+    ///
+    /// `None` withdraws the plugin's opinion, restoring whatever the user's
+    /// own setting resolves to. Stored apart from the user's toggle and never
+    /// persisted, so a mode that hides the gutter arrows (markdown compose)
+    /// can neither overwrite a deliberate choice nor outlive itself in the
+    /// saved workspace.
+    SetFoldIndicators {
+        buffer_id: BufferId,
+        enabled: Option<bool>,
+    },
+
+    /// Enable/disable indentation guides for a buffer, overriding the global
+    /// `editor.indentation_guide` default. Used by tool views (e.g. the Git Log
+    /// commit-detail diff) that show non-editable content where the guides are
+    /// noise.
+    SetIndentationGuide {
+        buffer_id: BufferId,
+        /// `None` withdraws the override, so the buffer falls back to its
+        /// language gate and the global setting.
+        enabled: Option<bool>,
+    },
+
+    /// Set the view mode for a buffer ("source" or "compose")
+    SetViewMode { buffer_id: BufferId, mode: String },
+
+    /// Enable/disable line wrapping for a buffer
+    SetLineWrap {
+        buffer_id: BufferId,
+        split_id: Option<SplitId>,
+        enabled: bool,
+    },
+
+    /// Set plugin-managed view state for a buffer in the active split.
+    /// Stored in BufferViewState.plugin_state and persisted across sessions.
+    SetViewState {
+        buffer_id: BufferId,
+        key: String,
+        #[ts(type = "any")]
+        value: Option<serde_json::Value>,
+    },
+
+    /// Set plugin-managed global state (not tied to any buffer or split).
+    /// Isolated per plugin by plugin_name.
+    /// TODO: Need to think about plugin isolation / namespacing strategy for these APIs.
+    SetGlobalState {
+        plugin_name: String,
+        key: String,
+        #[ts(type = "any")]
+        value: Option<serde_json::Value>,
+    },
+
+    /// Plugin-managed per-session state. Writes to the **currently
+    /// active** session's `plugin_state` map keyed by
+    /// `(plugin_name, key)`. Other sessions' state is unaffected.
+    /// `None` means delete (matches `SetGlobalState` semantics).
+    SetWindowState {
+        plugin_name: String,
+        key: String,
+        #[ts(type = "any")]
+        value: Option<serde_json::Value>,
+    },
+
+    /// Remove all overlays from a buffer
+    ClearAllOverlays { buffer_id: BufferId },
+
+    /// Remove all overlays in a namespace
+    ClearNamespace {
+        buffer_id: BufferId,
+        namespace: OverlayNamespace,
+    },
+
+    /// Remove all overlays that overlap with a byte range
+    /// Used for targeted invalidation when content in a range changes
+    ClearOverlaysInRange {
+        buffer_id: BufferId,
+        start: usize,
+        end: usize,
+    },
+
+    /// Remove overlays in a namespace that overlap with a byte range.
+    /// Like [`ClearOverlaysInRange`] but scoped to a single namespace, so a
+    /// plugin can invalidate its own decorations for a line without clobbering
+    /// editor-owned overlays (e.g. LSP diagnostics) in the same range.
+    ClearOverlaysInRangeForNamespace {
+        buffer_id: BufferId,
+        namespace: OverlayNamespace,
+        start: usize,
+        end: usize,
+    },
+
+    /// Add virtual text (inline text that doesn't exist in the buffer)
+    /// Used for color swatches, type hints, parameter hints, etc.
+    AddVirtualText {
+        buffer_id: BufferId,
+        virtual_text_id: String,
+        position: usize,
+        text: String,
+        color: (u8, u8, u8),
+        use_bg: bool, // true = use color as background, false = use as foreground
+        before: bool, // true = before char, false = after char
+        /// See [`Self::AddVirtualTextStyled::epoch`].
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        epoch: Option<u64>,
+    },
+
+    /// Add virtual text with full styling — fg/bg can be RGB or theme
+    /// keys (resolved at render time so theme changes apply live).
+    /// This is the richer form of `AddVirtualText` that lets plugins
+    /// produce themed labels (flash jump, type hints with semantic
+    /// colours, …) without hard-coding RGB values.
+    AddVirtualTextStyled {
+        buffer_id: BufferId,
+        virtual_text_id: String,
+        position: usize,
+        text: String,
+        fg: Option<OverlayColorSpec>,
+        bg: Option<OverlayColorSpec>,
+        bold: bool,
+        italic: bool,
+        before: bool,
+        /// Buffer version `position` was computed against, auto-stamped from the
+        /// hook epoch; the editor remaps it forward so a lagged hook's coordinate
+        /// still anchors where it meant. `None` = anchor verbatim.
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        epoch: Option<u64>,
+        /// Left-pad the hint so it *ends* at this column of its rendered row,
+        /// measured at paint time. The emitter cannot size that padding itself:
+        /// it computes against a hook epoch the buffer has already moved past,
+        /// so a width from there lags the row being drawn. `None` = the usual
+        /// one-space inlay padding.
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        pad_to_column: Option<u32>,
+    },
+
+    /// Remove a virtual text by ID
+    RemoveVirtualText {
+        buffer_id: BufferId,
+        virtual_text_id: String,
+    },
+
+    /// Remove virtual texts whose ID starts with the given prefix
+    RemoveVirtualTextsByPrefix { buffer_id: BufferId, prefix: String },
+
+    /// Clear all virtual texts from a buffer
+    ClearVirtualTexts { buffer_id: BufferId },
+
+    /// Add a virtual LINE (full line above/below a position)
+    /// Used for git blame headers, code coverage, inline documentation, etc.
+    /// These lines do NOT show line numbers in the gutter.
+    AddVirtualLine {
+        buffer_id: BufferId,
+        /// Byte position to anchor the line to
+        position: usize,
+        /// Full line content to display
+        text: String,
+        /// Foreground color — RGB tuple or theme key string (e.g.
+        /// `"editor.line_number_fg"`).  Resolved at render time so the line
+        /// follows theme changes.
+        fg_color: Option<OverlayColorSpec>,
+        /// Background color — RGB tuple or theme key string.  None =
+        /// transparent (inherits from underlying viewport background).
+        bg_color: Option<OverlayColorSpec>,
+        /// true = above the line containing position, false = below
+        above: bool,
+        /// Namespace for bulk removal (e.g., "git-blame")
+        namespace: String,
+        /// Priority for ordering multiple lines at same position (higher = later)
+        priority: i32,
+        /// Optional gutter glyph rendered in the line-number column on
+        /// the first visual row of this virtual line. Used by diff
+        /// plugins to put a "-" directly on the deletion line itself
+        /// instead of the source line that follows it.
+        gutter_glyph: Option<String>,
+        /// Color for `gutter_glyph` (RGB or theme key). Falls back to
+        /// `theme.line_number_fg` when `None`.
+        gutter_color: Option<OverlayColorSpec>,
+        /// Per-range modifier overlays applied on top of the base fg/bg.
+        /// Offsets are byte offsets within `text`, not buffer bytes.
+        /// Used e.g. by live-diff to bold + underline removed words on
+        /// a deletion virtual line.
+        #[serde(default, skip_serializing_if = "Vec::is_empty")]
+        text_overlays: Vec<VirtualLineTextOverlay>,
+        /// Buffer version `position` was computed against (from the
+        /// `lines_changed` epoch). When set, the editor remaps `position`
+        /// forward to the current buffer state before anchoring, repairing the
+        /// stale offset a fire-and-forget hook handler echoes back. `None`
+        /// anchors at `position` verbatim (legacy callers).
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        epoch: Option<u64>,
+    },
+
+    /// Clear all virtual texts in a namespace
+    /// This is the primary way to remove a plugin's virtual lines before updating them.
+    ClearVirtualTextNamespace {
+        buffer_id: BufferId,
+        namespace: String,
+    },
+
+    /// Remove virtual lines whose anchor byte falls in `[start, end)`, restricted
+    /// to a single namespace. The per-line analogue of `ClearConcealsInRange`
+    /// (which virtual lines previously lacked) — lets a plugin rebuild one line's
+    /// virtual lines without nuking the whole namespace, so per-line decorations
+    /// (e.g. markdown table borders) need no stored block model. Anchors are
+    /// resolved live from the marker list, so a shifted line is matched at its
+    /// current position.
+    ClearVirtualLinesInRange {
+        buffer_id: BufferId,
+        namespace: String,
+        start: usize,
+        end: usize,
+        /// Buffer version `start`/`end` were computed against (from the
+        /// `lines_changed` epoch). When set, the editor remaps the range
+        /// forward to the current buffer state before clearing, so a stale
+        /// range from a fire-and-forget hook handler clears the row's current
+        /// anchors rather than a drifted byte window. `None` clears
+        /// `[start, end)` verbatim (legacy callers).
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        epoch: Option<u64>,
+    },
+
+    /// Remove *inline* virtual texts whose string id starts with `id_prefix`
+    /// and whose anchor byte falls in `[start, end)`. The inline analogue of
+    /// `ClearVirtualLinesInRange`, for the same reason: a per-line decoration
+    /// pass has to clear exactly the line it is rebuilding, in the same batch
+    /// as the re-add. Matching is by id prefix because the inline add path
+    /// stores no namespace. Anchors resolve live from the marker list.
+    ClearVirtualTextsInRange {
+        buffer_id: BufferId,
+        id_prefix: String,
+        start: usize,
+        end: usize,
+        /// Buffer version `start`/`end` were computed against (from the
+        /// `lines_changed` epoch); see `ClearVirtualLinesInRange`.
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        epoch: Option<u64>,
+    },
+
+    /// Add a conceal range that hides or replaces a byte range during rendering.
+    /// Used for Typora-style seamless markdown: hiding syntax markers like `**`, `[](url)`, etc.
+    AddConceal {
+        buffer_id: BufferId,
+        /// Namespace for bulk removal (shared with overlay namespace system)
+        namespace: OverlayNamespace,
+        /// Byte range to conceal
+        start: usize,
+        end: usize,
+        /// Optional replacement text to show instead. None = hide completely.
+        replacement: Option<String>,
+        /// Buffer version `start`/`end` were computed against — the epoch of the
+        /// hook the emitting handler ran in, auto-stamped by the plugin runtime
+        /// (see `current_hook_epoch`). The editor remaps the range forward to the
+        /// current buffer before concealing, so a stale range from a lagged
+        /// fire-and-forget hook lands on the row's current bytes instead of
+        /// leaking the concealed markup. `None` = no hook epoch in scope; apply
+        /// verbatim.
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        epoch: Option<u64>,
+        /// Optional cursor-dependent activation rule. `None` = always active.
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        activation: Option<MarkerActivation>,
+    },
+
+    /// Clear all conceal ranges in a namespace
+    ClearConcealNamespace {
+        buffer_id: BufferId,
+        namespace: OverlayNamespace,
+    },
+
+    /// Remove all conceal ranges that overlap with a byte range
+    /// Used for targeted invalidation when content in a range changes
+    ClearConcealsInRange {
+        buffer_id: BufferId,
+        start: usize,
+        end: usize,
+        /// Hook epoch the range was computed against (auto-stamped); the editor
+        /// remaps it forward before clearing. `None` = verbatim.
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        epoch: Option<u64>,
+    },
+
+    /// Remove conceal ranges overlapping a byte range, restricted to a single
+    /// namespace. Lets one plugin rebuild its conceals for a line without
+    /// destroying another plugin's ranges there (cf.
+    /// `ClearOverlaysInRangeForNamespace`, issue #2146).
+    ClearConcealsInRangeForNamespace {
+        buffer_id: BufferId,
+        namespace: OverlayNamespace,
+        start: usize,
+        end: usize,
+        /// Hook epoch the range was computed against (auto-stamped); the editor
+        /// remaps it forward before clearing. `None` = verbatim.
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        epoch: Option<u64>,
+    },
+
+    /// Add a collapsed fold range. Hides the byte range
+    /// `[start, end)` from rendering — the line containing `start - 1`
+    /// (the fold's "header") stays visible while the lines covered by
+    /// the range are skipped. Used by plugins that want to expose
+    /// outline-style collapse without rebuilding buffer content.
+    AddFold {
+        buffer_id: BufferId,
+        start: usize,
+        end: usize,
+        /// Optional placeholder text to show on the header line
+        /// (currently unused by the renderer; reserved for future use).
+        placeholder: Option<String>,
+    },
+
+    /// Clear every collapsed fold range on the buffer.
+    ClearFolds { buffer_id: BufferId },
+
+    /// Publish a set of fold ranges on the buffer in the same shape
+    /// LSP `textDocument/foldingRange` populates. The ranges are
+    /// stored as **toggleable** — the standard `toggle_fold` keybinding
+    /// finds them via `state.folding_ranges` and collapses/expands on
+    /// demand. Unlike `AddFold`, this does not pre-collapse anything.
+    ///
+    /// Designed for plugins that derive structural folds from buffer
+    /// content (e.g. git-log's per-file / per-hunk diff structure)
+    /// without driving an LSP. Replacing call replaces the prior set.
+    SetFoldingRanges {
+        buffer_id: BufferId,
+        #[ts(type = "any")]
+        ranges: Vec<lsp_types::FoldingRange>,
+    },
+
+    /// Add a soft break point for marker-based line wrapping.
+    /// The break is stored as a marker that auto-adjusts on buffer edits,
+    /// eliminating the flicker of async plugin round-trips.
+    AddSoftBreak {
+        buffer_id: BufferId,
+        /// Namespace for bulk removal (shared with overlay namespace system)
+        namespace: OverlayNamespace,
+        /// Byte offset where the break should be injected
+        position: usize,
+        /// Total width of the continuation row's indent, in columns. Also
+        /// bounds `prefix`, which is drawn inside it.
+        indent: u16,
+        /// Hook epoch `position` was computed against (auto-stamped); the editor
+        /// remaps it forward before injecting the break, so a stale wrap point
+        /// from a lagged hook lands at the row's current bytes. `None` = verbatim.
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        epoch: Option<u64>,
+        /// Optional cursor-dependent activation rule. `None` = always active.
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        activation: Option<MarkerActivation>,
+        /// Optional glyph run drawn at the head of the continuation row,
+        /// inside `indent`. `None` = the indent renders blank.
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        prefix: Option<SoftBreakPrefix>,
+    },
+
+    /// Clear all soft breaks in a namespace
+    ClearSoftBreakNamespace {
+        buffer_id: BufferId,
+        namespace: OverlayNamespace,
+    },
+
+    /// Remove all soft breaks that fall within a byte range
+    ClearSoftBreaksInRange {
+        buffer_id: BufferId,
+        start: usize,
+        end: usize,
+        /// Hook epoch the range was computed against (auto-stamped); the editor
+        /// remaps it forward before clearing. `None` = verbatim.
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        epoch: Option<u64>,
+    },
+
+    /// Refresh lines for a buffer (clear seen_lines cache to re-trigger lines_changed hook)
+    RefreshLines { buffer_id: BufferId },
+
+    /// Refresh lines for ALL buffers (clear entire seen_lines cache)
+    /// Sent when a plugin registers for the lines_changed hook to handle the race
+    /// where render marks lines as "seen" before the plugin has registered.
+    RefreshAllLines,
+
+    /// Sentinel sent by the plugin thread after a hook has been fully processed.
+    /// Used by the render loop to wait deterministically for plugin responses
+    /// (e.g., conceal commands from `lines_changed`) instead of polling.
+    HookCompleted { hook_name: String },
+
+    /// Set a line indicator in the gutter's indicator column
+    /// Used for git gutter, breakpoints, bookmarks, etc.
+    SetLineIndicator {
+        buffer_id: BufferId,
+        /// Line number (0-indexed)
+        line: usize,
+        /// Namespace for grouping (e.g., "git-gutter", "breakpoints")
+        namespace: String,
+        /// Symbol to display (e.g., "│", "●", "★")
+        symbol: String,
+        /// Color as RGB tuple
+        color: (u8, u8, u8),
+        /// Priority for display when multiple indicators exist (higher wins)
+        priority: i32,
+    },
+
+    /// Batch set line indicators in the gutter's indicator column
+    /// Optimized for setting many lines with the same namespace/symbol/color/priority
+    SetLineIndicators {
+        buffer_id: BufferId,
+        /// Line numbers (0-indexed)
+        lines: Vec<usize>,
+        /// Namespace for grouping (e.g., "git-gutter", "breakpoints")
+        namespace: String,
+        /// Symbol to display (e.g., "│", "●", "★")
+        symbol: String,
+        /// Color as RGB tuple
+        color: (u8, u8, u8),
+        /// Priority for display when multiple indicators exist (higher wins)
+        priority: i32,
+    },
+
+    /// Clear all line indicators for a specific namespace
+    ClearLineIndicators {
+        buffer_id: BufferId,
+        /// Namespace to clear (e.g., "git-gutter")
+        namespace: String,
+    },
+
+    /// Replace this namespace's entire scrollbar-marker set for a buffer.
+    ///
+    /// Replace-set rather than add/remove: the swap happens inside one
+    /// command, so a plugin refreshing its markers never renders a frame with
+    /// a half-built set (the flicker that motivated the batched
+    /// [`SetLineIndicators`](Self::SetLineIndicators)).
+    SetScrollbarMarkers {
+        buffer_id: BufferId,
+        /// Namespace for grouping (e.g., "md-headings", "search").
+        namespace: String,
+        markers: Vec<ScrollbarMarker>,
+    },
+
+    /// Replace only the markers of this namespace whose anchors currently fall
+    /// in `[start, end)`, leaving markers elsewhere in the buffer untouched.
+    ///
+    /// This is the primitive for viewport-driven producers: a plugin that
+    /// recomputes decorations for the lines in a `lines_changed` batch can
+    /// publish that region's markers without resending — or losing — what it
+    /// learned about the rest of the file. Cost is O(k log n) in the region's
+    /// marker count, not in the accumulated total.
+    SetScrollbarMarkersInRange {
+        buffer_id: BufferId,
+        namespace: String,
+        /// Inclusive start byte of the region being republished.
+        start: usize,
+        /// Exclusive end byte of the region being republished.
+        end: usize,
+        markers: Vec<ScrollbarMarker>,
+    },
+
+    /// Remove all scrollbar markers in a namespace
+    ClearScrollbarMarkers {
+        buffer_id: BufferId,
+        namespace: String,
+    },
+
+    /// Set file explorer decorations for a namespace
+    SetFileExplorerDecorations {
+        /// Namespace for grouping (e.g., "git-status")
+        namespace: String,
+        /// Decorations to apply
+        decorations: Vec<FileExplorerDecoration>,
+    },
+
+    /// Clear file explorer decorations for a namespace
+    ClearFileExplorerDecorations {
+        /// Namespace to clear (e.g., "git-status")
+        namespace: String,
+    },
+
+    /// Set file explorer slot overrides for a namespace.
+    ///
+    /// This is additive: any slot field omitted by the plugin falls back to
+    /// the editor's default compatibility providers, so existing behaviour is
+    /// preserved until a plugin explicitly overrides it.
+    SetFileExplorerSlots {
+        /// Namespace for grouping (e.g., "git-status")
+        namespace: String,
+        /// Slot overrides to apply
+        slots: Vec<FileExplorerSlotEntry>,
+    },
+
+    /// Clear file explorer slot overrides for a namespace
+    ClearFileExplorerSlots {
+        /// Namespace to clear (e.g., "git-status")
+        namespace: String,
+    },
+
+    /// Open a file at a specific line and column
+    /// Line and column are 1-indexed to match git grep output
+    OpenFileAtLocation {
+        path: PathBuf,
+        line: Option<usize>,   // 1-indexed, None = go to start
+        column: Option<usize>, // 1-indexed, None = go to line start
+    },
+
+    /// Open a file in a specific split at a given line and column
+    /// Line and column are 1-indexed to match git grep output
+    OpenFileInSplit {
+        split_id: usize,
+        path: PathBuf,
+        line: Option<usize>,   // 1-indexed, None = go to start
+        column: Option<usize>, // 1-indexed, None = go to line start
+    },
+
+    /// Preview a file in a specific split, as the editor's single
+    /// *preview* (ephemeral) tab — the File Explorer's single-click
+    /// behaviour, addressed at a split a plugin names.
+    ///
+    /// For browsing a list of locations (search results, references,
+    /// diagnostics) as the selection moves: the previous preview is
+    /// replaced rather than accumulated, a file the user already had open
+    /// is switched to and never demoted, and touching the buffer or
+    /// walking away to another split promotes it to a permanent tab.
+    /// Focus does not move — the split the plugin's own UI lives in keeps
+    /// it — and a file that cannot be previewed without asking the user
+    /// something is skipped rather than prompted for.
+    /// Line and column are 1-indexed, like `OpenFileInSplit`.
+    PreviewFileInSplit {
+        split_id: usize,
+        path: PathBuf,
+        line: Option<usize>,   // 1-indexed, None = go to start
+        column: Option<usize>, // 1-indexed, None = go to line start
+    },
+
+    /// Drop the current preview tab, if there is one — the browse ended
+    /// without a commitment (the user cancelled the prompt). A preview
+    /// they modified is kept, promoted to a permanent tab.
+    DismissPreview,
+
+    /// Cancel the active prompt / overlay, equivalent to the user
+    /// pressing Escape. Lets a plugin dismiss a prompt it opened.
+    CancelPrompt,
+    /// Start a prompt (minibuffer) with a custom type identifier
+    /// This allows plugins to create interactive prompts
+    StartPrompt {
+        label: String,
+        prompt_type: String, // e.g., "git-grep", "git-find-file"
+        /// When true, the prompt renders as a centred floating
+        /// overlay rather than a bottom-row minibuffer. Used for
+        /// Live Grep (issue #1796). Defaults to false at the wire
+        /// level via `#[serde(default)]`.
+        #[serde(default)]
+        floating_overlay: bool,
+    },
+
+    /// Start a prompt with pre-filled initial value
+    StartPromptWithInitial {
+        label: String,
+        prompt_type: String,
+        initial_value: String,
+        /// See `StartPrompt::floating_overlay`.
+        #[serde(default)]
+        floating_overlay: bool,
+    },
+
+    /// Start an async prompt that returns result via callback
+    /// The callback_id is used to resolve the promise when the prompt is confirmed or cancelled
+    StartPromptAsync {
+        label: String,
+        initial_value: String,
+        callback_id: JsCallbackId,
+    },
+
+    /// Open the editor's native Open File browser and resolve the chosen
+    /// file's absolute path via callback — the terminal analogue of a
+    /// browser's file-input dialog. Resolves null when the user cancels.
+    /// The browser anchors where Open File does (the active file's
+    /// directory, else the window's working directory), with the same
+    /// navigation: Backspace up the tree, Tab to descend, hidden toggle.
+    /// `directory` overrides the anchor (relative paths resolve against
+    /// the working directory); `show_hidden` overrides the config's
+    /// dotfile default — a picker for files that *are* dotfiles (e.g.
+    /// `.fresh-tour.json`) is useless without it.
+    StartFilePickAsync {
+        label: String,
+        directory: Option<String>,
+        show_hidden: Option<bool>,
+        callback_id: JsCallbackId,
+    },
+
+    /// Request the next keypress for the calling plugin.
+    ///
+    /// The editor enqueues `callback_id` and resolves it with a
+    /// `KeyEventPayload` JSON value the next time a key arrives in
+    /// `Editor::handle_key`. Multiple pending requests are FIFO.
+    /// While at least one request is pending, the next key is consumed
+    /// by the resolution and does not propagate to mode bindings or
+    /// other dispatch — this is the primitive that lets a plugin run a
+    /// short input loop (flash labels, vi find-char, replace-char,
+    /// etc.) without binding every printable key in `defineMode`.
+    AwaitNextKey { callback_id: JsCallbackId },
+
+    /// Begin or end "key capture" mode for the calling plugin.
+    ///
+    /// Without this, a plugin running a `getNextKey()` loop has a
+    /// race: keys typed by the user (or pasted, or auto-repeated)
+    /// can arrive between two consecutive `getNextKey()` calls while
+    /// the plugin is still mid-redraw, and would otherwise fall
+    /// through to the editor's normal dispatch (inserting into the
+    /// buffer, etc.).
+    ///
+    /// While capture is active, every key arriving in
+    /// `Editor::handle_key` (after terminal-input dispatch) is
+    /// either resolved against a pending `AwaitNextKey` callback
+    /// (existing behaviour) or, if no callback is pending, *buffered*
+    /// in a FIFO queue.  When the next `AwaitNextKey` is processed,
+    /// the queue is drained first.  This gives plugins lossless,
+    /// in-order delivery of every key the user typed regardless of
+    /// timing.
+    ///
+    /// `EndKeyCapture` clears any unconsumed buffered keys; they do
+    /// NOT replay into the editor's normal dispatch path (that would
+    /// be surprising — the user's intent was for the plugin to
+    /// consume them).
+    SetKeyCaptureActive { active: bool },
+
+    /// Update the suggestions list for the current prompt
+    /// Uses the editor's Suggestion type
+    SetPromptSuggestions {
+        suggestions: Vec<Suggestion>,
+        selected_index: Option<u32>,
+    },
+
+    /// When enabled, navigating suggestions updates the prompt input text
+    SetPromptInputSync { sync: bool },
+
+    /// Set the title shown in a floating-overlay prompt's frame
+    /// header (issue #1796) as styled segments. Each segment carries
+    /// optional `OverlayOptions`, so plugins can theme keybinding
+    /// hints with `fg: "ui.help_key_fg"`, separators with
+    /// `fg: "ui.popup_border_fg"`, etc. An empty vec clears the
+    /// title and falls back to the prompt-type default. Has no
+    /// visible effect on non-overlay prompts.
+    SetPromptTitle { title: Vec<StyledText> },
+
+    /// Plugin-supplied footer chrome rendered along the bottom
+    /// row of the floating-overlay's results pane (Primitive #2
+    /// chrome region in
+    /// `docs/internal/orchestrator-sessions-design.md`). Orchestrator
+    /// uses this for hotkey-hint rows. Empty vec clears the
+    /// footer. Has no visible effect on non-overlay prompts.
+    SetPromptFooter { footer: Vec<StyledText> },
+
+    /// Plugin-supplied toolbar for the floating-overlay prompt's header
+    /// band, as a `WidgetSpec` (a `Row`/`Col` of `Toggle`s/`Button`s). Unlike
+    /// `SetPromptTitle` (styled text), these are real widgets: they render
+    /// with the theme's toggle/button styling and are clickable (each carries
+    /// a stable `key`; the host maps a click to the
+    /// `live_grep_toggle_<key>`-style action). `None`/absent leaves the
+    /// styled-text title in place. Has no visible effect on non-overlay
+    /// prompts.
+    SetPromptToolbar {
+        /// The plugin whose toolbar it is: its `widget_event`s go back to it,
+        /// tagged with `PanelId` 0 (the toolbar is a panel of that plugin's,
+        /// keyed `PanelKey::new(plugin, PROMPT_TOOLBAR_PANEL_ID)`).
+        plugin: String,
+        spec: Option<WidgetSpec>,
+    },
+
+    /// Short status text shown right-aligned on the floating-overlay prompt's
+    /// input row, just left of the `selected / total` count (e.g.
+    /// "Searching…", "No matches"). Empty clears it. No effect on non-overlay
+    /// prompts.
+    SetPromptStatus { status: String },
+
+    /// Flip a toolbar toggle in the floating-overlay prompt by its widget
+    /// `key`. The host owns the toggle's checked state: it updates the spec in
+    /// place and emits a `widget_event` so the plugin can react (re-run its
+    /// search, etc.). Lets a plugin's Alt+… shortcut funnel through the same
+    /// host path as a click or Space on the focused toggle.
+    ToggleOverlayToolbarWidget { key: String },
+
+    /// Override the currently-highlighted suggestion row in the
+    /// open prompt. Clamped to the suggestion list's bounds; out-
+    /// of-range indices snap to the last row. No-op when there is
+    /// no open prompt or the list is empty. The renderer scrolls
+    /// the selection into view on the next frame.
+    SetPromptSelectedIndex { index: u32 },
+
+    /// Add a menu item to an existing menu
+    /// Add a menu item to an existing menu
+    AddMenuItem {
+        menu_label: String,
+        item: MenuItem,
+        position: MenuPosition,
+    },
+
+    /// Add a new top-level menu
+    AddMenu { menu: Menu, position: MenuPosition },
+
+    /// Remove a menu item from a menu
+    RemoveMenuItem {
+        menu_label: String,
+        item_label: String,
+    },
+
+    /// Remove a top-level menu
+    RemoveMenu { menu_label: String },
+
+    /// Create a new virtual buffer (not backed by a file)
+    CreateVirtualBuffer {
+        /// Display name (e.g., "*Diagnostics*")
+        name: String,
+        /// Mode name for buffer-local keybindings (e.g., "diagnostics-list")
+        mode: String,
+        /// Whether the buffer is read-only
+        read_only: bool,
+    },
+
+    /// Create a virtual buffer and set its content in one operation
+    /// This is preferred over CreateVirtualBuffer + SetVirtualBufferContent
+    /// because it doesn't require tracking the buffer ID
+    CreateVirtualBufferWithContent {
+        /// Display name (e.g., "*Diagnostics*")
+        name: String,
+        /// Mode name for buffer-local keybindings (e.g., "diagnostics-list")
+        mode: String,
+        /// Whether the buffer is read-only
+        read_only: bool,
+        /// Entries with text and embedded properties
+        entries: Vec<TextPropertyEntry>,
+        /// Whether to show line numbers in the gutter
+        show_line_numbers: bool,
+        /// Whether to show cursors in the buffer
+        show_cursors: bool,
+        /// Whether editing is disabled (blocks editing commands)
+        editing_disabled: bool,
+        /// Whether this buffer should be hidden from tabs (for composite source buffers)
+        hidden_from_tabs: bool,
+        /// Open the buffer as a tab in the active split *without* making it
+        /// the active buffer. Creation otherwise switches to the new buffer,
+        /// which is right for a panel the reader just asked for and wrong for
+        /// one the editor offers unbidden — a startup page, say, which should
+        /// be there to turn to without displacing the file being restored.
+        /// Ignored when `hidden_from_tabs` is set: a detached buffer is not
+        /// in a tab bar to be background *in*.
+        #[serde(default)]
+        background: bool,
+        /// Per-buffer current-line highlight. `None` follows the editor's
+        /// `highlight_current_line` setting; `Some(false)` switches it off
+        /// for a buffer where a lit row is noise — a page laid out by a
+        /// widget panel, where the caret's line means nothing to the reader.
+        #[serde(default)]
+        highlight_current_line: Option<bool>,
+        /// Optional initial cursor line (0-indexed). Applied before the
+        /// new buffer becomes the active buffer, so plugins can land the
+        /// cursor atomically with creation rather than chasing a race
+        /// against user input via a follow-up `SetBufferCursor`. The host
+        /// resolves the line to a byte position using the buffer content
+        /// it has just set, which keeps the UTF-8 byte math on the host
+        /// side.
+        initial_cursor_line: Option<u32>,
+        /// Optional per-buffer indentation-guide override. `None` keeps the
+        /// default (virtual buffers show no guides); `Some(true)` forces guides
+        /// on for a virtual buffer that shows real source (e.g. git log's
+        /// file-at-commit view).
+        indentation_guide: Option<bool>,
+        /// Whether the buffer is user-scrollable. `None` is the default,
+        /// `true`; `Some(false)` for a buffer a widget panel is mounted into.
+        #[serde(default)]
+        scrollable: Option<bool>,
+        /// Optional request ID for async response
+        request_id: Option<u64>,
+    },
+
+    /// Create a virtual buffer in a horizontal split
+    /// Opens the buffer in a new pane below the current one
+    CreateVirtualBufferInSplit {
+        /// Display name (e.g., "*Diagnostics*")
+        name: String,
+        /// Mode name for buffer-local keybindings (e.g., "diagnostics-list")
+        mode: String,
+        /// Whether the buffer is read-only
+        read_only: bool,
+        /// Entries with text and embedded properties
+        entries: Vec<TextPropertyEntry>,
+        /// Split ratio (0.0 to 1.0, where 0.5 = equal split)
+        ratio: f32,
+        /// Split direction ("horizontal" or "vertical"), default horizontal
+        direction: Option<String>,
+        /// Optional panel ID for idempotent operations (if panel exists, update content)
+        panel_id: Option<String>,
+        /// Whether to show line numbers in the buffer (default true)
+        show_line_numbers: bool,
+        /// Whether to show cursors in the buffer (default true)
+        show_cursors: bool,
+        /// Whether editing is disabled for this buffer (default false)
+        editing_disabled: bool,
+        /// Whether line wrapping is enabled for this split (None = use global setting)
+        line_wrap: Option<bool>,
+        /// Place the new buffer before (left/top of) the existing content (default: false/after)
+        before: bool,
+        /// Optional split role tag. When `Some("utility_dock")`, the
+        /// dispatcher routes the buffer to the existing dock leaf if
+        /// one exists; otherwise it seeds a new dock leaf with the
+        /// requested direction/ratio.
+        role: Option<String>,
+        /// Whether the buffer is user-scrollable (None = default true).
+        /// `Some(false)` suppresses the scrollbar and pins the viewport
+        /// for self-managing widget panels.
+        scrollable: Option<bool>,
+        /// Optional request ID for async response (if set, editor will send back buffer ID)
+        request_id: Option<u64>,
+    },
+
+    /// Set the content of a virtual buffer with text properties
+    SetVirtualBufferContent {
+        buffer_id: BufferId,
+        /// Entries with text and embedded properties
+        entries: Vec<TextPropertyEntry>,
+    },
+
+    /// Get text properties at the cursor position in a buffer
+    GetTextPropertiesAtCursor { buffer_id: BufferId },
+
+    /// Create a buffer group: multiple panels appearing as one tab.
+    /// Each panel is a real buffer with its own scrollbar and viewport.
+    CreateBufferGroup {
+        /// Display name (shown in tab bar)
+        name: String,
+        /// Mode for keybindings
+        mode: String,
+        /// Layout tree as JSON string (parsed by the handler)
+        layout_json: String,
+        /// Optional request ID for async response
+        request_id: Option<u64>,
+    },
+
+    /// Set the content of a panel within a buffer group.
+    SetPanelContent {
+        /// Group ID
+        group_id: usize,
+        /// Panel name (e.g., "tree", "picker")
+        panel_name: String,
+        /// Content entries
+        entries: Vec<TextPropertyEntry>,
+    },
+
+    /// Close a buffer group (closes all panels and splits)
+    CloseBufferGroup { group_id: usize },
+
+    /// Focus a specific panel within a buffer group
+    FocusPanel { group_id: usize, panel_name: String },
+
+    /// Switch a virtual buffer's mode, and with it the keybindings that
+    /// apply while it is focused. Lets a panel enter a text-entry mode
+    /// (an in-panel filter field) without the mode's other single-key
+    /// commands eating the typing.
+    SetBufferMode { buffer_id: BufferId, mode: String },
+
+    /// Show or hide one panel of a buffer group without tearing the
+    /// group down. The panel's buffer and its scroll position survive
+    /// while hidden; only the group's split tree changes.
+    SetBufferGroupPanelVisible {
+        group_id: usize,
+        panel_name: String,
+        visible: bool,
+    },
+
+    /// Define a buffer mode with keybindings
+    DefineMode {
+        name: String,
+        bindings: Vec<(String, String)>, // (key_string, command_name)
+        read_only: bool,
+        /// When true, unbound character keys dispatch as `mode_text_input:<char>`.
+        allow_text_input: bool,
+        /// When true, keys not bound by this mode fall through to the Normal
+        /// context (motion, selection, copy) instead of being dropped.
+        inherit_normal_bindings: bool,
+        /// Name of the plugin that defined this mode (for attribution)
+        plugin_name: Option<String>,
+    },
+
+    /// Switch the current split to display a buffer
+    ShowBuffer { buffer_id: BufferId },
+
+    /// Start a frame-buffer animation over a given screen region. The `id`
+    /// is allocated on the plugin side so the JS call can return it
+    /// synchronously; the editor uses it verbatim.
+    StartAnimationArea {
+        id: u64,
+        rect: AnimationRect,
+        kind: PluginAnimationKind,
+    },
+
+    /// Start an animation over the on-screen Rect currently occupied by a
+    /// virtual buffer. If the buffer is not visible, the editor ignores
+    /// the command.
+    StartAnimationVirtualBuffer {
+        id: u64,
+        buffer_id: BufferId,
+        kind: PluginAnimationKind,
+    },
+
+    /// Cancel an animation by the ID returned from `animateArea` /
+    /// `animateVirtualBuffer`. No-op if the ID is unknown or already done.
+    CancelAnimation { id: u64 },
+
+    /// Create a virtual buffer in an existing split (replaces current buffer in that split)
+    CreateVirtualBufferInExistingSplit {
+        /// Display name (e.g., "*Commit Details*")
+        name: String,
+        /// Mode name for buffer-local keybindings
+        mode: String,
+        /// Whether the buffer is read-only
+        read_only: bool,
+        /// Entries with text and embedded properties
+        entries: Vec<TextPropertyEntry>,
+        /// Target split ID where the buffer should be displayed
+        split_id: SplitId,
+        /// Whether to show line numbers in the buffer (default true)
+        show_line_numbers: bool,
+        /// Whether to show cursors in the buffer (default true)
+        show_cursors: bool,
+        /// Whether editing is disabled for this buffer (default false)
+        editing_disabled: bool,
+        /// Whether line wrapping is enabled for this split (None = use global setting)
+        line_wrap: Option<bool>,
+        /// Optional initial cursor line (0-indexed); see the matching
+        /// field on `CreateVirtualBufferWithContent`.
+        initial_cursor_line: Option<u32>,
+        /// Optional request ID for async response
+        request_id: Option<u64>,
+    },
+
+    /// Close a buffer and remove it from all splits
+    CloseBuffer {
+        buffer_id: BufferId,
+        /// Discard unsaved changes instead of refusing.
+        ///
+        /// Without this a modified buffer is left open — correct for a
+        /// user-facing close (their edits are not the plugin's to throw
+        /// away), wrong for a plugin disposing of a scratch buffer it wrote
+        /// itself and never intends to save.
+        #[serde(default)]
+        force: bool,
+    },
+
+    /// Close all buffers in the split except the specified one
+    CloseOtherBuffersInSplit {
+        buffer_id: BufferId,
+        split_id: SplitId,
+    },
+
+    /// Close all buffers in the split
+    CloseAllBuffersInSplit { split_id: SplitId },
+
+    /// Close all buffers to the right of the specified buffer in the split
+    CloseBuffersToRightInSplit {
+        buffer_id: BufferId,
+        split_id: SplitId,
+    },
+
+    /// Close all buffers to the left of the specified buffer in the split
+    CloseBuffersToLeftInSplit {
+        buffer_id: BufferId,
+        split_id: SplitId,
+    },
+
+    /// Move the active tab one position to the left within its split
+    MoveTabLeft,
+
+    /// Move the active tab one position to the right within its split
+    MoveTabRight,
+
+    /// Create a composite buffer that displays multiple source buffers
+    /// Used for side-by-side diff, unified diff, and 3-way merge views
+    CreateCompositeBuffer {
+        /// Display name (shown in tab bar)
+        name: String,
+        /// Mode name for keybindings (e.g., "diff-view")
+        mode: String,
+        /// Layout configuration
+        layout: CompositeLayoutConfig,
+        /// Source pane configurations
+        sources: Vec<CompositeSourceConfig>,
+        /// Diff hunks for line alignment (optional)
+        hunks: Option<Vec<CompositeHunk>>,
+        /// When set, first render scrolls to center this hunk (0-indexed)
+        initial_focus_hunk: Option<usize>,
+        /// Request ID for async response
+        request_id: Option<u64>,
+    },
+
+    /// Update alignment for a composite buffer (e.g., after source edit)
+    UpdateCompositeAlignment {
+        buffer_id: BufferId,
+        hunks: Vec<CompositeHunk>,
+    },
+
+    /// Say where a plugin-composed buffer carries code, and in what
+    /// language, so the host highlights it (see [`SyntaxRegion`]).
+    /// Replaces the buffer's previous regions.
+    SetSyntaxRegions {
+        buffer_id: BufferId,
+        regions: Vec<SyntaxRegion>,
+    },
+
+    /// Close a composite buffer
+    CloseCompositeBuffer { buffer_id: BufferId },
+
+    /// Force-materialize render-dependent state (like `layoutIfNeeded` in UIKit).
+    ///
+    /// Creates `CompositeViewState` for any visible composite buffer that doesn't
+    /// have one, and syncs viewport dimensions from split layout. This ensures
+    /// subsequent commands can read/modify view state that is normally created
+    /// lazily during the render cycle.
+    FlushLayout,
+
+    /// Move a buffer's tab from whichever pane holds it into `split_id`,
+    /// removing it from the source pane rather than leaving a copy behind.
+    ///
+    /// `SetSplitBuffer` only changes which of a pane's tabs is showing, so
+    /// building "this buffer belongs over there" out of it strands the
+    /// original tab in the pane it came from.
+    MoveBufferToSplit {
+        buffer_id: BufferId,
+        split_id: SplitId,
+    },
+
+    /// Make lines of `buffer_id` clickable: a click or Enter on a listed
+    /// line opens what it points at.
+    ///
+    /// Declarative on purpose. The alternative is an `editor.on("mouse_click")`
+    /// handler, which means the author has to still be running when the user
+    /// clicks — fine for a resident plugin, useless for a one-shot script that
+    /// builds an index and exits. Here the editor owns the behaviour, so the
+    /// view keeps working after its author is gone.
+    ///
+    /// Replaces any previous targets for the buffer; an empty list clears
+    /// them.
+    SetLineTargets {
+        buffer_id: BufferId,
+        targets: Vec<LineTarget>,
+    },
+
+    /// Split the active pane and answer with the new pane's id and
+    /// geometry. The layout mutation is applied — and the readable
+    /// snapshot refreshed — before the response is sent, so a caller that
+    /// awaits it can immediately read back what it just built.
+    SplitWindow {
+        options: SplitWindowOptions,
+        request_id: u64,
+    },
+
+    /// Answer once every command queued ahead of this one has been
+    /// applied and the plugin-visible snapshot has been refreshed.
+    ///
+    /// Mutations are queued and drained on the editor thread, so a read
+    /// issued in the same breath as a mutation sees the state from
+    /// *before* it. Awaiting this is what lets one script mutate and then
+    /// verify.
+    SyncSnapshot { request_id: u64 },
+
+    /// Navigate to the next hunk in a composite buffer
+    CompositeNextHunk { buffer_id: BufferId },
+
+    /// Navigate to the previous hunk in a composite buffer
+    CompositePrevHunk { buffer_id: BufferId },
+
+    /// Put a composite buffer's cursor on the aligned row that shows
+    /// `line` (0-indexed) of pane `pane`, and scroll it into view.
+    SetCompositeCursorLine {
+        buffer_id: BufferId,
+        pane: usize,
+        line: usize,
+    },
+
+    /// Focus a specific split
+    FocusSplit { split_id: SplitId },
+
+    /// Set the buffer displayed in a specific split
+    SetSplitBuffer {
+        split_id: SplitId,
+        buffer_id: BufferId,
+    },
+
+    /// Set the scroll position of a specific split
+    SetSplitScroll { split_id: SplitId, top_byte: usize },
+
+    /// Scroll a widget-panel buffer to the widget with this key, and
+    /// put the cursor on it. `align` chooses where it lands.
+    ///
+    /// The panel already knows where it painted every keyed widget.
+    /// Without this, a plugin scrolling to its own content has to read
+    /// the painted buffer back and match its own text as strings.
+    ScrollToWidget {
+        buffer_id: BufferId,
+        key: String,
+        #[serde(default)]
+        align: ScrollAlign,
+    },
+
+    /// Request syntax highlights for a buffer range
+    RequestHighlights {
+        buffer_id: BufferId,
+        range: Range<usize>,
+        request_id: u64,
+    },
+
+    /// Close a split (if not the last one)
+    CloseSplit { split_id: SplitId },
+
+    /// Set the ratio of a split container
+    SetSplitRatio {
+        split_id: SplitId,
+        /// Ratio between 0.0 and 1.0 (0.5 = equal split)
+        ratio: f32,
+    },
+
+    /// Set a label on a leaf split (e.g., "sidebar")
+    SetSplitLabel { split_id: SplitId, label: String },
+
+    /// Remove a label from a split
+    ClearSplitLabel { split_id: SplitId },
+
+    /// Find a split by its label (async)
+    GetSplitByLabel { label: String, request_id: u64 },
+
+    /// Distribute splits evenly - make all given splits equal size
+    DistributeSplitsEvenly {
+        /// Split IDs to distribute evenly
+        split_ids: Vec<SplitId>,
+    },
+
+    /// Set cursor position in a buffer (also scrolls viewport to show cursor)
+    SetBufferCursor {
+        buffer_id: BufferId,
+        /// Byte offset position for the cursor
+        position: usize,
+    },
+
+    /// Toggle whether the editor draws a native caret for this buffer.
+    ///
+    /// Buffer-group panel buffers default to `show_cursors = false`, which not
+    /// only hides the caret but also blocks all movement actions in
+    /// `action_to_events`. Plugins that want native cursor motion in a panel
+    /// buffer (e.g. for magit-style row navigation) flip this to `true` after
+    /// `createBufferGroup` returns.
+    SetBufferShowCursors { buffer_id: BufferId, show: bool },
+    /// Pick a virtual buffer's grammar by name. `name` is resolved the
+    /// same way a virtual buffer's own name is, so an extension in it
+    /// (`"stream.diff"`) selects the grammar.
+    SetBufferLanguage { buffer_id: BufferId, name: String },
+    /// Number a plugin-composed diff stream's rows from its `@@` headers
+    /// instead of showing buffer line numbers.
+    SetBufferDiffGutter { buffer_id: BufferId, enabled: bool },
+
+    /// Send an arbitrary LSP request and return the raw JSON response
+    SendLspRequest {
+        language: String,
+        method: String,
+        #[ts(type = "any")]
+        params: Option<JsonValue>,
+        request_id: u64,
+    },
+
+    /// Set the internal clipboard content
+    SetClipboard { text: String },
+
+    /// Delete the current selection in the active buffer
+    /// This deletes all selected text across all cursors
+    DeleteSelection,
+
+    /// Set or unset a custom context
+    /// Custom contexts are plugin-defined states that can be used to control command visibility
+    /// For example, "config-editor" context could make config editor commands available
+    SetContext {
+        /// Context name (e.g., "config-editor")
+        name: String,
+        /// Whether the context is active
+        active: bool,
+    },
+
+    /// Set the hunks for the Review Diff tool
+    SetReviewDiffHunks { hunks: Vec<ReviewHunk> },
+
+    /// Execute an editor action by name (e.g., "move_word_right", "delete_line")
+    /// Used by vi mode plugin to run motions and calculate cursor ranges
+    ExecuteAction {
+        /// Action name (e.g., "move_word_right", "move_line_end")
+        action_name: String,
+    },
+
+    /// Report the outcome of a command dispatched with a request id — the
+    /// answer to a `RunCommand` from the agent command channel.
+    ///
+    /// Emitted by the runtime wrapper that invokes a command handler, once the
+    /// handler's return value (or promise) settles, so a plugin command can
+    /// answer its caller by simply returning a value. The editor matches
+    /// `request_id` to the waiting caller and writes it a `CommandResult`.
+    CompleteCommand {
+        /// The id the host handed out when it dispatched the command.
+        #[ts(type = "number")]
+        request_id: u64,
+        /// Whether the handler settled successfully.
+        ok: bool,
+        /// The handler's return value, JSON-encoded. `None` when it returned
+        /// nothing (or the call failed).
+        output: Option<String>,
+        /// Failure reason when `ok` is false.
+        error: Option<String>,
+    },
+
+    /// Execute multiple actions in sequence, each with an optional repeat count
+    /// Used by vi mode for count prefix (e.g., "3dw" = delete 3 words)
+    /// All actions execute atomically with no plugin roundtrips between them
+    ExecuteActions {
+        /// List of actions to execute in sequence
+        actions: Vec<ActionSpec>,
+    },
+
+    /// Define (or replace) an in-memory macro under `register` from a step
+    /// list. Lets `init.ts` re-seed macro registers at startup, so a saved
+    /// macro plays back exactly like a hand-recorded one.
+    DefineMacro {
+        /// Single-character register key (first char is used).
+        register: String,
+        /// Recorded steps as `ActionSpec`s.
+        steps: Vec<ActionSpec>,
+    },
+
+    /// Play the macro stored under `register` (same effect as the
+    /// `PlayMacro(char)` action, but addressable by register string from
+    /// plugins).
+    PlayMacroByRegister {
+        /// Single-character register key (first char is used).
+        register: String,
+    },
+
+    /// Get text from a buffer range (for yank operations)
+    GetBufferText {
+        /// Buffer ID
+        buffer_id: BufferId,
+        /// Start byte offset
+        start: usize,
+        /// End byte offset
+        end: usize,
+        /// Request ID for async response
+        request_id: u64,
+    },
+
+    /// Get byte offset of the start of a line (async)
+    /// Line is 0-indexed (0 = first line)
+    GetLineStartPosition {
+        /// Buffer ID (0 for active buffer)
+        buffer_id: BufferId,
+        /// Line number (0-indexed)
+        line: u32,
+        /// Request ID for async response
+        request_id: u64,
+    },
+
+    /// Get byte offset of the end of a line (async)
+    /// Line is 0-indexed (0 = first line)
+    /// Returns the byte offset after the last character of the line (before newline)
+    GetLineEndPosition {
+        /// Buffer ID (0 for active buffer)
+        buffer_id: BufferId,
+        /// Line number (0-indexed)
+        line: u32,
+        /// Request ID for async response
+        request_id: u64,
+    },
+
+    /// Get the total number of lines in a buffer (async)
+    GetBufferLineCount {
+        /// Buffer ID (0 for active buffer)
+        buffer_id: BufferId,
+        /// Request ID for async response
+        request_id: u64,
+    },
+
+    /// Get cursor info for the active composite (side-by-side diff) buffer
+    /// (async). Resolves with `{ focusedPane, paneCount, lines }` or `null`
+    /// when the active buffer is not a composite buffer.
+    GetCompositeCursorInfo {
+        /// Request ID for async response
+        request_id: u64,
+    },
+
+    /// Open `path` as a regular buffer in forced large-file (file-backed)
+    /// mode regardless of file size. Designed for buffers whose backing
+    /// file will grow under them (e.g. a temp file fed by `spawnProcess`
+    /// with `stdoutTo`). Resolves with the new buffer's id.
+    ///
+    /// Pair with `RefreshBufferFromDisk` to grow the buffer as the file
+    /// is written.
+    OpenFileStreaming {
+        /// Path to open. May not yet exist or may be empty.
+        path: PathBuf,
+        /// Request ID for async response (the buffer_id).
+        request_id: u64,
+    },
+
+    /// Re-stat the file backing `buffer_id` and extend the buffer if
+    /// the file has grown. No-op if the buffer has no file path or the
+    /// file didn't grow. Resolves with the new total byte length.
+    RefreshBufferFromDisk {
+        buffer_id: BufferId,
+        /// Request ID for async response.
+        request_id: u64,
+    },
+
+    /// Re-point a buffer-group's panel at a different buffer id.
+    /// Used by streaming plugins (e.g. git-log) to swap one
+    /// file-backed buffer for another when the user navigates to a
+    /// new commit, without rebuilding the group layout. Both
+    /// `group.panel_buffers[panel_name]` and the corresponding
+    /// `SplitViewState.active_buffer` are updated; layout is marked
+    /// dirty for the next render.
+    ///
+    /// Resolves with `true` on success, `false` if the group or panel
+    /// is missing.
+    SetBufferGroupPanelBuffer {
+        group_id: usize,
+        panel_name: String,
+        buffer_id: BufferId,
+        request_id: u64,
+    },
+
+    /// Scroll a split to center a specific line in the viewport
+    /// Line is 0-indexed (0 = first line)
+    ScrollToLineCenter {
+        /// Split ID to scroll
+        split_id: SplitId,
+        /// Buffer ID containing the line
+        buffer_id: BufferId,
+        /// Line number to center (0-indexed)
+        line: usize,
+    },
+
+    /// Scroll any split/panel that displays `buffer_id` so the given
+    /// line is visible in the viewport. Unlike `ScrollToLineCenter` this
+    /// does not require a split id — it walks all splits (including
+    /// inner panels of a buffer group) and updates every viewport that
+    /// shows this buffer. Line is 0-indexed.
+    ScrollBufferToLine {
+        /// Buffer ID to scroll
+        buffer_id: BufferId,
+        /// Line number to bring into view (0-indexed)
+        line: usize,
+    },
+
+    /// Set the global editor mode (for modal editing like vi mode)
+    /// When set, the mode's keybindings take precedence over normal editing
+    SetEditorMode {
+        /// Mode name (e.g., "vi-normal", "vi-insert") or None to clear
+        mode: Option<String>,
+    },
+
+    /// Show an action popup with buttons for user interaction
+    /// When the user selects an action, the ActionPopupResult hook is fired
+    ShowActionPopup {
+        /// Unique identifier for the popup (used in ActionPopupResult)
+        popup_id: String,
+        /// Title text for the popup
+        title: String,
+        /// Body message (supports basic formatting)
+        message: String,
+        /// Action buttons to display
+        actions: Vec<ActionPopupAction>,
+        /// When `Some`, the popup is scoped to that buffer: it renders only
+        /// while that buffer is active and is torn down when the buffer
+        /// closes, instead of floating over every buffer on the editor-level
+        /// stack. Use for popups raised in response to a specific buffer (an
+        /// `after_file_open` config offer) rather than global notifications.
+        buffer_id: Option<usize>,
+    },
+
+    /// Contribute (or replace, or clear) a set of menu rows for the
+    /// LSP-Servers popup (the popup opened by clicking the LSP
+    /// indicator). Each plugin owns its own slice keyed by
+    /// `plugin_id`; passing an empty `items` clears that slice.
+    ///
+    /// Rationale: previously plugins reacting to `lsp_status_clicked`
+    /// pushed their own separate action popup via `ShowActionPopup`,
+    /// which stacked over the built-in LSP-Servers popup and created
+    /// the UX conflict in PR #1941. This command lets plugins
+    /// contribute rows that merge into the existing popup instead.
+    /// Selecting a contributed row fires `action_popup_result` with
+    /// `popup_id = "lsp_status"` and `action_id =
+    /// "{plugin_id}|{id}"`.
+    SetLspMenuContributions {
+        /// Stable plugin identifier used both as the namespace for
+        /// this slice of contributions and as the prefix of the
+        /// resulting `action_popup_result.action_id`.
+        plugin_id: String,
+        /// Language whose LSP-Servers popup should display these
+        /// rows (e.g. "rust", "python").
+        language: String,
+        /// The rows to install. Empty clears any previous
+        /// contribution from this `plugin_id` for this `language`.
+        items: Vec<LspMenuItem>,
+    },
+
+    /// Disable LSP for a specific language and persist to config
+    DisableLspForLanguage {
+        /// The language to disable LSP for (e.g., "python", "rust")
+        language: String,
+    },
+
+    /// Restart LSP server for a specific language
+    RestartLspForLanguage {
+        /// The language to restart LSP for (e.g., "python", "rust")
+        language: String,
+    },
+
+    /// Claim an LSP URI scheme (e.g. `slang-synth`). When an LSP navigation
+    /// resolves to a non-`file://` URI with this scheme, the core fires the
+    /// `lsp_open_external_uri` hook instead of showing its fallback message,
+    /// so the plugin can fetch and open the synthetic document itself.
+    RegisterLspUriScheme {
+        /// The scheme to claim, without the `://` (e.g. `slang-synth`).
+        scheme: String,
+    },
+
+    /// Mark the buffer backing `path` read-only. Resolved by path (not
+    /// buffer id) so it is race-free when issued right after `openFile`:
+    /// both are FIFO commands, so the buffer exists by the time this runs,
+    /// whereas a buffer id read from the state snapshot could still be stale.
+    MarkBufferReadOnly {
+        /// Filesystem path of the buffer to mark read-only.
+        path: std::path::PathBuf,
+    },
+
+    /// Set the workspace root URI for a specific language's LSP server
+    /// This allows plugins to specify project roots (e.g., directory containing .csproj)
+    /// If the LSP is already running, it will be restarted with the new root
+    SetLspRootUri {
+        /// The language to set root URI for (e.g., "csharp", "rust")
+        language: String,
+        /// The root URI (file:// URL format)
+        uri: String,
+    },
+
+    /// Create a scroll sync group for anchor-based synchronized scrolling
+    /// Used for side-by-side diff views where two panes need to scroll together
+    /// The plugin provides the group ID (must be unique per plugin)
+    CreateScrollSyncGroup {
+        /// Plugin-assigned group ID
+        group_id: u32,
+        /// The left (primary) split - scroll position is tracked in this split's line space
+        left_split: SplitId,
+        /// The right (secondary) split - position is derived from anchors
+        right_split: SplitId,
+    },
+
+    /// Set sync anchors for a scroll sync group
+    /// Anchors map corresponding line numbers between left and right buffers
+    SetScrollSyncAnchors {
+        /// The group ID returned by CreateScrollSyncGroup
+        group_id: u32,
+        /// List of (left_line, right_line) pairs marking corresponding positions
+        anchors: Vec<(usize, usize)>,
+    },
+
+    /// Remove a scroll sync group
+    RemoveScrollSyncGroup {
+        /// The group ID returned by CreateScrollSyncGroup
+        group_id: u32,
+    },
+
+    /// Save a buffer to a specific file path
+    /// Used by :w filename command to save unnamed buffers or save-as
+    SaveBufferToPath {
+        /// Buffer ID to save
+        buffer_id: BufferId,
+        /// Path to save to
+        path: PathBuf,
+    },
+
+    /// Load a plugin from a file path
+    /// The plugin will be initialized and start receiving events
+    LoadPlugin {
+        /// Path to the plugin file (.ts or .js)
+        path: PathBuf,
+        /// Callback ID for async response (success/failure)
+        callback_id: JsCallbackId,
+    },
+
+    /// Unload a plugin by name
+    /// The plugin will stop receiving events and be removed from memory
+    UnloadPlugin {
+        /// Plugin name (as registered)
+        name: String,
+        /// Callback ID for async response (success/failure)
+        callback_id: JsCallbackId,
+    },
+
+    /// Reload a plugin by name (unload + load)
+    /// Useful for development when plugin code changes
+    ReloadPlugin {
+        /// Plugin name (as registered)
+        name: String,
+        /// Callback ID for async response (success/failure)
+        callback_id: JsCallbackId,
+    },
+
+    /// List all loaded plugins
+    /// Returns plugin info (name, path, enabled) for all loaded plugins
+    ListPlugins {
+        /// Callback ID for async response (JSON array of plugin info)
+        callback_id: JsCallbackId,
+    },
+
+    /// Register a repeating (or one-shot) host-driven timer that invokes a
+    /// plugin handler by name.
+    ///
+    /// Distinct from `Delay` in the one way that matters: `Delay` resolves a
+    /// promise *inside* the caller's realm, so the code that resumes is
+    /// whatever was awaiting it — and if nothing in that realm ever awaits
+    /// again the chain stops. A timer is driven from the editor's own tick
+    /// and dispatches `PluginAction(handler_name)`, the same path a command
+    /// or keybinding takes, so it fires no matter where it was created from.
+    SetPluginTimer {
+        /// Id minted by the runtime, used to cancel.
+        #[ts(type = "number")]
+        timer_id: u64,
+        /// Owning plugin, so unload can cancel what it left running.
+        plugin_name: String,
+        /// Global function name to invoke on each fire.
+        handler_name: String,
+        /// Period (repeating) or delay (one-shot), in milliseconds.
+        #[ts(type = "number")]
+        interval_ms: u64,
+        /// `false` for a one-shot timer, which cancels itself after firing.
+        repeat: bool,
+    },
+
+    /// Cancel a timer registered by `SetPluginTimer`. Unknown ids are
+    /// ignored — cancelling twice, or cancelling a one-shot that already
+    /// fired, is not an error.
+    ClearPluginTimer {
+        #[ts(type = "number")]
+        timer_id: u64,
+    },
+
+    /// Re-read `~/.config/fresh/init.ts` and run it, exactly as the
+    /// "init: Reload" palette command does.
+    ///
+    /// The runtime's hot-reload semantics drop the prior init.ts's commands,
+    /// handlers, event subscriptions and settings before the new source runs,
+    /// so this is the whole author→reload→test loop in one call. Answers with
+    /// `{ ok, error }` — a syntax error in the file is reported, not thrown.
+    ReloadInit {
+        /// Callback ID for async response.
+        callback_id: JsCallbackId,
+    },
+
+    /// Run a registered command by its palette name — the same dispatch the
+    /// command palette performs when the user picks that row.
+    ///
+    /// Built-in and plugin commands both resolve; plugin commands win on a
+    /// name collision, matching the palette. Answers with `{ ok, error }`:
+    /// `ok: false` when no command carries that name, so a caller can tell
+    /// "not registered" from "ran and did nothing".
+    RunEditorCommand {
+        /// Exact command name as it appears in the palette.
+        name: String,
+        /// Callback ID for async response.
+        callback_id: JsCallbackId,
+    },
+
+    /// List every registered command (built-in + plugin) with the metadata
+    /// the palette shows. Lets a plugin author confirm from a script that
+    /// their `registerCommand` actually landed.
+    ListEditorCommands {
+        /// Callback ID for async response (JSON array of command info).
+        callback_id: JsCallbackId,
+    },
+
+    /// Reload the theme registry from disk
+    /// Call this after installing a theme package or saving a new theme.
+    /// If `apply_theme` is set, apply that theme immediately after reloading.
+    ReloadThemes { apply_theme: Option<String> },
+
+    /// Register a TextMate grammar file for a language
+    /// The grammar will be added to pending_grammars until ReloadGrammars is called
+    RegisterGrammar {
+        /// Language identifier (e.g., "elixir", "zig")
+        language: String,
+        /// Path to the grammar file (.sublime-syntax or .tmLanguage)
+        grammar_path: String,
+        /// File extensions to associate with this grammar (e.g., ["ex", "exs"])
+        extensions: Vec<String>,
+    },
+
+    /// Register language configuration (comment prefix, indentation, formatter)
+    /// This is applied immediately to the runtime config
+    RegisterLanguageConfig {
+        /// Language identifier (e.g., "elixir")
+        language: String,
+        /// Language configuration
+        config: LanguagePackConfig,
+    },
+
+    /// Register an LSP server for a language
+    /// This is applied immediately to the LSP manager and runtime config
+    RegisterLspServer {
+        /// Language identifier (e.g., "elixir")
+        language: String,
+        /// LSP server configuration
+        config: LspServerPackConfig,
+    },
+
+    /// Reload the grammar registry to apply registered grammars (async)
+    /// Call this after registering one or more grammars to rebuild the syntax set.
+    /// The callback is resolved when the background grammar build completes.
+    ReloadGrammars { callback_id: JsCallbackId },
+
+    // ==================== Terminal Commands ====================
+    /// Create a new terminal in a split (async, returns TerminalResult)
+    /// This spawns a PTY-backed terminal that plugins can write to and read from.
+    CreateTerminal {
+        /// Working directory for the terminal (defaults to editor cwd)
+        cwd: Option<String>,
+        /// Split direction ("horizontal" or "vertical"), default vertical
+        direction: Option<String>,
+        /// Split ratio (0.0 to 1.0), default 0.5
+        ratio: Option<f32>,
+        /// Whether to focus the new terminal split (default true)
+        focus: Option<bool>,
+        /// Whether this terminal survives editor restarts. When false, the
+        /// terminal is excluded from workspace serialization and its backing
+        /// file is kept unique-per-spawn so no scrollback from a prior run
+        /// leaks in. Plugin-created terminals default to `false` since they
+        /// are typically one-off tool UIs (rebuilds, exec shells, etc.).
+        persistent: bool,
+        /// Optional session id to attach the new terminal buffer to.
+        /// `None` (default) attaches to the active session at creation
+        /// time — the historical behaviour. `Some(id)` lets Orchestrator
+        /// (and any plugin spawning agents in worktrees) attach the
+        /// terminal to its target session without diving first; the
+        /// terminal's split is created in that session's stashed split
+        /// tree, and the buffer is added to the target session's
+        /// `Session.buffers` membership rather than the active one's.
+        /// Falls back to active session if the id is unknown.
+        #[serde(default)]
+        window_id: Option<WindowId>,
+        /// Argv to spawn directly in the PTY in lieu of the host's
+        /// configured shell. See `CreateTerminalOptions::command` for
+        /// the full semantics — `None` keeps the shell-and-type
+        /// behaviour, `Some(argv)` runs `argv` as the PTY child.
+        #[serde(default)]
+        command: Option<Vec<String>>,
+        /// Tab title override. Defaults to `command[0]` (when
+        /// `command` is set) or `"Terminal N"` (when it isn't).
+        /// See `CreateTerminalOptions::title`.
+        #[serde(default)]
+        title: Option<String>,
+        /// Argv to run on restore/restart instead of `command`.
+        /// See `CreateTerminalOptions::resume`.
+        #[serde(default)]
+        resume: Option<Vec<String>>,
+        /// Extra env vars for the spawned child, on top of the
+        /// inherited/activated env. See `CreateTerminalOptions::env`.
+        /// `None` adds nothing.
+        #[serde(default)]
+        env: Option<std::collections::HashMap<String, String>>,
+        /// Capability grant. When set, the host mints a token bound to
+        /// the target window and injects `FRESH_CMD_TOKEN` /
+        /// `FRESH_SESSION` into the spawned child. See
+        /// `CreateTerminalOptions::allow_script`.
+        #[serde(default)]
+        allow_script: bool,
+        /// Callback ID for async response
+        request_id: u64,
+    },
+
+    /// Send input data to a terminal by its terminal ID
+    SendTerminalInput {
+        /// The terminal ID (from TerminalResult)
+        terminal_id: TerminalId,
+        /// Data to write to the terminal PTY (UTF-8 string, may include escape sequences)
+        data: String,
+    },
+
+    /// Close a terminal by its terminal ID
+    CloseTerminal {
+        /// The terminal ID to close
+        terminal_id: TerminalId,
+    },
+
+    /// Send `signal` to every process group tracked by the
+    /// window `id`. `signal` is one of `"SIGTERM"` / `"SIGKILL"`
+    /// / `"SIGINT"` / `"SIGHUP"`; the window's authority
+    /// determines the actual delivery mechanism (local
+    /// `kill(-pgid, …)` on host, `docker exec kill …` for
+    /// container authorities, SSH agent for remote ones —
+    /// see `app/window/process_group.rs`). Idempotent across
+    /// already-exited groups: callers can retry safely.
+    SignalWindow { id: WindowId, signal: String },
+
+    /// Register a diff baseline for `buffer_id` (async). `kind` is one of
+    /// "saved" | "disk" | "gitRef" | "gitIndex"; `git_ref` carries the ref
+    /// for "gitRef". Disk and git baselines load their content off-loop
+    /// (filesystem read / `git show` on the window's authority); the
+    /// promise resolves with the baseline id once content is ready.
+    RegisterDiffBaseline {
+        buffer_id: BufferId,
+        kind: String,
+        git_ref: Option<String>,
+        callback_id: JsCallbackId,
+    },
+
+    /// Diff `buffer_id`'s live content against a registered baseline
+    /// (async). Resolves with a `DiffBaselineResult`. No buffer text
+    /// crosses the plugin bridge in either direction.
+    DiffAgainstBaseline {
+        buffer_id: BufferId,
+        baseline_id: u64,
+        callback_id: JsCallbackId,
+    },
+
+    /// Diff two registered baselines against each other (async) — e.g.
+    /// disk vs HEAD, the git-gutter comparison. Resolves with a
+    /// `DiffBaselineResult` whose `revision` is 0.
+    DiffBaselinePair {
+        old_baseline_id: u64,
+        new_baseline_id: u64,
+        callback_id: JsCallbackId,
+    },
+
+    /// Fetch baseline line contents for the given `(start_line, count)`
+    /// ranges (async, one batched call). Lines are returned without their
+    /// trailing newline, grouped per requested range — how a diff view
+    /// fetches only the old-side lines it actually renders.
+    GetBaselineLines {
+        baseline_id: u64,
+        ranges: Vec<(u32, u32)>,
+        callback_id: JsCallbackId,
+    },
+
+    /// Reload a baseline's content (async; e.g. after a HEAD move or an
+    /// external write) and bump its generation. Resolves when the new
+    /// content is in place.
+    RefreshDiffBaseline {
+        baseline_id: u64,
+        callback_id: JsCallbackId,
+    },
+
+    /// Drop a registered baseline. Baselines are also dropped
+    /// automatically when their buffer closes.
+    ReleaseDiffBaseline { baseline_id: u64 },
+
+    /// Project-wide grep search (async)
+    /// Searches all project files via FileSystem trait, respecting .gitignore.
+    /// For open buffers with dirty edits, searches the buffer's piece tree.
+    GrepProject {
+        /// Which plugin asked. Coalescing is per plugin: a newer grep replaces
+        /// that plugin's own in-flight one, and never another plugin's.
+        plugin_name: String,
+        /// Search pattern (literal string)
+        pattern: String,
+        /// Whether the pattern is a fixed string (true) or regex (false)
+        fixed_string: bool,
+        /// Whether the search is case-sensitive
+        case_sensitive: bool,
+        /// Maximum number of results to return
+        max_results: usize,
+        /// Whether to match whole words only
+        whole_words: bool,
+        /// Callback ID for async response
+        callback_id: JsCallbackId,
+    },
+
+    /// Project-wide streaming search using a pull-based handle.
+    ///
+    /// The plugin allocates `handle_id` and registers an `Arc<SearchHandleState>`
+    /// in the shared `SearchHandleRegistry` before sending this command. The
+    /// editor's searcher tasks look up the same entry and write matches
+    /// directly into its `pending` vec — no per-chunk JS dispatch. The plugin
+    /// drains state via `editor._searchHandleTake(handle_id)` at its own pace.
+    BeginSearch {
+        /// Search pattern
+        pattern: String,
+        /// Whether the pattern is a fixed string (true) or regex (false)
+        fixed_string: bool,
+        /// Whether the search is case-sensitive
+        case_sensitive: bool,
+        /// Maximum number of results before the search self-truncates
+        max_results: usize,
+        /// Whether to match whole words only
+        whole_words: bool,
+        /// Optional comma-separated file globs. Patterns containing a path
+        /// separator match workspace-relative paths; other patterns match
+        /// file names. An empty string searches every walked file.
+        file_glob: String,
+        /// Source buffer id to additionally search in-memory when it has no
+        /// file path (an unnamed/unsaved buffer). The on-disk walk can't see
+        /// such a buffer, so the host searches its piece-tree content directly
+        /// and emits matches carrying this buffer id. 0 means "no such buffer".
+        source_buffer_id: usize,
+        /// Handle ID — key into the shared `SearchHandleRegistry`
+        handle_id: u64,
+    },
+
+    /// Replace matches in a buffer (async)
+    /// Opens the file if not already open, applies edits through the buffer model,
+    /// groups as a single undo action, and saves via FileSystem trait.
+    ReplaceInBuffer {
+        /// File path to edit (will open if not already in a buffer)
+        file_path: PathBuf,
+        /// Buffer id to edit directly when non-zero and still live. Used for
+        /// unnamed/unsaved buffers that have no path to resolve by. When 0, the
+        /// target is resolved via `file_path` (opening the file if needed).
+        buffer_id: usize,
+        /// Matches to replace, each is (byte_offset, length)
+        matches: Vec<(usize, usize)>,
+        /// Replacement text
+        replacement: String,
+        /// Callback ID for async response
+        callback_id: JsCallbackId,
+    },
+
+    /// Install a new authority.
+    ///
+    /// Authority is opaque to core. The payload is a tagged JSON object
+    /// (filesystem kind + spawner kind + terminal wrapper + display
+    /// label) that `fresh-editor` deserializes into its concrete
+    /// `AuthorityPayload` type. Using `serde_json::Value` here keeps
+    /// fresh-core from growing backend-specific knowledge; see
+    /// `crates/fresh-editor/src/services/authority/mod.rs` for the
+    /// canonical schema.
+    ///
+    /// Fire-and-forget: the transition piggy-backs on the existing
+    /// editor restart flow, so the plugin that sent this command will
+    /// be re-loaded as part of the restart. Any follow-up work the
+    /// plugin wants to do after the switch belongs in its post-restart
+    /// init code, not in a callback here.
+    SetAuthority {
+        #[ts(type = "unknown")]
+        payload: JsonValue,
+    },
+
+    /// Restore the default local authority. Same semantics as
+    /// `SetAuthority` with a local payload — triggers an editor
+    /// restart.
+    ClearAuthority,
+
+    /// Attach to a remote agent over a transport that requires a live
+    /// connection (today: `kubectl exec` into a K8s pod). Unlike
+    /// `SetAuthority` — which builds a synchronously-constructible
+    /// backend and restarts immediately — this kicks off an *async*
+    /// connect (spawn the carrier, bootstrap the agent, await `ready`);
+    /// only on success does the editor install the resulting authority
+    /// and restart. On failure the editor surfaces the error and stays
+    /// put.
+    ///
+    /// `payload` is opaque at the fresh-core boundary; the concrete
+    /// schema (`RemoteAgentSpec`) lives in `fresh-editor` so core stays
+    /// ignorant of backend kinds, exactly like `SetAuthority`.
+    AttachRemoteAgent {
+        #[ts(type = "unknown")]
+        payload: JsonValue,
+        /// JS callback id of the returned promise. The editor settles it once
+        /// the session is fully constructed (resolve) or the connect/window
+        /// creation fails (reject), so the plugin can await the real outcome.
+        request_id: u64,
+    },
+
+    /// Cancel every in-flight `attachRemoteAgent` connect. The New-Session
+    /// dialog's Cancel: the awaiting promise is rejected immediately and the
+    /// (uninterruptible) background connect's eventual result is discarded so
+    /// no window is ever built. A no-op when nothing is in flight.
+    CancelRemoteAttach,
+
+    /// Activate an environment: set the live env provider's recipe (an
+    /// activation shell `snippet` run in `dir`). Re-evaluated on demand on the
+    /// active backend and applied to every spawn — no authority rebuild. Only
+    /// honored when the workspace is Trusted (it runs repo-controlled code).
+    SetEnv {
+        snippet: String,
+        #[serde(default)]
+        dir: Option<String>,
+    },
+
+    /// Deactivate the environment — clear the live provider so spawns use the
+    /// inherited environment again.
+    ClearEnv,
+
+    /// Override the Remote Indicator's displayed state for the rest
+    /// of the current editor session (until a restart, or until the
+    /// plugin sends another override / `ClearRemoteIndicatorState`).
+    ///
+    /// The derived state — computed from the active authority's
+    /// connection info — keeps running underneath and is what the
+    /// indicator shows whenever an override is not in effect.
+    /// Plugins use this to surface lifecycle states that have no
+    /// authority-level truth yet (e.g. "Connecting" during
+    /// `devcontainer up`, "FailedAttach" after a non-zero exit).
+    ///
+    /// `state` is a tagged enum keyed by `kind`:
+    ///   - `{ "kind": "local" }`
+    ///   - `{ "kind": "connecting", "label": "..." }`
+    ///   - `{ "kind": "connected", "label": "..." }`
+    ///   - `{ "kind": "failed_attach", "error": "..." }`
+    ///   - `{ "kind": "disconnected", "label": "..." }`
+    ///
+    /// The exact schema lives in
+    /// `crates/fresh-editor/src/view/ui/status_bar.rs`; fresh-core
+    /// takes it opaquely so new variants can land without touching
+    /// core plumbing.
+    SetRemoteIndicatorState {
+        #[ts(type = "unknown")]
+        state: JsonValue,
+    },
+
+    /// Drop any active Remote Indicator override and fall back to
+    /// the authority-derived state. Safe to call without a prior
+    /// `SetRemoteIndicatorState`.
+    ClearRemoteIndicatorState,
+
+    /// Spawn a process on the host, regardless of the currently
+    /// installed authority.
+    ///
+    /// Intended for plugin internals that must run host-side work
+    /// (e.g. `devcontainer up`) before installing an authority that
+    /// would otherwise route the spawn elsewhere. Behaves like
+    /// `SpawnProcess` but always uses `LocalProcessSpawner`.
+    ///
+    /// The TS-side handle exposes `.kill()` on the returned
+    /// `ProcessHandle`, serviced by `KillHostProcess` below — this
+    /// lets callers abort a long-running host spawn (e.g.
+    /// `devcontainer up`) via a user action like "Cancel Startup".
+    SpawnHostProcess {
+        command: String,
+        args: Vec<String>,
+        cwd: Option<String>,
+        callback_id: JsCallbackId,
+    },
+
+    /// Cancel a host-side process previously started via
+    /// `SpawnHostProcess`. `process_id` is the callback id returned
+    /// by `spawnHostProcess` (the TS handle stores it and forwards
+    /// when the caller invokes `.kill()`).
+    ///
+    /// No-op when the id is unknown — the process may have already
+    /// exited, or the caller may hold a stale handle. SIGKILL on
+    /// Unix per `tokio::process::Child::start_kill`; children of the
+    /// killed process may leak (see Q-C2 in
+    /// `DEVCONTAINER_SPEC_GAP_PLAN.md`).
+    KillHostProcess { process_id: u64 },
+
+    /// Mount a declarative widget panel inside an existing virtual
+    /// buffer. The host renders the `WidgetSpec` and writes the
+    /// resulting text-property entries into the buffer. `panel_id`
+    /// is plugin-local; the host keys the panel by (plugin, id), so
+    /// every widget command carries the calling plugin's name.
+    ///
+    /// See `docs/internal/plugin-widget-library-design.md`.
+    MountWidgetPanel {
+        plugin: String,
+        panel_id: u64,
+        buffer_id: BufferId,
+        spec: WidgetSpec,
+        /// Host behaviours the spec does not describe. Absent in an
+        /// older plugin's payload, which is why it defaults.
+        #[serde(default)]
+        options: WidgetPanelOptions,
+    },
+
+    /// Replace the spec of a previously-mounted widget panel.
+    /// The reconciler diffs against the previous spec and applies
+    /// the minimum mutation; widget instance state is preserved on
+    /// nodes whose `key` matches.
+    UpdateWidgetPanel {
+        plugin: String,
+        panel_id: u64,
+        spec: WidgetSpec,
+    },
+
+    /// Tear down a widget panel. Subsequent `UpdateWidgetPanel`
+    /// calls for the same `panel_id` are no-ops.
+    UnmountWidgetPanel { plugin: String, panel_id: u64 },
+
+    /// Route a keystroke / nav action to the panel's currently
+    /// focused widget. The plugin's `defineMode` bindings dispatch
+    /// here for keys that should be handled by the widget layer
+    /// (Tab cycle, Enter to activate, Up/Down to navigate a List,
+    /// Backspace / arrows / printable input to edit a TextInput).
+    /// See `WidgetAction` for the action shapes.
+    WidgetCommand {
+        plugin: String,
+        panel_id: u64,
+        action: WidgetAction,
+    },
+
+    /// Apply a targeted mutation to a mounted widget panel
+    /// without re-transmitting the full spec. The IPC fast path
+    /// for hot-path updates (typing, selection moves, partial
+    /// list refreshes). See `WidgetMutation` for the shapes.
+    WidgetMutate {
+        plugin: String,
+        panel_id: u64,
+        mutation: WidgetMutation,
+    },
+
+    /// Mount a declarative widget panel as a centered floating
+    /// overlay rather than into a virtual buffer. `width_pct` and
+    /// `height_pct` size the overlay rect relative to the terminal
+    /// (clamped 1..=100). Only one floating widget panel may be
+    /// mounted at a time; a second `MountFloatingWidget` replaces
+    /// any existing one.
+    MountFloatingWidget {
+        plugin: String,
+        panel_id: u64,
+        spec: WidgetSpec,
+        width_pct: u8,
+        height_pct: u8,
+        /// When true, mount into the editor-global left **dock** slot
+        /// (persists alongside a centered modal) rather than as a
+        /// centered overlay.
+        as_dock: bool,
+        /// When true, the panel reserves a two-column leading gutter on
+        /// every focusable control for the `▸ ` focus marker, so the
+        /// focused control is legible from a plain terminal capture and
+        /// the layout never shifts as focus moves. Opt-in (default
+        /// false) so existing panels render unchanged.
+        #[serde(default)]
+        focus_marker: bool,
+        /// Native modal-frame title. When `Some`, a centered panel draws a
+        /// title bar into its top border (the declarative dialog's shell,
+        /// drawn by the host — not faked with a `labeledSection` inside the
+        /// spec). `None` (default) keeps the historical untitled frame.
+        #[serde(default)]
+        title: Option<String>,
+        /// Native modal-frame close button. When `true`, a centered panel
+        /// draws a `[×]` at the top-right of its border; clicking it
+        /// dismisses the panel exactly like Esc / Cancel. Default `false`
+        /// (no button) so existing panels render unchanged.
+        #[serde(default)]
+        closable: bool,
+        /// Mount the panel without taking keyboard focus — the editor
+        /// keeps the keys. A mount + follow-up `blur` command pair has a
+        /// window where the panel owns the keyboard (command dispatch is
+        /// budgeted across frames, so the pair may land on different
+        /// ticks); a panel that must never grab focus (the auto-opened
+        /// dock) states it here so the mount itself is the whole story.
+        /// Default `false`: mounting focuses the panel, as always.
+        #[serde(default)]
+        start_blurred: bool,
+        /// The plugin mode (`defineMode`) whose bindings this panel's keys
+        /// resolve against first — the panel's own keymap, ahead of the
+        /// widget that holds focus. A dock declares its chords here rather
+        /// than through the window's editor mode, which is the buffer's
+        /// and would shadow or be shadowed by it. `None` keeps the
+        /// window's editor mode as the panel's keymap, as before.
+        #[serde(default)]
+        mode: Option<String>,
+    },
+
+    /// Mount a declarative widget panel as a **sidebar section**: a
+    /// titled, collapsible section of the file explorer's column, appended
+    /// after the explorer (and after any section already there). The
+    /// sidebar is shown if it was hidden. `rows` is the section's requested
+    /// body height; a divider the user has dragged overrides it. The panel
+    /// is the same registry entry a floating or dock mount makes, so
+    /// `UpdateFloatingWidget`, `UnmountFloatingWidget`, `WidgetMutate`,
+    /// `WidgetCommand` and the `widget_event` hook all apply to it
+    /// unchanged. Mounting an identity that is already a section replaces
+    /// its content in place.
+    MountSidebarSection {
+        plugin: String,
+        panel_id: u64,
+        spec: WidgetSpec,
+        /// The section header's title.
+        title: String,
+        /// Requested body rows; `0` shares the remainder with the explorer.
+        rows: u16,
+        /// Whether the header carries a `×` that removes the section
+        /// (firing the panel's `cancel` `widget_event`). Default `true`.
+        #[serde(default = "default_true")]
+        closable: bool,
+        /// Mount without taking keyboard focus. Default `false`: the
+        /// section takes the keys, as a dock mount does.
+        #[serde(default)]
+        start_blurred: bool,
+    },
+
+    /// Replace the spec of the currently-mounted floating widget
+    /// panel. No-op when no floating panel is mounted, or when the
+    /// `panel_id` doesn't match the mounted one.
+    UpdateFloatingWidget {
+        plugin: String,
+        panel_id: u64,
+        spec: WidgetSpec,
+    },
+
+    /// Tear down the floating widget panel. No-op when no floating
+    /// panel is mounted, or when the `panel_id` doesn't match.
+    UnmountFloatingWidget { plugin: String, panel_id: u64 },
+
+    /// Control a mounted floating widget panel's placement / focus
+    /// without re-sending its spec. `op` is one of:
+    /// - "dock"   — re-anchor as a full-height left dock; `arg` is the
+    ///   dock width in columns. The dock is non-modal: the editor
+    ///   underneath stays rendered and (when blurred) keyboard-usable.
+    /// - "center" — restore the default centered-overlay placement.
+    /// - "focus"  — route keys to the panel (modal-ish capture).
+    /// - "blur"   — stop routing keys to the panel; it stays rendered
+    ///   so focus returns to the editor while the dock remains visible.
+    /// - "fullscreen" — a centered panel renders over the *entire* frame
+    ///   (covering the dimmed dock) when `arg != 0`, instead of laying
+    ///   into the chrome area beside the dock. No-op when no dock is up.
+    /// - "sidebar" — re-anchor a dock or centered panel as a sidebar
+    ///   section under the file explorer; `arg` is the requested body
+    ///   rows. "dock" and "center" re-anchor a section back out.
+    /// - "sidebar_rows" — set a sidebar section's requested body rows to
+    ///   `arg`, without touching focus. A divider the user has dragged
+    ///   wins. No-op unless the panel is a section.
+    FloatingPanelControl {
+        plugin: String,
+        panel_id: u64,
+        op: String,
+        arg: f64,
+    },
+}
+
+// =============================================================================
+// Language Pack Configuration Types
+// =============================================================================
+
+/// Language configuration for language packs
+///
+/// This is a simplified version of the full LanguageConfig, containing only
+/// the fields that can be set via the plugin API.
+#[derive(Debug, Clone, Serialize, Deserialize, Default, TS)]
+#[serde(rename_all = "camelCase")]
+#[ts(export)]
+pub struct LanguagePackConfig {
+    /// Comment prefix for line comments (e.g., "//" or "#")
+    #[serde(default)]
+    pub comment_prefix: Option<String>,
+
+    /// Block comment start marker (e.g., slash-star)
+    #[serde(default)]
+    pub block_comment_start: Option<String>,
+
+    /// Block comment end marker (e.g., star-slash)
+    #[serde(default)]
+    pub block_comment_end: Option<String>,
+
+    /// Whether to use tabs instead of spaces for indentation
+    #[serde(default)]
+    pub use_tabs: Option<bool>,
+
+    /// Tab size (number of spaces per tab level)
+    #[serde(default)]
+    pub tab_size: Option<usize>,
+
+    /// Whether auto-indent is enabled
+    #[serde(default)]
+    pub auto_indent: Option<bool>,
+
+    /// Whether to show whitespace tab indicators (→) for this language
+    /// Defaults to true. Set to false for languages like Go/Hare that use tabs for indentation.
+    #[serde(default)]
+    pub show_whitespace_tabs: Option<bool>,
+
+    /// Formatter configuration
+    #[serde(default)]
+    pub formatter: Option<FormatterPackConfig>,
+}
+
+/// Formatter configuration for language packs
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[serde(rename_all = "camelCase")]
+#[ts(export)]
+pub struct FormatterPackConfig {
+    /// Command to run (e.g., "prettier", "rustfmt")
+    pub command: String,
+
+    /// Arguments to pass to the formatter
+    #[serde(default)]
+    pub args: Vec<String>,
+}
+
+/// Process resource limits for LSP servers
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[serde(rename_all = "camelCase")]
+#[ts(export)]
+pub struct ProcessLimitsPackConfig {
+    /// Maximum memory usage as percentage of total system memory (null = no limit)
+    #[serde(default)]
+    pub max_memory_percent: Option<u32>,
+
+    /// Maximum CPU usage as percentage of total CPU (null = no limit)
+    #[serde(default)]
+    pub max_cpu_percent: Option<u32>,
+
+    /// Enable resource limiting
+    #[serde(default)]
+    pub enabled: Option<bool>,
+}
+
+/// LSP server configuration for language packs
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[serde(rename_all = "camelCase")]
+#[ts(export)]
+pub struct LspServerPackConfig {
+    /// Command to start the LSP server
+    pub command: String,
+
+    /// Arguments to pass to the command
+    #[serde(default)]
+    pub args: Vec<String>,
+
+    /// Whether to auto-start the server when a matching file is opened
+    #[serde(default)]
+    pub auto_start: Option<bool>,
+
+    /// LSP initialization options
+    #[serde(default)]
+    #[ts(type = "Record<string, unknown> | null")]
+    pub initialization_options: Option<JsonValue>,
+
+    /// Process resource limits (memory and CPU)
+    #[serde(default)]
+    pub process_limits: Option<ProcessLimitsPackConfig>,
+}
+
+/// Hunk status for Review Diff
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq, TS)]
+#[ts(export)]
+pub enum HunkStatus {
+    Pending,
+    Staged,
+    Discarded,
+}
+
+/// A high-level hunk directive for the Review Diff tool
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[ts(export)]
+pub struct ReviewHunk {
+    pub id: String,
+    pub file: String,
+    pub context_header: String,
+    pub status: HunkStatus,
+    /// 0-indexed line range in the base (HEAD) version
+    pub base_range: Option<(usize, usize)>,
+    /// 0-indexed line range in the modified (Working) version
+    pub modified_range: Option<(usize, usize)>,
+}
+
+/// Action button for action popups
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[serde(deny_unknown_fields)]
+#[ts(export, rename = "TsActionPopupAction")]
+pub struct ActionPopupAction {
+    /// Unique action identifier (returned in ActionPopupResult)
+    pub id: String,
+    /// Display text for the button (can include command hints)
+    pub label: String,
+}
+
+/// Plugin-contributed row in the LSP-Servers popup.
+/// See `PluginCommand::SetLspMenuContributions`.
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[serde(deny_unknown_fields)]
+#[ts(export, rename = "TsLspMenuItem")]
+pub struct LspMenuItem {
+    /// Stable identifier used as the `action_id` in the resulting
+    /// `action_popup_result` event (prefixed by `{plugin_id}|`).
+    pub id: String,
+    /// Display label shown in the popup row.
+    pub label: String,
+}
+
+/// Options for `addMenuItem` — one plugin-contributed row in an existing
+/// menu bar menu. See `PluginCommand::AddMenuItem`.
+///
+/// Every string here is matched or displayed by the host, so the plugin
+/// never reaches into menu internals: it names the *target* menu and,
+/// optionally, the neighbour to sit next to. Both lookups accept a stable
+/// identifier (a menu `id` like `"View"`, an item's `action` like
+/// `"toggle_file_explorer"`) as well as a display label, so a plugin can
+/// place its row without knowing the user's locale.
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[serde(deny_unknown_fields)]
+#[ts(export)]
+pub struct AddMenuItemOptions {
+    /// Target menu, matched against each menu's stable `id` ("View",
+    /// "File", …) first and its display label second. A menu that matches
+    /// neither is left alone and the call is a no-op.
+    pub menu: String,
+    /// Row label, already localised by the plugin (`editor.t(…)`).
+    pub label: String,
+    /// Action dispatched when the row is chosen. A name the editor doesn't
+    /// know is routed to the plugin action of the same name — i.e. the
+    /// handler registered with `registerHandler`.
+    pub action: String,
+    /// Menu-context key whose boolean value renders the row's checkmark
+    /// (e.g. `"dock"`). Omit for a plain action row.
+    #[serde(default)]
+    #[ts(optional)]
+    pub checkbox: Option<String>,
+    /// Menu-context key gating whether the row is enabled. Omit for a row
+    /// that is always available.
+    #[serde(default)]
+    #[ts(optional)]
+    pub when: Option<String>,
+    /// Insert directly after the existing row whose action or label this
+    /// names. Ignored when nothing matches (the row is appended instead).
+    #[serde(default)]
+    #[ts(optional)]
+    pub after: Option<String>,
+    /// Insert directly before the existing row whose action or label this
+    /// names. Ignored when `after` is set, or when nothing matches.
+    #[serde(default)]
+    #[ts(optional)]
+    pub before: Option<String>,
+}
+
+impl AddMenuItemOptions {
+    /// Split into the `(menu_label, item, position)` triple
+    /// `PluginCommand::AddMenuItem` carries. `after` wins over `before`
+    /// when a plugin passes both; with neither, the row is appended.
+    pub fn into_parts(self) -> (String, MenuItem, MenuPosition) {
+        let position = match (self.after, self.before) {
+            (Some(a), _) => MenuPosition::After(a),
+            (None, Some(b)) => MenuPosition::Before(b),
+            (None, None) => MenuPosition::Bottom,
+        };
+        let item = MenuItem::Action {
+            label: self.label,
+            action: self.action,
+            args: HashMap::new(),
+            when: self.when,
+            checkbox: self.checkbox,
+        };
+        (self.menu, item, position)
+    }
+}
+
+/// Options for showActionPopup
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[serde(deny_unknown_fields)]
+#[ts(export)]
+pub struct ActionPopupOptions {
+    /// Unique identifier for the popup (used in ActionPopupResult)
+    pub id: String,
+    /// Title text for the popup
+    pub title: String,
+    /// Body message (supports basic formatting)
+    pub message: String,
+    /// Action buttons to display
+    pub actions: Vec<ActionPopupAction>,
+    /// Optional buffer to scope the popup to. When set, the popup only
+    /// renders while that buffer is active (and is dismissed when the buffer
+    /// closes), rather than floating over every buffer. Omit for global
+    /// notifications like install help raised from a status-bar click.
+    #[serde(default)]
+    #[ts(optional)]
+    pub buffer_id: Option<usize>,
+}
+
+/// Syntax highlight span for a buffer range
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[ts(export)]
+pub struct TsHighlightSpan {
+    pub start: u32,
+    pub end: u32,
+    #[ts(type = "[number, number, number]")]
+    pub color: (u8, u8, u8),
+    pub bold: bool,
+    pub italic: bool,
+}
+
+/// Result from spawning a process with spawnProcess
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[ts(export)]
+pub struct SpawnResult {
+    /// Complete stdout as string
+    pub stdout: String,
+    /// Complete stderr as string
+    pub stderr: String,
+    /// Process exit code (0 usually means success, -1 if killed)
+    pub exit_code: i32,
+}
+
+/// Result from spawning a background process
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[ts(export)]
+pub struct BackgroundProcessResult {
+    /// Unique process ID for later reference
+    #[ts(type = "number")]
+    pub process_id: u64,
+    /// Process exit code (0 usually means success, -1 if killed)
+    /// Only present when the process has exited
+    pub exit_code: i32,
+}
+
+/// A single match from project-wide grep
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[serde(rename_all = "camelCase")]
+#[ts(export, rename_all = "camelCase")]
+pub struct GrepMatch {
+    /// Absolute file path
+    pub file: String,
+    /// Buffer ID if the file is open (0 if not)
+    #[ts(type = "number")]
+    pub buffer_id: usize,
+    /// Byte offset of match start in the file/buffer content
+    #[ts(type = "number")]
+    pub byte_offset: usize,
+    /// Match length in bytes
+    #[ts(type = "number")]
+    pub length: usize,
+    /// 1-indexed line number
+    #[ts(type = "number")]
+    pub line: usize,
+    /// 1-indexed column number
+    #[ts(type = "number")]
+    pub column: usize,
+    /// The matched line content (for display)
+    pub context: String,
+}
+
+/// Per-call result from `SearchHandle.take()` — the matches accumulated since
+/// the previous call plus terminal-state flags.
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[serde(rename_all = "camelCase")]
+#[ts(export, rename_all = "camelCase")]
+pub struct SearchTakeResult {
+    /// Matches discovered since the previous take()
+    pub matches: Vec<GrepMatch>,
+    /// Whether the producer has finished (no more matches will arrive)
+    pub done: bool,
+    /// Total number of matches the producer has emitted across all batches
+    /// (including ones already drained on prior take() calls)
+    #[ts(type = "number")]
+    pub total_seen: usize,
+    /// Whether the producer stopped early because it hit `maxResults`
+    pub truncated: bool,
+    /// Producer error, if any (e.g., invalid regex). When set, `done` is also true.
+    #[ts(optional, type = "string | null")]
+    pub error: Option<String>,
+}
+
+/// Inner state of a streaming search, written by the host's parallel
+/// searchers and drained by the plugin via `SearchHandle.take()`. The plugin
+/// observes deltas (`mem::take` on `pending`) at its own cadence; producers
+/// write at full speed without per-chunk dispatches.
+#[derive(Debug, Default)]
+pub struct SearchState {
+    /// Matches accumulated since the consumer's last drain
+    pub pending: Vec<GrepMatch>,
+    /// Total matches the producer has emitted across the search's lifetime
+    pub total_seen: usize,
+    /// Set when the producer stopped early due to hitting max_results
+    pub truncated: bool,
+    /// Set when the producer is fully done — no more writes will occur
+    pub done: bool,
+    /// Producer error, if any (final state)
+    pub error: Option<String>,
+}
+
+/// A search handle's shared state plus its cancellation flag. Owned by an
+/// `Arc` so producers (host searcher tasks) and consumers (the JS plugin via
+/// the registry) can both reference it.
+#[derive(Debug)]
+pub struct SearchHandleState {
+    pub state: std::sync::Mutex<SearchState>,
+    pub cancel: std::sync::atomic::AtomicBool,
+}
+
+impl SearchHandleState {
+    pub fn new() -> Self {
+        Self {
+            state: std::sync::Mutex::new(SearchState::default()),
+            cancel: std::sync::atomic::AtomicBool::new(false),
+        }
+    }
+}
+
+impl Default for SearchHandleState {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
+/// Registry mapping a handle ID to its shared `SearchHandleState`. Shared
+/// between the JS thread (where `JsEditorApi` registers handles and serves
+/// `take()`/`cancel()`) and the editor thread (where the host's searcher
+/// tasks write into the same state).
+pub type SearchHandleRegistry = Arc<std::sync::Mutex<HashMap<u64, Arc<SearchHandleState>>>>;
+
+/// Result from replacing matches in a buffer
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[serde(rename_all = "camelCase")]
+#[ts(export, rename_all = "camelCase")]
+pub struct ReplaceResult {
+    /// Number of replacements made
+    #[ts(type = "number")]
+    pub replacements: usize,
+    /// Buffer ID of the edited buffer
+    #[ts(type = "number")]
+    pub buffer_id: usize,
+}
+
+/// Entry for virtual buffer content with optional text properties (JS API version)
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[serde(deny_unknown_fields, rename_all = "camelCase")]
+#[ts(export, rename = "TextPropertyEntry", rename_all = "camelCase")]
+pub struct JsTextPropertyEntry {
+    /// Text content for this entry
+    pub text: String,
+    /// Optional properties attached to this text (e.g., file path, line number)
+    #[serde(default)]
+    #[ts(optional, type = "Record<string, unknown>")]
+    pub properties: Option<HashMap<String, JsonValue>>,
+    /// Optional whole-entry styling
+    #[serde(default)]
+    #[ts(optional, type = "Partial<OverlayOptions>")]
+    pub style: Option<OverlayOptions>,
+    /// Optional sub-range styling within this entry
+    #[serde(default)]
+    #[ts(optional)]
+    pub inline_overlays: Option<Vec<crate::text_property::InlineOverlay>>,
+    /// Pad this entry's text with spaces to this many columns when drawing.
+    ///
+    /// **Render-only**: the padding is applied at draw time, so
+    /// `getBufferText()` returns the unpadded text you supplied. Column
+    /// alignment cannot be checked by reading the buffer back — if you need
+    /// that, embed real spaces with `padEnd` instead.
+    ///
+    /// See `TextPropertyEntry::pad_to_chars`.
+    #[serde(default)]
+    #[ts(optional)]
+    pub pad_to_chars: Option<u32>,
+    /// Truncate this entry's text to at most this many columns when drawing,
+    /// with an ellipsis when the budget allows one.
+    ///
+    /// **Render-only**, like `padToChars`: `getBufferText()` returns the full
+    /// untruncated text.
+    ///
+    /// See `TextPropertyEntry::truncate_to_chars`.
+    #[serde(default)]
+    #[ts(optional)]
+    pub truncate_to_chars: Option<u32>,
+    /// See `TextPropertyEntry::segments`.
+    #[serde(default)]
+    #[ts(optional)]
+    pub segments: Option<Vec<crate::text_property::StyledSegment>>,
+}
+
+/// Directory entry returned by readDir
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[ts(export)]
+pub struct DirEntry {
+    /// File/directory name
+    pub name: String,
+    /// True if this is a file
+    pub is_file: bool,
+    /// True if this is a directory
+    pub is_dir: bool,
+}
+
+/// Position in a document (line and character)
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[ts(export)]
+pub struct JsPosition {
+    /// Zero-indexed line number
+    pub line: u32,
+    /// Zero-indexed character offset
+    pub character: u32,
+}
+
+/// Range in a document (start and end positions)
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[ts(export)]
+pub struct JsRange {
+    /// Start position
+    pub start: JsPosition,
+    /// End position
+    pub end: JsPosition,
+}
+
+/// Diagnostic from LSP
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[ts(export)]
+pub struct JsDiagnostic {
+    /// Document URI
+    pub uri: String,
+    /// Diagnostic message
+    pub message: String,
+    /// Severity: 1=Error, 2=Warning, 3=Info, 4=Hint, null=unknown
+    pub severity: Option<u8>,
+    /// Range in the document
+    pub range: JsRange,
+    /// Source of the diagnostic (e.g., "typescript", "eslint")
+    #[ts(optional)]
+    pub source: Option<String>,
+}
+
+/// Options for createVirtualBuffer
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[serde(deny_unknown_fields)]
+#[ts(export)]
+pub struct CreateVirtualBufferOptions {
+    /// Buffer name (displayed in tabs/title)
+    pub name: String,
+    /// Mode for keybindings (e.g., "git-log", "search-results")
+    #[serde(default)]
+    #[ts(optional)]
+    pub mode: Option<String>,
+    /// Whether buffer is read-only (default: false)
+    #[serde(default, rename = "readOnly")]
+    #[ts(optional, rename = "readOnly")]
+    pub read_only: Option<bool>,
+    /// Show line numbers in gutter (default: false)
+    #[serde(default, rename = "showLineNumbers")]
+    #[ts(optional, rename = "showLineNumbers")]
+    pub show_line_numbers: Option<bool>,
+    /// Show cursor (default: true)
+    #[serde(default, rename = "showCursors")]
+    #[ts(optional, rename = "showCursors")]
+    pub show_cursors: Option<bool>,
+    /// Disable text editing (default: false)
+    #[serde(default, rename = "editingDisabled")]
+    #[ts(optional, rename = "editingDisabled")]
+    pub editing_disabled: Option<bool>,
+    /// Hide from tab bar (default: false)
+    #[serde(default, rename = "hiddenFromTabs")]
+    #[ts(optional, rename = "hiddenFromTabs")]
+    pub hidden_from_tabs: Option<bool>,
+    /// Open as a tab without taking the view (default: false).
+    ///
+    /// Creating a virtual buffer otherwise makes it the active buffer, and
+    /// there is no quiet way back: switching away afterwards is a second
+    /// visible switch, and the layout the panel composed while it briefly
+    /// held the pane is not the one it gets later. Set this when the buffer
+    /// is one the editor offers rather than one the reader asked for — a
+    /// startup page beside a restored session — and it appears in the tab
+    /// bar with the current buffer left alone.
+    ///
+    /// Ignored together with `hiddenFromTabs`, which has no tab bar to be
+    /// background in.
+    #[serde(default)]
+    #[ts(optional)]
+    pub background: Option<bool>,
+    /// Current-line highlight for this buffer (default: follow the editor
+    /// setting). Pass `false` for a page whose rows are laid out by a widget
+    /// panel — the caret's line means nothing to the reader there, and a
+    /// lit band across a centred wordmark is noise.
+    #[serde(default, rename = "highlightCurrentLine")]
+    #[ts(optional, rename = "highlightCurrentLine")]
+    pub highlight_current_line: Option<bool>,
+    /// Whether the buffer is user-scrollable (default: true). `false` for a
+    /// buffer a widget panel is mounted into: the panel is described in the
+    /// tree and its widgets — or, for a `page` panel, its one viewport —
+    /// own the scrolling, and the buffer under them never moves.
+    #[serde(default)]
+    #[ts(optional)]
+    pub scrollable: Option<bool>,
+    /// Initial content as **spans, concatenated verbatim** — a span is a run
+    /// of text with optional styling, not a line. Nothing inserts newlines
+    /// for you, so `[{text:"a"},{text:"b"}]` is the single line `ab`. Include
+    /// `\n` yourself — `[{text:"a\n"},{text:"b\n"}]` is two lines.
+    ///
+    /// If you are an agent putting text in front of a human, prefer writing a
+    /// file and opening it (`splitWindow({ file })` /
+    /// `openFileInSplit(splitId, path)`): you get syntax highlighting, search,
+    /// save, and ANSI escape codes rendered as colour, none of which a virtual
+    /// buffer gives you. Virtual buffers are for plugin-owned panels —
+    /// ephemeral, styled per span, driven by a mode's keybindings.
+    #[serde(default)]
+    #[ts(optional)]
+    pub entries: Option<Vec<JsTextPropertyEntry>>,
+    /// Show the new buffer in this existing pane instead of taking over the
+    /// focused one.
+    ///
+    /// Without it the buffer becomes active in whichever pane has focus —
+    /// which is what you want for a panel the user just asked for, and
+    /// emphatically not what you want when arranging a layout, where it
+    /// silently replaces whatever the user was looking at.
+    #[serde(default, rename = "splitId")]
+    #[ts(optional, rename = "splitId")]
+    pub split_id: Option<usize>,
+    /// Initial cursor line (0-indexed). Applied to the new buffer *before*
+    /// it becomes the active buffer, so plugins that want to land the
+    /// cursor on a specific line don't have to chase a race against user
+    /// input between "buffer becomes active" and a follow-up
+    /// `setBufferCursor`. Using a line index (rather than a byte offset)
+    /// keeps the byte-math on the host side where the buffer content is
+    /// already in UTF-8 bytes, avoiding the UTF-16-vs-UTF-8 mismatch a
+    /// plugin would otherwise have to navigate.
+    #[serde(default, rename = "initialCursorLine")]
+    #[ts(optional, rename = "initialCursorLine")]
+    pub initial_cursor_line: Option<u32>,
+    /// Override indentation-guide visibility for this buffer (default: follows
+    /// the global setting, but virtual buffers show none). Set `true` when the
+    /// buffer displays real source — e.g. a file opened at a past commit.
+    #[serde(default, rename = "indentationGuide")]
+    #[ts(optional, rename = "indentationGuide")]
+    pub indentation_guide: Option<bool>,
+}
+
+/// Options for createVirtualBufferInSplit
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[serde(deny_unknown_fields)]
+#[ts(export)]
+pub struct CreateVirtualBufferInSplitOptions {
+    /// Buffer name (displayed in tabs/title)
+    pub name: String,
+    /// Mode for keybindings (e.g., "git-log", "search-results")
+    #[serde(default)]
+    #[ts(optional)]
+    pub mode: Option<String>,
+    /// Whether buffer is read-only (default: false)
+    #[serde(default, rename = "readOnly")]
+    #[ts(optional, rename = "readOnly")]
+    pub read_only: Option<bool>,
+    /// Split ratio 0.0-1.0 (default: 0.5)
+    #[serde(default)]
+    #[ts(optional)]
+    pub ratio: Option<f32>,
+    /// Split direction: `"horizontal"` or `"vertical"`.
+    ///
+    /// The name describes the **divider**, not the arrangement:
+    /// `"vertical"` puts the panes side by side (a vertical divider between
+    /// them), `"horizontal"` stacks them. Same convention as `splitWindow`.
+    #[serde(default)]
+    #[ts(optional)]
+    pub direction: Option<String>,
+    /// Panel ID to split from
+    #[serde(default, rename = "panelId")]
+    #[ts(optional, rename = "panelId")]
+    pub panel_id: Option<String>,
+    /// Show line numbers in gutter (default: true)
+    #[serde(default, rename = "showLineNumbers")]
+    #[ts(optional, rename = "showLineNumbers")]
+    pub show_line_numbers: Option<bool>,
+    /// Show cursor (default: true)
+    #[serde(default, rename = "showCursors")]
+    #[ts(optional, rename = "showCursors")]
+    pub show_cursors: Option<bool>,
+    /// Disable text editing (default: false)
+    #[serde(default, rename = "editingDisabled")]
+    #[ts(optional, rename = "editingDisabled")]
+    pub editing_disabled: Option<bool>,
+    /// Enable line wrapping
+    #[serde(default, rename = "lineWrap")]
+    #[ts(optional, rename = "lineWrap")]
+    pub line_wrap: Option<bool>,
+    /// Place the new buffer before (left/top of) the existing content (default: false)
+    #[serde(default)]
+    #[ts(optional)]
+    pub before: Option<bool>,
+    /// Initial content as **spans, concatenated verbatim** — a span is a run
+    /// of text with optional styling, not a line. Nothing inserts newlines
+    /// for you, so `[{text:"a"},{text:"b"}]` is the single line `ab`. Include
+    /// `\n` yourself — `[{text:"a\n"},{text:"b\n"}]` is two lines.
+    ///
+    /// If you are an agent putting text in front of a human, prefer writing a
+    /// file and opening it (`splitWindow({ file })` /
+    /// `openFileInSplit(splitId, path)`): you get syntax highlighting, search,
+    /// save, and ANSI escape codes rendered as colour, none of which a virtual
+    /// buffer gives you. Virtual buffers are for plugin-owned panels —
+    /// ephemeral, styled per span, driven by a mode's keybindings.
+    #[serde(default)]
+    #[ts(optional)]
+    pub entries: Option<Vec<JsTextPropertyEntry>>,
+    /// Split role tag. When set to `"utility_dock"`, the dispatcher
+    /// routes this buffer to the existing dock leaf if one exists,
+    /// instead of creating a new split. See
+    /// `docs/internal/tui-editor-layout-design.md` Section 2.
+    #[serde(default)]
+    #[ts(optional)]
+    pub role: Option<String>,
+    /// Whether the buffer is user-scrollable (default: true). Set to
+    /// `false` for self-managing widget panels (those whose List/Tree
+    /// owns its own scroll window): it suppresses the buffer scrollbar
+    /// and pins the viewport so a drag can't push the panel chrome
+    /// off-screen and reveal empty space below.
+    #[serde(default)]
+    #[ts(optional)]
+    pub scrollable: Option<bool>,
+}
+
+/// Options for createVirtualBufferInExistingSplit
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[serde(deny_unknown_fields)]
+#[ts(export)]
+pub struct CreateVirtualBufferInExistingSplitOptions {
+    /// Buffer name (displayed in tabs/title)
+    pub name: String,
+    /// Target split ID (required)
+    #[serde(rename = "splitId")]
+    #[ts(rename = "splitId")]
+    pub split_id: usize,
+    /// Mode for keybindings (e.g., "git-log", "search-results")
+    #[serde(default)]
+    #[ts(optional)]
+    pub mode: Option<String>,
+    /// Whether buffer is read-only (default: false)
+    #[serde(default, rename = "readOnly")]
+    #[ts(optional, rename = "readOnly")]
+    pub read_only: Option<bool>,
+    /// Show line numbers in gutter (default: true)
+    #[serde(default, rename = "showLineNumbers")]
+    #[ts(optional, rename = "showLineNumbers")]
+    pub show_line_numbers: Option<bool>,
+    /// Show cursor (default: true)
+    #[serde(default, rename = "showCursors")]
+    #[ts(optional, rename = "showCursors")]
+    pub show_cursors: Option<bool>,
+    /// Disable text editing (default: false)
+    #[serde(default, rename = "editingDisabled")]
+    #[ts(optional, rename = "editingDisabled")]
+    pub editing_disabled: Option<bool>,
+    /// Enable line wrapping
+    #[serde(default, rename = "lineWrap")]
+    #[ts(optional, rename = "lineWrap")]
+    pub line_wrap: Option<bool>,
+    /// Initial content as **spans, concatenated verbatim** — a span is a run
+    /// of text with optional styling, not a line. Nothing inserts newlines
+    /// for you, so `[{text:"a"},{text:"b"}]` is the single line `ab`. Include
+    /// `\n` yourself — `[{text:"a\n"},{text:"b\n"}]` is two lines.
+    ///
+    /// If you are an agent putting text in front of a human, prefer writing a
+    /// file and opening it (`splitWindow({ file })` /
+    /// `openFileInSplit(splitId, path)`): you get syntax highlighting, search,
+    /// save, and ANSI escape codes rendered as colour, none of which a virtual
+    /// buffer gives you. Virtual buffers are for plugin-owned panels —
+    /// ephemeral, styled per span, driven by a mode's keybindings.
+    #[serde(default)]
+    #[ts(optional)]
+    pub entries: Option<Vec<JsTextPropertyEntry>>,
+    /// Initial cursor line (0-indexed). Applied to the new buffer *before*
+    /// it becomes the active buffer; see the matching field on
+    /// `CreateVirtualBufferOptions` for the rationale.
+    #[serde(default, rename = "initialCursorLine")]
+    #[ts(optional, rename = "initialCursorLine")]
+    pub initial_cursor_line: Option<u32>,
+}
+
+/// Options for createTerminal
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[serde(deny_unknown_fields)]
+#[ts(export)]
+pub struct CreateTerminalOptions {
+    /// Working directory for the terminal (defaults to editor cwd)
+    #[serde(default)]
+    #[ts(optional)]
+    pub cwd: Option<String>,
+    /// Split direction: `"horizontal"` or `"vertical"` (default:
+    /// `"vertical"`).
+    ///
+    /// The name describes the **divider**, not the arrangement:
+    /// `"vertical"` puts the panes side by side, `"horizontal"` stacks them.
+    #[serde(default)]
+    #[ts(optional)]
+    pub direction: Option<String>,
+    /// Split ratio 0.0-1.0 (default: 0.5)
+    #[serde(default)]
+    #[ts(optional)]
+    pub ratio: Option<f32>,
+    /// Whether to focus the new terminal split (default: true)
+    #[serde(default)]
+    #[ts(optional)]
+    pub focus: Option<bool>,
+    /// Whether this terminal is part of the user's persisted workspace.
+    /// Defaults to `false` for plugin-created terminals — they are typically
+    /// one-off tool UIs (rebuilds, exec shells, build output) and should
+    /// start with empty scrollback on each invocation. Set to `true` only
+    /// when the plugin owns a terminal that the user should see restored
+    /// across editor restarts.
+    #[serde(default)]
+    #[ts(optional)]
+    pub persistent: Option<bool>,
+    /// Optional session id to attach the new terminal buffer to.
+    /// Defaults to the active session at creation time. Setting this
+    /// lets Orchestrator and similar plugins spawn a terminal *into* an
+    /// inactive session (e.g. an agent in a worktree the user hasn't
+    /// dived into yet). The terminal's split is created in that
+    /// session's stashed split tree; the buffer is attached to the
+    /// target session's membership set rather than the active one's.
+    #[serde(default, rename = "windowId")]
+    #[ts(optional, rename = "windowId")]
+    pub window_id: Option<WindowId>,
+    /// Argv to spawn directly inside the PTY instead of the host's
+    /// configured shell. `None` (default) keeps the historical
+    /// behaviour: spawn the user's shell and let the caller type into
+    /// it via `sendTerminalInput`. `Some([cmd, ...args])` runs that
+    /// exact command as the PTY child — no shell middleman, so the
+    /// process exits cleanly when the agent does and the
+    /// terminal-buffer's `terminal_exit` plugin hook reflects the
+    /// agent's real exit status. Used by Orchestrator so a session
+    /// with agent `python3` is just python3 in the PTY rather than
+    /// bash-running-python3-as-a-subshell-command.
+    #[serde(default)]
+    #[ts(optional)]
+    pub command: Option<Vec<String>>,
+    /// Tab title for the terminal buffer. Defaults to `command[0]`
+    /// (when `command` is set) or `"Terminal N"` (the historical
+    /// auto-numbered title). If another terminal in the same window
+    /// already uses the requested title, the host appends `" (k)"`
+    /// to disambiguate. Empty string is treated the same as `None`.
+    #[serde(default)]
+    #[ts(optional)]
+    pub title: Option<String>,
+    /// Extra environment variables to set in the spawned terminal's
+    /// child process, on top of the inherited/activated env. Mirrors
+    /// `CreateWindowWithTerminalOptions::env`. `None` (the default)
+    /// adds nothing, so existing callers behave exactly as before.
+    #[serde(default)]
+    #[ts(optional)]
+    pub env: Option<std::collections::HashMap<String, String>>,
+    /// Argv to run when this terminal is *restored* or *restarted*,
+    /// instead of re-running `command`. The exact counterpart of
+    /// `CreateWindowWithTerminalOptions::resume`, so an agent launched
+    /// into an existing window rejoins its conversation on restart the
+    /// same way one born in its own window does — a session started with
+    /// `claude --session-id <id>` sets `resume` to
+    /// `["claude", "--resume", "<id>"]`. `None` keeps `command` as the
+    /// restore argv. The id is a plain argv element — never interpolated
+    /// into a shell string.
+    ///
+    /// Setting `command` (with or without `resume`) also marks the
+    /// terminal as a restorable *session* terminal, so it survives a
+    /// workspace save even when `persistent` is false — the same
+    /// exception `createWindowWithTerminal` relies on.
+    #[serde(default)]
+    #[ts(optional)]
+    pub resume: Option<Vec<String>>,
+    /// When set, the host mints an unforgeable capability token bound
+    /// to the TARGET window (the active window, or `windowId` when
+    /// set) and injects it into the spawned terminal as
+    /// `FRESH_CMD_TOKEN` (alongside `FRESH_SESSION`). This lets an
+    /// agent spawned into an *existing* window drive it by submitting
+    /// scripts — the same capability a `createWindowWithTerminal`
+    /// agent gets. `false` (the default) mints no token and injects
+    /// nothing.
+    ///
+    /// The grant is all-or-nothing on purpose: a script can call
+    /// anything the plugin API exposes, so a narrower list would
+    /// describe a boundary that isn't there.
+    #[serde(default, rename = "allowScript")]
+    #[ts(optional, rename = "allowScript")]
+    pub allow_script: Option<bool>,
+}
+
+/// Options for `createWindowWithTerminal` — the atomic
+/// "spawn a new editor session that hosts an agent terminal"
+/// entry point used by Orchestrator. Bundles window creation,
+/// dive, and terminal spawn so the new window is born with the
+/// terminal as its seed buffer (no transient `[No Name]` tab,
+/// no race between create-window and create-terminal completing).
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[serde(deny_unknown_fields, rename_all = "camelCase")]
+#[ts(export, rename_all = "camelCase")]
+pub struct CreateWindowWithTerminalOptions {
+    /// Absolute path to the new session's worktree / project
+    /// root. Relative paths are rejected (logged, no window
+    /// created).
+    pub root: String,
+    /// Human-readable label for the new session. When empty,
+    /// defaults to the basename of `root`.
+    #[serde(default)]
+    pub label: String,
+    /// Working directory for the spawned terminal. Defaults to
+    /// `root` when omitted.
+    #[serde(default)]
+    #[ts(optional)]
+    pub cwd: Option<String>,
+    /// Argv to spawn directly inside the PTY. `None` keeps the
+    /// shell-and-type behaviour; `Some([cmd, ...args])` runs the
+    /// command as the PTY child (used by Orchestrator so the
+    /// agent process is the PTY's direct child).
+    #[serde(default)]
+    #[ts(optional)]
+    pub command: Option<Vec<String>>,
+    /// Tab title override. Defaults to `command[0]`'s basename
+    /// when `command` is set, or "Terminal N" otherwise.
+    #[serde(default)]
+    #[ts(optional)]
+    pub title: Option<String>,
+    /// Argv to run on *restore* instead of re-running `command`, when
+    /// the session is reopened after an editor restart. Used by
+    /// Orchestrator agent-resume: a session launched with
+    /// `claude --session-id <id>` sets `resume` to
+    /// `["claude", "--resume", "<id>"]` (or `["claude", "--continue"]`),
+    /// so a restored session rejoins its conversation rather than starting
+    /// a fresh agent. `None` keeps `command` as the restore command. The id
+    /// is a plain argv element — never interpolated into a shell string.
+    #[serde(default)]
+    #[ts(optional)]
+    pub resume: Option<Vec<String>>,
+    /// Extra environment variables to set in the spawned
+    /// terminal's child process, on top of the inherited/activated
+    /// env. Applied after the editor's control vars (`TERM`,
+    /// `FRESH_SESSION`), so a plugin's entry wins over those only
+    /// when it names the same key. `None` (the default) adds
+    /// nothing — old callers behave exactly as before.
+    #[serde(default)]
+    #[ts(optional)]
+    pub env: Option<std::collections::HashMap<String, String>>,
+    /// When set, the host mints an unforgeable capability token bound
+    /// to the NEW window and injects it into the spawned terminal as
+    /// `FRESH_CMD_TOKEN`. A client presenting that token over the
+    /// control socket may drive this window by submitting scripts.
+    /// `false` (the default) mints no token and injects nothing.
+    ///
+    /// The grant is all-or-nothing on purpose: a script can call
+    /// anything the plugin API exposes, so a narrower list would
+    /// describe a boundary that isn't there.
+    #[serde(default, rename = "allowScript")]
+    #[ts(optional, rename = "allowScript")]
+    pub allow_script: Option<bool>,
+    /// Seed the terminal into this **existing** window — one created by
+    /// `createPreparingWindow` — instead of opening a new one. The window
+    /// keeps its id, its durable `stableId`, and everything keyed off them
+    /// (a manual rename, its folder, its dock position), so a workspace the
+    /// user has been looking at (and organising) since they asked for it
+    /// becomes the live session rather than being replaced by one.
+    ///
+    /// `root` still applies: a workspace opens as a placeholder before its
+    /// worktree exists, so adopting it re-roots the window at the directory
+    /// that was finally created. Ignored — and the call falls back to
+    /// creating a fresh window — when the id names no preparing window.
+    #[serde(default, rename = "adoptWindow")]
+    #[ts(optional, rename = "adoptWindow", type = "number")]
+    pub adopt_window: Option<u64>,
+}
+
+/// Options for `createPreparingWindow` — a workspace opened before its
+/// contents exist, so the user lands in it immediately instead of waiting
+/// on the work that fills it.
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[serde(deny_unknown_fields, rename_all = "camelCase")]
+#[ts(export, rename_all = "camelCase")]
+pub struct CreatePreparingWindowOptions {
+    /// Absolute path the placeholder window roots at. It must exist — use
+    /// the project directory when the workspace's own directory is what is
+    /// still being created; the adopt step re-roots the window onto the
+    /// final directory.
+    pub root: String,
+    /// Human-readable label. Empty defaults to the basename of `root`.
+    #[serde(default)]
+    pub label: String,
+    /// Progress line shown on the placeholder page.
+    #[serde(default)]
+    pub message: String,
+    /// Focus the new window immediately. `false` (the default) builds it in
+    /// the background and leaves the user where they are.
+    #[serde(default)]
+    #[ts(optional)]
+    pub activate: Option<bool>,
+}
+
+/// Result of `createPreparingWindow` — the ids of the placeholder window,
+/// which are already final: adopting it later keeps both.
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[serde(rename_all = "camelCase")]
+#[ts(export, rename_all = "camelCase")]
+pub struct PreparingWindowResult {
+    /// The new window's id — a per-process handle, valid until this editor
+    /// exits.
+    #[ts(type = "number")]
+    pub window_id: u64,
+    /// The new workspace's durable identity (`ws-…`), stable across restarts.
+    #[serde(default)]
+    pub stable_id: String,
+}
+
+/// Result of `createWindowWithTerminal` — the ids of the new
+/// window plus the terminal seeded into its split layout.
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[serde(rename_all = "camelCase")]
+#[ts(export, rename_all = "camelCase")]
+pub struct SessionWithTerminalResult {
+    /// The new window's id — a per-process handle, valid until this editor
+    /// exits. Use `stableId` for anything that has to outlive the process.
+    #[ts(type = "number")]
+    pub window_id: u64,
+    /// The new workspace's durable identity (`ws-…`), stable across restarts.
+    #[serde(default)]
+    pub stable_id: String,
+    /// The seeded terminal's id (for `sendTerminalInput`, etc.).
+    #[ts(type = "number")]
+    pub terminal_id: u64,
+    /// The seeded terminal buffer's id.
+    #[ts(type = "number")]
+    pub buffer_id: u64,
+}
+
+/// Result of getTextPropertiesAtCursor - array of property objects
+///
+/// Each element contains the properties from a text property span that overlaps
+/// with the cursor position. Properties are dynamic key-value pairs set by plugins.
+#[derive(Debug, Clone, Serialize, TS)]
+#[ts(export, type = "Array<Record<string, unknown>>")]
+pub struct TextPropertiesAtCursor(pub Vec<HashMap<String, JsonValue>>);
+
+/// A filesystem path passed from a plugin, tagged with which filesystem it
+/// resolves against.
+///
+/// Windows each own their own authority (local, or a remote/SSH/container
+/// backend), so a path must say which one it means — like a VS Code `Uri`
+/// naming its authority. The tagging mirrors how the rest of the plugin API is
+/// window-scoped by identity (a `bufferId` locates its window); a path's tag is
+/// the filesystem counterpart.
+///
+/// - A bare JS string is [`PluginPath::Authority`] with no window → the
+///   **active** window's backend. This is the backward-compatible default:
+///   existing plugins that pass strings keep working unchanged.
+/// - `{ kind: "local", value }`, built via `editor.localPath(...)`, is
+///   [`PluginPath::Local`] — always the local editor host, whatever the active
+///   authority is.
+/// - `{ kind: "authority", window, value }`, built via
+///   `editor.windowPath(windowId, ...)`, is [`PluginPath::Authority`] bound to
+///   a **specific** window's backend, regardless of focus.
+///
+/// The TypeScript surface renders this as `string | LocalPath | WindowPath`
+/// (see the hand-written declarations in `ts_export.rs`).
+#[derive(Debug, Clone)]
+pub enum PluginPath {
+    /// A path on a window's authority filesystem. `window` selects which
+    /// window; `None` means the active window.
+    Authority {
+        /// The owning window's id, or `None` for the active window.
+        window: Option<u64>,
+        /// The path string.
+        path: String,
+    },
+    /// A path on the local editor-host filesystem.
+    Local(String),
+}
+
+impl PluginPath {
+    /// The underlying path string, regardless of variant.
+    pub fn as_str(&self) -> &str {
+        match self {
+            PluginPath::Authority { path, .. } => path,
+            PluginPath::Local(path) => path,
+        }
+    }
+}
+
+// Implement FromJs for option types using rquickjs_serde
+#[cfg(feature = "plugins")]
+mod fromjs_impls {
+    use super::*;
+    use rquickjs::{Ctx, FromJs, Value};
+
+    // All types that deserialize from a JS value via rquickjs_serde follow
+    // the same 8-line pattern differing only in the type name. This macro
+    // expands that pattern once so adding a new plugin-API type costs one line
+    // here instead of a copy-pasted block.
+    macro_rules! impl_from_js_via_serde {
+        ($($T:ty),+ $(,)?) => {
+            $(
+                impl<'js> FromJs<'js> for $T {
+                    fn from_js(_ctx: &Ctx<'js>, value: Value<'js>) -> rquickjs::Result<Self> {
+                        rquickjs_serde::from_value(value).map_err(|e| rquickjs::Error::FromJs {
+                            from: "object",
+                            to: stringify!($T),
+                            message: Some(e.to_string()),
+                        })
+                    }
+                }
+            )+
+        };
+    }
+
+    impl_from_js_via_serde!(
+        JsTextPropertyEntry,
+        CreateVirtualBufferOptions,
+        CreateVirtualBufferInSplitOptions,
+        CreateVirtualBufferInExistingSplitOptions,
+        ActionSpec,
+        ActionPopupAction,
+        ActionPopupOptions,
+        AddMenuItemOptions,
+        LspMenuItem,
+        ViewTokenWire,
+        ViewTokenStyle,
+        LayoutHints,
+        CompositeHunk,
+        LanguagePackConfig,
+        LspServerPackConfig,
+        ProcessLimitsPackConfig,
+        CreateTerminalOptions,
+        CreateWindowWithTerminalOptions,
+        CreatePreparingWindowOptions,
+    );
+
+    impl<'js> rquickjs::IntoJs<'js> for TextPropertiesAtCursor {
+        fn into_js(self, ctx: &Ctx<'js>) -> rquickjs::Result<Value<'js>> {
+            rquickjs_serde::to_value(ctx.clone(), &self.0)
+                .map_err(|e| rquickjs::Error::new_from_js_message("serialize", "", &e.to_string()))
+        }
+    }
+
+    impl<'js> FromJs<'js> for PluginPath {
+        fn from_js(_ctx: &Ctx<'js>, value: Value<'js>) -> rquickjs::Result<Self> {
+            // A bare string is an active-window authority path (backward compatible).
+            if let Some(s) = value.as_string() {
+                let s = s.to_string()?;
+                return Ok(PluginPath::Authority {
+                    window: None,
+                    path: s,
+                });
+            }
+            // A `{ kind, value, window? }` object selects the filesystem explicitly.
+            if let Some(obj) = value.as_object() {
+                let kind: String = obj.get::<_, String>("kind").unwrap_or_default();
+                let path: String = obj.get::<_, String>("value")?;
+                return match kind.as_str() {
+                    "local" => Ok(PluginPath::Local(path)),
+                    "authority" | "" => Ok(PluginPath::Authority {
+                        // Absent/undefined `window` ⇒ active window.
+                        window: obj.get::<_, u64>("window").ok(),
+                        path,
+                    }),
+                    other => Err(rquickjs::Error::new_from_js_message(
+                        "object",
+                        "PluginPath",
+                        format!("unknown path kind: {other}"),
+                    )),
+                };
+            }
+            Err(rquickjs::Error::new_from_js_message(
+                "value",
+                "PluginPath",
+                "expected a string path or a { kind, value } path object".to_string(),
+            ))
+        }
+    }
+
+    impl<'js> FromJs<'js> for CreateCompositeBufferOptions {
+        fn from_js(_ctx: &Ctx<'js>, value: Value<'js>) -> rquickjs::Result<Self> {
+            // Two-step deserialization: rquickjs_serde cannot handle the nested
+            // enums in this struct directly, so go via serde_json as an intermediary.
+            let json: serde_json::Value =
+                rquickjs_serde::from_value(value).map_err(|e| rquickjs::Error::FromJs {
+                    from: "object",
+                    to: "CreateCompositeBufferOptions (json)",
+                    message: Some(e.to_string()),
+                })?;
+            serde_json::from_value(json).map_err(|e| rquickjs::Error::FromJs {
+                from: "json",
+                to: "CreateCompositeBufferOptions",
+                message: Some(e.to_string()),
+            })
+        }
+    }
+
+    // ── Tests for FromJs / IntoJs impls ────────────────────────────────────
+    //
+    // Each impl is a one-liner that delegates to `rquickjs_serde`. A mutant
+    // that replaces the body with `Ok(Default::default())` drops the
+    // decoded payload on the floor. Every test below asserts a
+    // non-defaultable field value, so the mutant cannot pass.
+    //
+    // Note: many of the target structs do not implement `Default`, making
+    // those mutants unviable (they fail to compile) — cargo-mutants still
+    // lists them as candidates. The tests below serve double-duty as
+    // behavioural regression protection for the JS → Rust conversion layer.
+    #[cfg(test)]
+    mod tests {
+        use super::*;
+        use rquickjs::{Context, Runtime};
+
+        /// Run a closure within a fresh QuickJS context so that `FromJs`
+        /// impls can be exercised end-to-end.
+        fn with_js<R>(f: impl for<'js> FnOnce(Ctx<'js>) -> R) -> R {
+            let rt = Runtime::new().expect("create rquickjs runtime");
+            let ctx = Context::full(&rt).expect("create rquickjs context");
+            ctx.with(f)
+        }
+
+        /// Evaluate a JS object literal and decode it as `T` via `FromJs`.
+        fn eval_as<T>(src: &str) -> T
+        where
+            for<'js> T: rquickjs::FromJs<'js>,
+        {
+            with_js(|ctx| {
+                let value: Value = ctx
+                    .eval::<Value, _>(src.as_bytes())
+                    .expect("eval JS source");
+                T::from_js(&ctx, value).expect("from_js decode")
+            })
+        }
+
+        #[test]
+        fn js_text_property_entry_decodes_text_and_properties() {
+            let got: JsTextPropertyEntry =
+                eval_as("({text: 'hello', properties: {file: '/x.rs'}})");
+            assert_eq!(got.text, "hello");
+            let props = got.properties.expect("properties present");
+            assert_eq!(props.get("file").and_then(|v| v.as_str()), Some("/x.rs"));
+        }
+
+        #[test]
+        fn create_virtual_buffer_options_decodes_name() {
+            let got: CreateVirtualBufferOptions = eval_as("({name: 'logs', readOnly: true})");
+            assert_eq!(got.name, "logs");
+            assert_eq!(got.read_only, Some(true));
+        }
+
+        #[test]
+        fn create_virtual_buffer_in_split_options_decodes_ratio() {
+            let got: CreateVirtualBufferInSplitOptions =
+                eval_as("({name: 'diag', ratio: 0.25, direction: 'horizontal'})");
+            assert_eq!(got.name, "diag");
+            assert!(matches!(got.ratio, Some(r) if (r - 0.25).abs() < 1e-6));
+            assert_eq!(got.direction.as_deref(), Some("horizontal"));
+        }
+
+        #[test]
+        fn create_virtual_buffer_in_existing_split_options_decodes_splitid() {
+            let got: CreateVirtualBufferInExistingSplitOptions =
+                eval_as("({name: 'n', splitId: 7})");
+            assert_eq!(got.name, "n");
+            assert_eq!(got.split_id, 7);
+        }
+
+        #[test]
+        fn create_terminal_options_decodes_cwd_and_focus() {
+            let got: CreateTerminalOptions =
+                eval_as("({cwd: '/tmp', direction: 'vertical', focus: false})");
+            assert_eq!(got.cwd.as_deref(), Some("/tmp"));
+            assert_eq!(got.direction.as_deref(), Some("vertical"));
+            assert_eq!(got.focus, Some(false));
+        }
+
+        #[test]
+        fn action_spec_decodes_action_and_count() {
+            let got: ActionSpec = eval_as("({action: 'move_word_right', count: 5})");
+            assert_eq!(got.action, "move_word_right");
+            assert_eq!(got.count, 5);
+        }
+
+        #[test]
+        fn action_popup_action_decodes_id_and_label() {
+            let got: ActionPopupAction = eval_as("({id: 'ok', label: 'OK'})");
+            assert_eq!(got.id, "ok");
+            assert_eq!(got.label, "OK");
+        }
+
+        #[test]
+        fn action_popup_options_decodes_actions_list() {
+            let got: ActionPopupOptions = eval_as(
+                "({id: 'p', title: 't', message: 'm', \
+                   actions: [{id: 'ok', label: 'OK'}]})",
+            );
+            assert_eq!(got.id, "p");
+            assert_eq!(got.title, "t");
+            assert_eq!(got.message, "m");
+            assert_eq!(got.actions.len(), 1);
+            assert_eq!(got.actions[0].id, "ok");
+        }
+
+        #[test]
+        fn view_token_wire_decodes_offset_and_kind() {
+            // Using `Newline` (a unit variant) avoids the tuple-variant
+            // wire-format ambiguity in rquickjs_serde while still exercising
+            // the `FromJs` impl end-to-end.
+            let got: ViewTokenWire = eval_as("({source_offset: 42, kind: 'Newline'})");
+            assert_eq!(got.source_offset, Some(42));
+            assert!(matches!(got.kind, ViewTokenWireKind::Newline));
+        }
+
+        #[test]
+        fn view_token_style_decodes_boolean_flags() {
+            // `fg`/`bg` are `Option<TokenColor>` (untagged: RGB array or
+            // named string). rquickjs_serde struggles with the untagged
+            // variant from a plain JS array, so we pin down the boolean
+            // flags — enough to prove the body actually ran.
+            let got: ViewTokenStyle = eval_as("({bold: true, italic: true})");
+            assert!(got.bold);
+            assert!(got.italic);
+            assert!(got.fg.is_none());
+        }
+
+        #[test]
+        fn layout_hints_decodes_compose_width() {
+            let got: LayoutHints = eval_as("({composeWidth: 120})");
+            assert_eq!(got.compose_width, Some(120));
+            assert!(got.column_guides.is_none());
+        }
+
+        #[test]
+        fn create_composite_buffer_options_decodes_name_and_sources() {
+            let got: CreateCompositeBufferOptions = eval_as(
+                "({name: 'diff', mode: 'm', \
+                   layout: {type: 'side-by-side', ratios: [0.5, 0.5], showSeparator: true}, \
+                   sources: [{bufferId: 3, label: 'OLD'}]})",
+            );
+            assert_eq!(got.name, "diff");
+            assert_eq!(got.layout.layout_type, "side-by-side");
+            assert_eq!(got.sources.len(), 1);
+            assert_eq!(got.sources[0].buffer_id, 3);
+            assert_eq!(got.sources[0].label, "OLD");
+        }
+
+        #[test]
+        fn composite_hunk_decodes_all_fields() {
+            let got: CompositeHunk =
+                eval_as("({oldStart: 1, oldCount: 2, newStart: 3, newCount: 4})");
+            assert_eq!(got.old_start, 1);
+            assert_eq!(got.old_count, 2);
+            assert_eq!(got.new_start, 3);
+            assert_eq!(got.new_count, 4);
+        }
+
+        #[test]
+        fn language_pack_config_decodes_comment_prefix_and_tab_size() {
+            let got: LanguagePackConfig =
+                eval_as("({commentPrefix: '//', tabSize: 7, useTabs: true})");
+            assert_eq!(got.comment_prefix.as_deref(), Some("//"));
+            assert_eq!(got.tab_size, Some(7));
+            assert_eq!(got.use_tabs, Some(true));
+        }
+
+        #[test]
+        fn lsp_server_pack_config_decodes_command_and_args() {
+            let got: LspServerPackConfig =
+                eval_as("({command: 'rust-analyzer', args: ['--log'], autoStart: true})");
+            assert_eq!(got.command, "rust-analyzer");
+            assert_eq!(got.args, vec!["--log".to_string()]);
+            assert_eq!(got.auto_start, Some(true));
+        }
+
+        #[test]
+        fn process_limits_pack_config_decodes_percentages() {
+            let got: ProcessLimitsPackConfig =
+                eval_as("({maxMemoryPercent: 75, maxCpuPercent: 50, enabled: true})");
+            assert_eq!(got.max_memory_percent, Some(75));
+            assert_eq!(got.max_cpu_percent, Some(50));
+            assert_eq!(got.enabled, Some(true));
+        }
+
+        /// `TextPropertiesAtCursor::into_js` must serialise the inner vector
+        /// into a JS array whose length matches the payload. A mutant that
+        /// returns a default (`undefined` / empty) value would fail either
+        /// the array check or the length check.
+        #[test]
+        fn text_properties_at_cursor_into_js_preserves_length() {
+            use rquickjs::IntoJs;
+            with_js(|ctx| {
+                let mut entry = std::collections::HashMap::new();
+                entry.insert("k".to_string(), serde_json::json!("v"));
+                let payload = TextPropertiesAtCursor(vec![entry.clone(), entry]);
+
+                let v = payload.into_js(&ctx).expect("into_js");
+                let arr = v.as_array().expect("expected JS array");
+                assert_eq!(arr.len(), 2);
+            });
+        }
+    }
+}
+
+/// Plugin API context - provides safe access to editor functionality
+pub struct PluginApi {
+    /// Hook registry (shared with editor)
+    hooks: Arc<RwLock<HookRegistry>>,
+
+    /// Command registry (shared with editor)
+    commands: Arc<RwLock<CommandRegistry>>,
+
+    /// Command queue for sending commands to editor
+    command_sender: std::sync::mpsc::Sender<PluginCommand>,
+
+    /// Snapshot of editor state (read-only for plugins)
+    state_snapshot: Arc<RwLock<EditorStateSnapshot>>,
+}
+
+impl PluginApi {
+    /// Create a new plugin API context
+    pub fn new(
+        hooks: Arc<RwLock<HookRegistry>>,
+        commands: Arc<RwLock<CommandRegistry>>,
+        command_sender: std::sync::mpsc::Sender<PluginCommand>,
+        state_snapshot: Arc<RwLock<EditorStateSnapshot>>,
+    ) -> Self {
+        Self {
+            hooks,
+            commands,
+            command_sender,
+            state_snapshot,
+        }
+    }
+
+    /// Register a hook callback
+    pub fn register_hook(&self, hook_name: &str, callback: HookCallback) {
+        let mut hooks = self.hooks.write().unwrap();
+        hooks.add_hook(hook_name, callback);
+    }
+
+    /// Remove all hooks for a specific name
+    pub fn unregister_hooks(&self, hook_name: &str) {
+        let mut hooks = self.hooks.write().unwrap();
+        hooks.remove_hooks(hook_name);
+    }
+
+    /// Register a command
+    pub fn register_command(&self, command: Command) {
+        let commands = self.commands.read().unwrap();
+        commands.register(command);
+    }
+
+    /// Unregister a command by name
+    pub fn unregister_command(&self, name: &str) {
+        let commands = self.commands.read().unwrap();
+        commands.unregister(name);
+    }
+
+    /// Send a command to the editor (async/non-blocking)
+    pub fn send_command(&self, command: PluginCommand) -> Result<(), String> {
+        self.command_sender
+            .send(command)
+            .map_err(|e| format!("Failed to send command: {}", e))
+    }
+
+    /// Insert text at a position in a buffer
+    pub fn insert_text(
+        &self,
+        buffer_id: BufferId,
+        position: usize,
+        text: String,
+    ) -> Result<(), String> {
+        self.send_command(PluginCommand::InsertText {
+            buffer_id,
+            position,
+            text,
+        })
+    }
+
+    /// Delete a range of text from a buffer
+    pub fn delete_range(&self, buffer_id: BufferId, range: Range<usize>) -> Result<(), String> {
+        self.send_command(PluginCommand::DeleteRange { buffer_id, range })
+    }
+
+    /// Add an overlay (decoration) to a buffer
+    /// Add an overlay to a buffer with styling options
+    ///
+    /// Returns an opaque handle that can be used to remove the overlay later.
+    ///
+    /// Colors can be specified as RGB arrays or theme key strings.
+    /// Theme keys are resolved at render time, so overlays update with theme changes.
+    pub fn add_overlay(
+        &self,
+        buffer_id: BufferId,
+        namespace: Option<String>,
+        range: Range<usize>,
+        options: OverlayOptions,
+    ) -> Result<(), String> {
+        self.send_command(PluginCommand::AddOverlay {
+            buffer_id,
+            namespace: namespace.map(OverlayNamespace::from_string),
+            range,
+            options,
+        })
+    }
+
+    /// Remove an overlay from a buffer by its handle
+    pub fn remove_overlay(&self, buffer_id: BufferId, handle: String) -> Result<(), String> {
+        self.send_command(PluginCommand::RemoveOverlay {
+            buffer_id,
+            handle: OverlayHandle::from_string(handle),
+        })
+    }
+
+    /// Clear all overlays in a namespace from a buffer
+    pub fn clear_namespace(&self, buffer_id: BufferId, namespace: String) -> Result<(), String> {
+        self.send_command(PluginCommand::ClearNamespace {
+            buffer_id,
+            namespace: OverlayNamespace::from_string(namespace),
+        })
+    }
+
+    /// Clear all overlays that overlap with a byte range
+    /// Used for targeted invalidation when content changes
+    pub fn clear_overlays_in_range(
+        &self,
+        buffer_id: BufferId,
+        start: usize,
+        end: usize,
+    ) -> Result<(), String> {
+        self.send_command(PluginCommand::ClearOverlaysInRange {
+            buffer_id,
+            start,
+            end,
+        })
+    }
+
+    /// Clear overlays in a single namespace that overlap with a byte range.
+    /// Unlike [`clear_overlays_in_range`], overlays in other namespaces
+    /// (e.g. editor-owned LSP diagnostics) are left untouched.
+    pub fn clear_overlays_in_range_for_namespace(
+        &self,
+        buffer_id: BufferId,
+        namespace: String,
+        start: usize,
+        end: usize,
+    ) -> Result<(), String> {
+        self.send_command(PluginCommand::ClearOverlaysInRangeForNamespace {
+            buffer_id,
+            namespace: OverlayNamespace::from_string(namespace),
+            start,
+            end,
+        })
+    }
+
+    /// Set the status message
+    pub fn set_status(&self, message: String) -> Result<(), String> {
+        self.send_command(PluginCommand::SetStatus { message })
+    }
+
+    /// Open a file at a specific line and column (1-indexed)
+    /// This is useful for jumping to locations from git grep, LSP definitions, etc.
+    pub fn open_file_at_location(
+        &self,
+        path: PathBuf,
+        line: Option<usize>,
+        column: Option<usize>,
+    ) -> Result<(), String> {
+        self.send_command(PluginCommand::OpenFileAtLocation { path, line, column })
+    }
+
+    /// Open a file in a specific split at a line and column
+    ///
+    /// Similar to open_file_at_location but targets a specific split pane.
+    /// The split_id is the ID of the split pane to open the file in.
+    pub fn open_file_in_split(
+        &self,
+        split_id: usize,
+        path: PathBuf,
+        line: Option<usize>,
+        column: Option<usize>,
+    ) -> Result<(), String> {
+        self.send_command(PluginCommand::OpenFileInSplit {
+            split_id,
+            path,
+            line,
+            column,
+        })
+    }
+
+    /// Start a prompt (minibuffer) with a custom type identifier
+    /// The prompt_type is used to filter hooks in plugin code
+    pub fn start_prompt(&self, label: String, prompt_type: String) -> Result<(), String> {
+        self.send_command(PluginCommand::StartPrompt {
+            label,
+            prompt_type,
+            floating_overlay: false,
+        })
+    }
+
+    /// Set the suggestions for the current prompt
+    /// This updates the prompt's autocomplete/selection list
+    pub fn set_prompt_suggestions(&self, suggestions: Vec<Suggestion>) -> Result<(), String> {
+        self.send_command(PluginCommand::SetPromptSuggestions {
+            suggestions,
+            selected_index: None,
+        })
+    }
+
+    /// Enable/disable syncing prompt input text when navigating suggestions
+    pub fn set_prompt_input_sync(&self, sync: bool) -> Result<(), String> {
+        self.send_command(PluginCommand::SetPromptInputSync { sync })
+    }
+
+    /// Set the floating-overlay prompt's title (issue #1796) as
+    /// styled segments. An empty vec clears the title and falls
+    /// back to the prompt-type default.
+    pub fn set_prompt_title(&self, title: Vec<StyledText>) -> Result<(), String> {
+        self.send_command(PluginCommand::SetPromptTitle { title })
+    }
+
+    /// Set the floating-overlay prompt's footer chrome row.
+    /// Plugins use this for hotkey hints / footer banners along
+    /// the bottom of the results pane. Empty vec clears.
+    pub fn set_prompt_footer(&self, footer: Vec<StyledText>) -> Result<(), String> {
+        self.send_command(PluginCommand::SetPromptFooter { footer })
+    }
+
+    /// Set the floating-overlay prompt's toolbar as a `WidgetSpec` (real,
+    /// clickable `Toggle`/`Button` widgets). `None` clears it. `plugin` is
+    /// the plugin the toolbar's `widget_event`s go back to.
+    pub fn set_prompt_toolbar(
+        &self,
+        plugin: String,
+        spec: Option<WidgetSpec>,
+    ) -> Result<(), String> {
+        self.send_command(PluginCommand::SetPromptToolbar { plugin, spec })
+    }
+
+    /// Set the floating-overlay prompt's input-row status text. Empty clears.
+    pub fn set_prompt_status(&self, status: String) -> Result<(), String> {
+        self.send_command(PluginCommand::SetPromptStatus { status })
+    }
+
+    /// Override the currently-highlighted suggestion row in the
+    /// open prompt. Useful when re-opening a picker and wanting
+    /// the previously-active entry to come up pre-selected
+    /// (e.g. Orchestrator highlighting the active session). The
+    /// editor clamps `index` to the list's bounds.
+    pub fn set_prompt_selected_index(&self, index: u32) -> Result<(), String> {
+        self.send_command(PluginCommand::SetPromptSelectedIndex { index })
+    }
+
+    /// Add a menu item to an existing menu
+    pub fn add_menu_item(
+        &self,
+        menu_label: String,
+        item: MenuItem,
+        position: MenuPosition,
+    ) -> Result<(), String> {
+        self.send_command(PluginCommand::AddMenuItem {
+            menu_label,
+            item,
+            position,
+        })
+    }
+
+    /// Add a new top-level menu
+    pub fn add_menu(&self, menu: Menu, position: MenuPosition) -> Result<(), String> {
+        self.send_command(PluginCommand::AddMenu { menu, position })
+    }
+
+    /// Remove a menu item from a menu
+    pub fn remove_menu_item(&self, menu_label: String, item_label: String) -> Result<(), String> {
+        self.send_command(PluginCommand::RemoveMenuItem {
+            menu_label,
+            item_label,
+        })
+    }
+
+    /// Remove a top-level menu
+    pub fn remove_menu(&self, menu_label: String) -> Result<(), String> {
+        self.send_command(PluginCommand::RemoveMenu { menu_label })
+    }
+
+    // === Virtual Buffer Methods ===
+
+    /// Create a new virtual buffer (not backed by a file)
+    ///
+    /// Virtual buffers are used for special displays like diagnostic lists,
+    /// search results, etc. They have their own mode for keybindings.
+    pub fn create_virtual_buffer(
+        &self,
+        name: String,
+        mode: String,
+        read_only: bool,
+    ) -> Result<(), String> {
+        self.send_command(PluginCommand::CreateVirtualBuffer {
+            name,
+            mode,
+            read_only,
+        })
+    }
+
+    /// Create a virtual buffer and set its content in one operation
+    ///
+    /// This is the preferred way to create virtual buffers since it doesn't
+    /// require tracking the buffer ID. The buffer is created and populated
+    /// atomically.
+    pub fn create_virtual_buffer_with_content(
+        &self,
+        name: String,
+        mode: String,
+        read_only: bool,
+        entries: Vec<TextPropertyEntry>,
+    ) -> Result<(), String> {
+        self.send_command(PluginCommand::CreateVirtualBufferWithContent {
+            name,
+            mode,
+            read_only,
+            entries,
+            show_line_numbers: true,
+            show_cursors: true,
+            editing_disabled: false,
+            hidden_from_tabs: false,
+            background: false,
+            highlight_current_line: None,
+            initial_cursor_line: None,
+            indentation_guide: None,
+            scrollable: None,
+            request_id: None,
+        })
+    }
+
+    /// Set the content of a virtual buffer with text properties
+    ///
+    /// Each entry contains text and metadata properties (e.g., source location).
+    pub fn set_virtual_buffer_content(
+        &self,
+        buffer_id: BufferId,
+        entries: Vec<TextPropertyEntry>,
+    ) -> Result<(), String> {
+        self.send_command(PluginCommand::SetVirtualBufferContent { buffer_id, entries })
+    }
+
+    /// Get text properties at cursor position in a buffer
+    ///
+    /// This triggers a command that will make properties available to plugins.
+    pub fn get_text_properties_at_cursor(&self, buffer_id: BufferId) -> Result<(), String> {
+        self.send_command(PluginCommand::GetTextPropertiesAtCursor { buffer_id })
+    }
+
+    /// Define a buffer mode with keybindings
+    ///
+    /// Bindings are specified as (key_string, command_name) pairs.
+    pub fn define_mode(
+        &self,
+        name: String,
+        bindings: Vec<(String, String)>,
+        read_only: bool,
+        allow_text_input: bool,
+    ) -> Result<(), String> {
+        self.send_command(PluginCommand::DefineMode {
+            name,
+            bindings,
+            read_only,
+            allow_text_input,
+            inherit_normal_bindings: false,
+            plugin_name: None,
+        })
+    }
+
+    /// Switch the current split to display a buffer
+    pub fn show_buffer(&self, buffer_id: BufferId) -> Result<(), String> {
+        self.send_command(PluginCommand::ShowBuffer { buffer_id })
+    }
+
+    /// Scroll to the keyed widget. See [`ScrollAlign`] for where it
+    /// lands; `Top` is the historical behaviour.
+    pub fn scroll_to_widget(
+        &self,
+        buffer_id: BufferId,
+        key: String,
+        align: ScrollAlign,
+    ) -> Result<(), String> {
+        self.send_command(PluginCommand::ScrollToWidget {
+            buffer_id,
+            key,
+            align,
+        })
+    }
+
+    /// Set the scroll position of a specific split
+    pub fn set_split_scroll(&self, split_id: usize, top_byte: usize) -> Result<(), String> {
+        self.send_command(PluginCommand::SetSplitScroll {
+            split_id: SplitId(split_id),
+            top_byte,
+        })
+    }
+
+    /// Request syntax highlights for a buffer range
+    pub fn get_highlights(
+        &self,
+        buffer_id: BufferId,
+        range: Range<usize>,
+        request_id: u64,
+    ) -> Result<(), String> {
+        self.send_command(PluginCommand::RequestHighlights {
+            buffer_id,
+            range,
+            request_id,
+        })
+    }
+
+    // === Query Methods ===
+
+    /// Get the currently active buffer ID
+    pub fn get_active_buffer_id(&self) -> BufferId {
+        let snapshot = self.state_snapshot.read().unwrap();
+        snapshot.active_buffer_id
+    }
+
+    /// Get the currently active split ID
+    pub fn get_active_split_id(&self) -> usize {
+        let snapshot = self.state_snapshot.read().unwrap();
+        snapshot.active_split_id
+    }
+
+    /// Get information about a specific buffer
+    pub fn get_buffer_info(&self, buffer_id: BufferId) -> Option<BufferInfo> {
+        let snapshot = self.state_snapshot.read().unwrap();
+        snapshot.buffers.get(&buffer_id).cloned()
+    }
+
+    /// Get all buffer IDs
+    pub fn list_buffers(&self) -> Vec<BufferInfo> {
+        let snapshot = self.state_snapshot.read().unwrap();
+        snapshot.buffers.values().cloned().collect()
+    }
+
+    /// Get primary cursor information for the active buffer
+    pub fn get_primary_cursor(&self) -> Option<CursorInfo> {
+        let snapshot = self.state_snapshot.read().unwrap();
+        snapshot.primary_cursor.clone()
+    }
+
+    /// Get all cursor information for the active buffer
+    pub fn get_all_cursors(&self) -> Vec<CursorInfo> {
+        let snapshot = self.state_snapshot.read().unwrap();
+        snapshot.all_cursors.clone()
+    }
+
+    /// Get viewport information for the active buffer
+    pub fn get_viewport(&self) -> Option<ViewportInfo> {
+        let snapshot = self.state_snapshot.read().unwrap();
+        snapshot.viewport.clone()
+    }
+
+    /// Get total terminal dimensions.
+    pub fn get_screen_size(&self) -> ScreenSize {
+        let snapshot = self.state_snapshot.read().unwrap();
+        ScreenSize {
+            width: snapshot.terminal_width,
+            height: snapshot.terminal_height,
+        }
+    }
+
+    /// Get access to the state snapshot Arc (for internal use)
+    pub fn state_snapshot_handle(&self) -> Arc<RwLock<EditorStateSnapshot>> {
+        Arc::clone(&self.state_snapshot)
+    }
+}
+
+impl Clone for PluginApi {
+    fn clone(&self) -> Self {
+        Self {
+            hooks: Arc::clone(&self.hooks),
+            commands: Arc::clone(&self.commands),
+            command_sender: self.command_sender.clone(),
+            state_snapshot: Arc::clone(&self.state_snapshot),
+        }
+    }
+}
+
+// ============================================================================
+// Pluggable Completion Service — TypeScript Plugin API Types
+// ============================================================================
+//
+// These types are the bridge between the Rust `CompletionService` and
+// TypeScript plugins that want to provide completion candidates.  They are
+// serialised to/from JSON via serde and generate TypeScript definitions via
+// ts-rs so that the plugin API stays in sync automatically.
+
+/// A completion candidate produced by a TypeScript plugin provider.
+///
+/// This mirrors `CompletionCandidate` in the Rust `completion::provider`
+/// module but uses serde-friendly primitives for the JS ↔ Rust boundary.
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[serde(rename_all = "camelCase", deny_unknown_fields)]
+#[ts(export, rename_all = "camelCase")]
+pub struct TsCompletionCandidate {
+    /// Display text shown in the completion popup.
+    pub label: String,
+
+    /// Text to insert when accepted. Falls back to `label` if omitted.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub insert_text: Option<String>,
+
+    /// Short detail string shown next to the label.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub detail: Option<String>,
+
+    /// Single-character icon hint (e.g. `"λ"`, `"v"`).
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub icon: Option<String>,
+
+    /// Provider-assigned relevance score (higher = better).
+    #[serde(default)]
+    pub score: i64,
+
+    /// Whether `insert_text` uses LSP snippet syntax (`$0`, `${1:ph}`, …).
+    #[serde(default)]
+    pub is_snippet: bool,
+
+    /// Opaque data carried through to the `completionAccepted` hook.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub provider_data: Option<String>,
+}
+
+/// Context sent to a TypeScript plugin's `provideCompletions` handler.
+///
+/// Plugins receive this as a read-only snapshot so they never need direct
+/// buffer access (which would be unsafe for huge files).
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[serde(rename_all = "camelCase")]
+#[ts(export, rename_all = "camelCase")]
+pub struct TsCompletionContext {
+    /// The word prefix typed so far.
+    pub prefix: String,
+
+    /// Byte offset of the cursor.
+    pub cursor_byte: usize,
+
+    /// Byte offset of the word start (for replacement range).
+    pub word_start_byte: usize,
+
+    /// Total buffer size in bytes.
+    pub buffer_len: usize,
+
+    /// Whether the buffer is a lazily-loaded huge file.
+    pub is_large_file: bool,
+
+    /// A text excerpt around the cursor (the contents of the safe scan window).
+    /// Plugins should search only this string, not request the full buffer.
+    pub text_around_cursor: String,
+
+    /// Byte offset within `text_around_cursor` that corresponds to the cursor.
+    pub cursor_offset_in_text: usize,
+
+    /// File language id (e.g. `"rust"`, `"typescript"`), if known.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub language_id: Option<String>,
+}
+
+/// Registration payload sent by a plugin to register a completion provider.
+#[derive(Debug, Clone, Serialize, Deserialize, TS)]
+#[serde(rename_all = "camelCase", deny_unknown_fields)]
+#[ts(export, rename_all = "camelCase")]
+pub struct TsCompletionProviderRegistration {
+    /// Unique id for this provider (e.g., `"my-snippets"`).
+    pub id: String,
+
+    /// Human-readable name shown in status/debug UI.
+    pub display_name: String,
+
+    /// Priority tier (lower = higher priority). Convention:
+    /// 0 = LSP, 10 = ctags, 20 = buffer words, 30 = dabbrev, 50 = plugin.
+    #[serde(default = "default_plugin_provider_priority")]
+    pub priority: u32,
+
+    /// Optional list of language ids this provider is active for.
+    /// If empty/omitted, the provider is active for all languages.
+    #[serde(default)]
+    pub language_ids: Vec<String>,
+}
+
+fn default_plugin_provider_priority() -> u32 {
+    50
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use std::path::Path;
+
+    #[test]
+    fn test_plugin_api_creation() {
+        let hooks = Arc::new(RwLock::new(HookRegistry::new()));
+        let commands = Arc::new(RwLock::new(CommandRegistry::new()));
+        let (tx, _rx) = std::sync::mpsc::channel();
+        let state_snapshot = Arc::new(RwLock::new(EditorStateSnapshot::new()));
+
+        let api = PluginApi::new(hooks, commands, tx, state_snapshot);
+
+        // Should not panic
+        let _clone = api.clone();
+    }
+
+    #[test]
+    fn test_register_hook() {
+        let hooks = Arc::new(RwLock::new(HookRegistry::new()));
+        let commands = Arc::new(RwLock::new(CommandRegistry::new()));
+        let (tx, _rx) = std::sync::mpsc::channel();
+        let state_snapshot = Arc::new(RwLock::new(EditorStateSnapshot::new()));
+
+        let api = PluginApi::new(hooks.clone(), commands, tx, state_snapshot);
+
+        api.register_hook("test-hook", Box::new(|_| true));
+
+        let hook_registry = hooks.read().unwrap();
+        assert_eq!(hook_registry.hook_count("test-hook"), 1);
+    }
+
+    #[test]
+    fn test_send_command() {
+        let hooks = Arc::new(RwLock::new(HookRegistry::new()));
+        let commands = Arc::new(RwLock::new(CommandRegistry::new()));
+        let (tx, rx) = std::sync::mpsc::channel();
+        let state_snapshot = Arc::new(RwLock::new(EditorStateSnapshot::new()));
+
+        let api = PluginApi::new(hooks, commands, tx, state_snapshot);
+
+        let result = api.insert_text(BufferId(1), 0, "test".to_string());
+        assert!(result.is_ok());
+
+        // Verify command was sent
+        let received = rx.try_recv();
+        assert!(received.is_ok());
+
+        match received.unwrap() {
+            PluginCommand::InsertText {
+                buffer_id,
+                position,
+                text,
+            } => {
+                assert_eq!(buffer_id.0, 1);
+                assert_eq!(position, 0);
+                assert_eq!(text, "test");
+            }
+            _ => panic!("Wrong command type"),
+        }
+    }
+
+    #[test]
+    fn test_add_overlay_command() {
+        let hooks = Arc::new(RwLock::new(HookRegistry::new()));
+        let commands = Arc::new(RwLock::new(CommandRegistry::new()));
+        let (tx, rx) = std::sync::mpsc::channel();
+        let state_snapshot = Arc::new(RwLock::new(EditorStateSnapshot::new()));
+
+        let api = PluginApi::new(hooks, commands, tx, state_snapshot);
+
+        let result = api.add_overlay(
+            BufferId(1),
+            Some("test-overlay".to_string()),
+            0..10,
+            OverlayOptions {
+                fg: Some(OverlayColorSpec::ThemeKey("ui.status_bar_fg".to_string())),
+                bg: None,
+                underline: true,
+                bold: false,
+                italic: false,
+                strikethrough: false,
+                extend_to_line_end: false,
+                reversed: false,
+                fg_on_collision_only: false,
+                url: None,
+            },
+        );
+        assert!(result.is_ok());
+
+        let received = rx.try_recv().unwrap();
+        match received {
+            PluginCommand::AddOverlay {
+                buffer_id,
+                namespace,
+                range,
+                options,
+            } => {
+                assert_eq!(buffer_id.0, 1);
+                assert_eq!(namespace.as_ref().map(|n| n.as_str()), Some("test-overlay"));
+                assert_eq!(range, 0..10);
+                assert!(matches!(
+                    options.fg,
+                    Some(OverlayColorSpec::ThemeKey(ref k)) if k == "ui.status_bar_fg"
+                ));
+                assert!(options.bg.is_none());
+                assert!(options.underline);
+                assert!(!options.bold);
+                assert!(!options.italic);
+                assert!(!options.extend_to_line_end);
+            }
+            _ => panic!("Wrong command type"),
+        }
+    }
+
+    #[test]
+    fn test_set_status_command() {
+        let hooks = Arc::new(RwLock::new(HookRegistry::new()));
+        let commands = Arc::new(RwLock::new(CommandRegistry::new()));
+        let (tx, rx) = std::sync::mpsc::channel();
+        let state_snapshot = Arc::new(RwLock::new(EditorStateSnapshot::new()));
+
+        let api = PluginApi::new(hooks, commands, tx, state_snapshot);
+
+        let result = api.set_status("Test status".to_string());
+        assert!(result.is_ok());
+
+        let received = rx.try_recv().unwrap();
+        match received {
+            PluginCommand::SetStatus { message } => {
+                assert_eq!(message, "Test status");
+            }
+            _ => panic!("Wrong command type"),
+        }
+    }
+
+    #[test]
+    fn test_get_active_buffer_id() {
+        let hooks = Arc::new(RwLock::new(HookRegistry::new()));
+        let commands = Arc::new(RwLock::new(CommandRegistry::new()));
+        let (tx, _rx) = std::sync::mpsc::channel();
+        let state_snapshot = Arc::new(RwLock::new(EditorStateSnapshot::new()));
+
+        // Set active buffer to 5
+        {
+            let mut snapshot = state_snapshot.write().unwrap();
+            snapshot.active_buffer_id = BufferId(5);
+        }
+
+        let api = PluginApi::new(hooks, commands, tx, state_snapshot);
+
+        let active_id = api.get_active_buffer_id();
+        assert_eq!(active_id.0, 5);
+    }
+
+    #[test]
+    fn test_get_buffer_info() {
+        let hooks = Arc::new(RwLock::new(HookRegistry::new()));
+        let commands = Arc::new(RwLock::new(CommandRegistry::new()));
+        let (tx, _rx) = std::sync::mpsc::channel();
+        let state_snapshot = Arc::new(RwLock::new(EditorStateSnapshot::new()));
+
+        // Add buffer info
+        {
+            let mut snapshot = state_snapshot.write().unwrap();
+            let buffer_info = BufferInfo {
+                id: BufferId(1),
+                path: Some(std::path::PathBuf::from("/test/file.txt")),
+                name: "file.txt".to_string(),
+                modified: true,
+                length: 100,
+                line_count: Some(1),
+                is_terminal: false,
+                is_virtual: false,
+                editing_disabled: false,
+                view_mode: "source".to_string(),
+                is_composing_in_any_split: false,
+                compose_width: None,
+                language: "text".to_string(),
+                is_preview: false,
+                splits: Vec::new(),
+            };
+            snapshot.buffers.insert(BufferId(1), buffer_info);
+        }
+
+        let api = PluginApi::new(hooks, commands, tx, state_snapshot);
+
+        let info = api.get_buffer_info(BufferId(1));
+        assert!(info.is_some());
+        let info = info.unwrap();
+        assert_eq!(info.id.0, 1);
+        assert_eq!(
+            info.path.as_ref().unwrap().to_str().unwrap(),
+            "/test/file.txt"
+        );
+        assert!(info.modified);
+        assert_eq!(info.length, 100);
+
+        // Non-existent buffer
+        let no_info = api.get_buffer_info(BufferId(999));
+        assert!(no_info.is_none());
+    }
+
+    #[test]
+    fn test_list_buffers() {
+        let hooks = Arc::new(RwLock::new(HookRegistry::new()));
+        let commands = Arc::new(RwLock::new(CommandRegistry::new()));
+        let (tx, _rx) = std::sync::mpsc::channel();
+        let state_snapshot = Arc::new(RwLock::new(EditorStateSnapshot::new()));
+
+        // Add multiple buffers
+        {
+            let mut snapshot = state_snapshot.write().unwrap();
+            snapshot.buffers.insert(
+                BufferId(1),
+                BufferInfo {
+                    id: BufferId(1),
+                    path: Some(std::path::PathBuf::from("/file1.txt")),
+                    name: "file1.txt".to_string(),
+                    modified: false,
+                    length: 50,
+                    line_count: Some(1),
+                    is_terminal: false,
+                    is_virtual: false,
+                    editing_disabled: false,
+                    view_mode: "source".to_string(),
+                    is_composing_in_any_split: false,
+                    compose_width: None,
+                    language: "text".to_string(),
+                    is_preview: false,
+                    splits: Vec::new(),
+                },
+            );
+            snapshot.buffers.insert(
+                BufferId(2),
+                BufferInfo {
+                    id: BufferId(2),
+                    path: Some(std::path::PathBuf::from("/file2.txt")),
+                    name: "file2.txt".to_string(),
+                    modified: true,
+                    length: 100,
+                    line_count: Some(1),
+                    is_terminal: false,
+                    is_virtual: false,
+                    editing_disabled: false,
+                    view_mode: "source".to_string(),
+                    is_composing_in_any_split: false,
+                    compose_width: None,
+                    language: "text".to_string(),
+                    is_preview: false,
+                    splits: Vec::new(),
+                },
+            );
+            snapshot.buffers.insert(
+                BufferId(3),
+                BufferInfo {
+                    id: BufferId(3),
+                    path: None,
+                    // A virtual buffer: no path, but it still has the name it
+                    // was created with — which is the whole point of the field.
+                    name: "Scratch Panel".to_string(),
+                    modified: false,
+                    length: 0,
+                    line_count: Some(1),
+                    is_terminal: false,
+                    is_virtual: true,
+                    editing_disabled: false,
+                    view_mode: "source".to_string(),
+                    is_composing_in_any_split: false,
+                    compose_width: None,
+                    language: "text".to_string(),
+                    is_preview: false,
+                    splits: Vec::new(),
+                },
+            );
+        }
+
+        let api = PluginApi::new(hooks, commands, tx, state_snapshot);
+
+        let buffers = api.list_buffers();
+        assert_eq!(buffers.len(), 3);
+
+        // Verify all buffers are present
+        assert!(buffers.iter().any(|b| b.id.0 == 1));
+        assert!(buffers.iter().any(|b| b.id.0 == 2));
+        assert!(buffers.iter().any(|b| b.id.0 == 3));
+    }
+
+    #[test]
+    fn test_get_primary_cursor() {
+        let hooks = Arc::new(RwLock::new(HookRegistry::new()));
+        let commands = Arc::new(RwLock::new(CommandRegistry::new()));
+        let (tx, _rx) = std::sync::mpsc::channel();
+        let state_snapshot = Arc::new(RwLock::new(EditorStateSnapshot::new()));
+
+        // Add cursor info
+        {
+            let mut snapshot = state_snapshot.write().unwrap();
+            snapshot.primary_cursor = Some(CursorInfo {
+                position: 42,
+                selection: Some(10..42),
+                line: Some(3),
+            });
+        }
+
+        let api = PluginApi::new(hooks, commands, tx, state_snapshot);
+
+        let cursor = api.get_primary_cursor();
+        assert!(cursor.is_some());
+        let cursor = cursor.unwrap();
+        assert_eq!(cursor.position, 42);
+        assert_eq!(cursor.selection, Some(10..42));
+    }
+
+    #[test]
+    fn test_get_all_cursors() {
+        let hooks = Arc::new(RwLock::new(HookRegistry::new()));
+        let commands = Arc::new(RwLock::new(CommandRegistry::new()));
+        let (tx, _rx) = std::sync::mpsc::channel();
+        let state_snapshot = Arc::new(RwLock::new(EditorStateSnapshot::new()));
+
+        // Add multiple cursors
+        {
+            let mut snapshot = state_snapshot.write().unwrap();
+            snapshot.all_cursors = vec![
+                CursorInfo {
+                    position: 10,
+                    selection: None,
+                    line: Some(0),
+                },
+                CursorInfo {
+                    position: 20,
+                    selection: Some(15..20),
+                    line: Some(1),
+                },
+                CursorInfo {
+                    position: 30,
+                    selection: Some(25..30),
+                    line: Some(2),
+                },
+            ];
+        }
+
+        let api = PluginApi::new(hooks, commands, tx, state_snapshot);
+
+        let cursors = api.get_all_cursors();
+        assert_eq!(cursors.len(), 3);
+        assert_eq!(cursors[0].position, 10);
+        assert_eq!(cursors[0].selection, None);
+        assert_eq!(cursors[1].position, 20);
+        assert_eq!(cursors[1].selection, Some(15..20));
+        assert_eq!(cursors[2].position, 30);
+        assert_eq!(cursors[2].selection, Some(25..30));
+    }
+
+    #[test]
+    fn test_get_viewport() {
+        let hooks = Arc::new(RwLock::new(HookRegistry::new()));
+        let commands = Arc::new(RwLock::new(CommandRegistry::new()));
+        let (tx, _rx) = std::sync::mpsc::channel();
+        let state_snapshot = Arc::new(RwLock::new(EditorStateSnapshot::new()));
+
+        // Add viewport info
+        {
+            let mut snapshot = state_snapshot.write().unwrap();
+            snapshot.viewport = Some(ViewportInfo {
+                top_byte: 100,
+                top_line: Some(5),
+                left_column: 5,
+                width: 80,
+                height: 24,
+            });
+        }
+
+        let api = PluginApi::new(hooks, commands, tx, state_snapshot);
+
+        let viewport = api.get_viewport();
+        assert!(viewport.is_some());
+        let viewport = viewport.unwrap();
+        assert_eq!(viewport.top_byte, 100);
+        assert_eq!(viewport.left_column, 5);
+        assert_eq!(viewport.width, 80);
+        assert_eq!(viewport.height, 24);
+    }
+
+    #[test]
+    fn test_composite_buffer_options_rejects_unknown_fields() {
+        // Valid JSON with correct field names
+        let valid_json = r#"{
+            "name": "test",
+            "mode": "diff",
+            "layout": {"type": "side-by-side", "ratios": [0.5, 0.5], "showSeparator": true},
+            "sources": [{"bufferId": 1, "label": "old"}]
+        }"#;
+        let result: Result<CreateCompositeBufferOptions, _> = serde_json::from_str(valid_json);
+        assert!(
+            result.is_ok(),
+            "Valid JSON should parse: {:?}",
+            result.err()
+        );
+
+        // Invalid JSON with unknown field (buffer_id instead of bufferId)
+        let invalid_json = r#"{
+            "name": "test",
+            "mode": "diff",
+            "layout": {"type": "side-by-side", "ratios": [0.5, 0.5], "showSeparator": true},
+            "sources": [{"buffer_id": 1, "label": "old"}]
+        }"#;
+        let result: Result<CreateCompositeBufferOptions, _> = serde_json::from_str(invalid_json);
+        assert!(
+            result.is_err(),
+            "JSON with unknown field should fail to parse"
+        );
+        let err = result.unwrap_err().to_string();
+        assert!(
+            err.contains("unknown field") || err.contains("buffer_id"),
+            "Error should mention unknown field: {}",
+            err
+        );
+    }
+
+    #[test]
+    fn test_composite_hunk_rejects_unknown_fields() {
+        // Valid JSON with correct field names
+        let valid_json = r#"{"oldStart": 0, "oldCount": 5, "newStart": 0, "newCount": 7}"#;
+        let result: Result<CompositeHunk, _> = serde_json::from_str(valid_json);
+        assert!(
+            result.is_ok(),
+            "Valid JSON should parse: {:?}",
+            result.err()
+        );
+
+        // Invalid JSON with unknown field (old_start instead of oldStart)
+        let invalid_json = r#"{"old_start": 0, "oldCount": 5, "newStart": 0, "newCount": 7}"#;
+        let result: Result<CompositeHunk, _> = serde_json::from_str(invalid_json);
+        assert!(
+            result.is_err(),
+            "JSON with unknown field should fail to parse"
+        );
+        let err = result.unwrap_err().to_string();
+        assert!(
+            err.contains("unknown field") || err.contains("old_start"),
+            "Error should mention unknown field: {}",
+            err
+        );
+    }
+
+    #[test]
+    fn test_plugin_response_line_end_position() {
+        let response = PluginResponse::LineEndPosition {
+            request_id: 42,
+            position: Some(100),
+        };
+        let json = serde_json::to_string(&response).unwrap();
+        assert!(json.contains("LineEndPosition"));
+        assert!(json.contains("42"));
+        assert!(json.contains("100"));
+
+        // Test None case
+        let response_none = PluginResponse::LineEndPosition {
+            request_id: 1,
+            position: None,
+        };
+        let json_none = serde_json::to_string(&response_none).unwrap();
+        assert!(json_none.contains("null"));
+    }
+
+    #[test]
+    fn test_plugin_response_buffer_line_count() {
+        let response = PluginResponse::BufferLineCount {
+            request_id: 99,
+            count: Some(500),
+        };
+        let json = serde_json::to_string(&response).unwrap();
+        assert!(json.contains("BufferLineCount"));
+        assert!(json.contains("99"));
+        assert!(json.contains("500"));
+    }
+
+    #[test]
+    fn test_plugin_command_get_line_end_position() {
+        let command = PluginCommand::GetLineEndPosition {
+            buffer_id: BufferId(1),
+            line: 10,
+            request_id: 123,
+        };
+        let json = serde_json::to_string(&command).unwrap();
+        assert!(json.contains("GetLineEndPosition"));
+        assert!(json.contains("10"));
+    }
+
+    #[test]
+    fn test_plugin_command_get_buffer_line_count() {
+        let command = PluginCommand::GetBufferLineCount {
+            buffer_id: BufferId(0),
+            request_id: 456,
+        };
+        let json = serde_json::to_string(&command).unwrap();
+        assert!(json.contains("GetBufferLineCount"));
+        assert!(json.contains("456"));
+    }
+
+    #[test]
+    fn test_plugin_command_scroll_to_line_center() {
+        let command = PluginCommand::ScrollToLineCenter {
+            split_id: SplitId(1),
+            buffer_id: BufferId(2),
+            line: 50,
+        };
+        let json = serde_json::to_string(&command).unwrap();
+        assert!(json.contains("ScrollToLineCenter"));
+        assert!(json.contains("50"));
+    }
+
+    /// `JsCallbackId` round-trips through `u64` via `new` / `as_u64` / `From`
+    /// and renders as its underlying integer via `Display`.
+    #[test]
+    fn js_callback_id_conversions_and_display() {
+        for raw in [0u64, 1, 42, u64::MAX] {
+            let id = JsCallbackId::new(raw);
+            assert_eq!(id.as_u64(), raw);
+            assert_eq!(u64::from(id), raw);
+            assert_eq!(JsCallbackId::from(raw), id);
+            assert_eq!(id.to_string(), raw.to_string());
+        }
+    }
+
+    /// Serde `default = ...` helpers fire when the field is omitted and are
+    /// overridden by explicit values. One test per struct pins each helper
+    /// to its documented default.
+    #[test]
+    fn serde_defaults_fire_when_fields_are_omitted() {
+        // default_action_count → 1
+        let spec: ActionSpec = serde_json::from_str(r#"{"action": "move_left"}"#).unwrap();
+        assert_eq!(spec.count, 1);
+        let spec: ActionSpec =
+            serde_json::from_str(r#"{"action": "move_left", "count": 5}"#).unwrap();
+        assert_eq!(spec.count, 5);
+
+        // default_true → showSeparator = true
+        let layout: CompositeLayoutConfig =
+            serde_json::from_str(r#"{"type": "side-by-side"}"#).unwrap();
+        assert!(layout.show_separator);
+        let layout: CompositeLayoutConfig =
+            serde_json::from_str(r#"{"type": "side-by-side", "showSeparator": false}"#).unwrap();
+        assert!(!layout.show_separator);
+
+        // default_plugin_provider_priority → 50
+        let reg: TsCompletionProviderRegistration =
+            serde_json::from_str(r#"{"id": "p", "displayName": "P"}"#).unwrap();
+        assert_eq!(reg.priority, 50);
+        let reg: TsCompletionProviderRegistration =
+            serde_json::from_str(r#"{"id": "p", "displayName": "P", "priority": 3}"#).unwrap();
+        assert_eq!(reg.priority, 3);
+    }
+
+    // ── Behavioural tests added to kill the mutants reported by cargo-mutants ──
+    //
+    // These tests pin down observable behaviour for tiny methods whose bodies
+    // were replaceable with a constant (e.g. `()`, `Ok(())`, `None`, or a
+    // default value) without any existing test noticing.
+
+    /// Helper: build a minimal `Command` with a given name.
+    fn mk_cmd(name: &str) -> Command {
+        Command {
+            name: name.to_string(),
+            description: String::new(),
+            action_name: String::new(),
+            plugin_name: String::new(),
+            custom_contexts: Vec::new(),
+            terminal_bypass: false,
+        }
+    }
+
+    /// `CommandRegistry::register` appends new commands and replaces any
+    /// existing entry with the same name; `unregister` removes exactly the
+    /// matching entry and is a no-op for unknown names.
+    ///
+    /// Kills: replace register with `()`; `!= → ==` in register;
+    ///        replace unregister with `()`; `!= → ==` in unregister.
+    #[test]
+    fn command_registry_register_and_unregister_semantics() {
+        let r = CommandRegistry::new();
+
+        r.register(mk_cmd("a"));
+        r.register(mk_cmd("b"));
+        assert_eq!(r.commands.read().unwrap().len(), 2);
+
+        // Re-registering "a" must keep "b" (retain filters by `!=`); the
+        // `== → !=` mutant would drop "b" and leave two copies of "a".
+        r.register(mk_cmd("a"));
+        let names: Vec<String> = r
+            .commands
+            .read()
+            .unwrap()
+            .iter()
+            .map(|c| c.name.clone())
+            .collect();
+        assert_eq!(names, vec!["b".to_string(), "a".to_string()]);
+
+        // Unregister must remove exactly "a" and preserve "b"; the `== → !=`
+        // mutant would keep "a" and drop "b".
+        r.unregister("a");
+        let names: Vec<String> = r
+            .commands
+            .read()
+            .unwrap()
+            .iter()
+            .map(|c| c.name.clone())
+            .collect();
+        assert_eq!(names, vec!["b".to_string()]);
+
+        // Unregistering an unknown name is a no-op.
+        r.unregister("nope");
+        assert_eq!(r.commands.read().unwrap().len(), 1);
+    }
+
+    /// `OverlayColorSpec::as_rgb` returns the exact stored tuple for the RGB
+    /// variant and `None` for the theme-key variant; `as_theme_key` is the
+    /// dual. Uses a triple with no zero or one components and a theme key
+    /// that is neither empty nor `"xyzzy"` to kill every constant-return
+    /// mutant reported by cargo-mutants at once.
+    #[test]
+    fn overlay_color_spec_accessors_are_variant_specific() {
+        let rgb = OverlayColorSpec::rgb(12, 34, 56);
+        assert_eq!(rgb.as_rgb(), Some((12, 34, 56)));
+        assert_eq!(rgb.as_theme_key(), None);
+
+        let tk = OverlayColorSpec::theme_key("ui.status_bar_bg");
+        assert_eq!(tk.as_rgb(), None);
+        assert_eq!(tk.as_theme_key(), Some("ui.status_bar_bg"));
+    }
+
+    // ── PluginApi dispatch / mutation tests ────────────────────────────────
+    //
+    // Each `PluginApi` method is a one-liner that either pushes a
+    // `PluginCommand` onto the channel or mutates a shared registry. The
+    // mutants replace the body with `Ok(())` / `()`, i.e. the side effect
+    // disappears. One assertion per method ties the side effect down.
+
+    type MkApi = (
+        PluginApi,
+        std::sync::mpsc::Receiver<PluginCommand>,
+        Arc<RwLock<HookRegistry>>,
+        Arc<RwLock<CommandRegistry>>,
+        Arc<RwLock<EditorStateSnapshot>>,
+    );
+
+    fn mk_api() -> MkApi {
+        let hooks = Arc::new(RwLock::new(HookRegistry::new()));
+        let commands = Arc::new(RwLock::new(CommandRegistry::new()));
+        let (tx, rx) = std::sync::mpsc::channel();
+        let snap = Arc::new(RwLock::new(EditorStateSnapshot::new()));
+        let api = PluginApi::new(hooks.clone(), commands.clone(), tx, snap.clone());
+        (api, rx, hooks, commands, snap)
+    }
+
+    /// `unregister_hooks` must actually clear hooks registered under the
+    /// same name; replacing the body with `()` leaves the count at 1.
+    #[test]
+    fn plugin_api_unregister_hooks_clears_registry() {
+        let (api, _rx, hooks, _cmds, _snap) = mk_api();
+        api.register_hook("h", Box::new(|_| true));
+        assert_eq!(hooks.read().unwrap().hook_count("h"), 1);
+        api.unregister_hooks("h");
+        assert_eq!(hooks.read().unwrap().hook_count("h"), 0);
+    }
+
+    /// `register_command` / `unregister_command` must actually write through
+    /// to the shared `CommandRegistry`.
+    #[test]
+    fn plugin_api_register_and_unregister_command_write_through() {
+        let (api, _rx, _hooks, cmds, _snap) = mk_api();
+
+        api.register_command(mk_cmd("x"));
+        assert_eq!(cmds.read().unwrap().commands.read().unwrap().len(), 1);
+
+        api.unregister_command("x");
+        assert_eq!(cmds.read().unwrap().commands.read().unwrap().len(), 0);
+    }
+
+    /// Macro: assert that calling `$call` on a fresh `PluginApi` produces
+    /// exactly one `PluginCommand` matching `$pattern` with the additional
+    /// invariants in `$guard`.
+    macro_rules! assert_dispatches {
+        ($call:expr, $pattern:pat $(if $guard:expr)?) => {{
+            let (api, rx, _h, _c, _s) = mk_api();
+            let _ = $call(&api);
+            match rx.try_recv().expect("no command sent") {
+                $pattern $(if $guard)? => {}
+                other => panic!("unexpected command variant: {:?}", other),
+            }
+        }};
+    }
+
+    /// Every simple `send_command`-based method on `PluginApi` translates
+    /// its arguments into the documented `PluginCommand` variant with the
+    /// expected fields.
+    #[test]
+    fn plugin_api_send_command_methods_dispatch_correctly() {
+        // delete_range
+        assert_dispatches!(
+            |a: &PluginApi| a.delete_range(BufferId(7), 3..9),
+            PluginCommand::DeleteRange { buffer_id, range }
+                if buffer_id == BufferId(7) && range == (3..9)
+        );
+
+        // remove_overlay
+        assert_dispatches!(
+            |a: &PluginApi| a.remove_overlay(BufferId(2), "h-1".into()),
+            PluginCommand::RemoveOverlay { buffer_id, handle }
+                if buffer_id == BufferId(2) && handle.as_str() == "h-1"
+        );
+
+        // clear_namespace
+        assert_dispatches!(
+            |a: &PluginApi| a.clear_namespace(BufferId(3), "diag".into()),
+            PluginCommand::ClearNamespace { buffer_id, namespace }
+                if buffer_id == BufferId(3) && namespace.as_str() == "diag"
+        );
+
+        // clear_overlays_in_range
+        assert_dispatches!(
+            |a: &PluginApi| a.clear_overlays_in_range(BufferId(4), 10, 20),
+            PluginCommand::ClearOverlaysInRange { buffer_id, start, end }
+                if buffer_id == BufferId(4) && start == 10 && end == 20
+        );
+
+        // clear_overlays_in_range_for_namespace
+        assert_dispatches!(
+            |a: &PluginApi| a.clear_overlays_in_range_for_namespace(
+                BufferId(5),
+                "md-emphasis".into(),
+                10,
+                20
+            ),
+            PluginCommand::ClearOverlaysInRangeForNamespace { buffer_id, namespace, start, end }
+                if buffer_id == BufferId(5)
+                    && namespace.as_str() == "md-emphasis"
+                    && start == 10
+                    && end == 20
+        );
+
+        // open_file_at_location
+        assert_dispatches!(
+            |a: &PluginApi| a.open_file_at_location(
+                PathBuf::from("/tmp/x.rs"), Some(4), Some(8)
+            ),
+            PluginCommand::OpenFileAtLocation { path, line, column }
+                if path == Path::new("/tmp/x.rs")
+                    && line == Some(4)
+                    && column == Some(8)
+        );
+
+        // open_file_in_split
+        assert_dispatches!(
+            |a: &PluginApi| a.open_file_in_split(
+                2, PathBuf::from("/tmp/y.rs"), Some(5), None
+            ),
+            PluginCommand::OpenFileInSplit { split_id, path, line, column }
+                if split_id == 2
+                    && path == Path::new("/tmp/y.rs")
+                    && line == Some(5)
+                    && column.is_none()
+        );
+
+        // start_prompt
+        assert_dispatches!(
+            |a: &PluginApi| a.start_prompt("label".into(), "cmd".into()),
+            PluginCommand::StartPrompt { label, prompt_type, floating_overlay }
+                if label == "label" && prompt_type == "cmd" && !floating_overlay
+        );
+
+        // set_prompt_suggestions
+        assert_dispatches!(
+            |a: &PluginApi| a.set_prompt_suggestions(vec![
+                Suggestion::new("one".into()),
+                Suggestion::new("two".into()),
+            ]),
+            PluginCommand::SetPromptSuggestions { suggestions, .. }
+                if suggestions.len() == 2
+                    && suggestions[0].text == "one"
+                    && suggestions[1].text == "two"
+        );
+
+        // set_prompt_input_sync
+        assert_dispatches!(
+            |a: &PluginApi| a.set_prompt_input_sync(true),
+            PluginCommand::SetPromptInputSync { sync } if sync
+        );
+        assert_dispatches!(
+            |a: &PluginApi| a.set_prompt_input_sync(false),
+            PluginCommand::SetPromptInputSync { sync } if !sync
+        );
+
+        // add_menu_item
+        assert_dispatches!(
+            |a: &PluginApi| a.add_menu_item(
+                "File".into(),
+                MenuItem::Label { info: "info".into() },
+                MenuPosition::Bottom,
+            ),
+            PluginCommand::AddMenuItem { menu_label, item, position }
+                if menu_label == "File"
+                    && matches!(item, MenuItem::Label { ref info } if info == "info")
+                    && matches!(position, MenuPosition::Bottom)
+        );
+
+        // add_menu
+        assert_dispatches!(
+            |a: &PluginApi| a.add_menu(
+                Menu {
+                    id: None,
+                    label: "Help".into(),
+                    items: vec![],
+                    when: None,
+                },
+                MenuPosition::After("Edit".into()),
+            ),
+            PluginCommand::AddMenu { menu, position }
+                if menu.label == "Help"
+                    && matches!(position, MenuPosition::After(ref s) if s == "Edit")
+        );
+
+        // remove_menu_item
+        assert_dispatches!(
+            |a: &PluginApi| a.remove_menu_item("File".into(), "Open".into()),
+            PluginCommand::RemoveMenuItem { menu_label, item_label }
+                if menu_label == "File" && item_label == "Open"
+        );
+
+        // remove_menu
+        assert_dispatches!(
+            |a: &PluginApi| a.remove_menu("File".into()),
+            PluginCommand::RemoveMenu { menu_label } if menu_label == "File"
+        );
+
+        // create_virtual_buffer
+        assert_dispatches!(
+            |a: &PluginApi| a.create_virtual_buffer("buf".into(), "mode".into(), true),
+            PluginCommand::CreateVirtualBuffer { name, mode, read_only }
+                if name == "buf" && mode == "mode" && read_only
+        );
+
+        // create_virtual_buffer_with_content
+        assert_dispatches!(
+            |a: &PluginApi| a.create_virtual_buffer_with_content(
+                "n".into(), "m".into(), false, vec![]
+            ),
+            PluginCommand::CreateVirtualBufferWithContent {
+                name, mode, read_only, show_line_numbers, show_cursors,
+                editing_disabled, hidden_from_tabs, request_id, ..
+            }
+                if name == "n" && mode == "m" && !read_only
+                    && show_line_numbers && show_cursors
+                    && !editing_disabled && !hidden_from_tabs
+                    && request_id.is_none()
+        );
+
+        // set_virtual_buffer_content
+        assert_dispatches!(
+            |a: &PluginApi| a.set_virtual_buffer_content(BufferId(9), vec![]),
+            PluginCommand::SetVirtualBufferContent { buffer_id, entries }
+                if buffer_id == BufferId(9) && entries.is_empty()
+        );
+
+        // get_text_properties_at_cursor
+        assert_dispatches!(
+            |a: &PluginApi| a.get_text_properties_at_cursor(BufferId(11)),
+            PluginCommand::GetTextPropertiesAtCursor { buffer_id }
+                if buffer_id == BufferId(11)
+        );
+
+        // define_mode
+        assert_dispatches!(
+            |a: &PluginApi| a.define_mode(
+                "m".into(),
+                vec![("j".into(), "move_down".into())],
+                true,
+                false,
+            ),
+            PluginCommand::DefineMode {
+                name, bindings, read_only, allow_text_input, inherit_normal_bindings, plugin_name
+            }
+                if name == "m"
+                    && bindings.len() == 1
+                    && bindings[0].0 == "j"
+                    && bindings[0].1 == "move_down"
+                    && read_only
+                    && !allow_text_input
+                    && !inherit_normal_bindings
+                    && plugin_name.is_none()
+        );
+
+        // show_buffer
+        assert_dispatches!(
+            |a: &PluginApi| a.show_buffer(BufferId(77)),
+            PluginCommand::ShowBuffer { buffer_id } if buffer_id == BufferId(77)
+        );
+
+        // set_split_scroll
+        assert_dispatches!(
+            |a: &PluginApi| a.set_split_scroll(5, 128),
+            PluginCommand::SetSplitScroll { split_id, top_byte }
+                if split_id == SplitId(5) && top_byte == 128
+        );
+
+        // get_highlights
+        assert_dispatches!(
+            |a: &PluginApi| a.get_highlights(BufferId(1), 0..10, 7),
+            PluginCommand::RequestHighlights { buffer_id, range, request_id }
+                if buffer_id == BufferId(1) && range == (0..10) && request_id == 7
+        );
+    }
+
+    /// `get_active_split_id` reads the snapshot verbatim; a non-{0,1}
+    /// sentinel value kills both the `0` and `1` constant-return mutants.
+    #[test]
+    fn plugin_api_get_active_split_id_reads_snapshot() {
+        let (api, _rx, _h, _c, snap) = mk_api();
+        snap.write().unwrap().active_split_id = 42;
+        assert_eq!(api.get_active_split_id(), 42);
+    }
+
+    /// `state_snapshot_handle` returns a clone of the same `Arc`, not a
+    /// freshly-defaulted snapshot. A distinguishing field value on the
+    /// original state proves that the handle sees it.
+    #[test]
+    fn plugin_api_state_snapshot_handle_shares_underlying_arc() {
+        let (api, _rx, _h, _c, snap) = mk_api();
+        snap.write().unwrap().active_buffer_id = BufferId(42);
+
+        let h = api.state_snapshot_handle();
+        assert_eq!(h.read().unwrap().active_buffer_id, BufferId(42));
+        assert!(Arc::ptr_eq(&h, &snap));
+    }
+
+    /// `KillHostProcess` survives a round-trip through serde: the
+    /// `process_id` field stays identified by name and the variant
+    /// retains its tag shape. If a future contributor renames the
+    /// field or splits it into a tuple, the plugin-runtime TS side
+    /// (which hand-builds the command JSON for the dispatcher) would
+    /// silently break — this test pins the wire format.
+    #[test]
+    fn plugin_command_kill_host_process_serde_round_trip() {
+        let cmd = PluginCommand::KillHostProcess { process_id: 1234 };
+        let json = serde_json::to_value(&cmd).unwrap();
+        assert_eq!(json["KillHostProcess"]["process_id"], 1234);
+        let decoded: PluginCommand = serde_json::from_value(json).unwrap();
+        match decoded {
+            PluginCommand::KillHostProcess { process_id } => assert_eq!(process_id, 1234),
+            other => panic!("expected KillHostProcess, got {:?}", other),
+        }
+    }
+
+    // ==================== SearchHandle behavior ====================
+
+    fn dummy_match(line: usize) -> GrepMatch {
+        GrepMatch {
+            file: "fixture.rs".to_string(),
+            buffer_id: 0,
+            byte_offset: 0,
+            length: 4,
+            line,
+            column: 1,
+            context: "match".to_string(),
+        }
+    }
+
+    /// Pull-based handle batches matches between drains: a producer that
+    /// pushes N matches across multiple writes hands them to the consumer
+    /// in a single take(), and a follow-up take() with no new writes
+    /// returns an empty batch — proving the architectural property the
+    /// new API was built around (no per-chunk dispatch).
+    #[test]
+    fn search_handle_batches_between_takes() {
+        let handle = Arc::new(SearchHandleState::new());
+
+        // Three independent writer batches simulate three searcher tasks
+        // pushing into the shared state.
+        for chunk in [vec![dummy_match(1), dummy_match(2)], vec![dummy_match(3)]] {
+            let count = chunk.len();
+            let mut state = handle.state.lock().unwrap();
+            state.pending.extend(chunk);
+            state.total_seen += count;
+        }
+
+        // First take drains everything written so far.
+        let drained: Vec<_> = {
+            let mut s = handle.state.lock().unwrap();
+            std::mem::take(&mut s.pending)
+        };
+        assert_eq!(drained.len(), 3);
+        assert_eq!(handle.state.lock().unwrap().total_seen, 3);
+
+        // Second take with no producer activity yields an empty batch.
+        let empty: Vec<_> = {
+            let mut s = handle.state.lock().unwrap();
+            std::mem::take(&mut s.pending)
+        };
+        assert!(empty.is_empty());
+    }
+
+    /// `cancel` is a one-way latch visible to producers and consumers.
+    /// Setting it does not implicitly mark `done` — completion is the
+    /// producer's responsibility — but a producer observing the flag
+    /// should stop pushing.
+    #[test]
+    fn search_handle_cancel_is_observable() {
+        let handle = Arc::new(SearchHandleState::new());
+        assert!(!handle.cancel.load(std::sync::atomic::Ordering::Relaxed));
+
+        handle
+            .cancel
+            .store(true, std::sync::atomic::Ordering::Relaxed);
+
+        assert!(handle.cancel.load(std::sync::atomic::Ordering::Relaxed));
+        assert!(!handle.state.lock().unwrap().done);
+    }
+
+    /// The terminal state transition: producers flip `done = true` once
+    /// no more matches will arrive, with `truncated` reflecting whether
+    /// the search hit `max_results`. Consumers learn the search is
+    /// finished from the same `take()` that drains the final batch.
+    #[test]
+    fn search_handle_done_transition_is_visible_to_consumer() {
+        let handle = Arc::new(SearchHandleState::new());
+
+        // Producer pushes a final batch, then marks done.
+        {
+            let mut s = handle.state.lock().unwrap();
+            s.pending.push(dummy_match(7));
+            s.total_seen += 1;
+            s.truncated = true;
+            s.done = true;
+        }
+
+        let (matches, done, truncated) = {
+            let mut s = handle.state.lock().unwrap();
+            (std::mem::take(&mut s.pending), s.done, s.truncated)
+        };
+
+        assert_eq!(matches.len(), 1);
+        assert!(done);
+        assert!(truncated);
+    }
+
+    /// Producers and consumers must be able to interleave without
+    /// blocking each other longer than a `mem::take` swap. This test
+    /// drives writes from a worker thread while the main thread drains;
+    /// it asserts the consumer eventually sees every match. With a
+    /// per-chunk dispatch model an analogous test would deadlock or
+    /// drop matches; with the pull model it converges.
+    #[test]
+    fn search_handle_concurrent_producer_consumer() {
+        let handle = Arc::new(SearchHandleState::new());
+        let producer = Arc::clone(&handle);
+        let writer = std::thread::spawn(move || {
+            for line in 1..=200 {
+                let mut s = producer.state.lock().unwrap();
+                s.pending.push(dummy_match(line));
+                s.total_seen += 1;
+            }
+            producer.state.lock().unwrap().done = true;
+        });
+
+        let mut drained: Vec<GrepMatch> = Vec::new();
+        loop {
+            let (mut batch, done) = {
+                let mut s = handle.state.lock().unwrap();
+                (std::mem::take(&mut s.pending), s.done)
+            };
+            drained.append(&mut batch);
+            if done {
+                let mut tail = handle.state.lock().unwrap();
+                drained.append(&mut std::mem::take(&mut tail.pending));
+                break;
+            }
+            std::thread::yield_now();
+        }
+        writer.join().unwrap();
+        assert_eq!(drained.len(), 200);
+    }
+}
+
+#[cfg(test)]
+mod create_window_with_terminal_options_tests {
+    use super::CreateWindowWithTerminalOptions;
+
+    /// Old callers that supply neither `env` nor `allowScript` must still
+    /// deserialize, with both fields defaulting to off.
+    #[test]
+    fn deserializes_without_new_fields() {
+        let opts: CreateWindowWithTerminalOptions =
+            serde_json::from_str(r#"{"root":"/tmp/x"}"#).expect("legacy payload should decode");
+        assert_eq!(opts.root, "/tmp/x");
+        assert!(opts.env.is_none());
+        assert!(opts.allow_script.is_none());
+    }
+
+    /// The two fields round-trip through serde using their camelCase JSON
+    /// names (`env`, `allowScript`).
+    #[test]
+    fn new_fields_round_trip() {
+        let json = r#"{
+            "root": "/tmp/proj",
+            "env": {"FOO": "bar"},
+            "allowScript": true
+        }"#;
+        let opts: CreateWindowWithTerminalOptions =
+            serde_json::from_str(json).expect("payload with new fields should decode");
+        assert_eq!(
+            opts.env
+                .as_ref()
+                .and_then(|e| e.get("FOO"))
+                .map(String::as_str),
+            Some("bar")
+        );
+        assert_eq!(opts.allow_script, Some(true));
+
+        let reencoded = serde_json::to_string(&opts).expect("re-serialize");
+        let back: CreateWindowWithTerminalOptions =
+            serde_json::from_str(&reencoded).expect("re-decode");
+        assert_eq!(back.allow_script, opts.allow_script);
+        assert_eq!(back.env, opts.env);
+    }
+}

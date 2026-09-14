@@ -1,0 +1,247 @@
+// Licensed to the Apache Software Foundation (ASF) under one
+// or more contributor license agreements.  See the NOTICE file
+// distributed with this work for additional information
+// regarding copyright ownership.  The ASF licenses this file
+// to you under the Apache License, Version 2.0 (the
+// "License"); you may not use this file except in compliance
+// with the License.  You may obtain a copy of the License at
+//
+//   http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing,
+// software distributed under the License is distributed on an
+// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+// KIND, either express or implied.  See the License for the
+// specific language governing permissions and limitations
+// under the License.
+
+use crate::traits::binary_auth::fail_if_not_authenticated;
+use crate::wire_conversions::{identifier_to_wire, permissions_to_wire, users_from_wire};
+use crate::{
+    BinaryClient, ClientState, Credentials, DiagnosticEvent, Identifier, IdentityInfo, IggyError,
+    Permissions, UserClient, UserInfo, UserInfoDetails, UserStatus, UserUpdateOptions,
+};
+use iggy_binary_protocol::codec::WireEncode;
+use iggy_binary_protocol::codes::LOGIN_REGISTER_CODE;
+use iggy_binary_protocol::codes::{
+    CHANGE_PASSWORD_CODE, CREATE_USER_CODE, DELETE_USER_CODE, GET_USER_CODE, GET_USERS_CODE,
+    LOGOUT_USER_CODE, UPDATE_PERMISSIONS_CODE, UPDATE_USER_CODE,
+};
+use iggy_binary_protocol::requests::users::LoginRegisterRequest;
+use iggy_binary_protocol::requests::users::{
+    ChangePasswordRequest, CreateUserRequest, DeleteUserRequest, GetUserRequest, GetUsersRequest,
+    LogoutUserRequest, UpdatePermissionsRequest, UpdateUserRequest,
+};
+use iggy_binary_protocol::responses::users::LoginRegisterResponse;
+use iggy_binary_protocol::responses::users::{GetUsersResponse, UserDetailsResponse};
+use iggy_binary_protocol::{WireName, WireOptions};
+use secrecy::SecretString;
+
+#[async_trait::async_trait]
+impl<B: BinaryClient> UserClient for B {
+    async fn get_user(&self, user_id: &Identifier) -> Result<Option<UserInfoDetails>, IggyError> {
+        fail_if_not_authenticated(self).await?;
+        let wire_id = identifier_to_wire(user_id)?;
+        let response = self
+            .send_raw_with_response(
+                GET_USER_CODE,
+                GetUserRequest { user_id: wire_id }.to_bytes(),
+            )
+            .await?;
+        if response.is_empty() {
+            return Ok(None);
+        }
+        let wire_resp = super::decode_response::<UserDetailsResponse>(&response)?;
+        UserInfoDetails::try_from(wire_resp).map(Some)
+    }
+
+    async fn get_users(&self) -> Result<Vec<UserInfo>, IggyError> {
+        fail_if_not_authenticated(self).await?;
+        let response = self
+            .send_raw_with_response(GET_USERS_CODE, GetUsersRequest.to_bytes())
+            .await?;
+        if response.is_empty() {
+            return Ok(Vec::new());
+        }
+        let wire_resp = super::decode_response::<GetUsersResponse>(&response)?;
+        users_from_wire(wire_resp)
+    }
+
+    async fn create_user(
+        &self,
+        username: &str,
+        password: &str,
+        status: UserStatus,
+        permissions: Option<Permissions>,
+    ) -> Result<UserInfoDetails, IggyError> {
+        fail_if_not_authenticated(self).await?;
+        super::validate_username(username)?;
+        super::validate_password(password)?;
+        let wire_name = WireName::new(username).map_err(|_| IggyError::InvalidFormat)?;
+        let wire_perms = permissions.as_ref().map(permissions_to_wire);
+        let response = self
+            .send_raw_with_response(
+                CREATE_USER_CODE,
+                CreateUserRequest {
+                    username: wire_name,
+                    password: password.to_string(),
+                    status: status.as_code(),
+                    permissions: wire_perms,
+                    options: WireOptions::empty(),
+                }
+                .to_bytes(),
+            )
+            .await?;
+        let wire_resp = super::decode_response::<UserDetailsResponse>(&response)?;
+        UserInfoDetails::try_from(wire_resp)
+    }
+
+    async fn delete_user(&self, user_id: &Identifier) -> Result<(), IggyError> {
+        fail_if_not_authenticated(self).await?;
+        let wire_id = identifier_to_wire(user_id)?;
+        self.send_raw_with_response(
+            DELETE_USER_CODE,
+            DeleteUserRequest { user_id: wire_id }.to_bytes(),
+        )
+        .await?;
+        Ok(())
+    }
+
+    async fn update_user(
+        &self,
+        user_id: &Identifier,
+        username: Option<&str>,
+        status: Option<UserStatus>,
+        options: &UserUpdateOptions,
+    ) -> Result<(), IggyError> {
+        fail_if_not_authenticated(self).await?;
+        let wire_id = identifier_to_wire(user_id)?;
+        let wire_username = username
+            .map(WireName::new)
+            .transpose()
+            .map_err(|_| IggyError::InvalidFormat)?;
+        self.send_raw_with_response(
+            UPDATE_USER_CODE,
+            UpdateUserRequest {
+                user_id: wire_id,
+                username: wire_username,
+                status: status.map(|s| s.as_code()),
+                options: options.to_wire()?,
+            }
+            .to_bytes(),
+        )
+        .await?;
+        Ok(())
+    }
+
+    async fn update_permissions(
+        &self,
+        user_id: &Identifier,
+        permissions: Option<Permissions>,
+    ) -> Result<(), IggyError> {
+        fail_if_not_authenticated(self).await?;
+        let wire_id = identifier_to_wire(user_id)?;
+        let wire_perms = permissions.as_ref().map(permissions_to_wire);
+        self.send_raw_with_response(
+            UPDATE_PERMISSIONS_CODE,
+            UpdatePermissionsRequest {
+                user_id: wire_id,
+                permissions: wire_perms,
+            }
+            .to_bytes(),
+        )
+        .await?;
+        Ok(())
+    }
+
+    async fn change_password(
+        &self,
+        user_id: &Identifier,
+        current_password: &str,
+        new_password: &str,
+    ) -> Result<(), IggyError> {
+        fail_if_not_authenticated(self).await?;
+        super::validate_password(current_password)?;
+        super::validate_password(new_password)?;
+        let wire_id = identifier_to_wire(user_id)?;
+        self.send_raw_with_response(
+            CHANGE_PASSWORD_CODE,
+            ChangePasswordRequest {
+                user_id: wire_id,
+                current_password: current_password.to_string(),
+                new_password: new_password.to_string(),
+            }
+            .to_bytes(),
+        )
+        .await?;
+        self.refresh_session_password(user_id, new_password).await;
+        Ok(())
+    }
+
+    async fn login_user(&self, username: &str, password: &str) -> Result<IdentityInfo, IggyError> {
+        super::validate_username(username)?;
+        super::validate_password(password)?;
+        super::logout_before_relogin(self).await?;
+        let wire_name = WireName::new(username).map_err(|_| IggyError::InvalidFormat)?;
+        let response = match self
+            .send_raw_with_response(
+                LOGIN_REGISTER_CODE,
+                LoginRegisterRequest {
+                    version_info: super::rust_sdk_version_info(self.sdk_version())?,
+                    username: wire_name,
+                    password: SecretString::from(password.to_string()),
+                    client_context: None,
+                }
+                .to_bytes(),
+            )
+            .await
+        {
+            Ok(response) => response,
+            Err(error) => {
+                self.reset_vsr_session().await?;
+                return Err(error);
+            }
+        };
+        let wire_resp = match super::decode_response::<LoginRegisterResponse>(&response) {
+            Ok(wire_resp) => wire_resp,
+            Err(error) => {
+                self.reset_vsr_session().await?;
+                return Err(error);
+            }
+        };
+        if let Err(error) = self.bind_vsr_session(wire_resp.session).await {
+            self.reset_vsr_session().await?;
+            return Err(error);
+        }
+        tracing::debug!(
+            server_version = %wire_resp.server_version,
+            server_protocol_version = wire_resp.server_protocol_version,
+            "authenticated against iggy server"
+        );
+        self.set_state(ClientState::Authenticated).await;
+        self.remember_session_credentials(
+            Credentials::UsernamePassword(
+                username.to_owned(),
+                SecretString::from(password.to_string()),
+            ),
+            wire_resp.user_id,
+        )
+        .await;
+        self.publish_event(DiagnosticEvent::SignedIn).await;
+        Ok(IdentityInfo {
+            user_id: wire_resp.user_id,
+            access_token: None,
+        })
+    }
+
+    async fn logout_user(&self) -> Result<(), IggyError> {
+        fail_if_not_authenticated(self).await?;
+        self.send_raw_with_response(LOGOUT_USER_CODE, LogoutUserRequest.to_bytes())
+            .await?;
+        self.forget_session_credentials().await;
+        self.reset_vsr_session().await?;
+        self.set_state(ClientState::Connected).await;
+        self.publish_event(DiagnosticEvent::SignedOut).await;
+        Ok(())
+    }
+}

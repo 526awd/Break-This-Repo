@@ -1,0 +1,1145 @@
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+use std::fmt;
+use std::sync::Arc;
+
+use async_trait::async_trait;
+use datafusion::arrow::array::{ArrayRef, BooleanArray, Int64Array};
+use datafusion::arrow::buffer::BooleanBuffer;
+use datafusion::arrow::datatypes::{DataType, Field, Schema, SchemaRef};
+use datafusion::arrow::record_batch::RecordBatch;
+use datafusion::execution::SessionStateBuilder;
+use datafusion::execution::context::TaskContext;
+use datafusion::physical_plan::execution_plan::{Boundedness, EmissionType};
+use datafusion::physical_plan::statistics::StatisticsArgs;
+use datafusion::physical_plan::stream::RecordBatchStreamAdapter;
+use datafusion::physical_plan::{
+    DisplayAs, DisplayFormatType, ExecutionPlan, ExecutionPlanProperties, Partitioning,
+    PlanProperties, SendableRecordBatchStream, apply_expression_roots,
+};
+use datafusion_common::tree_node::TreeNodeRecursion;
+use datafusion_common::{DataFusionError, Result, Statistics, internal_err};
+use datafusion_physical_expr::{Distribution, EquivalenceProperties, PhysicalExpr};
+use futures::stream::{self, StreamExt, TryStreamExt};
+use sail_common_datafusion::catalog::LakehouseExecutionContext;
+use sail_common_datafusion::extension::SessionExtensionAccessor;
+use sail_common_datafusion::rename::physical_plan::rename_physical_plan;
+use url::Url;
+
+use crate::datasource::scan::{
+    FileScanParams, TableStatsMode, file_scan_projection_for_schema, map_statistics_to_schema,
+    sanitize_statistics_for_schema,
+};
+use crate::datasource::{DeltaScanConfig, build_file_scan_config};
+use crate::deletion_vector::DeletionVectorBitmap;
+use crate::delta_log::LogStoreRef;
+use crate::physical_plan::{COL_ACTION, decode_adds_from_batch, meta_adds};
+use crate::schema::{arrow_field_physical_name, get_physical_schema, restore_logical_record_batch};
+use crate::session_extension::{DeltaTableCache, load_table_uncached, load_table_with_config};
+use crate::snapshot::{CatalogManagedCommitSet, DeltaSnapshotConfig};
+use crate::spec::StructType;
+use crate::table::DeltaSnapshot;
+
+// TODO(dynamic-file-scheduling): Replace fixed file-count chunking with byte-aware chunking
+// and optional work-stealing so executors pull remaining file work dynamically under skew.
+const ADD_SCAN_CHUNK_FILES: usize = 1024;
+
+struct ScanByAddsStreamState {
+    input: SendableRecordBatchStream,
+    context: Arc<TaskContext>,
+    table_url: Url,
+    table_version: i64,
+    output_schema: SchemaRef,
+    scan_config: DeltaScanConfig,
+    lakehouse_table: Option<LakehouseExecutionContext>,
+    catalog_managed_commits: Option<CatalogManagedCommitSet>,
+    remaining_rows: Option<usize>,
+    pushdown_filter: Option<Arc<dyn PhysicalExpr>>,
+
+    // Lazy init
+    table_opened: bool,
+    snapshot: Option<Arc<crate::table::DeltaSnapshot>>,
+    log_store: Option<crate::delta_log::LogStoreRef>,
+    session_state: Option<datafusion::execution::SessionState>,
+    file_schema: Option<SchemaRef>,
+
+    // control
+    partition_scan: Option<bool>,
+    emitted_partition_empty: bool,
+    pending_adds: Vec<crate::spec::Add>,
+    current_scan: Option<SendableRecordBatchStream>,
+    input_done: bool,
+}
+
+impl ScanByAddsStreamState {
+    #[expect(clippy::too_many_arguments)]
+    fn new(
+        input: SendableRecordBatchStream,
+        context: Arc<TaskContext>,
+        table_url: Url,
+        table_version: i64,
+        output_schema: SchemaRef,
+        scan_config: DeltaScanConfig,
+        lakehouse_table: Option<LakehouseExecutionContext>,
+        catalog_managed_commits: Option<CatalogManagedCommitSet>,
+        limit: Option<usize>,
+        pushdown_filter: Option<Arc<dyn PhysicalExpr>>,
+    ) -> Self {
+        Self {
+            input,
+            context,
+            table_url,
+            table_version,
+            output_schema,
+            scan_config,
+            lakehouse_table,
+            catalog_managed_commits,
+            remaining_rows: limit,
+            pushdown_filter,
+            table_opened: false,
+            snapshot: None,
+            log_store: None,
+            session_state: None,
+            file_schema: None,
+            partition_scan: None,
+            emitted_partition_empty: false,
+            pending_adds: Vec::new(),
+            current_scan: None,
+            input_done: false,
+        }
+    }
+
+    async fn ensure_table(&mut self) -> Result<()> {
+        if self.table_opened {
+            return Ok(());
+        }
+        let cached = if let Some(catalog_managed_commits) = self.catalog_managed_commits.clone() {
+            load_table_with_config(
+                self.context.as_ref(),
+                &self.table_url,
+                self.table_version,
+                DeltaSnapshotConfig {
+                    require_files: false,
+                    catalog_managed_commits: Some(catalog_managed_commits),
+                    ..Default::default()
+                },
+            )
+            .await?
+        } else {
+            // Prefer a session-scoped cache. This avoids leaking state across sessions / RuntimeEnvs.
+            // If the cache extension is not installed, fall back to no caching.
+            let lakehouse_table = self.lakehouse_table.as_ref();
+            match self.context.as_ref().extension::<DeltaTableCache>() {
+                Ok(cache) => {
+                    cache
+                        .get(
+                            self.context.as_ref(),
+                            &self.table_url,
+                            self.table_version,
+                            lakehouse_table,
+                        )
+                        .await?
+                }
+                Err(_) => {
+                    load_table_uncached(
+                        self.context.as_ref(),
+                        &self.table_url,
+                        self.table_version,
+                        lakehouse_table,
+                    )
+                    .await?
+                }
+            }
+        };
+
+        let snapshot_state = cached.snapshot.clone();
+        snapshot_state
+            .ensure_data_read_supported()
+            .map_err(|e| DataFusionError::External(Box::new(e)))?;
+        let session_state = SessionStateBuilder::new()
+            .with_config(self.context.session_config().clone())
+            .with_runtime_env(self.context.runtime_env().clone())
+            .build();
+
+        let mut scan_config = self.scan_config.clone();
+        if scan_config.schema.is_none() {
+            let schema = Arc::new(snapshot_state.schema().clone());
+            scan_config.schema = Some(schema);
+        }
+
+        let table_partition_cols = snapshot_state.metadata().partition_columns();
+        let kmode = snapshot_state.effective_column_mapping_mode();
+        let kschema_arc = snapshot_state.schema();
+        let logical_kernel = StructType::try_from(kschema_arc)
+            .map_err(|e| DataFusionError::External(Box::new(e)))?;
+        let physical_arrow = get_physical_schema(&logical_kernel, kmode)?;
+        let physical_partition_cols: std::collections::HashSet<String> = table_partition_cols
+            .iter()
+            .map(|col| {
+                kschema_arc
+                    .field_with_name(col)
+                    .map(|f| arrow_field_physical_name(f, kmode).to_string())
+                    .unwrap_or_else(|_| col.clone())
+            })
+            .collect();
+
+        let file_schema = Arc::new(datafusion::arrow::datatypes::Schema::new(
+            physical_arrow
+                .fields()
+                .iter()
+                .filter(|f| !physical_partition_cols.contains(f.name()))
+                .cloned()
+                .collect::<Vec<_>>(),
+        ));
+
+        self.log_store = Some(cached.log_store.clone());
+        self.snapshot = Some(snapshot_state);
+        self.session_state = Some(session_state);
+        self.file_schema = Some(file_schema);
+        self.scan_config = scan_config;
+        self.table_opened = true;
+        Ok(())
+    }
+
+    fn update_partition_scan_from_batch(&mut self, batch: &RecordBatch) -> Result<()> {
+        let v = if let Some(scan_col) = batch.column_by_name("partition_scan") {
+            let scan_array = scan_col
+                .as_any()
+                .downcast_ref::<datafusion::arrow::array::BooleanArray>()
+                .ok_or_else(|| {
+                    DataFusionError::Internal("partition_scan column is not a BooleanArray".into())
+                })?;
+            scan_array.value(0)
+        } else {
+            false
+        };
+        self.partition_scan = Some(self.partition_scan.unwrap_or(true) && v);
+        Ok(())
+    }
+
+    async fn build_next_scan(&mut self) -> Result<()> {
+        if self.pending_adds.is_empty() {
+            return Ok(());
+        }
+        self.ensure_table().await?;
+
+        let snapshot = self
+            .snapshot
+            .as_deref()
+            .ok_or_else(|| DataFusionError::Internal("missing snapshot".into()))?;
+        let column_mapping_mode = snapshot.effective_column_mapping_mode();
+        let log_store = self
+            .log_store
+            .as_ref()
+            .ok_or_else(|| DataFusionError::Internal("missing log_store".into()))?;
+        let session_state = self
+            .session_state
+            .as_ref()
+            .ok_or_else(|| DataFusionError::Internal("missing session_state".into()))?;
+        let file_schema = self
+            .file_schema
+            .as_ref()
+            .ok_or_else(|| DataFusionError::Internal("missing file_schema".into()))?
+            .clone();
+
+        let chunk_len = self.pending_adds.len().min(ADD_SCAN_CHUNK_FILES);
+        let adds = self.pending_adds.drain(..chunk_len).collect::<Vec<_>>();
+        let mut all_streams: Vec<SendableRecordBatchStream> = Vec::new();
+        let row_index_column = self
+            .scan_config
+            .row_index_column_name
+            .clone()
+            .filter(|name| self.output_schema.field_with_name(name).is_ok());
+        let bitmaps =
+            Self::load_deletion_vectors(Arc::clone(&self.context), self.table_url.clone(), &adds)
+                .await?;
+
+        if row_index_column.is_some() {
+            all_streams.extend(self.build_position_aware_scans(
+                snapshot,
+                log_store,
+                session_state,
+                &adds,
+                &bitmaps,
+                row_index_column.as_deref(),
+                file_schema,
+            )?);
+        } else {
+            let mut plain_adds = Vec::new();
+            let mut dv_adds = Vec::new();
+            let mut dv_bitmaps = Vec::new();
+            for (add, bitmap) in adds.into_iter().zip(bitmaps) {
+                if bitmap.is_some() {
+                    dv_adds.push(add);
+                    dv_bitmaps.push(bitmap);
+                } else {
+                    plain_adds.push(add);
+                }
+            }
+
+            if !plain_adds.is_empty() {
+                all_streams.extend(self.build_bulk_scan(
+                    snapshot,
+                    log_store,
+                    session_state,
+                    &plain_adds,
+                    Arc::clone(&file_schema),
+                )?);
+            }
+            all_streams.extend(self.build_position_aware_scans(
+                snapshot,
+                log_store,
+                session_state,
+                &dv_adds,
+                &dv_bitmaps,
+                None,
+                file_schema,
+            )?);
+        }
+
+        let output_schema = Arc::clone(&self.output_schema);
+        let combined = stream::iter(all_streams)
+            .map(Ok::<_, DataFusionError>)
+            .try_flatten()
+            .and_then(move |batch| {
+                let output_schema = Arc::clone(&output_schema);
+                async move {
+                    let casted =
+                        restore_logical_record_batch(&batch, &output_schema, column_mapping_mode)?;
+                    Ok(casted)
+                }
+            });
+        self.current_scan = Some(Box::pin(RecordBatchStreamAdapter::new(
+            Arc::clone(&self.output_schema),
+            combined,
+        )));
+        Ok(())
+    }
+
+    async fn load_deletion_vectors(
+        context: Arc<TaskContext>,
+        table_url: Url,
+        adds: &[crate::spec::Add],
+    ) -> Result<Vec<Option<Arc<DeletionVectorBitmap>>>> {
+        if !adds.iter().any(|add| add.deletion_vector.is_some()) {
+            return Ok(vec![None; adds.len()]);
+        }
+
+        let object_store = context
+            .runtime_env()
+            .object_store_registry
+            .get_store(&table_url)
+            .map_err(|error| DataFusionError::External(Box::new(error)))?;
+        let bitmaps = adds.iter().map(|add| {
+            let object_store = Arc::clone(&object_store);
+            let table_url = table_url.clone();
+            let descriptor = add.deletion_vector.clone();
+            async move {
+                let Some(descriptor) = descriptor else {
+                    return Ok(None);
+                };
+                let bitmap = crate::deletion_vector::read_deletion_vector(
+                    object_store.as_ref(),
+                    &table_url,
+                    &descriptor,
+                )
+                .await
+                .map_err(|error| DataFusionError::External(Box::new(error)))?;
+                Ok::<_, DataFusionError>(Some(Arc::new(bitmap)))
+            }
+        });
+        futures::future::try_join_all(bitmaps).await
+    }
+
+    fn build_position_aware_scans(
+        &self,
+        snapshot: &DeltaSnapshot,
+        log_store: &LogStoreRef,
+        session_state: &dyn datafusion::catalog::Session,
+        adds: &[crate::spec::Add],
+        bitmaps: &[Option<Arc<DeletionVectorBitmap>>],
+        row_index_column: Option<&str>,
+        file_schema: SchemaRef,
+    ) -> Result<Vec<SendableRecordBatchStream>> {
+        if adds.len() != bitmaps.len() {
+            return internal_err!("deletion vector bitmap count does not match Add count");
+        }
+
+        let mut streams = Vec::new();
+        for (add, bitmap) in adds.iter().zip(bitmaps) {
+            let file_streams = self.build_bulk_scan(
+                snapshot,
+                log_store,
+                session_state,
+                std::slice::from_ref(add),
+                Arc::clone(&file_schema),
+            )?;
+            for stream in file_streams {
+                let stream = if let Some(column_name) = row_index_column {
+                    append_row_index_stream(stream, column_name.to_string())?
+                } else {
+                    stream
+                };
+                streams.push(if let Some(bitmap) = bitmap {
+                    dv_filter_stream(stream, Arc::clone(bitmap))
+                } else {
+                    stream
+                });
+            }
+        }
+        Ok(streams)
+    }
+
+    /// Build a bulk Parquet scan for a set of Add actions (no DV filtering).
+    fn build_bulk_scan(
+        &self,
+        snapshot: &DeltaSnapshot,
+        log_store: &LogStoreRef,
+        session_state: &dyn datafusion::catalog::Session,
+        adds: &[crate::spec::Add],
+        file_schema: SchemaRef,
+    ) -> Result<Vec<SendableRecordBatchStream>> {
+        let mut scan_config = self.scan_config.clone();
+        let row_index_name = scan_config
+            .row_index_column_name
+            .clone()
+            .filter(|name| self.output_schema.field_with_name(name).is_ok());
+        scan_config.row_index_column_name = None;
+
+        let file_output_schema = if let Some(row_index_name) = &row_index_name {
+            let fields = self
+                .output_schema
+                .fields()
+                .iter()
+                .filter(|field| field.name() != row_index_name)
+                .cloned()
+                .collect::<Vec<_>>();
+            Arc::new(Schema::new(fields))
+        } else {
+            Arc::clone(&self.output_schema)
+        };
+        let file_projection = file_scan_projection_for_schema(
+            snapshot,
+            &scan_config,
+            &file_schema,
+            &file_output_schema,
+        )?;
+        let file_logical_names = file_output_schema
+            .fields()
+            .iter()
+            .map(|field| field.name().clone())
+            .collect::<Vec<_>>();
+
+        let file_scan_config = build_file_scan_config(
+            snapshot,
+            log_store,
+            adds,
+            &scan_config,
+            FileScanParams {
+                projection: Some(&file_projection),
+                // Limit must be applied after DV filtering, otherwise deleted rows consume the
+                // physical-file limit and valid rows can be missed.
+                limit: None,
+                // A DV and a projected row index both use absolute physical row positions. A
+                // Parquet predicate can skip rows or row groups before those positions are
+                // assigned, so retain the outer DataFusion filter for these scans.
+                pushdown_filter: if row_index_name.is_some()
+                    || adds.iter().any(|add| add.deletion_vector.is_some())
+                {
+                    None
+                } else {
+                    self.pushdown_filter.clone()
+                },
+                sort_order: None,
+                table_stats_mode: TableStatsMode::AddsOnly,
+            },
+            session_state,
+            file_schema,
+        )
+        .map_err(|e| DataFusionError::External(Box::new(e)))?;
+
+        let partitions = file_scan_config.file_groups.len().max(1);
+        let scan_exec =
+            datafusion::datasource::source::DataSourceExec::from_data_source(file_scan_config);
+        let scan_exec = rename_physical_plan(scan_exec, &file_logical_names)
+            .map_err(|e| DataFusionError::External(Box::new(e)))?;
+
+        let mut streams = Vec::with_capacity(partitions);
+        for partition in 0..partitions {
+            streams.push(scan_exec.execute(partition, Arc::clone(&self.context))?);
+        }
+        Ok(streams)
+    }
+
+    async fn decode_adds_from_meta_batch(
+        &mut self,
+        batch: &RecordBatch,
+    ) -> Result<Vec<crate::spec::Add>> {
+        self.ensure_table().await?;
+        let partition_value_columns = self
+            .snapshot
+            .as_deref()
+            .ok_or_else(|| DataFusionError::Internal("missing snapshot".into()))?
+            .physical_partition_columns();
+        meta_adds::decode_adds_from_meta_batch_with_partition_value_columns(
+            batch,
+            Some(&partition_value_columns),
+        )
+    }
+}
+
+/// Append a file-local row-index column to a single-file scan stream.
+///
+/// Callers must only use this for streams that read one physical file, so the counter
+/// starts at zero for each file and matches Delta deletion-vector row positions.
+fn append_row_index_stream(
+    inner: SendableRecordBatchStream,
+    column_name: String,
+) -> Result<SendableRecordBatchStream> {
+    let mut fields = inner.schema().fields().iter().cloned().collect::<Vec<_>>();
+    fields.push(Arc::new(Field::new(column_name, DataType::Int64, false)));
+    let output_schema = Arc::new(Schema::new(fields));
+    let stream_schema = Arc::clone(&output_schema);
+
+    let stream = stream::try_unfold((inner, 0_i64), move |(mut inner, mut row_offset)| {
+        let schema = Arc::clone(&stream_schema);
+        async move {
+            match inner.try_next().await? {
+                Some(batch) => {
+                    let num_rows_i64 = i64::try_from(batch.num_rows()).map_err(|_| {
+                        DataFusionError::Execution(
+                            "record batch row count exceeds i64::MAX".to_string(),
+                        )
+                    })?;
+                    let row_indices =
+                        Int64Array::from_iter_values(row_offset..row_offset + num_rows_i64);
+                    row_offset += num_rows_i64;
+
+                    let mut columns = batch.columns().to_vec();
+                    columns.push(Arc::new(row_indices) as ArrayRef);
+                    let batch = RecordBatch::try_new(Arc::clone(&schema), columns)?;
+                    Ok(Some((batch, (inner, row_offset))))
+                }
+                None => Ok(None),
+            }
+        }
+    });
+
+    Ok(Box::pin(RecordBatchStreamAdapter::new(
+        output_schema,
+        stream,
+    )))
+}
+
+/// Wrap a record-batch stream so that rows whose file-level indices appear in the
+/// deletion vector bitmap are excluded.
+///
+/// The wrapper maintains a running `row_offset` across successive batches received
+/// from the inner stream. For each batch it builds a boolean selection mask by
+/// checking every global row index against the bitmap, then applies
+/// `filter_record_batch` to drop deleted rows.  Batches where all rows are deleted
+/// are silently skipped instead of emitting empty batches.
+fn dv_filter_stream(
+    inner: SendableRecordBatchStream,
+    bitmap: Arc<DeletionVectorBitmap>,
+) -> SendableRecordBatchStream {
+    let schema = inner.schema();
+    let filtered = stream::try_unfold(
+        (inner, bitmap, 0u64),
+        |(mut inner, bitmap, mut row_offset)| async move {
+            loop {
+                match inner.try_next().await? {
+                    None => return Ok(None),
+                    Some(batch) => {
+                        let num_rows = batch.num_rows();
+                        if num_rows == 0 {
+                            continue;
+                        }
+
+                        // Build selection mask: true = keep, false = deleted.
+                        let keep: BooleanBuffer = (0..num_rows)
+                            .map(|i| !bitmap.contains(row_offset + i as u64))
+                            .collect();
+                        row_offset += num_rows as u64;
+
+                        let keep_count = keep.count_set_bits();
+                        if keep_count == 0 {
+                            // Entire batch is deleted.
+                            continue;
+                        }
+                        if keep_count == num_rows {
+                            // Nothing deleted in this batch.
+                            return Ok(Some((batch, (inner, bitmap, row_offset))));
+                        }
+
+                        let predicate = BooleanArray::new(keep, None);
+                        let filtered_batch =
+                            datafusion::arrow::compute::filter_record_batch(&batch, &predicate)?;
+                        return Ok(Some((filtered_batch, (inner, bitmap, row_offset))));
+                    }
+                }
+            }
+        },
+    );
+    Box::pin(RecordBatchStreamAdapter::new(schema, filtered))
+}
+
+/// Physical execution node that scans Delta data files based on Add actions from upstream.
+///
+/// This node bridges the metadata layer (Add actions) with the data layer (Parquet scans).
+/// It consumes a stream of encoded Add actions and produces a stream of data records by
+/// scanning the referenced files.
+#[derive(Debug, Clone)]
+pub struct DeltaScanByAddsExec {
+    input: Arc<dyn ExecutionPlan>,
+    table_url: Url,
+    version: i64,
+    table_schema: SchemaRef,
+    output_schema: SchemaRef,
+    scan_config: DeltaScanConfig,
+    projection: Option<Vec<usize>>,
+    limit: Option<usize>,
+    pushdown_filter: Option<Arc<dyn PhysicalExpr>>,
+    lakehouse_table: Option<LakehouseExecutionContext>,
+    catalog_managed_commits: Option<CatalogManagedCommitSet>,
+    statistics: Statistics,
+    cache: Arc<PlanProperties>,
+}
+
+impl DeltaScanByAddsExec {
+    #[expect(clippy::too_many_arguments)]
+    pub fn new(
+        input: Arc<dyn ExecutionPlan>,
+        table_url: Url,
+        version: i64,
+        table_schema: SchemaRef,
+        output_schema: SchemaRef,
+        scan_config: DeltaScanConfig,
+        projection: Option<Vec<usize>>,
+        limit: Option<usize>,
+        pushdown_filter: Option<Arc<dyn PhysicalExpr>>,
+        lakehouse_table: Option<LakehouseExecutionContext>,
+        catalog_managed_commits: Option<CatalogManagedCommitSet>,
+    ) -> Self {
+        let statistics = Statistics::new_unknown(output_schema.as_ref());
+        let cache = Self::compute_properties(
+            output_schema.clone(),
+            input.output_partitioning().partition_count(),
+        );
+        Self {
+            input,
+            table_url,
+            version,
+            table_schema,
+            output_schema,
+            scan_config,
+            projection,
+            limit,
+            pushdown_filter,
+            lakehouse_table,
+            catalog_managed_commits,
+            statistics,
+            cache,
+        }
+    }
+
+    pub fn with_output_statistics(mut self, output_statistics: Option<Statistics>) -> Self {
+        self.statistics = output_statistics
+            .as_ref()
+            .map(|statistics| {
+                if statistics.column_statistics.len() == self.output_schema.fields().len() {
+                    sanitize_statistics_to_schema(statistics.clone(), &self.output_schema)
+                } else {
+                    map_statistics_to_schema(statistics, &self.table_schema, &self.output_schema)
+                }
+            })
+            .unwrap_or_else(|| Statistics::new_unknown(self.output_schema.as_ref()));
+        self
+    }
+
+    pub fn input(&self) -> &Arc<dyn ExecutionPlan> {
+        &self.input
+    }
+
+    pub fn table_url(&self) -> &Url {
+        &self.table_url
+    }
+
+    pub fn version(&self) -> i64 {
+        self.version
+    }
+
+    pub fn table_schema(&self) -> &SchemaRef {
+        &self.table_schema
+    }
+
+    pub fn output_schema(&self) -> &SchemaRef {
+        &self.output_schema
+    }
+
+    pub fn scan_config(&self) -> &DeltaScanConfig {
+        &self.scan_config
+    }
+
+    pub fn projection(&self) -> Option<&[usize]> {
+        self.projection.as_deref()
+    }
+
+    pub fn limit(&self) -> Option<usize> {
+        self.limit
+    }
+
+    pub fn pushdown_filter(&self) -> Option<&Arc<dyn PhysicalExpr>> {
+        self.pushdown_filter.as_ref()
+    }
+
+    pub fn catalog_table(&self) -> Option<&[String]> {
+        self.lakehouse_table
+            .as_ref()
+            .map(LakehouseExecutionContext::catalog_table)
+    }
+
+    pub fn lakehouse_table(&self) -> Option<&LakehouseExecutionContext> {
+        self.lakehouse_table.as_ref()
+    }
+
+    pub fn catalog_managed_commits(&self) -> Option<&CatalogManagedCommitSet> {
+        self.catalog_managed_commits.as_ref()
+    }
+
+    pub fn statistics(&self) -> &Statistics {
+        &self.statistics
+    }
+
+    fn compute_properties(schema: SchemaRef, partition_count: usize) -> Arc<PlanProperties> {
+        Arc::new(PlanProperties::new(
+            EquivalenceProperties::new(schema),
+            Partitioning::UnknownPartitioning(partition_count.max(1)),
+            EmissionType::Final,
+            Boundedness::Bounded,
+        ))
+    }
+}
+
+#[async_trait]
+impl ExecutionPlan for DeltaScanByAddsExec {
+    fn name(&self) -> &'static str {
+        "DeltaScanByAddsExec"
+    }
+
+    fn properties(&self) -> &Arc<PlanProperties> {
+        &self.cache
+    }
+
+    fn required_input_distribution(&self) -> Vec<Distribution> {
+        vec![Distribution::UnspecifiedDistribution]
+    }
+
+    fn children(&self) -> Vec<&Arc<dyn ExecutionPlan>> {
+        vec![&self.input]
+    }
+
+    fn apply_expressions(
+        &self,
+        f: &mut dyn FnMut(&Arc<dyn PhysicalExpr>) -> Result<TreeNodeRecursion>,
+    ) -> Result<TreeNodeRecursion> {
+        apply_expression_roots(self.pushdown_filter.iter(), f)
+    }
+
+    #[expect(deprecated)]
+    fn replace_children(
+        self: Arc<Self>,
+        children: Vec<Arc<dyn ExecutionPlan>>,
+        _options: datafusion::physical_plan::ReplaceChildrenOptions,
+    ) -> Result<Arc<dyn ExecutionPlan>> {
+        self.with_new_children(children)
+    }
+
+    fn with_new_children(
+        self: Arc<Self>,
+        children: Vec<Arc<dyn ExecutionPlan>>,
+    ) -> Result<Arc<dyn ExecutionPlan>> {
+        if children.len() != 1 {
+            return internal_err!("DeltaScanByAddsExec requires exactly one child");
+        }
+        let mut cloned = (*self).clone();
+        cloned.input = children[0].clone();
+        cloned.cache = Self::compute_properties(
+            cloned.output_schema.clone(),
+            cloned.input.output_partitioning().partition_count(),
+        );
+        Ok(Arc::new(cloned))
+    }
+
+    fn execute(
+        &self,
+        partition: usize,
+        context: Arc<TaskContext>,
+    ) -> Result<SendableRecordBatchStream> {
+        let input_stream = self.input.execute(partition, Arc::clone(&context))?;
+        let table_url = self.table_url.clone();
+        let table_version = self.version;
+        let output_schema = self.schema();
+        let scan_config = self.scan_config.clone();
+        let lakehouse_table = self.lakehouse_table.clone();
+        let catalog_managed_commits = self.catalog_managed_commits.clone();
+        let limit = self.limit;
+        let pushdown_filter = self.pushdown_filter.clone();
+        let state = ScanByAddsStreamState::new(
+            input_stream,
+            context,
+            table_url,
+            table_version,
+            Arc::clone(&output_schema),
+            scan_config,
+            lakehouse_table,
+            catalog_managed_commits,
+            limit,
+            pushdown_filter,
+        );
+
+        let s = stream::try_unfold(state, |mut st| async move {
+            loop {
+                // Stop before decoding another Add batch or opening another DV/file stream.
+                if st.remaining_rows == Some(0) {
+                    return Ok(None);
+                }
+
+                // Drain current scan stream first.
+                if let Some(scan) = &mut st.current_scan {
+                    match scan.try_next().await? {
+                        Some(batch) => {
+                            let Some(remaining_rows) = st.remaining_rows.as_mut() else {
+                                return Ok(Some((batch, st)));
+                            };
+                            if *remaining_rows == 0 {
+                                return Ok(None);
+                            }
+                            let output_rows = batch.num_rows().min(*remaining_rows);
+                            *remaining_rows -= output_rows;
+                            let batch = if output_rows == batch.num_rows() {
+                                batch
+                            } else {
+                                batch.slice(0, output_rows)
+                            };
+                            return Ok(Some((batch, st)));
+                        }
+                        None => {
+                            st.current_scan = None;
+                            continue;
+                        }
+                    }
+                }
+
+                // Partition-only scans: emit a single empty batch then stop.
+                if st.partition_scan == Some(true) && !st.emitted_partition_empty {
+                    st.emitted_partition_empty = true;
+                    return Ok(Some((RecordBatch::new_empty(st.output_schema.clone()), st)));
+                }
+                if st.partition_scan == Some(true) && st.emitted_partition_empty {
+                    return Ok(None);
+                }
+
+                // If we have enough pending adds (or input is done), start a scan.
+                if !st.pending_adds.is_empty()
+                    && (st.pending_adds.len() >= ADD_SCAN_CHUNK_FILES || st.input_done)
+                {
+                    st.build_next_scan().await?;
+                    continue;
+                }
+
+                // Otherwise, pull more adds from upstream.
+                match st.input.try_next().await? {
+                    Some(batch) => {
+                        if batch.num_rows() == 0 {
+                            continue;
+                        }
+                        st.update_partition_scan_from_batch(&batch)?;
+                        if st.partition_scan == Some(true) {
+                            continue;
+                        }
+
+                        if batch.column_by_name(COL_ACTION).is_some() {
+                            st.pending_adds.extend(decode_adds_from_batch(&batch)?);
+                        } else {
+                            // Arrow-native metadata rows path (preferred for query).
+                            let adds = st.decode_adds_from_meta_batch(&batch).await?;
+                            st.pending_adds.extend(adds);
+                        }
+                        continue;
+                    }
+                    None => {
+                        st.input_done = true;
+                        // If input is done and we still have pending adds, start the final scan.
+                        if !st.pending_adds.is_empty() {
+                            st.build_next_scan().await?;
+                            continue;
+                        }
+                        // No adds at all: emit a single empty batch.
+                        if !st.emitted_partition_empty {
+                            st.emitted_partition_empty = true;
+                            return Ok(Some((
+                                RecordBatch::new_empty(st.output_schema.clone()),
+                                st,
+                            )));
+                        }
+                        return Ok(None);
+                    }
+                }
+            }
+        });
+
+        Ok(Box::pin(RecordBatchStreamAdapter::new(output_schema, s)))
+    }
+
+    fn statistics_from_inputs(
+        &self,
+        _input_stats: &[Arc<Statistics>],
+        args: &StatisticsArgs,
+    ) -> Result<Arc<Statistics>> {
+        if args.partition().is_none() {
+            Ok(Arc::new(self.statistics.clone()))
+        } else {
+            Ok(Arc::new(Statistics::new_unknown(self.schema().as_ref())))
+        }
+    }
+}
+
+fn sanitize_statistics_to_schema(mut statistics: Statistics, schema: &SchemaRef) -> Statistics {
+    if statistics.column_statistics.len() != schema.fields().len() {
+        return Statistics::new_unknown(schema.as_ref());
+    }
+
+    sanitize_statistics_for_schema(schema, &mut statistics);
+
+    statistics
+}
+
+impl DisplayAs for DeltaScanByAddsExec {
+    fn fmt_as(&self, t: DisplayFormatType, f: &mut fmt::Formatter) -> fmt::Result {
+        match t {
+            DisplayFormatType::Default | DisplayFormatType::Verbose => {
+                write!(
+                    f,
+                    "DeltaScanByAddsExec(table_path={}, version={}, projection={:?}, limit={:?}, pushdown={})",
+                    self.table_url,
+                    self.version,
+                    self.projection,
+                    self.limit,
+                    self.pushdown_filter.is_some()
+                )
+            }
+            DisplayFormatType::TreeRender => {
+                write!(
+                    f,
+                    "DeltaScanByAddsExec: table_path={}, version={}, projection={:?}, limit={:?}, pushdown={}",
+                    self.table_url,
+                    self.version,
+                    self.projection,
+                    self.limit,
+                    self.pushdown_filter.is_some()
+                )
+            }
+        }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use std::sync::Arc;
+
+    use datafusion::arrow::datatypes::{DataType, Field, Schema};
+    use datafusion::physical_plan::empty::EmptyExec;
+    use datafusion::physical_plan::statistics::{StatisticsArgs, StatisticsContext};
+    use datafusion_common::stats::{ColumnStatistics, Precision, Statistics};
+    use datafusion_common::{DataFusionError, Result, ScalarValue};
+    use url::Url;
+
+    use super::DeltaScanByAddsExec;
+    use crate::datasource::scan::map_statistics_to_schema;
+
+    #[test]
+    fn test_map_statistics_to_schema_by_name() {
+        let source_schema = Arc::new(Schema::new(vec![
+            Field::new("a", DataType::Int64, true),
+            Field::new("b", DataType::Int64, true),
+        ]));
+        let target_schema = Arc::new(Schema::new(vec![
+            Field::new("b", DataType::Int64, true),
+            Field::new("a", DataType::Int64, true),
+            Field::new("_virtual", DataType::Utf8, true),
+        ]));
+
+        let source_stats = Statistics {
+            num_rows: Precision::Exact(42),
+            total_byte_size: Precision::Exact(4096),
+            column_statistics: vec![
+                ColumnStatistics {
+                    null_count: Precision::Exact(1),
+                    max_value: Precision::Exact(ScalarValue::Int64(Some(9))),
+                    min_value: Precision::Exact(ScalarValue::Null),
+                    sum_value: Precision::Absent,
+                    distinct_count: Precision::Exact(7),
+                    byte_size: Precision::Absent,
+                },
+                ColumnStatistics {
+                    null_count: Precision::Exact(2),
+                    max_value: Precision::Exact(ScalarValue::Int64(Some(99))),
+                    min_value: Precision::Exact(ScalarValue::Int64(Some(10))),
+                    sum_value: Precision::Absent,
+                    distinct_count: Precision::Exact(11),
+                    byte_size: Precision::Absent,
+                },
+            ],
+        };
+
+        let mapped = map_statistics_to_schema(&source_stats, &source_schema, &target_schema);
+        assert_eq!(mapped.num_rows, Precision::Exact(42));
+        assert_eq!(mapped.total_byte_size, Precision::Exact(4096));
+        assert_eq!(mapped.column_statistics.len(), 3);
+
+        // `b` lands first in target schema.
+        assert_eq!(mapped.column_statistics[0].null_count, Precision::Exact(2));
+        assert_eq!(
+            mapped.column_statistics[0].min_value,
+            Precision::Exact(ScalarValue::Int64(Some(10)))
+        );
+
+        // `a` lands second in target schema.
+        assert_eq!(mapped.column_statistics[1].null_count, Precision::Exact(1));
+        assert_eq!(mapped.column_statistics[1].min_value, Precision::Absent);
+        assert_eq!(
+            mapped.column_statistics[1].max_value,
+            Precision::Exact(ScalarValue::Int64(Some(9)))
+        );
+
+        // Unknown column gets unknown stats.
+        assert_eq!(mapped.column_statistics[2], ColumnStatistics::new_unknown());
+    }
+
+    #[test]
+    fn test_scan_by_adds_exposes_known_statistics() {
+        let table_schema = Arc::new(Schema::new(vec![
+            Field::new("a", DataType::Int64, true),
+            Field::new("b", DataType::Int64, true),
+        ]));
+        let output_schema = Arc::new(Schema::new(vec![Field::new("b", DataType::Int64, true)]));
+        let input_schema = Arc::new(Schema::new(vec![Field::new(
+            "action",
+            DataType::Utf8,
+            true,
+        )]));
+
+        let input = Arc::new(EmptyExec::new(input_schema));
+        let table_stats = Statistics {
+            num_rows: Precision::Exact(123),
+            total_byte_size: Precision::Exact(2048),
+            column_statistics: vec![
+                ColumnStatistics::new_unknown(),
+                ColumnStatistics {
+                    null_count: Precision::Exact(4),
+                    max_value: Precision::Exact(ScalarValue::Int64(Some(88))),
+                    min_value: Precision::Exact(ScalarValue::Int64(Some(1))),
+                    sum_value: Precision::Absent,
+                    distinct_count: Precision::Exact(12),
+                    byte_size: Precision::Absent,
+                },
+            ],
+        };
+
+        let table_url = Url::parse("file:///tmp/table").ok();
+        assert!(table_url.is_some());
+        let table_url = match table_url {
+            Some(url) => url,
+            None => return,
+        };
+
+        let scan = DeltaScanByAddsExec::new(
+            input,
+            table_url,
+            1,
+            table_schema,
+            output_schema,
+            crate::datasource::DeltaScanConfig::default(),
+            None,
+            None,
+            None,
+            None,
+            None,
+        )
+        .with_output_statistics(Some(table_stats));
+
+        let stats = StatisticsContext::new()
+            .compute(&scan, &StatisticsArgs::new())
+            .ok();
+        assert!(stats.is_some());
+        let stats = match stats {
+            Some(s) => s,
+            None => return,
+        };
+        assert_eq!(stats.num_rows, Precision::Exact(123));
+        assert_eq!(stats.column_statistics.len(), 1);
+        assert_eq!(stats.column_statistics[0].null_count, Precision::Exact(4));
+    }
+
+    #[test]
+    fn test_scan_by_adds_accepts_output_statistics_directly() -> Result<()> {
+        let table_schema = Arc::new(Schema::new(vec![
+            Field::new("a", DataType::Int64, true),
+            Field::new("b", DataType::Int64, true),
+        ]));
+        let output_schema = Arc::new(Schema::new(vec![Field::new("b", DataType::Int64, true)]));
+        let input_schema = Arc::new(Schema::new(vec![Field::new(
+            "action",
+            DataType::Utf8,
+            true,
+        )]));
+        let input = Arc::new(EmptyExec::new(input_schema));
+        let table_url =
+            Url::parse("file:///tmp/table").map_err(|e| DataFusionError::External(Box::new(e)))?;
+
+        let output_stats = Statistics {
+            num_rows: Precision::Exact(88),
+            total_byte_size: Precision::Exact(1024),
+            column_statistics: vec![ColumnStatistics {
+                null_count: Precision::Exact(6),
+                max_value: Precision::Exact(ScalarValue::Int64(Some(10))),
+                min_value: Precision::Exact(ScalarValue::Int64(Some(2))),
+                sum_value: Precision::Absent,
+                distinct_count: Precision::Exact(5),
+                byte_size: Precision::Absent,
+            }],
+        };
+
+        let scan = DeltaScanByAddsExec::new(
+            input,
+            table_url,
+            1,
+            table_schema,
+            output_schema,
+            crate::datasource::DeltaScanConfig::default(),
+            None,
+            None,
+            None,
+            None,
+            None,
+        )
+        .with_output_statistics(Some(output_stats));
+
+        let stats = StatisticsContext::new().compute(&scan, &StatisticsArgs::new())?;
+        assert_eq!(stats.num_rows, Precision::Exact(88));
+        assert_eq!(stats.column_statistics.len(), 1);
+        assert_eq!(stats.column_statistics[0].null_count, Precision::Exact(6));
+        Ok(())
+    }
+}

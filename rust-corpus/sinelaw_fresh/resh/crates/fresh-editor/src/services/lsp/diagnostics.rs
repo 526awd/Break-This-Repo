@@ -1,0 +1,641 @@
+//! LSP diagnostics display
+//!
+//! This module handles converting LSP diagnostics to visual overlays in the editor.
+//! Diagnostics are displayed as colored underlines (red for errors, yellow for warnings, etc.)
+use crate::model::buffer::Buffer;
+use crate::state::EditorState;
+use crate::view::overlay::{Overlay, OverlayFace, OverlayNamespace};
+use crate::view::scrollbar_marker::ResolvedMarker;
+use fresh_core::api::OverlayColorSpec;
+use lsp_types::{Diagnostic, DiagnosticSeverity, Position};
+use std::collections::hash_map::DefaultHasher;
+use std::collections::HashMap;
+use std::hash::{Hash, Hasher};
+use std::ops::Range;
+use std::sync::{LazyLock, Mutex};
+
+/// Namespace for all LSP diagnostic overlays
+pub fn lsp_diagnostic_namespace() -> OverlayNamespace {
+    OverlayNamespace::from_string("lsp-diagnostic".to_string())
+}
+
+/// Cache for diagnostic hash to avoid redundant updates, keyed by file path.
+/// This prevents diagnostics from one buffer from invalidating another buffer's cache.
+static DIAGNOSTIC_CACHE: LazyLock<Mutex<HashMap<String, u64>>> =
+    LazyLock::new(|| Mutex::new(HashMap::new()));
+
+/// Compute a hash for a slice of diagnostics
+/// This hash is used to quickly detect if diagnostics have changed
+fn compute_diagnostic_hash(diagnostics: &[Diagnostic]) -> u64 {
+    let mut hasher = DefaultHasher::new();
+
+    // Hash the count first
+    diagnostics.len().hash(&mut hasher);
+
+    // Hash each diagnostic's key properties
+    for diag in diagnostics {
+        // Hash the range (start/end line and character)
+        diag.range.start.line.hash(&mut hasher);
+        diag.range.start.character.hash(&mut hasher);
+        diag.range.end.line.hash(&mut hasher);
+        diag.range.end.character.hash(&mut hasher);
+
+        // Hash severity - match on all variants to get a hashable value
+        let severity_value: i32 = match diag.severity {
+            Some(DiagnosticSeverity::ERROR) => 1,
+            Some(DiagnosticSeverity::WARNING) => 2,
+            Some(DiagnosticSeverity::INFORMATION) => 3,
+            Some(DiagnosticSeverity::HINT) => 4,
+            None => 0,
+            _ => -1,
+        };
+        severity_value.hash(&mut hasher);
+
+        // Hash the message (most important part)
+        diag.message.hash(&mut hasher);
+
+        // Hash the source if present
+        if let Some(source) = &diag.source {
+            source.hash(&mut hasher);
+        }
+    }
+
+    hasher.finish()
+}
+
+/// Invalidate the diagnostic cache for a specific file path.
+///
+/// Call this when the buffer content changes (e.g., after a user edit) to ensure
+/// that the next diagnostic apply recomputes overlay positions from fresh byte offsets,
+/// even if the diagnostic content (range, severity, message) is the same.
+pub fn invalidate_cache_for_file(file_path: &str) {
+    if let Ok(mut cache) = DIAGNOSTIC_CACHE.lock() {
+        if cache.remove(file_path).is_some() {
+            tracing::debug!(
+                "DIAG CACHE: invalidated cache for {} (buffer edited)",
+                file_path
+            );
+        }
+    }
+}
+
+/// Invalidate the entire diagnostic cache.
+///
+/// Call this when the theme changes so that re-applying stored diagnostics
+/// produces overlays with the new theme colors (the hash is content-based,
+/// so without invalidation the cache would suppress the update).
+pub fn invalidate_cache_all() {
+    if let Ok(mut cache) = DIAGNOSTIC_CACHE.lock() {
+        cache.clear();
+    }
+}
+
+/// Apply LSP diagnostics to editor state with hash-based caching
+///
+/// This is the recommended entry point that skips redundant work when diagnostics haven't changed.
+/// On a typical keystroke, diagnostics don't change, so this returns immediately.
+///
+/// Returns `true` if overlays were actually updated (cache miss), `false` if skipped (cache hit).
+pub fn apply_diagnostics_to_state_cached(
+    state: &mut EditorState,
+    diagnostics: &[Diagnostic],
+    theme: &crate::view::theme::Theme,
+) -> bool {
+    // Get cache key from buffer's file path
+    let cache_key = match state.buffer.file_path() {
+        Some(path) => path.to_string_lossy().to_string(),
+        None => {
+            apply_diagnostics_to_state(state, diagnostics, theme);
+            return true;
+        }
+    };
+
+    // Compute hash of incoming diagnostics
+    let new_hash = compute_diagnostic_hash(diagnostics);
+
+    // Check if this is the same as last time for this specific buffer
+    if let Ok(cache) = DIAGNOSTIC_CACHE.lock() {
+        if let Some(&cached_hash) = cache.get(&cache_key) {
+            if cached_hash == new_hash {
+                // Diagnostics haven't changed for this buffer, skip all work
+                tracing::info!(
+                    "DIAG CACHE HIT: skipping {} diagnostics for {} (hash={})",
+                    diagnostics.len(),
+                    cache_key,
+                    new_hash
+                );
+                return false;
+            }
+        }
+    }
+
+    tracing::info!(
+        "DIAG CACHE MISS: applying {} diagnostics for {} (hash={})",
+        diagnostics.len(),
+        cache_key,
+        new_hash
+    );
+
+    // Diagnostics have changed, do the expensive update
+    apply_diagnostics_to_state(state, diagnostics, theme);
+
+    // Update cache for this buffer
+    if let Ok(mut cache) = DIAGNOSTIC_CACHE.lock() {
+        cache.insert(cache_key, new_hash);
+    }
+
+    true
+}
+
+/// Convert an LSP diagnostic to an overlay (range, face, priority)
+/// Returns None if the diagnostic cannot be converted (invalid range, etc.)
+pub fn diagnostic_to_overlay(
+    diagnostic: &Diagnostic,
+    buffer: &Buffer,
+    theme: &crate::view::theme::Theme,
+) -> Option<(Range<usize>, OverlayFace, i32, &'static str)> {
+    // Convert LSP positions (line/character) to byte offsets
+    // LSP uses 0-indexed lines and characters (UTF-16 code units)
+    let start_line = diagnostic.range.start.line as usize;
+    let start_char = diagnostic.range.start.character as usize;
+    let end_line = diagnostic.range.end.line as usize;
+    let end_char = diagnostic.range.end.character as usize;
+
+    // Convert LSP positions (line/UTF-16 character) to byte positions
+    // LSP uses UTF-16 code units for character offsets
+    let start_byte = buffer.lsp_position_to_byte(start_line, start_char);
+    let end_byte = buffer.lsp_position_to_byte(end_line, end_char);
+
+    // Log the conversion for debugging diagnostic highlight positions
+    tracing::debug!(
+        "DIAG OVERLAY: LSP {}:{}..{}:{} -> bytes {}..{} (len={}) severity={:?} msg={:?}",
+        start_line,
+        start_char,
+        end_line,
+        end_char,
+        start_byte,
+        end_byte,
+        end_byte.saturating_sub(start_byte),
+        diagnostic.severity,
+        diagnostic.message,
+    );
+
+    // Determine overlay face based on diagnostic severity using theme colors
+    let (face, priority, theme_key) = match diagnostic.severity {
+        Some(DiagnosticSeverity::ERROR) => (
+            OverlayFace::Background {
+                color: theme.diagnostic_error_bg,
+            },
+            100, // Highest priority
+            "diagnostic.error_bg",
+        ),
+        Some(DiagnosticSeverity::WARNING) => (
+            OverlayFace::Background {
+                color: theme.diagnostic_warning_bg,
+            },
+            50, // Medium priority
+            "diagnostic.warning_bg",
+        ),
+        Some(DiagnosticSeverity::INFORMATION) => (
+            OverlayFace::Background {
+                color: theme.diagnostic_info_bg,
+            },
+            30, // Lower priority
+            "diagnostic.info_bg",
+        ),
+        Some(DiagnosticSeverity::HINT) | None => (
+            OverlayFace::Background {
+                color: theme.diagnostic_hint_bg,
+            },
+            10, // Lowest priority
+            "diagnostic.hint_bg",
+        ),
+        _ => return None, // Unknown severity
+    };
+
+    Some((start_byte..end_byte, face, priority, theme_key))
+}
+
+/// Namespace for the scrollbar markers mirroring the diagnostic overlays.
+pub const LSP_DIAGNOSTIC_SCROLLBAR_NS: &str = "lsp-diagnostics";
+
+/// Theme key for the scrollbar mark of a diagnostic of this severity.
+///
+/// The overlays paint a `*_bg` wash behind the offending span; a scrollbar
+/// mark is a foreground glyph, so it uses the matching `*_fg` key instead.
+fn diagnostic_scrollbar_theme_key(severity: Option<DiagnosticSeverity>) -> &'static str {
+    match severity {
+        Some(DiagnosticSeverity::ERROR) => "diagnostic.error_fg",
+        Some(DiagnosticSeverity::WARNING) => "diagnostic.warning_fg",
+        Some(DiagnosticSeverity::INFORMATION) => "diagnostic.info_fg",
+        _ => "diagnostic.hint_fg",
+    }
+}
+
+/// Apply LSP diagnostics to editor state as overlays
+///
+/// This function:
+/// 1. Clears all existing LSP diagnostic overlays (using namespace)
+/// 2. Adds overlays for all current diagnostics
+/// 3. Mirrors them onto the scrollbar so errors elsewhere in the file are
+///    visible without scrolling to find them
+pub fn apply_diagnostics_to_state(
+    state: &mut EditorState,
+    diagnostics: &[Diagnostic],
+    theme: &crate::view::theme::Theme,
+) {
+    let ns = lsp_diagnostic_namespace();
+
+    // Clear all existing LSP diagnostic overlays using namespace
+    state.overlays.clear_namespace(&ns, &mut state.marker_list);
+
+    // Add overlays for all current diagnostics
+    let mut added_count = 0;
+    // Scrollbar marks are built from the same byte ranges as the overlays, in
+    // the same pass, so the two can never describe different spans. This is a
+    // whole-file republish (a `publishDiagnostics` notification replaces the
+    // file's entire diagnostic set), so the whole-namespace replace is the
+    // right form — and it swaps atomically with no empty frame.
+    let mut scrollbar_markers: Vec<ResolvedMarker> = Vec::new();
+    for diagnostic in diagnostics {
+        if let Some((range, face, priority, theme_key)) =
+            diagnostic_to_overlay(diagnostic, &state.buffer, theme)
+        {
+            let message = diagnostic.message.clone();
+
+            scrollbar_markers.push(ResolvedMarker {
+                start: range.start,
+                // A diagnostic spanning several lines marks a proportional
+                // streak; a single-line one collapses to a cell.
+                end: Some(range.end),
+                color: OverlayColorSpec::ThemeKey(
+                    diagnostic_scrollbar_theme_key(diagnostic.severity).to_string(),
+                ),
+                // Reuse the overlay priority ordering, so an error outranks a
+                // warning on a shared track cell just as it does on a line.
+                priority,
+            });
+
+            let overlay = Overlay::with_namespace(&mut state.marker_list, range, face, ns.clone())
+                .with_priority_value(priority)
+                .with_message(message)
+                .with_theme_key(theme_key);
+
+            state.overlays.add(overlay);
+            added_count += 1;
+        }
+    }
+
+    state
+        .scrollbar_markers
+        .set_markers(LSP_DIAGNOSTIC_SCROLLBAR_NS, scrollbar_markers);
+
+    if added_count > 0 {
+        tracing::debug!("Applied {} diagnostic overlays", added_count);
+    }
+}
+
+/// A diagnostic paired with a byte-range anchor into the buffer it was
+/// published against.
+///
+/// LSP servers publish diagnostics at fixed positions and only re-publish
+/// after a re-check (for rust-analyzer's cargo `checkOnSave`, that means on
+/// save). Between publishes the buffer keeps changing, so the published
+/// positions go stale. Rather than hand-shift them, we anchor each diagnostic
+/// to a byte range and let the editor's [`CoordMap`](crate::model::coord_map)
+/// carry it forward — the exact shift the marker tree applies to the
+/// diagnostic overlays, fed at the same edit chokepoint, so it covers every
+/// edit kind (insert/delete/bulk/undo) and can never disagree with the
+/// overlays (#2602).
+///
+/// `anchor` is `Some((start_byte, end_byte, epoch))` when the file was open on
+/// receipt — `epoch` is the buffer version the bytes are valid at — and `None`
+/// for a diagnostic received while its file was closed. A closed file isn't
+/// being edited, so its published LSP range is used verbatim; it re-anchors on
+/// the next publish once open.
+#[derive(Clone, Debug)]
+pub struct AnchoredDiagnostic {
+    pub diagnostic: Diagnostic,
+    pub anchor: Option<(usize, usize, u64)>,
+}
+
+impl AnchoredDiagnostic {
+    /// Wrap a freshly received `diagnostic`, anchoring it to `state` (the open
+    /// buffer for its file, if any) at the buffer's current version. LSP
+    /// character offsets are UTF-16 code units, matching `lsp_position_to_byte`.
+    pub fn capture(diagnostic: Diagnostic, state: Option<&EditorState>) -> Self {
+        let anchor = state.map(|s| {
+            let start = s.buffer.lsp_position_to_byte(
+                diagnostic.range.start.line as usize,
+                diagnostic.range.start.character as usize,
+            );
+            let end = s.buffer.lsp_position_to_byte(
+                diagnostic.range.end.line as usize,
+                diagnostic.range.end.character as usize,
+            );
+            (start, end, s.buffer.version())
+        });
+        Self { diagnostic, anchor }
+    }
+
+    /// The diagnostic with its range mapped forward to `state`'s current
+    /// version via `CoordMap`. Falls back to the published range when there is
+    /// no anchor (closed file) or the anchor's epoch is too old to map (the
+    /// ring was evicted/barriered — a re-pull refreshes it).
+    pub fn at_current_version(&self, state: Option<&EditorState>) -> Diagnostic {
+        let mut diagnostic = self.diagnostic.clone();
+        if let (Some((start, end, epoch)), Some(state)) = (self.anchor, state) {
+            if let (Some(cur_start), Some(cur_end)) = (
+                state.coord_map.map(start, epoch),
+                state.coord_map.map(end, epoch),
+            ) {
+                let (sl, sc) = state.buffer.position_to_lsp_position(cur_start);
+                let (el, ec) = state.buffer.position_to_lsp_position(cur_end);
+                diagnostic.range.start = Position::new(sl as u32, sc as u32);
+                diagnostic.range.end = Position::new(el as u32, ec as u32);
+            }
+        }
+        diagnostic
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::model::buffer::Buffer;
+    use crate::view::theme;
+    use lsp_types::{Diagnostic, DiagnosticSeverity, Position, Range};
+
+    #[test]
+    fn test_lsp_position_to_byte() {
+        let buffer = Buffer::from_str_test("hello\nworld\ntest");
+
+        // Line 0, character 0
+        assert_eq!(buffer.lsp_position_to_byte(0, 0), 0);
+
+        // Line 0, character 5 (end of "hello")
+        assert_eq!(buffer.lsp_position_to_byte(0, 5), 5);
+
+        // Line 1, character 0 (start of "world")
+        assert_eq!(buffer.lsp_position_to_byte(1, 0), 6);
+
+        // Line 1, character 5 (end of "world")
+        assert_eq!(buffer.lsp_position_to_byte(1, 5), 11);
+
+        // Line 2, character 0 (start of "test")
+        assert_eq!(buffer.lsp_position_to_byte(2, 0), 12);
+
+        // Out of bounds line - should clamp to end of buffer
+        assert_eq!(buffer.lsp_position_to_byte(10, 0), buffer.len());
+    }
+
+    #[test]
+    fn test_diagnostic_to_overlay_error() {
+        let buffer = Buffer::from_str_test("hello world");
+
+        let diagnostic = Diagnostic {
+            range: Range {
+                start: Position {
+                    line: 0,
+                    character: 0,
+                },
+                end: Position {
+                    line: 0,
+                    character: 5,
+                },
+            },
+            severity: Some(DiagnosticSeverity::ERROR),
+            code: None,
+            code_description: None,
+            source: None,
+            message: "Test error".to_string(),
+            related_information: None,
+            tags: None,
+            data: None,
+        };
+
+        let theme = crate::view::theme::Theme::load_builtin(theme::THEME_DARK).unwrap();
+        let result = diagnostic_to_overlay(&diagnostic, &buffer, &theme);
+        assert!(result.is_some());
+
+        let (range, face, priority, theme_key) = result.unwrap();
+        assert_eq!(range, 0..5);
+        assert_eq!(priority, 100); // Error has highest priority
+        assert_eq!(theme_key, "diagnostic.error_bg");
+
+        match face {
+            OverlayFace::Background { color } => {
+                assert_eq!(color, theme.diagnostic_error_bg);
+            }
+            _ => panic!("Expected Background face"),
+        }
+    }
+
+    #[test]
+    fn test_diagnostic_to_overlay_warning() {
+        let buffer = Buffer::from_str_test("hello world");
+
+        let diagnostic = Diagnostic {
+            range: Range {
+                start: Position {
+                    line: 0,
+                    character: 6,
+                },
+                end: Position {
+                    line: 0,
+                    character: 11,
+                },
+            },
+            severity: Some(DiagnosticSeverity::WARNING),
+            code: None,
+            code_description: None,
+            source: None,
+            message: "Test warning".to_string(),
+            related_information: None,
+            tags: None,
+            data: None,
+        };
+
+        let theme = crate::view::theme::Theme::load_builtin(theme::THEME_DARK).unwrap();
+        let result = diagnostic_to_overlay(&diagnostic, &buffer, &theme);
+        assert!(result.is_some());
+
+        let (range, face, priority, theme_key) = result.unwrap();
+        assert_eq!(range, 6..11);
+        assert_eq!(priority, 50); // Warning has medium priority
+        assert_eq!(theme_key, "diagnostic.warning_bg");
+
+        match face {
+            OverlayFace::Background { color } => {
+                assert_eq!(color, theme.diagnostic_warning_bg);
+            }
+            _ => panic!("Expected Background face"),
+        }
+    }
+
+    #[test]
+    fn test_diagnostic_to_overlay_multiline() {
+        let buffer = Buffer::from_str_test("line1\nline2\nline3");
+
+        let diagnostic = Diagnostic {
+            range: Range {
+                start: Position {
+                    line: 0,
+                    character: 3,
+                },
+                end: Position {
+                    line: 1,
+                    character: 2,
+                },
+            },
+            severity: Some(DiagnosticSeverity::ERROR),
+            code: None,
+            code_description: None,
+            source: None,
+            message: "Multi-line error".to_string(),
+            related_information: None,
+            tags: None,
+            data: None,
+        };
+
+        let theme = crate::view::theme::Theme::load_builtin(theme::THEME_DARK).unwrap();
+        let result = diagnostic_to_overlay(&diagnostic, &buffer, &theme);
+        assert!(result.is_some());
+
+        let (range, _, _, _) = result.unwrap();
+        // "line1\n" is 6 bytes, "li" is 2 bytes
+        // start: line 0, char 3 = byte 3 ("e1")
+        // end: line 1, char 2 = byte 8 ("ne")
+        assert_eq!(range.start, 3);
+        assert_eq!(range.end, 8);
+    }
+
+    // --- AnchoredDiagnostic (CoordMap-based position tracking, #2602) -------
+
+    use crate::config::LARGE_FILE_THRESHOLD_BYTES;
+    use crate::model::cursor::Cursors;
+    use crate::model::event::{CursorId, Event};
+    use crate::model::filesystem::StdFileSystem;
+
+    fn state_with(text: &str) -> (EditorState, Cursors, CursorId) {
+        let mut state = EditorState::new(
+            80,
+            24,
+            LARGE_FILE_THRESHOLD_BYTES as usize,
+            std::sync::Arc::new(StdFileSystem),
+        );
+        let mut cursors = Cursors::new();
+        let cursor_id = cursors.primary_id();
+        state.apply(
+            &mut cursors,
+            &Event::Insert {
+                position: 0,
+                text: text.to_string(),
+                cursor_id,
+            },
+        );
+        (state, cursors, cursor_id)
+    }
+
+    fn err_at(sl: u32, sc: u32, el: u32, ec: u32) -> Diagnostic {
+        Diagnostic {
+            range: Range {
+                start: Position::new(sl, sc),
+                end: Position::new(el, ec),
+            },
+            severity: Some(DiagnosticSeverity::ERROR),
+            code: None,
+            code_description: None,
+            source: None,
+            message: "e".to_string(),
+            related_information: None,
+            tags: None,
+            data: None,
+        }
+    }
+
+    #[test]
+    fn anchored_diagnostic_rides_an_insert_above() {
+        // Error on line 2 ("ccc"); insert a line at the top. The anchor is
+        // mapped forward through CoordMap so the diagnostic reports line 3.
+        let (mut state, mut cursors, cursor_id) = state_with("aaa\nbbb\nccc");
+        let anchored = AnchoredDiagnostic::capture(err_at(2, 0, 2, 3), Some(&state));
+        assert_eq!(anchored.anchor.map(|(s, e, _)| (s, e)), Some((8, 11)));
+
+        state.apply(
+            &mut cursors,
+            &Event::Insert {
+                position: 0,
+                text: "xxx\n".to_string(),
+                cursor_id,
+            },
+        );
+
+        let now = anchored.at_current_version(Some(&state));
+        assert_eq!(now.range.start, Position::new(3, 0));
+        assert_eq!(now.range.end, Position::new(3, 3));
+    }
+
+    #[test]
+    fn anchored_diagnostic_rides_a_delete_above() {
+        let (mut state, mut cursors, cursor_id) = state_with("aaa\nbbb\nccc");
+        let anchored = AnchoredDiagnostic::capture(err_at(2, 0, 2, 3), Some(&state));
+
+        // Delete the first line ("aaa\n", bytes 0..4).
+        state.apply(
+            &mut cursors,
+            &Event::Delete {
+                range: 0..4,
+                deleted_text: "aaa\n".to_string(),
+                cursor_id,
+            },
+        );
+
+        let now = anchored.at_current_version(Some(&state));
+        assert_eq!(now.range.start, Position::new(1, 0));
+        assert_eq!(now.range.end, Position::new(1, 3));
+    }
+
+    #[test]
+    fn anchored_diagnostic_untouched_when_edit_is_below() {
+        let (mut state, mut cursors, cursor_id) = state_with("aaa\nbbb\nccc");
+        let anchored = AnchoredDiagnostic::capture(err_at(0, 0, 0, 3), Some(&state));
+
+        // Insert at the very end — below the diagnostic on line 0.
+        let end = state.buffer.len();
+        state.apply(
+            &mut cursors,
+            &Event::Insert {
+                position: end,
+                text: "\nddd".to_string(),
+                cursor_id,
+            },
+        );
+
+        let now = anchored.at_current_version(Some(&state));
+        assert_eq!(now.range.start, Position::new(0, 0));
+        assert_eq!(now.range.end, Position::new(0, 3));
+    }
+
+    #[test]
+    fn unanchored_diagnostic_keeps_published_range() {
+        // Received while the file was closed (no state): the published range is
+        // used verbatim, and later mapping is a no-op.
+        let (mut state, mut cursors, cursor_id) = state_with("aaa\nbbb\nccc");
+        let anchored = AnchoredDiagnostic::capture(err_at(2, 0, 2, 3), None);
+        assert!(anchored.anchor.is_none());
+
+        state.apply(
+            &mut cursors,
+            &Event::Insert {
+                position: 0,
+                text: "xxx\n".to_string(),
+                cursor_id,
+            },
+        );
+
+        let now = anchored.at_current_version(Some(&state));
+        assert_eq!(now.range.start, Position::new(2, 0));
+        assert_eq!(now.range.end, Position::new(2, 3));
+    }
+}

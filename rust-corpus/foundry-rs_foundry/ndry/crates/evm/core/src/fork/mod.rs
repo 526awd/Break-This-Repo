@@ -1,0 +1,22 @@
+use super::opts::EvmOpts;
+
+pub mod database;
+
+mod multi;
+pub use multi::{ForkId, ForkResult, MultiFork, MultiForkHandler};
+
+mod resolved;
+pub use resolved::ResolvedFork;
+
+/// Represents a _fork_ of a remote chain whose data is available only via the `url` endpoint.
+#[derive(Clone, Debug)]
+pub struct CreateFork {
+    /// Whether to enable rpc storage caching for this fork
+    pub enable_caching: bool,
+    /// The URL to a node for fetching remote state
+    pub url: String,
+    /// All env settings as configured by the user
+    pub evm_opts: EvmOpts,
+    /// Exact source and block identity resolved before fork construction.
+    pub resolved: Option<ResolvedFork>,
+}
